@@ -10,15 +10,16 @@ import UIKit
 import CoreData
 
 class CalendarViewController: UIViewController {
-
+  
   @IBOutlet weak var tableView: UITableView!
-  @IBAction func addApptModally(_ sender: UIBarButtonItem) {
-    
-  }
   
   var appointments = [Appointment]()
   
   var managedObjectContext: NSManagedObjectContext!
+  
+  override func viewWillAppear(_ animated: Bool) {
+    loadData()
+  }
   
   override func viewDidLoad() {
     super.viewDidLoad()
@@ -34,15 +35,14 @@ class CalendarViewController: UIViewController {
     do {
       appointments = try managedObjectContext.fetch(appointmentRequest)
       self.tableView.reloadData()
+      print("Loading Data was successfull")
     } catch {
       print("Could not load data from datbase \(error.localizedDescription)")
     }
   }
-
+  
   @IBAction func addAppointment(_ sender: UIBarButtonItem) {
-    
     createAppointmentObject()
-    
   }
   
   
@@ -54,9 +54,9 @@ class CalendarViewController: UIViewController {
     inputAlert.addTextField { (textfield: UITextField) in
       textfield.placeholder = "Patient Name"
     }
-    inputAlert.addTextField { (textfield: UITextField) in
-      textfield.placeholder = "Appointment Date"
-    }
+    //   inputAlert.addTextField { (textfield: UITextField) in
+    //      textfield.placeholder = "Appointment Date"
+    //    }
     inputAlert.addTextField { (textfield: UITextField) in
       textfield.placeholder = "Description"
     }
@@ -64,19 +64,19 @@ class CalendarViewController: UIViewController {
     inputAlert.addAction(UIAlertAction(title: "Save", style: .default, handler: {(action: UIAlertAction) in
       
       let patientTextField = inputAlert.textFields?.first
-      let dateTextField = inputAlert.textFields?[1]
+      //      let dateTextField = inputAlert.textFields?[1]
       let noteTextField = inputAlert.textFields?.last
       
-      if patientTextField?.text != "" && dateTextField?.text != "" && noteTextField?.text != "" {
-        appointmentObject.fullName = patientTextField?.text
-        appointmentObject.date = dateTextField?.text
+      if patientTextField?.text != "" && noteTextField?.text != "" {
+        appointmentObject.patient?.name = patientTextField?.text
+        //        appointmentObject.date = dateTextField?.text
         appointmentObject.note = noteTextField?.text
-        
         do {
           try self.managedObjectContext.save()
           self.loadData()
+          print("Save was successful")
         } catch {
-          print("Could not save data \(error.localizedDescription)")
+          print("Could not save data. \(error.localizedDescription)")
         }
       }
     }))
@@ -104,13 +104,13 @@ extension CalendarViewController: UITableViewDataSource, UITableViewDelegate {
   }
   
   func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-      
-      let cell = tableView.dequeueReusableCell(withIdentifier: "AppointmentCell", for: indexPath) as! AppointmentCell
+    
+    let cell = tableView.dequeueReusableCell(withIdentifier: "AppointmentCell", for: indexPath) as! AppointmentCell
     
     let apptObject = appointments[indexPath.row]
     
-    cell.nameLabel.text = apptObject.fullName
-    cell.dateLabel.text = apptObject.date
+    cell.nameLabel.text = apptObject.patient?.name
+    //    cell.dateLabel.text = apptObject.date
     cell.noteLabel.text = apptObject.note
     
     return cell
