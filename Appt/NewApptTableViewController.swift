@@ -12,13 +12,13 @@ import CoreData
 class NewApptTableViewController: UITableViewController {
 
 //  var appointment = Appointment()
-  var patient = Patient()
+  var patient: Patient?
   
   var managedObjectContext: NSManagedObjectContext!
   
   var datePickerHidden = false
   
-  @IBOutlet weak var patientNameTextField: UILabel!
+  @IBOutlet weak var patientLabel: UILabel!
   @IBOutlet weak var notesTextField: UITextField!
   @IBOutlet weak var costTextField: UITextField!
   
@@ -32,8 +32,8 @@ class NewApptTableViewController: UITableViewController {
   func createAppointmentObject() {
     let appointmentObject = Appointment(context: managedObjectContext)
     
-    appointmentObject.patient?.name = patientNameTextField.text
-    appointmentObject.date = datePicker.date as NSDate
+   appointmentObject.patient = patient
+    appointmentObject.date = datePicker.date /* as NSDate */
     appointmentObject.note = notesTextField.text
     if let cost = Int16(costTextField.text!) {
       appointmentObject.cost = cost
@@ -48,6 +48,7 @@ class NewApptTableViewController: UITableViewController {
   
   @IBAction func confirmAppointment(_ sender: UIBarButtonItem) {
     createAppointmentObject()
+    dismiss(animated: true, completion: nil)
   }
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -75,7 +76,6 @@ managedObjectContext = (UIApplication.shared.delegate as! AppDelegate).persisten
       toggleDatePicker()
     }
     if indexPath.section == 1 && indexPath.row == 0 {
-      
     }
   }
   
@@ -88,6 +88,23 @@ managedObjectContext = (UIApplication.shared.delegate as! AppDelegate).persisten
 
   }
   
+//  @IBAction func unwindToThisView(sender: UIStoryboardSegue) {
+//    if let sourceViewController = sender.source as? PatientsTableViewController {
+//      self.patient = sourceViewController.selectedPatient
+//      print("UnwindToThisView()")
+//      patientLabel.text = patient.fullName
+//    }
+//  }
+  
+  
+  @IBAction func unwindToThisView(sender: UIStoryboardSegue) {
+    if sender.identifier == "patientSelected" {
+      let patientsVC = sender.source as! PatientsTableViewController
+      print("UnwindToThisView()")
+      self.patient = patientsVC.selectedPatient
+      patientLabel.text = self.patient?.fullName
+    }
+  }
   
     // MARK: - Table view data source
 /*

@@ -17,7 +17,7 @@ extension Appointment {
     }
 
     @NSManaged public var cost: Int16
-    @NSManaged public var date: NSDate?
+    @NSManaged public var date: Date?
     @NSManaged public var note: String?
     @NSManaged public var patient: Patient?
 

@@ -33,7 +33,7 @@
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="80.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="12:00 AM" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="H20-l5-3xk">
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="12:00 AM" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="H20-l5-3xk">
                                                     <rect key="frame" x="12" y="32.5" width="53.5" height="14.5"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                                     <nil key="textColor"/>
@@ -65,14 +65,15 @@
                                             </constraints>
                                         </tableViewCellContentView>
                                         <constraints>
-                                            <constraint firstAttribute="trailing" secondItem="gML-aG-GHt" secondAttribute="trailing" constant="255" id="QX1-ih-zLv"/>
+                                            <constraint firstAttribute="trailing" relation="lessThanOrEqual" secondItem="gML-aG-GHt" secondAttribute="trailing" constant="255" id="QX1-ih-zLv"/>
                                             <constraint firstItem="gML-aG-GHt" firstAttribute="top" secondItem="Wnl-Eo-NdE" secondAttribute="top" constant="20" id="Qth-ly-uGx"/>
                                             <constraint firstItem="H20-l5-3xk" firstAttribute="leading" secondItem="Wnl-Eo-NdE" secondAttribute="leading" constant="12" id="SVZ-b7-P5H"/>
                                             <constraint firstAttribute="bottom" secondItem="LKs-5t-c3M" secondAttribute="bottom" id="aBl-Th-xZH"/>
                                             <constraint firstItem="LKs-5t-c3M" firstAttribute="centerX" secondItem="Wnl-Eo-NdE" secondAttribute="centerX" id="awc-uO-rWc"/>
                                             <constraint firstItem="gML-aG-GHt" firstAttribute="leading" secondItem="Wnl-Eo-NdE" secondAttribute="leading" constant="77" id="gL9-Cg-dDo"/>
                                             <constraint firstItem="H20-l5-3xk" firstAttribute="centerY" secondItem="Wnl-Eo-NdE" secondAttribute="centerY" id="kZ7-id-jjy"/>
-                                            <constraint firstAttribute="trailing" secondItem="toO-eN-S9R" secondAttribute="trailing" constant="148" id="qgo-rb-TQ8"/>
+                                            <constraint firstAttribute="trailing" secondItem="H20-l5-3xk" secondAttribute="trailing" constant="309.5" id="m3g-i1-zou"/>
+                                            <constraint firstAttribute="trailing" relation="lessThanOrEqual" secondItem="toO-eN-S9R" secondAttribute="trailing" constant="148" id="qgo-rb-TQ8"/>
                                             <constraint firstItem="toO-eN-S9R" firstAttribute="leading" secondItem="Wnl-Eo-NdE" secondAttribute="leading" constant="77" id="v2c-rI-IpI"/>
                                         </constraints>
                                         <connections>
@@ -97,14 +98,9 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Appointment" id="JF7-kB-fJZ">
-                        <barButtonItem key="leftBarButtonItem" systemItem="organize" id="bS5-K5-vZn">
-                            <connections>
-                                <segue destination="1ki-jv-XM3" kind="presentation" id="xHM-1i-YgI"/>
-                            </connections>
-                        </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="GUA-yP-ue0">
                             <connections>
-                                <action selector="addAppointment:" destination="9pv-A4-QxB" id="MRk-fO-Yfk"/>
+                                <segue destination="1ki-jv-XM3" kind="presentation" id="Na7-Pa-gss"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -375,7 +371,7 @@
                         <outlet property="dateDetailLabel" destination="Bgl-y7-cyj" id="XRj-ns-Vem"/>
                         <outlet property="datePicker" destination="NiN-r6-10h" id="Kqv-Tb-AZX"/>
                         <outlet property="notesTextField" destination="iKu-3N-w0C" id="CDr-aU-Ac5"/>
-                        <outlet property="patientNameTextField" destination="tC3-av-2Id" id="Y93-nB-gLM"/>
+                        <outlet property="patientLabel" destination="tC3-av-2Id" id="6b2-RK-oEV"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="9RA-Y0-KUj" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -433,6 +429,11 @@
                     </tableView>
                     <navigationItem key="navigationItem" title="Patients" id="jOn-qE-GFe">
                         <barButtonItem key="backBarButtonItem" title="New Appointment" id="Joj-pQ-eVV"/>
+                        <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="ba8-X8-f51">
+                            <connections>
+                                <segue destination="QNn-4x-Fj7" kind="unwind" identifier="patientSelected" unwindAction="unwindToThisViewWithSender:" id="wCF-UD-E5E"/>
+                            </connections>
+                        </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="PdP-Pm-3U5">
                             <connections>
                                 <segue destination="LSO-kH-Stt" kind="presentation" id="0Id-u5-5tc"/>
@@ -441,6 +442,7 @@
                     </navigationItem>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="5D2-JR-Tdj" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <exit id="QNn-4x-Fj7" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="5324" y="-326.08695652173918"/>
         </scene>

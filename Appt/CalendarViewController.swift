@@ -86,6 +86,7 @@ class CalendarViewController: UIViewController {
     self.present(inputAlert, animated: true, completion:  nil)
     
   }
+  
 }
 
 
@@ -109,11 +110,25 @@ extension CalendarViewController: UITableViewDataSource, UITableViewDelegate {
     
     let apptObject = appointments[indexPath.row]
     
-    cell.nameLabel.text = apptObject.patient?.name
-    //    cell.dateLabel.text = apptObject.date
+    cell.nameLabel.text = apptObject.patient?.fullName
+//    cell.dateLabel.text = String(describing: apptObject.date)
+    if let date = apptObject.date {
+      cell.dateLabel.text = dateToString(date: date)
+    }
     cell.noteLabel.text = apptObject.note
     
     return cell
   }
+  
+  func dateToString (date: Date) -> String{
+    
+    let formatter = DateFormatter()
+    formatter.dateStyle = DateFormatter.Style.short
+    formatter.timeStyle = .short
+    
+    let dateString = formatter.string(from: date as Date)
+    return dateString
+  }
+  
 }
 

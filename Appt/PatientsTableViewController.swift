@@ -12,6 +12,7 @@ import CoreData
 class PatientsTableViewController: UITableViewController {
   
   var patients = [Patient]()
+  var selectedPatient: Patient?
   
   var managedObjectContext: NSManagedObjectContext!
   
@@ -59,9 +60,22 @@ class PatientsTableViewController: UITableViewController {
    return cell
    }
   
+  override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+   self.selectedPatient = self.patients[indexPath.row] as Patient
+   performSegue(withIdentifier: "patientSelected", sender: self)
+  }
+  
+  
+//  override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+//    if segue.identifier == "patientSelected" {
+//      
+//    }
+//  }
+  
   override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
     return 44
   }
+  
   
   
   /*
