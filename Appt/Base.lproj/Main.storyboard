@@ -100,7 +100,7 @@
                     <navigationItem key="navigationItem" title="Appointment" id="JF7-kB-fJZ">
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="GUA-yP-ue0">
                             <connections>
-                                <segue destination="1ki-jv-XM3" kind="presentation" id="Na7-Pa-gss"/>
+                                <segue destination="1ki-jv-XM3" kind="presentation" identifier="SegueNewApptTVC" id="Na7-Pa-gss"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -292,7 +292,7 @@
                                             </subviews>
                                         </tableViewCellContentView>
                                         <connections>
-                                            <segue destination="698-4G-LIG" kind="showDetail" action="showViewController:sender:" id="dG5-jJ-BFY"/>
+                                            <segue destination="Gdr-G0-hUB" kind="show" id="Ity-bc-bUT"/>
                                         </connections>
                                     </tableViewCell>
                                 </cells>
@@ -378,7 +378,7 @@
             </objects>
             <point key="canvasLocation" x="3564" y="-334.18290854572717"/>
         </scene>
-        <!--Patients-->
+        <!--Title-->
         <scene sceneID="eLH-ia-1oA">
             <objects>
                 <tableViewController id="Gdr-G0-hUB" customClass="PatientsTableViewController" customModule="Appt" sceneMemberID="viewController">
@@ -419,6 +419,7 @@
                                 </constraints>
                                 <connections>
                                     <outlet property="patientNameLabel" destination="Z0l-A4-HZ3" id="TgL-YU-hoJ"/>
+                                    <segue destination="QNn-4x-Fj7" kind="unwind" identifier="patientSelected" unwindAction="unwindToThisViewWithSender:" id="hmp-aR-afE"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -427,16 +428,10 @@
                             <outlet property="delegate" destination="Gdr-G0-hUB" id="lY6-Hb-I1P"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Patients" id="jOn-qE-GFe">
-                        <barButtonItem key="backBarButtonItem" title="New Appointment" id="Joj-pQ-eVV"/>
-                        <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="ba8-X8-f51">
+                    <navigationItem key="navigationItem" title="Title" id="yVm-wH-uGs">
+                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="YRb-EA-AZN">
                             <connections>
-                                <segue destination="QNn-4x-Fj7" kind="unwind" identifier="patientSelected" unwindAction="unwindToThisViewWithSender:" id="wCF-UD-E5E"/>
-                            </connections>
-                        </barButtonItem>
-                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="PdP-Pm-3U5">
-                            <connections>
-                                <segue destination="LSO-kH-Stt" kind="presentation" id="0Id-u5-5tc"/>
+                                <segue destination="eRa-eg-FW6" kind="presentation" identifier="SegueAddPatientTVC" modalPresentationStyle="currentContext" id="fIu-1r-FSG"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -444,7 +439,7 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="5D2-JR-Tdj" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <exit id="QNn-4x-Fj7" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="5324" y="-326.08695652173918"/>
+            <point key="canvasLocation" x="4543" y="-334"/>
         </scene>
         <!--New Patient-->
         <scene sceneID="YZI-o2-LqQ">
@@ -578,11 +573,15 @@
                             <outlet property="delegate" destination="dgP-ax-ull" id="MPS-pq-bYj"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="New Patient" id="TWE-Cj-9Uj">
-                        <barButtonItem key="backBarButtonItem" title="Patient List" id="trf-Ps-gdV"/>
-                        <barButtonItem key="rightBarButtonItem" systemItem="save" id="ZWT-5s-Qe9">
+                    <navigationItem key="navigationItem" title="New Patient" id="mmy-wD-2c3">
+                        <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="0a1-gH-uTQ">
                             <connections>
-                                <action selector="savePatient:" destination="dgP-ax-ull" id="VeV-0e-sFC"/>
+                                <action selector="cancel:" destination="dgP-ax-ull" id="Q3E-D9-fVx"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" systemItem="save" id="LcM-4h-O4U">
+                            <connections>
+                                <action selector="saveButton:" destination="dgP-ax-ull" id="fzS-sy-4Z3"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -596,12 +595,12 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="UmP-T2-gbT" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="7176.8000000000002" y="-326.08695652173918"/>
+            <point key="canvasLocation" x="6360.8000000000002" y="-334.18290854572717"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="RJ7-M5-ig3">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="1ki-jv-XM3" sceneMemberID="viewController">
+                <navigationController wantsFullScreenLayout="YES" automaticallyAdjustsScrollViewInsets="NO" id="1ki-jv-XM3" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="ypS-jY-kZY">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
@@ -617,40 +616,22 @@
             <point key="canvasLocation" x="2624.8000000000002" y="-334.18290854572717"/>
         </scene>
         <!--Navigation Controller-->
-        <scene sceneID="tFp-zq-ALC">
+        <scene sceneID="0Oi-8e-Oy8">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="698-4G-LIG" sceneMemberID="viewController">
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="eRa-eg-FW6" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="6Xp-AD-api">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="hCl-8p-bS5">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
-                        <segue destination="Gdr-G0-hUB" kind="relationship" relationship="rootViewController" id="AaL-ne-9Io"/>
+                        <segue destination="dgP-ax-ull" kind="relationship" relationship="rootViewController" id="cVG-wo-fvK"/>
                     </connections>
                 </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="qNV-r1-G2L" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="6HI-6m-SuX" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4384.8000000000002" y="-326.08695652173918"/>
-        </scene>
-        <!--Navigation Controller-->
-        <scene sceneID="pFY-5i-tkz">
-            <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="LSO-kH-Stt" sceneMemberID="viewController">
-                    <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="Qut-DX-cAu">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                    </navigationBar>
-                    <nil name="viewControllers"/>
-                    <connections>
-                        <segue destination="dgP-ax-ull" kind="relationship" relationship="rootViewController" id="GGT-Jr-TfS"/>
-                    </connections>
-                </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="9gg-0T-Rpt" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="6237.6000000000004" y="-326.08695652173918"/>
+            <point key="canvasLocation" x="5421.6000000000004" y="-334.18290854572717"/>
         </scene>
     </scenes>
     <resources>

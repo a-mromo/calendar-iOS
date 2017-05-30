@@ -11,116 +11,162 @@ import CoreData
 
 class PatientsTableViewController: UITableViewController {
   
-  var patients = [Patient]()
   var selectedPatient: Patient?
   
-  var managedObjectContext: NSManagedObjectContext!
+  private let segueAddPatient = "SegueAddPatientTVC"
+  
+  private let persistentContainer = NSPersistentContainer(name: "AppointmentModel")
+  fileprivate lazy var fetchedResultsController: NSFetchedResultsController<Patient> = {
+    // Create Fetch Request
+    let fetchRequest: NSFetchRequest<Patient> = Patient.fetchRequest()
+    
+    // Configure Fetch Request
+    fetchRequest.sortDescriptors = [NSSortDescriptor(key: "lastName", ascending: true)]
+    
+    // Create Fetched Results Controller
+    let fetchedResultsController = NSFetchedResultsController(fetchRequest: fetchRequest, managedObjectContext: self.persistentContainer.viewContext, sectionNameKeyPath: nil, cacheName: nil)
+    
+    // Configure Fetched Results Controller
+    fetchedResultsController.delegate = self
+    
+    return fetchedResultsController
+  }()
+  
+ 
   
   override func viewDidLoad() {
     super.viewDidLoad()
-    managedObjectContext = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
-    loadData()
+
+    title = "Patients"
+    
+    persistentContainer.loadPersistentStores { (persistentStoreDescription, error) in
+      if let error = error {
+        print("Unable to Load Persistent Store")
+        print("\(error), \(error.localizedDescription)")
+        
+      } else {
+        do {
+          try self.fetchedResultsController.performFetch()
+          print("Patient Fetch Successful")
+        } catch {
+          let fetchError = error as NSError
+          print("Unable to Perform Fetch Request")
+          print("\(fetchError), \(fetchError.localizedDescription)")
+        }
+        
+      }
+    }
+    NotificationCenter.default.addObserver(self, selector: #selector(applicationDidEnterBackground(_:)), name: Notification.Name.UIApplicationDidEnterBackground, object: nil)
+
   }
   
   override func viewWillAppear(_ animated: Bool) {
-    loadData()
-  }
-  
-  func loadData() {
-    let patientRequest: NSFetchRequest<Patient> = Patient.fetchRequest()
-    do {
-      patients = try managedObjectContext.fetch(patientRequest)
-      self.tableView.reloadData()
-      print("Loading Data was successfull: PatientsList")
-    } catch {
-      print("Could not load data from datbase \(error.localizedDescription)")
-    }
   }
   
   
   // MARK: - Table view data source
   
   override func numberOfSections(in tableView: UITableView) -> Int {
-    // #warning Incomplete implementation, return the number of sections
     return 1
   }
   
   override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    
+    guard let patients = fetchedResultsController.fetchedObjects else { return 0 }
     return patients.count
   }
   
   
    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-   let cell = tableView.dequeueReusableCell(withIdentifier: "PatientCell", for: indexPath) as! PatientCell
-   
-   let patientObject = patients[indexPath.row]
     
-    cell.patientNameLabel.text = patientObject.fullName
-   
-   return cell
+    let cell = tableView.dequeueReusableCell(withIdentifier: "PatientCell", for: indexPath) as! PatientCell
+    let patient = fetchedResultsController.object(at: indexPath)
+    cell.patientNameLabel.text = patient.fullName
+    return cell
+    
    }
   
+  func save() {
+    do {
+      try persistentContainer.viewContext.save()
+    } catch {
+      print("Unable to Save Changes")
+      print("\(error), \(error.localizedDescription)")
+    }
+  }
+  
+  func applicationDidEnterBackground(_ notification: Notification) {
+    save()
+  }
+  
   override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-   self.selectedPatient = self.patients[indexPath.row] as Patient
+    self.selectedPatient = fetchedResultsController.object(at: indexPath)
    performSegue(withIdentifier: "patientSelected", sender: self)
+    
+  }
+  
+  override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
+    if editingStyle == .delete {
+      // Fetch Quote
+      let quote = fetchedResultsController.object(at: indexPath)
+      
+      // Delete Quote
+      quote.managedObjectContext?.delete(quote)
+    }
   }
   
   
-//  override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-//    if segue.identifier == "patientSelected" {
-//      
-//    }
-//  }
+  override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+    if segue.identifier == segueAddPatient {
+      if let destinationNavigationViewController = segue.destination as? UINavigationController {
+        // Configure View Controller
+        let targetController = destinationNavigationViewController.topViewController as! NewPatientTableVC
+        targetController.managedObjectContext = persistentContainer.viewContext
+        print("context sent")
+      }
+    }
+  }
+
+  
+  
+  
   
   override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
     return 44
   }
   
+}
+
+
+extension PatientsTableViewController: NSFetchedResultsControllerDelegate {
+  func controllerWillChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
+    tableView.beginUpdates()
+  }
   
+  func controllerDidChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
+    tableView.endUpdates()
+  // Update View
   
-  /*
-   // Override to support conditional editing of the table view.
-   override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
-   // Return false if you do not want the specified item to be editable.
-   return true
-   }
-   */
+  }
   
-  /*
-   // Override to support editing the table view.
-   override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
-   if editingStyle == .delete {
-   // Delete the row from the data source
-   tableView.deleteRows(at: [indexPath], with: .fade)
-   } else if editingStyle == .insert {
-   // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-   }
-   }
-   */
+  func controller(_ controller: NSFetchedResultsController<NSFetchRequestResult>, didChange anObject: Any, at indexPath: IndexPath?, for type: NSFetchedResultsChangeType, newIndexPath: IndexPath?) {
+    switch (type) {
+    case .insert:
+      if let indexPath = newIndexPath {
+        tableView.insertRows(at: [indexPath], with: .fade)
+      }
+      break;
+    case .delete:
+      if let indexPath = indexPath {
+        tableView.deleteRows(at: [indexPath], with: .fade)
+      }
+      break;
+    default:
+      print("...")
+    }
+  }
   
-  /*
-   // Override to support rearranging the table view.
-   override func tableView(_ tableView: UITableView, moveRowAt fromIndexPath: IndexPath, to: IndexPath) {
-   
-   }
-   */
-  
-  /*
-   // Override to support conditional rearranging of the table view.
-   override func tableView(_ tableView: UITableView, canMoveRowAt indexPath: IndexPath) -> Bool {
-   // Return false if you do not want the item to be re-orderable.
-   return true
-   }
-   */
-  
-  /*
-   // MARK: - Navigation
-   
-   // In a storyboard-based application, you will often want to do a little preparation before navigation
-   override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-   // Get the new view controller using segue.destinationViewController.
-   // Pass the selected object to the new view controller.
-   }
-   */
-  
+  func controller(_ controller: NSFetchedResultsController<NSFetchRequestResult>, didChange sectionInfo: NSFetchedResultsSectionInfo, atSectionIndex sectionIndex: Int, for type: NSFetchedResultsChangeType) {
+    
+  }
 }

@@ -12,78 +12,111 @@ import CoreData
 class CalendarViewController: UIViewController {
   
   @IBOutlet weak var tableView: UITableView!
+  private let segueNewApptTVC = "SegueNewApptTVC"
   
   var appointments = [Appointment]()
   
-  var managedObjectContext: NSManagedObjectContext!
+  private let persistentContainer = NSPersistentContainer(name: "AppointmentModel")
   
-  override func viewWillAppear(_ animated: Bool) {
-    loadData()
-  }
+  fileprivate lazy var fetchedResultsController: NSFetchedResultsController<Appointment> = {
+    // Create Fetch Request
+    let fetchRequest: NSFetchRequest<Appointment> = Appointment.fetchRequest()
+    
+    // Configure Fetch Request
+    fetchRequest.sortDescriptors = [NSSortDescriptor(key: "date", ascending: true)]
+    
+    // Create Fetched Results Controller
+    let fetchedResultsController = NSFetchedResultsController(fetchRequest: fetchRequest, managedObjectContext: self.persistentContainer.viewContext, sectionNameKeyPath: nil, cacheName: nil)
+    
+    // Configure Fetched Results Controller
+    fetchedResultsController.delegate = self
+    
+    return fetchedResultsController
+  }()
   
   override func viewDidLoad() {
     super.viewDidLoad()
     
-    managedObjectContext = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
-    
-    loadData()
-  }
-  
-  func loadData() {
-    let appointmentRequest: NSFetchRequest<Appointment> = Appointment.fetchRequest()
-    
-    do {
-      appointments = try managedObjectContext.fetch(appointmentRequest)
-      self.tableView.reloadData()
-      print("Loading Data was successfull")
-    } catch {
-      print("Could not load data from datbase \(error.localizedDescription)")
-    }
-  }
-  
-  @IBAction func addAppointment(_ sender: UIBarButtonItem) {
-    createAppointmentObject()
-  }
-  
-  
-  func createAppointmentObject () {
-    
-    let appointmentObject = Appointment(context: managedObjectContext)
-    
-    let inputAlert = UIAlertController(title: "New Appointment", message: "Add a new Appointment", preferredStyle: .alert)
-    inputAlert.addTextField { (textfield: UITextField) in
-      textfield.placeholder = "Patient Name"
-    }
-    //   inputAlert.addTextField { (textfield: UITextField) in
-    //      textfield.placeholder = "Appointment Date"
-    //    }
-    inputAlert.addTextField { (textfield: UITextField) in
-      textfield.placeholder = "Description"
-    }
-    
-    inputAlert.addAction(UIAlertAction(title: "Save", style: .default, handler: {(action: UIAlertAction) in
-      
-      let patientTextField = inputAlert.textFields?.first
-      //      let dateTextField = inputAlert.textFields?[1]
-      let noteTextField = inputAlert.textFields?.last
-      
-      if patientTextField?.text != "" && noteTextField?.text != "" {
-        appointmentObject.patient?.name = patientTextField?.text
-        //        appointmentObject.date = dateTextField?.text
-        appointmentObject.note = noteTextField?.text
+    persistentContainer.loadPersistentStores { (persistentStoreDescription, error) in
+      if let error = error {
+        print("Unable to Load Persistent Store")
+        print("\(error), \(error.localizedDescription)")
+        
+      } else {
+        
         do {
-          try self.managedObjectContext.save()
-          self.loadData()
-          print("Save was successful")
+          try self.fetchedResultsController.performFetch()
+          print("Appt Fetch Successful")
         } catch {
-          print("Could not save data. \(error.localizedDescription)")
+          let fetchError = error as NSError
+          print("Unable to Perform Fetch Request")
+          print("\(fetchError), \(fetchError.localizedDescription)")
         }
+        
       }
-    }))
+    }
     
-    inputAlert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
+    NotificationCenter.default.addObserver(self, selector: #selector(applicationDidEnterBackground(_:)), name: Notification.Name.UIApplicationDidEnterBackground, object: nil)
+  }
+  
+  
+  // MARK: - Navigation
+  
+  override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+    if segue.identifier == segueNewApptTVC {
+      if let destinationNavigationViewController = segue.destination as? UINavigationController {
+        // Configure View Controller
+        let targetController = destinationNavigationViewController.topViewController as! NewApptTableViewController
+        targetController.managedObjectContext = persistentContainer.viewContext
+         print("context sent")
+      }
+    }
+  }
+  
+  // MARK: - Notification Handling
+  
+  func applicationDidEnterBackground(_ notification: Notification) {
+    do {
+      try persistentContainer.viewContext.save()
+      print("Saved Changes")
+    } catch {
+      print("Unable to Save Changes")
+      print("\(error), \(error.localizedDescription)")
+    }
+  }
+}
+
+
+extension CalendarViewController: NSFetchedResultsControllerDelegate {
+  
+  func controllerWillChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
+    tableView.beginUpdates()
+  }
+  
+  func controllerDidChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
+    tableView.endUpdates()
     
-    self.present(inputAlert, animated: true, completion:  nil)
+  }
+  
+  func controller(_ controller: NSFetchedResultsController<NSFetchRequestResult>, didChange anObject: Any, at indexPath: IndexPath?, for type: NSFetchedResultsChangeType, newIndexPath: IndexPath?) {
+    switch (type) {
+    case .insert:
+      if let indexPath = newIndexPath {
+        print("Appt Added")
+        tableView.insertRows(at: [indexPath], with: .fade)
+      }
+      break;
+    case .delete:
+      if let indexPath = indexPath {
+        tableView.deleteRows(at: [indexPath], with: .fade)
+      }
+      break;
+    default:
+      print("...")
+    }
+  }
+  
+  func controller(_ controller: NSFetchedResultsController<NSFetchRequestResult>, didChange sectionInfo: NSFetchedResultsSectionInfo, atSectionIndex sectionIndex: Int, for type: NSFetchedResultsChangeType) {
     
   }
   
@@ -101,6 +134,7 @@ extension CalendarViewController: UITableViewDataSource, UITableViewDelegate {
   }
   
   func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    guard let appointments = fetchedResultsController.fetchedObjects else { return 0 }
     return appointments.count
   }
   
@@ -108,14 +142,13 @@ extension CalendarViewController: UITableViewDataSource, UITableViewDelegate {
     
     let cell = tableView.dequeueReusableCell(withIdentifier: "AppointmentCell", for: indexPath) as! AppointmentCell
     
-    let apptObject = appointments[indexPath.row]
+    let appointment = fetchedResultsController.object(at: indexPath)
     
-    cell.nameLabel.text = apptObject.patient?.fullName
-//    cell.dateLabel.text = String(describing: apptObject.date)
-    if let date = apptObject.date {
+    cell.nameLabel.text = appointment.patient?.fullName
+    if let date = appointment.date {
       cell.dateLabel.text = dateToString(date: date)
     }
-    cell.noteLabel.text = apptObject.note
+    cell.noteLabel.text = appointment.note
     
     return cell
   }
@@ -128,6 +161,16 @@ extension CalendarViewController: UITableViewDataSource, UITableViewDelegate {
     
     let dateString = formatter.string(from: date as Date)
     return dateString
+  }
+  
+  func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
+    if editingStyle == .delete {
+      // Fetch Quote
+      let quote = fetchedResultsController.object(at: indexPath)
+      
+      // Delete Quote
+      quote.managedObjectContext?.delete(quote)
+    }
   }
   
 }
