@@ -11,6 +11,9 @@ import CoreData
 
 class CoreDataStore {
   
+  
+  static var instance: CoreDataStore = CoreDataStore(dataModel: "AppointmentModel")
+  
   var persistentContainer: NSPersistentContainer
   
   var context: NSManagedObjectContext {

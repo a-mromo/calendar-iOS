@@ -11,8 +11,9 @@ import CoreData
 
 class NewApptTableViewController: UITableViewController {
 
-//  var appointment = Appointment()
   var patient: Patient?
+  
+  private let segueSelectPatient = "SegueSelectPatientsTVC"
   
   var managedObjectContext: NSManagedObjectContext?
   
@@ -34,12 +35,13 @@ class NewApptTableViewController: UITableViewController {
     
     let appointment = Appointment(context: managedObjectContext)
     
-   appointment.patient = patient
+    appointment.patient = patient
     appointment.date = datePicker.date /* as NSDate */
     appointment.note = notesTextField.text
     if let cost = Int16(costTextField.text!) {
       appointment.cost = cost
     }
+    
     
   }
   
@@ -58,6 +60,14 @@ class NewApptTableViewController: UITableViewController {
       appointment.cost = cost
     }
     
+    
+    do {
+      try managedObjectContext.save()
+      print("Appointment Saved")
+    } catch {
+      print("Unable to Save Changes")
+      print("\(error), \(error.localizedDescription)")
+    }
     
     dismiss(animated: true, completion: nil)
   }
@@ -97,6 +107,15 @@ class NewApptTableViewController: UITableViewController {
       return super.tableView(tableView, heightForRowAt: indexPath)
     }
 
+  }
+  
+  override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+    if segue.identifier == segueSelectPatient {
+      if let destinationNavigationViewController = segue.destination as? PatientsTableViewController {
+        destinationNavigationViewController.managedObjectContext = managedObjectContext
+        print("context sent")
+      }
+    }
   }
   
   

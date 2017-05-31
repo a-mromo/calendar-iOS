@@ -11,11 +11,8 @@ import CoreData
 
 class NewPatientTableVC: UITableViewController {
   
-//  var managedObjectContext: NSManagedObjectContext!
-  
-  // --------        -----------  FetchControlller
   var managedObjectContext: NSManagedObjectContext?
-  // --------        -----------  FetchControlller
+
 
   @IBOutlet weak var nameTextField: UITextField!
   @IBOutlet weak var lastNameTextField: UITextField!
@@ -52,7 +49,14 @@ class NewPatientTableVC: UITableViewController {
     }
     patient.email = patientEmailTextField.text
     
-    //    _ = navigationController?.popViewController(animated: true)
+    do {
+      try managedObjectContext.save()
+      print("Appointment Saved")
+    } catch {
+      print("Unable to Save Changes")
+      print("\(error), \(error.localizedDescription)")
+    }
+    
   }
 
 

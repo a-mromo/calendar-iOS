@@ -13,9 +13,13 @@ class PatientsTableViewController: UITableViewController {
   
   var selectedPatient: Patient?
   
-  private let segueAddPatient = "SegueAddPatientTVC"
+  var managedObjectContext: NSManagedObjectContext?
   
-  private let persistentContainer = NSPersistentContainer(name: "AppointmentModel")
+  private let segueAddPatient = "SegueAddPatientTVC"
+  var test = NSFetchedResultsController<Patient>()
+  
+  private let persistentContainer = CoreDataStore.instance.persistentContainer
+  
   fileprivate lazy var fetchedResultsController: NSFetchedResultsController<Patient> = {
     // Create Fetch Request
     let fetchRequest: NSFetchRequest<Patient> = Patient.fetchRequest()
@@ -39,12 +43,7 @@ class PatientsTableViewController: UITableViewController {
 
     title = "Patients"
     
-    persistentContainer.loadPersistentStores { (persistentStoreDescription, error) in
-      if let error = error {
-        print("Unable to Load Persistent Store")
-        print("\(error), \(error.localizedDescription)")
-        
-      } else {
+
         do {
           try self.fetchedResultsController.performFetch()
           print("Patient Fetch Successful")
@@ -53,9 +52,7 @@ class PatientsTableViewController: UITableViewController {
           print("Unable to Perform Fetch Request")
           print("\(fetchError), \(fetchError.localizedDescription)")
         }
-        
-      }
-    }
+    
     NotificationCenter.default.addObserver(self, selector: #selector(applicationDidEnterBackground(_:)), name: Notification.Name.UIApplicationDidEnterBackground, object: nil)
 
   }

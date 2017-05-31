@@ -16,7 +16,8 @@ class CalendarViewController: UIViewController {
   
   var appointments = [Appointment]()
   
-  private let persistentContainer = NSPersistentContainer(name: "AppointmentModel")
+  private let persistentContainer = CoreDataStore.instance.persistentContainer
+  // NSPersistentContainer(name: "AppointmentModel")
   
   fileprivate lazy var fetchedResultsController: NSFetchedResultsController<Appointment> = {
     // Create Fetch Request
@@ -38,11 +39,7 @@ class CalendarViewController: UIViewController {
     super.viewDidLoad()
     
     persistentContainer.loadPersistentStores { (persistentStoreDescription, error) in
-      if let error = error {
-        print("Unable to Load Persistent Store")
-        print("\(error), \(error.localizedDescription)")
-        
-      } else {
+      
         
         do {
           try self.fetchedResultsController.performFetch()
@@ -53,7 +50,6 @@ class CalendarViewController: UIViewController {
           print("\(fetchError), \(fetchError.localizedDescription)")
         }
         
-      }
     }
     
     NotificationCenter.default.addObserver(self, selector: #selector(applicationDidEnterBackground(_:)), name: Notification.Name.UIApplicationDidEnterBackground, object: nil)
