@@ -2,7 +2,7 @@
 //  Patient+CoreDataProperties.swift
 //  Appt
 //
-//  Created by Agustin Mendoza Romo on 5/29/17.
+//  Created by Agustin Mendoza Romo on 5/31/17.
 //  Copyright © 2017 AgustinMendoza. All rights reserved.
 //
 
@@ -17,9 +17,9 @@ extension Patient {
   }
   
   @NSManaged public var email: String?
-  @NSManaged public var homePhone: Int16
+  @NSManaged public var homePhone: String?
   @NSManaged public var lastName: String?
-  @NSManaged public var mobilePhone: Int16
+  @NSManaged public var mobilePhone: String?
   @NSManaged public var name: String?
   @NSManaged public var appointment: NSSet?
   
@@ -35,17 +35,17 @@ extension Patient {
 
 // MARK: Generated accessors for appointment
 extension Patient {
-
-    @objc(addAppointmentObject:)
-    @NSManaged public func addToAppointment(_ value: Appointment)
-
-    @objc(removeAppointmentObject:)
-    @NSManaged public func removeFromAppointment(_ value: Appointment)
-
-    @objc(addAppointment:)
-    @NSManaged public func addToAppointment(_ values: NSSet)
-
-    @objc(removeAppointment:)
-    @NSManaged public func removeFromAppointment(_ values: NSSet)
-
+  
+  @objc(addAppointmentObject:)
+  @NSManaged public func addToAppointment(_ value: Appointment)
+  
+  @objc(removeAppointmentObject:)
+  @NSManaged public func removeFromAppointment(_ value: Appointment)
+  
+  @objc(addAppointment:)
+  @NSManaged public func addToAppointment(_ values: NSSet)
+  
+  @objc(removeAppointment:)
+  @NSManaged public func removeFromAppointment(_ values: NSSet)
+  
 }

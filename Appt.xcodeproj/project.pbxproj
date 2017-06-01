@@ -7,10 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		6C23D2111EDCD87700B49E28 /* Appointment+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C23D20D1EDCD87700B49E28 /* Appointment+CoreDataClass.swift */; };
-		6C23D2121EDCD87700B49E28 /* Appointment+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C23D20E1EDCD87700B49E28 /* Appointment+CoreDataProperties.swift */; };
-		6C23D2131EDCD87700B49E28 /* Patient+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C23D20F1EDCD87700B49E28 /* Patient+CoreDataClass.swift */; };
-		6C23D2141EDCD87700B49E28 /* Patient+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C23D2101EDCD87700B49E28 /* Patient+CoreDataProperties.swift */; };
 		6C4151C31ECA7ACF00ACDAE7 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C4151C21ECA7ACF00ACDAE7 /* AppDelegate.swift */; };
 		6C4151C51ECA7ACF00ACDAE7 /* CalendarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C4151C41ECA7ACF00ACDAE7 /* CalendarViewController.swift */; };
 		6C4151CA1ECA7ACF00ACDAE7 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6C4151C81ECA7ACF00ACDAE7 /* Main.storyboard */; };
@@ -21,6 +17,12 @@
 		6C7E6CCB1EDE177A002D1936 /* CoreDataStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C7E6CCA1EDE177A002D1936 /* CoreDataStore.swift */; };
 		6C952E581ECD629E005CB5B7 /* NewApptTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C952E571ECD629E005CB5B7 /* NewApptTableViewController.swift */; };
 		6CD2FB791ECB6FFD009C7088 /* AppointmentModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 6CD2FB771ECB6FFD009C7088 /* AppointmentModel.xcdatamodeld */; };
+		6CE055531EDF18FC00312499 /* PatientsTabTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6CE055521EDF18FC00312499 /* PatientsTabTVC.swift */; };
+		6CE055551EDF2DAC00312499 /* PatientDetailVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6CE055541EDF2DAC00312499 /* PatientDetailVC.swift */; };
+		6CE055621EDFED6600312499 /* Appointment+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6CE0555E1EDFED6600312499 /* Appointment+CoreDataClass.swift */; };
+		6CE055631EDFED6600312499 /* Appointment+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6CE0555F1EDFED6600312499 /* Appointment+CoreDataProperties.swift */; };
+		6CE055641EDFED6600312499 /* Patient+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6CE055601EDFED6600312499 /* Patient+CoreDataClass.swift */; };
+		6CE055651EDFED6600312499 /* Patient+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6CE055611EDFED6600312499 /* Patient+CoreDataProperties.swift */; };
 		6CED205F1ED38DA700A6CD8B /* PatientsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6CED205E1ED38DA700A6CD8B /* PatientsTableViewController.swift */; };
 		6CED20611ED3926100A6CD8B /* PatientCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6CED20601ED3926100A6CD8B /* PatientCell.swift */; };
 		6CED20631ED4CA6800A6CD8B /* NewPatientTableVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6CED20621ED4CA6800A6CD8B /* NewPatientTableVC.swift */; };
@@ -37,10 +39,6 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		6C23D20D1EDCD87700B49E28 /* Appointment+CoreDataClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Appointment+CoreDataClass.swift"; sourceTree = "<group>"; };
-		6C23D20E1EDCD87700B49E28 /* Appointment+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Appointment+CoreDataProperties.swift"; sourceTree = "<group>"; };
-		6C23D20F1EDCD87700B49E28 /* Patient+CoreDataClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Patient+CoreDataClass.swift"; sourceTree = "<group>"; };
-		6C23D2101EDCD87700B49E28 /* Patient+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Patient+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		6C4151BF1ECA7ACF00ACDAE7 /* Appt.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Appt.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		6C4151C21ECA7ACF00ACDAE7 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		6C4151C41ECA7ACF00ACDAE7 /* CalendarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarViewController.swift; sourceTree = "<group>"; };
@@ -55,6 +53,12 @@
 		6C7E6CCA1EDE177A002D1936 /* CoreDataStore.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoreDataStore.swift; sourceTree = "<group>"; };
 		6C952E571ECD629E005CB5B7 /* NewApptTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewApptTableViewController.swift; sourceTree = "<group>"; };
 		6CD2FB781ECB6FFD009C7088 /* AppointmentModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = AppointmentModel.xcdatamodel; sourceTree = "<group>"; };
+		6CE055521EDF18FC00312499 /* PatientsTabTVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PatientsTabTVC.swift; sourceTree = "<group>"; };
+		6CE055541EDF2DAC00312499 /* PatientDetailVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PatientDetailVC.swift; sourceTree = "<group>"; };
+		6CE0555E1EDFED6600312499 /* Appointment+CoreDataClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Appointment+CoreDataClass.swift"; sourceTree = "<group>"; };
+		6CE0555F1EDFED6600312499 /* Appointment+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Appointment+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		6CE055601EDFED6600312499 /* Patient+CoreDataClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Patient+CoreDataClass.swift"; sourceTree = "<group>"; };
+		6CE055611EDFED6600312499 /* Patient+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Patient+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		6CED205E1ED38DA700A6CD8B /* PatientsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PatientsTableViewController.swift; sourceTree = "<group>"; };
 		6CED20601ED3926100A6CD8B /* PatientCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PatientCell.swift; sourceTree = "<group>"; };
 		6CED20621ED4CA6800A6CD8B /* NewPatientTableVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewPatientTableVC.swift; sourceTree = "<group>"; };
@@ -108,6 +112,8 @@
 				6C4151C81ECA7ACF00ACDAE7 /* Main.storyboard */,
 				6CED20601ED3926100A6CD8B /* PatientCell.swift */,
 				6CED205E1ED38DA700A6CD8B /* PatientsTableViewController.swift */,
+				6CE055521EDF18FC00312499 /* PatientsTabTVC.swift */,
+				6CE055541EDF2DAC00312499 /* PatientDetailVC.swift */,
 				6C4151E61ECA82ED00ACDAE7 /* AppointmentCell.swift */,
 				6CD2FB771ECB6FFD009C7088 /* AppointmentModel.xcdatamodeld */,
 				6C4151CB1ECA7ACF00ACDAE7 /* Assets.xcassets */,
@@ -129,10 +135,10 @@
 		6C7E6CCC1EDE445C002D1936 /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				6C23D20D1EDCD87700B49E28 /* Appointment+CoreDataClass.swift */,
-				6C23D20E1EDCD87700B49E28 /* Appointment+CoreDataProperties.swift */,
-				6C23D20F1EDCD87700B49E28 /* Patient+CoreDataClass.swift */,
-				6C23D2101EDCD87700B49E28 /* Patient+CoreDataProperties.swift */,
+				6CE0555E1EDFED6600312499 /* Appointment+CoreDataClass.swift */,
+				6CE0555F1EDFED6600312499 /* Appointment+CoreDataProperties.swift */,
+				6CE055601EDFED6600312499 /* Patient+CoreDataClass.swift */,
+				6CE055611EDFED6600312499 /* Patient+CoreDataProperties.swift */,
 			);
 			name = Model;
 			path = ..;
@@ -244,18 +250,20 @@
 			buildActionMask = 2147483647;
 			files = (
 				6C7E6CCB1EDE177A002D1936 /* CoreDataStore.swift in Sources */,
-				6C23D2121EDCD87700B49E28 /* Appointment+CoreDataProperties.swift in Sources */,
+				6CE055651EDFED6600312499 /* Patient+CoreDataProperties.swift in Sources */,
+				6CE055641EDFED6600312499 /* Patient+CoreDataClass.swift in Sources */,
+				6CE055531EDF18FC00312499 /* PatientsTabTVC.swift in Sources */,
 				6C4151E71ECA82ED00ACDAE7 /* AppointmentCell.swift in Sources */,
 				6C4151C31ECA7ACF00ACDAE7 /* AppDelegate.swift in Sources */,
 				6CED20611ED3926100A6CD8B /* PatientCell.swift in Sources */,
 				6CED205F1ED38DA700A6CD8B /* PatientsTableViewController.swift in Sources */,
+				6CE055631EDFED6600312499 /* Appointment+CoreDataProperties.swift in Sources */,
 				6C4151C51ECA7ACF00ACDAE7 /* CalendarViewController.swift in Sources */,
-				6C23D2131EDCD87700B49E28 /* Patient+CoreDataClass.swift in Sources */,
 				6C952E581ECD629E005CB5B7 /* NewApptTableViewController.swift in Sources */,
 				6CED20631ED4CA6800A6CD8B /* NewPatientTableVC.swift in Sources */,
-				6C23D2141EDCD87700B49E28 /* Patient+CoreDataProperties.swift in Sources */,
+				6CE055621EDFED6600312499 /* Appointment+CoreDataClass.swift in Sources */,
 				6CD2FB791ECB6FFD009C7088 /* AppointmentModel.xcdatamodeld in Sources */,
-				6C23D2111EDCD87700B49E28 /* Appointment+CoreDataClass.swift in Sources */,
+				6CE055551EDF2DAC00312499 /* PatientDetailVC.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -17,19 +17,11 @@ class CalendarViewController: UIViewController {
   var appointments = [Appointment]()
   
   private let persistentContainer = CoreDataStore.instance.persistentContainer
-  // NSPersistentContainer(name: "AppointmentModel")
   
   fileprivate lazy var fetchedResultsController: NSFetchedResultsController<Appointment> = {
-    // Create Fetch Request
     let fetchRequest: NSFetchRequest<Appointment> = Appointment.fetchRequest()
-    
-    // Configure Fetch Request
     fetchRequest.sortDescriptors = [NSSortDescriptor(key: "date", ascending: true)]
-    
-    // Create Fetched Results Controller
     let fetchedResultsController = NSFetchedResultsController(fetchRequest: fetchRequest, managedObjectContext: self.persistentContainer.viewContext, sectionNameKeyPath: nil, cacheName: nil)
-    
-    // Configure Fetched Results Controller
     fetchedResultsController.delegate = self
     
     return fetchedResultsController

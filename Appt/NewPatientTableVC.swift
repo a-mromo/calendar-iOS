@@ -43,10 +43,8 @@ class NewPatientTableVC: UITableViewController {
     
     patient.name = nameTextField.text
     patient.lastName = lastNameTextField.text
-    if let mobilePhone = Int16(mobilePhoneTextField.text!), let homePhone = Int16(homePhoneTextField.text!) {
-      patient.mobilePhone = mobilePhone
-      patient.homePhone = homePhone
-    }
+    patient.mobilePhone = mobilePhoneTextField.text
+    patient.homePhone = homePhoneTextField.text
     patient.email = patientEmailTextField.text
     
     do {

@@ -29,21 +29,7 @@ class NewApptTableViewController: UITableViewController {
   @IBAction func cancelButton(_ sender: UIBarButtonItem) {
     dismiss(animated: true, completion: nil)
   }
-  
-  func createAppointmentObject() {
-    guard let managedObjectContext = managedObjectContext else { return }
-    
-    let appointment = Appointment(context: managedObjectContext)
-    
-    appointment.patient = patient
-    appointment.date = datePicker.date /* as NSDate */
-    appointment.note = notesTextField.text
-    if let cost = Int16(costTextField.text!) {
-      appointment.cost = cost
-    }
-    
-    
-  }
+
   
   @IBAction func confirmAppointment(_ sender: UIBarButtonItem) {
     
@@ -56,9 +42,8 @@ class NewApptTableViewController: UITableViewController {
     appointment.patient = patient
     appointment.date = datePicker.date /* as NSDate */
     appointment.note = notesTextField.text
-    if let cost = Int16(costTextField.text!) {
-      appointment.cost = cost
-    }
+    appointment.cost = costTextField.text
+    
     
     
     do {

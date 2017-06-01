@@ -16,50 +16,38 @@ class PatientsTableViewController: UITableViewController {
   var managedObjectContext: NSManagedObjectContext?
   
   private let segueAddPatient = "SegueAddPatientTVC"
-  var test = NSFetchedResultsController<Patient>()
   
-  private let persistentContainer = CoreDataStore.instance.persistentContainer
+  let persistentContainer = CoreDataStore.instance.persistentContainer
   
-  fileprivate lazy var fetchedResultsController: NSFetchedResultsController<Patient> = {
-    // Create Fetch Request
+  lazy var fetchedResultsController: NSFetchedResultsController<Patient> = {
     let fetchRequest: NSFetchRequest<Patient> = Patient.fetchRequest()
-    
-    // Configure Fetch Request
     fetchRequest.sortDescriptors = [NSSortDescriptor(key: "lastName", ascending: true)]
-    
-    // Create Fetched Results Controller
     let fetchedResultsController = NSFetchedResultsController(fetchRequest: fetchRequest, managedObjectContext: self.persistentContainer.viewContext, sectionNameKeyPath: nil, cacheName: nil)
-    
-    // Configure Fetched Results Controller
     fetchedResultsController.delegate = self
     
     return fetchedResultsController
   }()
   
- 
+  
   
   override func viewDidLoad() {
     super.viewDidLoad()
-
+    
     title = "Patients"
     
-
-        do {
-          try self.fetchedResultsController.performFetch()
-          print("Patient Fetch Successful")
-        } catch {
-          let fetchError = error as NSError
-          print("Unable to Perform Fetch Request")
-          print("\(fetchError), \(fetchError.localizedDescription)")
-        }
+    
+    do {
+      try self.fetchedResultsController.performFetch()
+      print("Patient Fetch Successful")
+    } catch {
+      let fetchError = error as NSError
+      print("Unable to Perform Fetch Request")
+      print("\(fetchError), \(fetchError.localizedDescription)")
+    }
     
     NotificationCenter.default.addObserver(self, selector: #selector(applicationDidEnterBackground(_:)), name: Notification.Name.UIApplicationDidEnterBackground, object: nil)
-
+    
   }
-  
-  override func viewWillAppear(_ animated: Bool) {
-  }
-  
   
   // MARK: - Table view data source
   
@@ -74,14 +62,14 @@ class PatientsTableViewController: UITableViewController {
   }
   
   
-   override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+  override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
     
     let cell = tableView.dequeueReusableCell(withIdentifier: "PatientCell", for: indexPath) as! PatientCell
     let patient = fetchedResultsController.object(at: indexPath)
     cell.patientNameLabel.text = patient.fullName
     return cell
     
-   }
+  }
   
   func save() {
     do {
@@ -98,17 +86,15 @@ class PatientsTableViewController: UITableViewController {
   
   override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
     self.selectedPatient = fetchedResultsController.object(at: indexPath)
-   performSegue(withIdentifier: "patientSelected", sender: self)
+    performSegue(withIdentifier: "patientSelected", sender: self)
     
   }
   
   override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
     if editingStyle == .delete {
-      // Fetch Quote
-      let quote = fetchedResultsController.object(at: indexPath)
+      let patient = fetchedResultsController.object(at: indexPath)
       
-      // Delete Quote
-      quote.managedObjectContext?.delete(quote)
+      patient.managedObjectContext?.delete(patient)
     }
   }
   
@@ -116,16 +102,11 @@ class PatientsTableViewController: UITableViewController {
   override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
     if segue.identifier == segueAddPatient {
       if let destinationNavigationViewController = segue.destination as? UINavigationController {
-        // Configure View Controller
         let targetController = destinationNavigationViewController.topViewController as! NewPatientTableVC
         targetController.managedObjectContext = persistentContainer.viewContext
-        print("context sent")
       }
     }
   }
-
-  
-  
   
   
   override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
@@ -142,8 +123,7 @@ extension PatientsTableViewController: NSFetchedResultsControllerDelegate {
   
   func controllerDidChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
     tableView.endUpdates()
-  // Update View
-  
+    
   }
   
   func controller(_ controller: NSFetchedResultsController<NSFetchRequestResult>, didChange anObject: Any, at indexPath: IndexPath?, for type: NSFetchedResultsChangeType, newIndexPath: IndexPath?) {
