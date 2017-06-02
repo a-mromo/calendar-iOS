@@ -35,7 +35,6 @@ class PatientsTableViewController: UITableViewController {
     
     title = "Patients"
     
-    
     do {
       try self.fetchedResultsController.performFetch()
       print("Patient Fetch Successful")
@@ -93,8 +92,8 @@ class PatientsTableViewController: UITableViewController {
   override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
     if editingStyle == .delete {
       let patient = fetchedResultsController.object(at: indexPath)
-      
-      patient.managedObjectContext?.delete(patient)
+      persistentContainer.viewContext.delete(patient)
+      save()
     }
   }
   

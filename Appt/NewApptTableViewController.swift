@@ -35,7 +35,6 @@ class NewApptTableViewController: UITableViewController {
     
     guard let managedObjectContext = managedObjectContext else {
       return }
-
     
     let appointment = Appointment(context: managedObjectContext)
     
@@ -43,7 +42,7 @@ class NewApptTableViewController: UITableViewController {
     appointment.date = datePicker.date /* as NSDate */
     appointment.note = notesTextField.text
     appointment.cost = costTextField.text
-    
+    appointment.dateCreated = Date()
     
     
     do {

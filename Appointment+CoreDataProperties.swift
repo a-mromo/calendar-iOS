@@ -22,5 +22,6 @@ extension Appointment {
     @NSManaged public var dateModified: Date?
     @NSManaged public var note: String?
     @NSManaged public var patient: Patient?
+  
 
 }

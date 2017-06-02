@@ -1,23 +1,21 @@
 //
-//  CalendarViewController.swift
+//  CalendarTableViewController.swift
 //  Appt
 //
-//  Created by Agustin Mendoza Romo on 5/15/17.
+//  Created by Agustin Mendoza Romo on 6/1/17.
 //  Copyright © 2017 AgustinMendoza. All rights reserved.
 //
 
 import UIKit
 import CoreData
 
-class CalendarViewController: UIViewController {
-  
-  @IBOutlet weak var tableView: UITableView!
-  
+class CalendarTableViewController: UITableViewController {
+
   private let segueNewApptTVC = "SegueNewApptTVC"
   
-  private let persistentContainer = CoreDataStore.instance.persistentContainer
+  let persistentContainer = CoreDataStore.instance.persistentContainer
   
-  fileprivate lazy var fetchedResultsController: NSFetchedResultsController<Appointment> = {
+  lazy var fetchedResultsController: NSFetchedResultsController<Appointment> = {
     let fetchRequest: NSFetchRequest<Appointment> = Appointment.fetchRequest()
     fetchRequest.sortDescriptors = [NSSortDescriptor(key: "date", ascending: true)]
     let fetchedResultsController = NSFetchedResultsController(fetchRequest: fetchRequest, managedObjectContext: self.persistentContainer.viewContext, sectionNameKeyPath: nil, cacheName: nil)
@@ -31,16 +29,16 @@ class CalendarViewController: UIViewController {
     
     persistentContainer.loadPersistentStores { (persistentStoreDescription, error) in
       
-        
-        do {
-          try self.fetchedResultsController.performFetch()
-          print("Appt Fetch Successful")
-        } catch {
-          let fetchError = error as NSError
-          print("Unable to Perform Fetch Request")
-          print("\(fetchError), \(fetchError.localizedDescription)")
-        }
-        
+      
+      do {
+        try self.fetchedResultsController.performFetch()
+        print("Appt Fetch Successful")
+      } catch {
+        let fetchError = error as NSError
+        print("Unable to Perform Fetch Request")
+        print("\(fetchError), \(fetchError.localizedDescription)")
+      }
+      
     }
     
     NotificationCenter.default.addObserver(self, selector: #selector(applicationDidEnterBackground(_:)), name: Notification.Name.UIApplicationDidEnterBackground, object: nil)
@@ -55,7 +53,7 @@ class CalendarViewController: UIViewController {
         // Configure View Controller
         let targetController = destinationNavigationViewController.topViewController as! NewApptTableViewController
         targetController.managedObjectContext = persistentContainer.viewContext
-         print("context sent")
+        print("context sent")
       }
     }
   }
@@ -63,6 +61,10 @@ class CalendarViewController: UIViewController {
   // MARK: - Notification Handling
   
   func applicationDidEnterBackground(_ notification: Notification) {
+    save()
+  }
+  
+  func save () {
     do {
       try persistentContainer.viewContext.save()
       print("Saved Changes")
@@ -70,11 +72,61 @@ class CalendarViewController: UIViewController {
       print("Unable to Save Changes")
       print("\(error), \(error.localizedDescription)")
     }
+
   }
+
+  override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+    return 80
+  }
+  
+  override func numberOfSections(in tableView: UITableView) -> Int {
+    return 1
+  }
+  
+  override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    guard let appointments = fetchedResultsController.fetchedObjects else { return 0 }
+    return appointments.count
+  }
+  
+  override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+    
+    let cell = tableView.dequeueReusableCell(withIdentifier: "AppointmentCell", for: indexPath) as! AppointmentCell
+    
+    let appointment = fetchedResultsController.object(at: indexPath)
+    
+    cell.nameLabel.text = appointment.patient?.fullName
+    if let date = appointment.date {
+      cell.dateLabel.text = dateFormatter(date: date)
+    }
+    cell.noteLabel.text = appointment.note
+    
+    return cell
+  }
+  
+  func dateFormatter (date: Date) -> String{
+    
+    let formatter = DateFormatter()
+    formatter.dateStyle = DateFormatter.Style.short
+    formatter.timeStyle = .short
+    
+    let dateString = formatter.string(from: date as Date)
+    return dateString
+  }
+  
+  override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
+    if editingStyle == .delete {
+      // Fetch Appointment
+      let appointment = fetchedResultsController.object(at: indexPath)
+      
+      // Delete Appointment
+      persistentContainer.viewContext.delete(appointment)
+      save()
+    }
+  }
+  
 }
 
-
-extension CalendarViewController: NSFetchedResultsControllerDelegate {
+extension CalendarTableViewController: NSFetchedResultsControllerDelegate {
   
   func controllerWillChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
     tableView.beginUpdates()
@@ -105,59 +157,6 @@ extension CalendarViewController: NSFetchedResultsControllerDelegate {
   
   func controller(_ controller: NSFetchedResultsController<NSFetchRequestResult>, didChange sectionInfo: NSFetchedResultsSectionInfo, atSectionIndex sectionIndex: Int, for type: NSFetchedResultsChangeType) {
     
-  }
-  
-}
-
-
-extension CalendarViewController: UITableViewDataSource, UITableViewDelegate {
-  
-  func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-    return 80
-  }
-  
-  func numberOfSections(in tableView: UITableView) -> Int {
-    return 1
-  }
-  
-  func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-    guard let appointments = fetchedResultsController.fetchedObjects else { return 0 }
-    return appointments.count
-  }
-  
-  func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-    
-    let cell = tableView.dequeueReusableCell(withIdentifier: "AppointmentCell", for: indexPath) as! AppointmentCell
-    
-    let appointment = fetchedResultsController.object(at: indexPath)
-    
-    cell.nameLabel.text = appointment.patient?.fullName
-    if let date = appointment.date {
-      cell.dateLabel.text = dateFormatter(date: date)
-    }
-    cell.noteLabel.text = appointment.note
-    
-    return cell
-  }
-  
-  func dateFormatter (date: Date) -> String{
-    
-    let formatter = DateFormatter()
-    formatter.dateStyle = DateFormatter.Style.short
-    formatter.timeStyle = .short
-    
-    let dateString = formatter.string(from: date as Date)
-    return dateString
-  }
-  
-  func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
-    if editingStyle == .delete {
-      // Fetch Quote
-      let quote = fetchedResultsController.object(at: indexPath)
-      
-      // Delete Quote
-      quote.managedObjectContext?.delete(quote)
-    }
   }
   
 }

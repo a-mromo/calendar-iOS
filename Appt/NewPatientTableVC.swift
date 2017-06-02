@@ -22,14 +22,13 @@ class NewPatientTableVC: UITableViewController {
   
   @IBAction func cancel(_ sender: UIBarButtonItem) {
     dismiss(animated: true)
-//    _ = navigationController?.popViewController(animated: true)
+    
   }
   @IBAction func saveButton(_ sender: UIBarButtonItem) {
     dismiss(animated: true)
     savePatient()
   }
   
-
   
   override func viewDidLoad() {
         super.viewDidLoad()
