@@ -13,6 +13,8 @@ class CalendarTableViewController: UITableViewController {
 
   private let segueNewApptTVC = "SegueNewApptTVC"
   
+  private let segueApptDetail = "SegueApptDetail"
+  
   let persistentContainer = CoreDataStore.instance.persistentContainer
   
   lazy var fetchedResultsController: NSFetchedResultsController<Appointment> = {
@@ -56,11 +58,21 @@ class CalendarTableViewController: UITableViewController {
         print("context sent")
       }
     }
+    
+    if segue.identifier == segueApptDetail {
+      if let indexPath = tableView.indexPathForSelectedRow {
+        let appointment = fetchedResultsController.object(at: indexPath)
+        let controller = (segue.destination as! ApptDetailTVC)
+        controller.appointment = appointment
+        
+      }
+    }
+    
   }
   
   // MARK: - Notification Handling
   
-  func applicationDidEnterBackground(_ notification: Notification) {
+  @objc func applicationDidEnterBackground(_ notification: Notification) {
     save()
   }
   
@@ -101,16 +113,6 @@ class CalendarTableViewController: UITableViewController {
     cell.noteLabel.text = appointment.note
     
     return cell
-  }
-  
-  func dateFormatter (date: Date) -> String{
-    
-    let formatter = DateFormatter()
-    formatter.dateStyle = DateFormatter.Style.short
-    formatter.timeStyle = .short
-    
-    let dateString = formatter.string(from: date as Date)
-    return dateString
   }
   
   override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {

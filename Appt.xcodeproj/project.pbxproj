@@ -16,6 +16,9 @@
 		6C4151CF1ECA7ACF00ACDAE7 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6C4151CD1ECA7ACF00ACDAE7 /* LaunchScreen.storyboard */; };
 		6C4151DA1ECA7ACF00ACDAE7 /* ApptTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C4151D91ECA7ACF00ACDAE7 /* ApptTests.swift */; };
 		6C4151E71ECA82ED00ACDAE7 /* AppointmentCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C4151E61ECA82ED00ACDAE7 /* AppointmentCell.swift */; };
+		6C4A3AEA1EF9BCCB00D91CA5 /* SegueFromLeft.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C4A3AE91EF9BCCB00D91CA5 /* SegueFromLeft.swift */; };
+		6C4A3AEF1EF9C1CA00D91CA5 /* ApptDetailTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C4A3AEE1EF9C1CA00D91CA5 /* ApptDetailTVC.swift */; };
+		6C4A3AF11EF9E53C00D91CA5 /* DateFormatters.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C4A3AF01EF9E53C00D91CA5 /* DateFormatters.swift */; };
 		6C7E6CCB1EDE177A002D1936 /* CoreDataStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C7E6CCA1EDE177A002D1936 /* CoreDataStore.swift */; };
 		6C952E581ECD629E005CB5B7 /* NewApptTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C952E571ECD629E005CB5B7 /* NewApptTableViewController.swift */; };
 		6CD2FB791ECB6FFD009C7088 /* AppointmentModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 6CD2FB771ECB6FFD009C7088 /* AppointmentModel.xcdatamodeld */; };
@@ -54,6 +57,9 @@
 		6C4151D91ECA7ACF00ACDAE7 /* ApptTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApptTests.swift; sourceTree = "<group>"; };
 		6C4151DB1ECA7ACF00ACDAE7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		6C4151E61ECA82ED00ACDAE7 /* AppointmentCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppointmentCell.swift; sourceTree = "<group>"; };
+		6C4A3AE91EF9BCCB00D91CA5 /* SegueFromLeft.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SegueFromLeft.swift; sourceTree = "<group>"; };
+		6C4A3AEE1EF9C1CA00D91CA5 /* ApptDetailTVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApptDetailTVC.swift; sourceTree = "<group>"; };
+		6C4A3AF01EF9E53C00D91CA5 /* DateFormatters.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateFormatters.swift; sourceTree = "<group>"; };
 		6C7E6CCA1EDE177A002D1936 /* CoreDataStore.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoreDataStore.swift; sourceTree = "<group>"; };
 		6C952E571ECD629E005CB5B7 /* NewApptTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewApptTableViewController.swift; sourceTree = "<group>"; };
 		6CD2FB781ECB6FFD009C7088 /* AppointmentModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = AppointmentModel.xcdatamodel; sourceTree = "<group>"; };
@@ -109,6 +115,7 @@
 			children = (
 				6C7E6CCC1EDE445C002D1936 /* Model */,
 				6C4151C21ECA7ACF00ACDAE7 /* AppDelegate.swift */,
+				6C4A3AF01EF9E53C00D91CA5 /* DateFormatters.swift */,
 				6C3208471EE09E8400ED6BDF /* CalendarTableViewController.swift */,
 				6C3208431EE0127C00ED6BDF /* ActivityTableViewController.swift */,
 				6CED205E1ED38DA700A6CD8B /* PatientsTableViewController.swift */,
@@ -118,9 +125,11 @@
 				6C4151C81ECA7ACF00ACDAE7 /* Main.storyboard */,
 				6C4151E61ECA82ED00ACDAE7 /* AppointmentCell.swift */,
 				6CED20601ED3926100A6CD8B /* PatientCell.swift */,
+				6C4A3AEB1EF9BDE400D91CA5 /* Segue */,
 				6C3208451EE0153100ED6BDF /* ActivityCell.swift */,
 				6CE055521EDF18FC00312499 /* PatientsTabTVC.swift */,
 				6CE055541EDF2DAC00312499 /* PatientDetailVC.swift */,
+				6C4A3AEE1EF9C1CA00D91CA5 /* ApptDetailTVC.swift */,
 				6CD2FB771ECB6FFD009C7088 /* AppointmentModel.xcdatamodeld */,
 				6C4151CB1ECA7ACF00ACDAE7 /* Assets.xcassets */,
 				6C4151CD1ECA7ACF00ACDAE7 /* LaunchScreen.storyboard */,
@@ -136,6 +145,14 @@
 				6C4151DB1ECA7ACF00ACDAE7 /* Info.plist */,
 			);
 			path = ApptTests;
+			sourceTree = "<group>";
+		};
+		6C4A3AEB1EF9BDE400D91CA5 /* Segue */ = {
+			isa = PBXGroup;
+			children = (
+				6C4A3AE91EF9BCCB00D91CA5 /* SegueFromLeft.swift */,
+			);
+			path = Segue;
 			sourceTree = "<group>";
 		};
 		6C7E6CCC1EDE445C002D1936 /* Model */ = {
@@ -195,17 +212,19 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 0830;
-				LastUpgradeCheck = 0830;
+				LastUpgradeCheck = 0900;
 				ORGANIZATIONNAME = AgustinMendoza;
 				TargetAttributes = {
 					6C4151BE1ECA7ACF00ACDAE7 = {
 						CreatedOnToolsVersion = 8.3.2;
 						DevelopmentTeam = NZ3CN8JH2Y;
+						LastSwiftMigration = 0900;
 						ProvisioningStyle = Automatic;
 					};
 					6C4151D41ECA7ACF00ACDAE7 = {
 						CreatedOnToolsVersion = 8.3.2;
 						DevelopmentTeam = NZ3CN8JH2Y;
+						LastSwiftMigration = 0900;
 						ProvisioningStyle = Automatic;
 						TestTargetID = 6C4151BE1ECA7ACF00ACDAE7;
 					};
@@ -255,6 +274,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6C4A3AEA1EF9BCCB00D91CA5 /* SegueFromLeft.swift in Sources */,
 				6C3208441EE0127C00ED6BDF /* ActivityTableViewController.swift in Sources */,
 				6C7E6CCB1EDE177A002D1936 /* CoreDataStore.swift in Sources */,
 				6CE055651EDFED6600312499 /* Patient+CoreDataProperties.swift in Sources */,
@@ -270,7 +290,9 @@
 				6CED20631ED4CA6800A6CD8B /* NewPatientTableVC.swift in Sources */,
 				6CE055621EDFED6600312499 /* Appointment+CoreDataClass.swift in Sources */,
 				6CD2FB791ECB6FFD009C7088 /* AppointmentModel.xcdatamodeld in Sources */,
+				6C4A3AF11EF9E53C00D91CA5 /* DateFormatters.swift in Sources */,
 				6CE055551EDF2DAC00312499 /* PatientDetailVC.swift in Sources */,
+				6C4A3AEF1EF9C1CA00D91CA5 /* ApptDetailTVC.swift in Sources */,
 				6C3208481EE09E8400ED6BDF /* CalendarTableViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -323,7 +345,9 @@
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
 				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
@@ -331,7 +355,11 @@
 				CLANG_WARN_ENUM_CONVERSION = YES;
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
@@ -374,7 +402,9 @@
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
 				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
@@ -382,7 +412,11 @@
 				CLANG_WARN_ENUM_CONVERSION = YES;
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
@@ -417,7 +451,8 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.agustinMendoza.Appt;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 3.0;
+				SWIFT_SWIFT3_OBJC_INFERENCE = On;
+				SWIFT_VERSION = 4.0;
 			};
 			name = Debug;
 		};
@@ -430,7 +465,8 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.agustinMendoza.Appt;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 3.0;
+				SWIFT_SWIFT3_OBJC_INFERENCE = On;
+				SWIFT_VERSION = 4.0;
 			};
 			name = Release;
 		};
@@ -444,7 +480,8 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.agustinMendoza.ApptTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 3.0;
+				SWIFT_SWIFT3_OBJC_INFERENCE = On;
+				SWIFT_VERSION = 4.0;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Appt.app/Appt";
 			};
 			name = Debug;
@@ -459,7 +496,8 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.agustinMendoza.ApptTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 3.0;
+				SWIFT_SWIFT3_OBJC_INFERENCE = On;
+				SWIFT_VERSION = 4.0;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Appt.app/Appt";
 			};
 			name = Release;

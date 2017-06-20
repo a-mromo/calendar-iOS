@@ -79,7 +79,7 @@ class PatientsTableViewController: UITableViewController {
     }
   }
   
-  func applicationDidEnterBackground(_ notification: Notification) {
+  @objc func applicationDidEnterBackground(_ notification: Notification) {
     save()
   }
   

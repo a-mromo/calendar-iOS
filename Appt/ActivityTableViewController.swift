@@ -11,6 +11,32 @@ import CoreData
 
 class ActivityTableViewController: CalendarTableViewController {
   
+  // ------------- --- - -- - - DateCount Test
+//  var timer: Timer?
+//  @IBOutlet weak var timeLabel: UILabel!
+//  let formatter: DateFormatter = {
+//    let tmpFormatter = DateFormatter()
+//    tmpFormatter.dateFormat = "hh:mm: a"
+//    return tmpFormatter
+//  }()
+//
+//  override func viewDidLoad() {
+//    timer = Timer.scheduledTimer(timeInterval: 60, target: self, selector: #selector(self.getTimeOfDate), userInfo: nil, repeats: true)
+//  }
+//
+//  override func viewWillDisappear(_ animated: Bool) {
+//    super.viewWillDisappear(animated)
+//    timer?.invalidate()
+//  }
+//
+//  @objc func getTimeOfDate() -> String {
+//    var curDate = Date()
+//    let timeString = formatter.string(from: curDate)
+//    return timeString
+//    timeLabel.text = formatter.string(from: curDate)
+//  }
+  // ------------- --- - -- - - DateCount Test
+  
   
   override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
     
@@ -24,8 +50,6 @@ class ActivityTableViewController: CalendarTableViewController {
     }
     var apptDate = ""
     
-    
-    
     if let date = appointment.date {
       cell.timeIntervalLabel.text = dateFormatter(date: date)
       apptDate = dateFormatter(date: date)
@@ -34,7 +58,7 @@ class ActivityTableViewController: CalendarTableViewController {
       cell.timeIntervalLabel.text = timeIntervalFormatter(date: dateCreated)
     }
     
-    cell.activityLabel.text = "New appointment with \(String(describing: patientName)) for \(apptDate)"
+    cell.activityLabel.text = "New appointment with \(String(describing: patientName)) for \(apptDate) current time is: "
     
     
     return cell

@@ -12,5 +12,4 @@ class PatientCell: UITableViewCell {
 
   @IBOutlet weak var patientNameLabel: UILabel!
 
-
 }
