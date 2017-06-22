@@ -20,25 +20,14 @@ class PatientDetailTVC: UITableViewController {
   override func viewDidLoad() {
         super.viewDidLoad()
       setupUI()
-    
     }
   
   func setupUI() {
-    guard let patient = patient else {
-      print("Couldn't access patient")
-      return
-    }
+    guard let patient = patient else { return }
     nameLabel.text = patient.fullName
     mobilePhoneLabel.text = patient.mobilePhone
     homePhoneLabel.text = patient.homePhone
     emailLabel.text = patient.email
-    
-    
-//    if let patientName = patient?.fullName {
-//      nameLabel.text = patientName
-//    } else {
-//      print("Couldn't access name")
-//    }
   }
   
 }

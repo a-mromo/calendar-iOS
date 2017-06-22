@@ -63,9 +63,11 @@ class CalendarTableViewController: UITableViewController {
         let appointment = fetchedResultsController.object(at: indexPath)
         let controller = (segue.destination as! ApptDetailTVC)
         controller.appointment = appointment
+        if let appointmentDateCreated = appointment.dateCreated {
+          print("Date created: \(dateFormatter(date: appointmentDateCreated))")
+        }
       }
     }
-    
   }
   
   // MARK: - Notification Handling
