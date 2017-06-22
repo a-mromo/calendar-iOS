@@ -22,7 +22,7 @@ class PatientsTabTVC: PatientsTableViewController {
     if segue.identifier == seguePatientDetail {
       if let indexPath = tableView.indexPathForSelectedRow {
         let patient = fetchedResultsController.object(at: indexPath)
-        let controller = (segue.destination as! PatientDetailVC)
+        let controller = (segue.destination as! PatientDetailTVC)
         controller.patient = patient
         
       }

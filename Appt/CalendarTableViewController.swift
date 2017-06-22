@@ -31,7 +31,6 @@ class CalendarTableViewController: UITableViewController {
     
     persistentContainer.loadPersistentStores { (persistentStoreDescription, error) in
       
-      
       do {
         try self.fetchedResultsController.performFetch()
         print("Appt Fetch Successful")
@@ -64,7 +63,6 @@ class CalendarTableViewController: UITableViewController {
         let appointment = fetchedResultsController.object(at: indexPath)
         let controller = (segue.destination as! ApptDetailTVC)
         controller.appointment = appointment
-        
       }
     }
     
