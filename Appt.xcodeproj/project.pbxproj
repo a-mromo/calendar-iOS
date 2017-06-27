@@ -19,6 +19,7 @@
 		6C4A3AEF1EF9C1CA00D91CA5 /* ApptDetailTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C4A3AEE1EF9C1CA00D91CA5 /* ApptDetailTVC.swift */; };
 		6C4A3AF11EF9E53C00D91CA5 /* DateFormatters.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C4A3AF01EF9E53C00D91CA5 /* DateFormatters.swift */; };
 		6C4A3AF51EFB213B00D91CA5 /* PatientDetailTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C4A3AF41EFB213B00D91CA5 /* PatientDetailTVC.swift */; };
+		6C59DE691F02974F00E32887 /* UpdateApptTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C59DE681F02974F00E32887 /* UpdateApptTVC.swift */; };
 		6C7E6CCB1EDE177A002D1936 /* CoreDataStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C7E6CCA1EDE177A002D1936 /* CoreDataStore.swift */; };
 		6C952E581ECD629E005CB5B7 /* NewApptTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C952E571ECD629E005CB5B7 /* NewApptTableViewController.swift */; };
 		6CD2FB791ECB6FFD009C7088 /* AppointmentModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 6CD2FB771ECB6FFD009C7088 /* AppointmentModel.xcdatamodeld */; };
@@ -59,6 +60,7 @@
 		6C4A3AEE1EF9C1CA00D91CA5 /* ApptDetailTVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApptDetailTVC.swift; sourceTree = "<group>"; };
 		6C4A3AF01EF9E53C00D91CA5 /* DateFormatters.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateFormatters.swift; sourceTree = "<group>"; };
 		6C4A3AF41EFB213B00D91CA5 /* PatientDetailTVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PatientDetailTVC.swift; sourceTree = "<group>"; };
+		6C59DE681F02974F00E32887 /* UpdateApptTVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdateApptTVC.swift; sourceTree = "<group>"; };
 		6C7E6CCA1EDE177A002D1936 /* CoreDataStore.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoreDataStore.swift; sourceTree = "<group>"; };
 		6C952E571ECD629E005CB5B7 /* NewApptTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewApptTableViewController.swift; sourceTree = "<group>"; };
 		6CD2FB781ECB6FFD009C7088 /* AppointmentModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = AppointmentModel.xcdatamodel; sourceTree = "<group>"; };
@@ -118,6 +120,7 @@
 				6C3208431EE0127C00ED6BDF /* ActivityTableViewController.swift */,
 				6CED205E1ED38DA700A6CD8B /* PatientsTableViewController.swift */,
 				6C952E571ECD629E005CB5B7 /* NewApptTableViewController.swift */,
+				6C59DE681F02974F00E32887 /* UpdateApptTVC.swift */,
 				6CED20621ED4CA6800A6CD8B /* NewPatientTableVC.swift */,
 				6C7E6CCA1EDE177A002D1936 /* CoreDataStore.swift */,
 				6C4151C81ECA7ACF00ACDAE7 /* Main.storyboard */,
@@ -282,6 +285,7 @@
 				6C4A3AEF1EF9C1CA00D91CA5 /* ApptDetailTVC.swift in Sources */,
 				6C4A3AF51EFB213B00D91CA5 /* PatientDetailTVC.swift in Sources */,
 				6C3208481EE09E8400ED6BDF /* CalendarTableViewController.swift in Sources */,
+				6C59DE691F02974F00E32887 /* UpdateApptTVC.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

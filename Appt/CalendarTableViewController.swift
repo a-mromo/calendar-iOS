@@ -19,7 +19,7 @@ class CalendarTableViewController: UITableViewController {
   
   lazy var fetchedResultsController: NSFetchedResultsController<Appointment> = {
     let fetchRequest: NSFetchRequest<Appointment> = Appointment.fetchRequest()
-    fetchRequest.sortDescriptors = [NSSortDescriptor(key: "date", ascending: true)]
+    fetchRequest.sortDescriptors = [NSSortDescriptor(key: "date", ascending: false)]
     let fetchedResultsController = NSFetchedResultsController(fetchRequest: fetchRequest, managedObjectContext: self.persistentContainer.viewContext, sectionNameKeyPath: nil, cacheName: nil)
     fetchedResultsController.delegate = self
     
@@ -39,7 +39,6 @@ class CalendarTableViewController: UITableViewController {
         print("Unable to Perform Fetch Request")
         print("\(fetchError), \(fetchError.localizedDescription)")
       }
-      
     }
     
     NotificationCenter.default.addObserver(self, selector: #selector(applicationDidEnterBackground(_:)), name: Notification.Name.UIApplicationDidEnterBackground, object: nil)
@@ -63,9 +62,6 @@ class CalendarTableViewController: UITableViewController {
         let appointment = fetchedResultsController.object(at: indexPath)
         let controller = (segue.destination as! ApptDetailTVC)
         controller.appointment = appointment
-        if let appointmentDateCreated = appointment.dateCreated {
-          print("Date created: \(dateFormatter(date: appointmentDateCreated))")
-        }
       }
     }
   }
@@ -152,6 +148,10 @@ extension CalendarTableViewController: NSFetchedResultsControllerDelegate {
         tableView.deleteRows(at: [indexPath], with: .fade)
       }
       break;
+    case .update:
+      if let indexPath = indexPath {
+        tableView.reloadRows(at: [indexPath], with: .fade)
+      }
     default:
       print("...")
     }

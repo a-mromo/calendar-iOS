@@ -13,7 +13,7 @@ class NewApptTableViewController: UITableViewController {
 
   var patient: Patient?
   
-  private let segueSelectPatient = "SegueSelectPatientsTVC"
+  let segueSelectPatient = "SegueSelectPatientsTVC"
   
   var managedObjectContext: NSManagedObjectContext?
   
@@ -44,7 +44,6 @@ class NewApptTableViewController: UITableViewController {
     appointment.cost = costTextField.text
     appointment.dateCreated = Date()
     
-    
     do {
       try managedObjectContext.save()
       print("Appointment Saved")
@@ -52,12 +51,11 @@ class NewApptTableViewController: UITableViewController {
       print("Unable to Save Changes")
       print("\(error), \(error.localizedDescription)")
     }
-    
     dismiss(animated: true, completion: nil)
   }
+  
     override func viewDidLoad() {
         super.viewDidLoad()
-
       datePickerChanged()
     }
 
@@ -87,10 +85,9 @@ class NewApptTableViewController: UITableViewController {
   override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
     if datePickerHidden && indexPath.section == 0 && indexPath.row == 1 {
       return 0
-    } else{
+    } else {
       return super.tableView(tableView, heightForRowAt: indexPath)
     }
-
   }
   
   override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
