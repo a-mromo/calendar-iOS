@@ -150,6 +150,7 @@ extension CalendarTableViewController: NSFetchedResultsControllerDelegate {
       break;
     case .update:
       if let indexPath = indexPath {
+        print("Appt Changed and updated")
         tableView.reloadRows(at: [indexPath], with: .fade)
       }
     default:

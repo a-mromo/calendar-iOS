@@ -220,7 +220,7 @@
                                                         <!--2017-05-18 05:28:08 +0000-->
                                                     </date>
                                                     <connections>
-                                                        <action selector="datePickerValue:" destination="RzE-LA-tqo" eventType="valueChanged" id="2xG-8j-aKo"/>
+                                                        <action selector="datePickerValue:" destination="aWV-q2-mPh" eventType="valueChanged" id="E6k-xT-lNS"/>
                                                     </connections>
                                                 </datePicker>
                                             </subviews>
@@ -330,7 +330,7 @@
                     <connections>
                         <outlet property="costTextField" destination="mcx-0C-ghM" id="AQQ-Kj-hMN"/>
                         <outlet property="dateDetailLabel" destination="bH9-E4-eqE" id="vxM-xe-deF"/>
-                        <outlet property="datePicker" destination="UyJ-Hb-pWS" id="H55-Lp-KEO"/>
+                        <outlet property="datePicker" destination="UyJ-Hb-pWS" id="6i1-0V-LaQ"/>
                         <outlet property="notesTextField" destination="Xmw-dK-onE" id="JCD-s6-nbO"/>
                         <outlet property="patientLabel" destination="5xa-7D-j1j" id="zcu-k1-QDo"/>
                     </connections>

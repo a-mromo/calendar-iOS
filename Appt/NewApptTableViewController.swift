@@ -39,7 +39,7 @@ class NewApptTableViewController: UITableViewController {
     let appointment = Appointment(context: managedObjectContext)
     
     appointment.patient = patient
-    appointment.date = datePicker.date /* as NSDate */
+    appointment.date = datePicker.date
     appointment.note = notesTextField.text
     appointment.cost = costTextField.text
     appointment.dateCreated = Date()

@@ -17,9 +17,12 @@ class UpdateApptTVC: NewApptTableViewController {
   
     override func viewDidLoad() {
         super.viewDidLoad()
-      datePickerChanged()
-      loadAppointment()
     }
+  
+  override func viewWillAppear(_ animated: Bool) {
+    datePickerChanged()
+    loadAppointment()
+  }
   
   func loadAppointment() {
     if let appointment = appointment {
@@ -43,7 +46,7 @@ class UpdateApptTVC: NewApptTableViewController {
       return
     }
     appointment.patient = patient
-    appointment.date = datePicker.date 
+    appointment.date = datePicker.date
     appointment.note = notesTextField.text
     appointment.cost = costTextField.text
     appointment.dateModified = Date()
