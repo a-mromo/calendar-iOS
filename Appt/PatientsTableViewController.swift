@@ -136,6 +136,11 @@ extension PatientsTableViewController: NSFetchedResultsControllerDelegate {
       if let indexPath = indexPath {
         tableView.deleteRows(at: [indexPath], with: .fade)
       }
+    case .update:
+      if let indexPath = indexPath {
+        print("Patient Changed and updated")
+        tableView.reloadRows(at: [indexPath], with: .fade)
+      }
       break;
     default:
       print("...")

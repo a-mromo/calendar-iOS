@@ -140,9 +140,8 @@
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="62.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XGy-Oy-ui4">
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XGy-Oy-ui4">
                                                     <rect key="frame" x="128" y="16" width="119" height="30"/>
-                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <state key="normal" title="Edit Appointment"/>
                                                     <connections>
                                                         <action selector="editAppt:" destination="fIE-P4-CUA" eventType="touchUpInside" id="SxR-f9-tbT"/>
@@ -151,6 +150,10 @@
                                                 </button>
                                             </subviews>
                                         </tableViewCellContentView>
+                                        <constraints>
+                                            <constraint firstItem="XGy-Oy-ui4" firstAttribute="centerY" secondItem="6jn-wq-YvE" secondAttribute="centerY" id="0k0-SF-FVo"/>
+                                            <constraint firstItem="XGy-Oy-ui4" firstAttribute="centerX" secondItem="6jn-wq-YvE" secondAttribute="centerX" id="6Dy-3M-uou"/>
+                                        </constraints>
                                     </tableViewCell>
                                 </cells>
                             </tableViewSection>
@@ -799,6 +802,46 @@
                                             </subviews>
                                         </tableViewCellContentView>
                                     </tableViewCell>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="E0S-xJ-1Fd">
+                                        <rect key="frame" x="0.0" y="256" width="375" height="64"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="E0S-xJ-1Fd" id="eNE-7Z-dhz">
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="64"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1YL-L9-Bbe">
+                                                    <rect key="frame" x="148" y="17" width="79" height="30"/>
+                                                    <state key="normal" title="Edit Patient"/>
+                                                    <connections>
+                                                        <action selector="editPatient:" destination="wRX-H1-73d" eventType="touchUpInside" id="xio-Da-epX"/>
+                                                        <segue destination="eRa-eg-FW6" kind="presentation" identifier="SegueEditPatient" id="vH7-U6-gh3"/>
+                                                    </connections>
+                                                </button>
+                                            </subviews>
+                                        </tableViewCellContentView>
+                                        <constraints>
+                                            <constraint firstItem="1YL-L9-Bbe" firstAttribute="centerX" secondItem="E0S-xJ-1Fd" secondAttribute="centerX" id="gWZ-GO-Rps"/>
+                                            <constraint firstItem="1YL-L9-Bbe" firstAttribute="centerY" secondItem="E0S-xJ-1Fd" secondAttribute="centerY" id="pxl-TF-isJ"/>
+                                        </constraints>
+                                    </tableViewCell>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="Q0h-V9-Bf2">
+                                        <rect key="frame" x="0.0" y="320" width="375" height="64"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Q0h-V9-Bf2" id="6xZ-Ac-dEV">
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="64"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2CH-Ra-WDU">
+                                                    <rect key="frame" x="139" y="17" width="97" height="30"/>
+                                                    <state key="normal" title="Delete Patient"/>
+                                                </button>
+                                            </subviews>
+                                        </tableViewCellContentView>
+                                        <constraints>
+                                            <constraint firstItem="2CH-Ra-WDU" firstAttribute="centerX" secondItem="Q0h-V9-Bf2" secondAttribute="centerX" id="U6C-8k-WFD"/>
+                                            <constraint firstItem="2CH-Ra-WDU" firstAttribute="centerY" secondItem="Q0h-V9-Bf2" secondAttribute="centerY" id="XzV-z6-7TK"/>
+                                        </constraints>
+                                    </tableViewCell>
                                 </cells>
                             </tableViewSection>
                         </sections>
@@ -1268,6 +1311,7 @@
         <image name="today" width="36" height="40"/>
     </resources>
     <inferredMetricsTieBreakers>
+        <segue reference="vH7-U6-gh3"/>
         <segue reference="XoE-ck-qRf"/>
     </inferredMetricsTieBreakers>
 </document>

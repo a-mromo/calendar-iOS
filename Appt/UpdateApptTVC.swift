@@ -51,6 +51,11 @@ class UpdateApptTVC: NewApptTableViewController {
     appointment.cost = costTextField.text
     appointment.dateModified = Date()
     
+    updateAppt()
+    dismiss(animated: true, completion: nil)
+  }
+  
+  func updateAppt() {
     do {
       try persistentContainer.viewContext.save()
       print("Appointment Saved")
@@ -58,7 +63,6 @@ class UpdateApptTVC: NewApptTableViewController {
       print("Unable to Save Changes")
       print("\(error), \(error.localizedDescription)")
     }
-    dismiss(animated: true, completion: nil)
   }
   
 }

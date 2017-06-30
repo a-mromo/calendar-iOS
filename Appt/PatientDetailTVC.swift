@@ -12,6 +12,8 @@ class PatientDetailTVC: UITableViewController {
   
   var patient: Patient?
   
+  private let segueEditPatient = "SegueEditPatient"
+  
   @IBOutlet weak var nameLabel: UILabel!
   @IBOutlet weak var mobilePhoneLabel: UILabel!
   @IBOutlet weak var homePhoneLabel: UILabel!
@@ -19,8 +21,16 @@ class PatientDetailTVC: UITableViewController {
   
   override func viewDidLoad() {
         super.viewDidLoad()
-      setupUI()
     }
+  
+  override func viewWillAppear(_ animated: Bool) {
+    setupUI()
+  }
+  
+  
+  @IBAction func editPatient(_ sender: UIButton) {
+    
+  }
   
   func setupUI() {
     guard let patient = patient else { return }
@@ -28,6 +38,16 @@ class PatientDetailTVC: UITableViewController {
     mobilePhoneLabel.text = patient.mobilePhone
     homePhoneLabel.text = patient.homePhone
     emailLabel.text = patient.email
+  }
+  
+  override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+    if segue.identifier == segueEditPatient {
+      if let destinationNavigationViewController = segue.destination as? UINavigationController {
+        // Configure View Controller
+        let targetController = destinationNavigationViewController.topViewController as! NewPatientTableVC
+        targetController.patient = patient
+      }
+    }
   }
   
 }
