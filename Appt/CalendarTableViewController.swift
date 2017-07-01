@@ -48,15 +48,6 @@ class CalendarTableViewController: UITableViewController {
   // MARK: - Navigation
   
   override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-    if segue.identifier == segueNewApptTVC {
-      if let destinationNavigationViewController = segue.destination as? UINavigationController {
-        // Configure View Controller
-        let targetController = destinationNavigationViewController.topViewController as! NewApptTableViewController
-        targetController.managedObjectContext = persistentContainer.viewContext
-        print("context sent")
-      }
-    }
-    
     if segue.identifier == segueApptDetail {
       if let indexPath = tableView.indexPathForSelectedRow {
         let appointment = fetchedResultsController.object(at: indexPath)

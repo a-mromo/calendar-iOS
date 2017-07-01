@@ -29,7 +29,6 @@ class PatientsTableViewController: UITableViewController {
   }()
   
   
-  
   override func viewDidLoad() {
     super.viewDidLoad()
     
@@ -97,17 +96,6 @@ class PatientsTableViewController: UITableViewController {
     }
   }
   
-  
-  override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-    if segue.identifier == segueAddPatient {
-      if let destinationNavigationViewController = segue.destination as? UINavigationController {
-        let targetController = destinationNavigationViewController.topViewController as! NewPatientTableVC
-        targetController.managedObjectContext = persistentContainer.viewContext
-      }
-    }
-  }
-  
-  
   override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
     return 44
   }
@@ -128,6 +116,7 @@ extension PatientsTableViewController: NSFetchedResultsControllerDelegate {
   func controller(_ controller: NSFetchedResultsController<NSFetchRequestResult>, didChange anObject: Any, at indexPath: IndexPath?, for type: NSFetchedResultsChangeType, newIndexPath: IndexPath?) {
     switch (type) {
     case .insert:
+      print("Patient Created")
       if let indexPath = newIndexPath {
         tableView.insertRows(at: [indexPath], with: .fade)
       }
@@ -138,7 +127,7 @@ extension PatientsTableViewController: NSFetchedResultsControllerDelegate {
       }
     case .update:
       if let indexPath = indexPath {
-        print("Patient Changed and updated")
+        print("Patient Updated")
         tableView.reloadRows(at: [indexPath], with: .fade)
       }
       break;
@@ -148,6 +137,5 @@ extension PatientsTableViewController: NSFetchedResultsControllerDelegate {
   }
   
   func controller(_ controller: NSFetchedResultsController<NSFetchRequestResult>, didChange sectionInfo: NSFetchedResultsSectionInfo, atSectionIndex sectionIndex: Int, for type: NSFetchedResultsChangeType) {
-    
   }
 }

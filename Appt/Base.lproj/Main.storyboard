@@ -696,7 +696,13 @@
                             <outlet property="delegate" destination="Lou-6q-Myy" id="ULS-0o-LGN"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Patients" id="AHw-OK-XfX"/>
+                    <navigationItem key="navigationItem" title="Patients" id="AHw-OK-XfX">
+                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="ZzJ-Yf-tUc">
+                            <connections>
+                                <segue destination="eRa-eg-FW6" kind="presentation" id="ZlX-X9-4ez"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="OR2-JH-K1h" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -1311,7 +1317,7 @@
         <image name="today" width="36" height="40"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="vH7-U6-gh3"/>
+        <segue reference="ZlX-X9-4ez"/>
         <segue reference="XoE-ck-qRf"/>
     </inferredMetricsTieBreakers>
 </document>

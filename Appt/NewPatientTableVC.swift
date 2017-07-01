@@ -11,7 +11,7 @@ import CoreData
 
 class NewPatientTableVC: UITableViewController {
   
-  var managedObjectContext: NSManagedObjectContext?
+  let persistentContainer = CoreDataStore.instance.persistentContainer
   
   var patient: Patient?
   
@@ -42,9 +42,7 @@ class NewPatientTableVC: UITableViewController {
   
   func savePatient() {
     if self.patient == nil {
-      guard let managedObjectContext = managedObjectContext else { return }
-      
-      let patient = Patient(context: managedObjectContext)
+      let patient = Patient(context:persistentContainer.viewContext)
       
       patient.name = nameTextField.text
       patient.lastName = lastNameTextField.text
@@ -52,7 +50,7 @@ class NewPatientTableVC: UITableViewController {
       patient.homePhone = homePhoneTextField.text
       patient.email = patientEmailTextField.text
       
-      createPatient()
+      save()
     } else {
       updatePatient()
     }
@@ -67,12 +65,9 @@ class NewPatientTableVC: UITableViewController {
     patientEmailTextField.text = patient.email
   }
   
-  func createPatient() {
-    guard let managedObjectContext = managedObjectContext else { return }
-    
+  func save() {
     do {
-      try managedObjectContext.save()
-      print("Patient Created")
+      try persistentContainer.viewContext.save()
     } catch {
       print("Unable to Save Changes")
       print("\(error), \(error.localizedDescription)")
@@ -80,14 +75,15 @@ class NewPatientTableVC: UITableViewController {
   }
   
   func updatePatient() {
-    patientFromTextFields()
-    do {
-      try persistentContainer.viewContext.save()
-      print("Patient Updated")
-    } catch {
-      print("Unable to Save Changes")
-      print("\(error), \(error.localizedDescription)")
-    }
+    guard let patient = patient else { return }
+    
+    patient.name = nameTextField.text
+    patient.lastName = lastNameTextField.text
+    patient.mobilePhone = mobilePhoneTextField.text
+    patient.homePhone = homePhoneTextField.text
+    patient.email = patientEmailTextField.text
+    
+    save()
   }
   
   // Needs impementing textFieldDidChanged

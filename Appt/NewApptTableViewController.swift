@@ -10,11 +10,12 @@ import UIKit
 import CoreData
 
 class NewApptTableViewController: UITableViewController {
-
+  
   var patient: Patient?
   
   let segueSelectPatient = "SegueSelectPatientsTVC"
   
+  let persistentContainer = CoreDataStore.instance.persistentContainer
   var managedObjectContext: NSManagedObjectContext?
   
   var datePickerHidden = false
@@ -29,14 +30,11 @@ class NewApptTableViewController: UITableViewController {
   @IBAction func cancelButton(_ sender: UIBarButtonItem) {
     dismiss(animated: true, completion: nil)
   }
-
   
+
   @IBAction func confirmAppointment(_ sender: UIBarButtonItem) {
     
-    guard let managedObjectContext = managedObjectContext else {
-      return }
-    
-    let appointment = Appointment(context: managedObjectContext)
+    let appointment = Appointment(context: persistentContainer.viewContext)
     
     appointment.patient = patient
     appointment.date = datePicker.date
@@ -45,7 +43,7 @@ class NewApptTableViewController: UITableViewController {
     appointment.dateCreated = Date()
     
     do {
-      try managedObjectContext.save()
+      try persistentContainer.viewContext.save()
       print("Appointment Saved")
     } catch {
       print("Unable to Save Changes")
@@ -54,11 +52,11 @@ class NewApptTableViewController: UITableViewController {
     dismiss(animated: true, completion: nil)
   }
   
-    override func viewDidLoad() {
-        super.viewDidLoad()
-      datePickerChanged()
-    }
-
+  override func viewDidLoad() {
+    super.viewDidLoad()
+    datePickerChanged()
+  }
+  
   @IBAction func datePickerValue(_ sender: UIDatePicker) {
     datePickerChanged()
   }
@@ -89,16 +87,6 @@ class NewApptTableViewController: UITableViewController {
       return super.tableView(tableView, heightForRowAt: indexPath)
     }
   }
-  
-  override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-    if segue.identifier == segueSelectPatient {
-      if let destinationNavigationViewController = segue.destination as? PatientsTableViewController {
-        destinationNavigationViewController.managedObjectContext = managedObjectContext
-        print("context sent")
-      }
-    }
-  }
-  
   
   @IBAction func unwindToThisView(sender: UIStoryboardSegue) {
     if sender.identifier == "patientSelected" {

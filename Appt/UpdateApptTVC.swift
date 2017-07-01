@@ -9,8 +9,6 @@
 import UIKit
 import CoreData
 
-let persistentContainer = CoreDataStore.instance.persistentContainer
-
 class UpdateApptTVC: NewApptTableViewController {
   
   var appointment: Appointment?
