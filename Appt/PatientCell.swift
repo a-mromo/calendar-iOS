@@ -11,5 +11,14 @@ import UIKit
 class PatientCell: UITableViewCell {
 
   @IBOutlet weak var patientNameLabel: UILabel!
-
+  
+//  var patient: Patient? {
+//    didSet{
+//      if let patient = patient {
+//        patientNameLabel.text = patient.fullName
+//      }
+//      
+//    }
+//  }
+  
 }

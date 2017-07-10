@@ -1317,7 +1317,7 @@
         <image name="today" width="36" height="40"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="ZlX-X9-4ez"/>
         <segue reference="XoE-ck-qRf"/>
+        <segue reference="vH7-U6-gh3"/>
     </inferredMetricsTieBreakers>
 </document>
