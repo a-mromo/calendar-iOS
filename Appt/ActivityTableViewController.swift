@@ -11,10 +11,11 @@ import CoreData
 
 class ActivityTableViewController: CalendarTableViewController {
   
+    
   override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
     
     let cell = tableView.dequeueReusableCell(withIdentifier: "ActivityCell", for: indexPath) as! ActivityCell
-    
+
     let appointment = fetchedResultsController.object(at: indexPath)
     
     var patientName = ""

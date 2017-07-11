@@ -108,8 +108,11 @@ class PatientsTableViewController: UITableViewController {
     searchController.delegate = self
     searchController.hidesNavigationBarDuringPresentation = false
     searchController.dimsBackgroundDuringPresentation = false
+    searchController.searchBar.textColor = .blue
+    searchController.searchBar.placeholder = "Search Patients"
+//    searchController.searchBar.layer.backgroundColor = UIColor.blue.cgColor
     
-    navigationController?.navigationBar.barStyle = .black
+//    navigationController?.navigationBar.barStyle = .blackOpaque
     if #available(iOS 11.0, *) {
       navigationController?.navigationBar.prefersLargeTitles = true
       navigationItem.searchController = searchController
