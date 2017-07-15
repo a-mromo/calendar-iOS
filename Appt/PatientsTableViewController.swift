@@ -68,15 +68,25 @@ class PatientsTableViewController: UITableViewController {
     
     if searchController.isActive && searchController.searchBar.text != "" {
       let patient = filteredPatient[indexPath.row]
-      
       cell.patientNameLabel.text = patient.fullName
-//      cell.patient = filteredPatient[indexPath.row]
     } else {
       let patient = fetchedResultsController.object(at: indexPath)
       cell.patientNameLabel.text = patient.fullName
       return cell
     }
     return cell
+  }
+  
+  override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+    
+    if searchController.isActive && searchController.searchBar.text != "" {
+      self.selectedPatient = filteredPatient[indexPath.row]
+      performSegue(withIdentifier: "patientSelected", sender: self)
+    } else {
+      self.selectedPatient = fetchedResultsController.object(at: indexPath)
+      performSegue(withIdentifier: "patientSelected", sender: self)
+    }
+    
   }
   
   func fetchPatients() {
