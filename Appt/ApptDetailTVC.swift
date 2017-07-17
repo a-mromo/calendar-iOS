@@ -21,10 +21,15 @@ class ApptDetailTVC: UITableViewController {
   
   override func viewDidLoad() {
     super.viewDidLoad()
+    noLargeTitles()
+    setupUI()
+  }
+  
+  func noLargeTitles(){
     if #available(iOS 11.0, *) {
       navigationItem.largeTitleDisplayMode = .never
+      tableView.dragDelegate = self as? UITableViewDragDelegate
     }
-    setupUI()
   }
   
   override func viewWillAppear(_ animated: Bool) {

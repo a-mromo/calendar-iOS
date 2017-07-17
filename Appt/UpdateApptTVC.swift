@@ -15,12 +15,14 @@ class UpdateApptTVC: NewApptTableViewController {
   
     override func viewDidLoad() {
         super.viewDidLoad()
+      noLargeTitles()
     }
   
   override func viewWillAppear(_ animated: Bool) {
     datePickerChanged()
     loadAppointment()
   }
+
   
   func loadAppointment() {
     if let appointment = appointment {

@@ -55,6 +55,14 @@ class NewApptTableViewController: UITableViewController {
   override func viewDidLoad() {
     super.viewDidLoad()
     datePickerChanged()
+    noLargeTitles()
+  }
+  
+  func noLargeTitles(){
+    if #available(iOS 11.0, *) {
+      navigationItem.largeTitleDisplayMode = .never
+      tableView.dragDelegate = self as? UITableViewDragDelegate
+    }
   }
   
   @IBAction func datePickerValue(_ sender: UIDatePicker) {

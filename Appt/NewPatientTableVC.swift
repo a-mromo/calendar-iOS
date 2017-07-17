@@ -32,11 +32,19 @@ class NewPatientTableVC: UITableViewController {
   
   override func viewDidLoad() {
     super.viewDidLoad()
+    noLargeTitles()
   }
   
   override func viewWillAppear(_ animated: Bool) {
     if patient != nil {
       loadPatient()
+    }
+  }
+  
+  func noLargeTitles(){
+    if #available(iOS 11.0, *) {
+      navigationItem.largeTitleDisplayMode = .never
+      tableView.dragDelegate = self as? UITableViewDragDelegate
     }
   }
   

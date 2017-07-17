@@ -363,7 +363,7 @@
                                             <constraints>
                                                 <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="255" id="shD-nh-rxh"/>
                                             </constraints>
-                                            <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                            <fontDescription key="fontDescription" type="system" weight="medium" pointSize="17"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
@@ -382,7 +382,7 @@
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Description or Notes" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7LN-FC-Lfc">
-                                            <rect key="frame" x="93" y="36" width="255" height="20"/>
+                                            <rect key="frame" x="93" y="41" width="255" height="20"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                             <color key="textColor" red="0.49803921579999999" green="0.49803921579999999" blue="0.49803921579999999" alpha="1" colorSpace="calibratedRGB"/>
                                             <nil key="highlightedColor"/>
@@ -390,7 +390,7 @@
                                     </subviews>
                                     <constraints>
                                         <constraint firstItem="Hcc-Q5-1Kr" firstAttribute="leading" secondItem="aBT-qD-aD8" secondAttribute="trailing" constant="31.5" id="3qo-ql-kT3"/>
-                                        <constraint firstItem="7LN-FC-Lfc" firstAttribute="top" secondItem="Hcc-Q5-1Kr" secondAttribute="bottom" constant="-1" id="OaE-4z-mBl"/>
+                                        <constraint firstItem="7LN-FC-Lfc" firstAttribute="top" secondItem="Hcc-Q5-1Kr" secondAttribute="bottom" constant="4" id="OaE-4z-mBl"/>
                                         <constraint firstAttribute="leadingMargin" secondItem="aBT-qD-aD8" secondAttribute="leading" id="P6B-iE-374"/>
                                         <constraint firstItem="aBT-qD-aD8" firstAttribute="centerY" secondItem="kBi-cy-i1f" secondAttribute="centerY" id="UH1-Hv-toj"/>
                                         <constraint firstItem="7LN-FC-Lfc" firstAttribute="leading" secondItem="aBT-qD-aD8" secondAttribute="trailing" constant="31.5" id="Wec-pf-AiI"/>
@@ -429,10 +429,10 @@
             </objects>
             <point key="canvasLocation" x="1658" y="-334"/>
         </scene>
-        <!--Tab Bar Controller-->
+        <!--Custom Tab Bar-->
         <scene sceneID="yl2-sM-qoP">
             <objects>
-                <tabBarController id="49e-Tb-3d3" sceneMemberID="viewController">
+                <tabBarController id="49e-Tb-3d3" customClass="CustomTabBar" customModule="Appt" customModuleProvider="target" sceneMemberID="viewController">
                     <nil key="simulatedBottomBarMetrics"/>
                     <tabBar key="tabBar" contentMode="scaleToFill" id="W28-zg-YXA">
                         <rect key="frame" x="0.0" y="975" width="768" height="49"/>

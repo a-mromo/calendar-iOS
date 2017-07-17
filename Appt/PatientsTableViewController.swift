@@ -118,7 +118,8 @@ class PatientsTableViewController: UITableViewController {
     searchController.delegate = self
     searchController.hidesNavigationBarDuringPresentation = false
     searchController.dimsBackgroundDuringPresentation = false
-    searchController.searchBar.textColor = .blue
+    searchController.searchBar.textColor = .white
+    searchController.searchBar.barTintColor = .black
     searchController.searchBar.placeholder = "Search Patients"
 //    searchController.searchBar.layer.backgroundColor = UIColor.blue.cgColor
     

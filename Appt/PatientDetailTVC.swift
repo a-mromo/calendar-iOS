@@ -21,9 +21,7 @@ class PatientDetailTVC: UITableViewController {
   
   override func viewDidLoad() {
         super.viewDidLoad()
-    if #available(iOS 11.0, *) {
-      navigationItem.largeTitleDisplayMode = .never
-    }
+    noLargeTitles()
     }
   
   override func viewWillAppear(_ animated: Bool) {
@@ -33,6 +31,13 @@ class PatientDetailTVC: UITableViewController {
   
   @IBAction func editPatient(_ sender: UIButton) {
     
+  }
+  
+  func noLargeTitles(){
+    if #available(iOS 11.0, *) {
+      navigationItem.largeTitleDisplayMode = .never
+      tableView.dragDelegate = self as? UITableViewDragDelegate
+    }
   }
   
   func setupUI() {
