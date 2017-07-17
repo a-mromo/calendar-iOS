@@ -27,4 +27,8 @@ extension UISearchBar {
       }
     }
   }
+  
+  func didPresentSearchController(searchController: UISearchController) {
+    searchController.searchBar.showsCancelButton = false
+  }
 }
