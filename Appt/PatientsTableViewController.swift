@@ -37,9 +37,7 @@ class PatientsTableViewController: UITableViewController {
     
     fetchPatients()
     createSearchBar()
-    searchController.searchBar.setSerchTextcolor(color: UIColor.red)
     title = "Patients"
-    
     
     NotificationCenter.default.addObserver(self, selector: #selector(applicationDidEnterBackground(_:)), name: Notification.Name.UIApplicationDidEnterBackground, object: nil)
     

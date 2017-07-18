@@ -14,7 +14,6 @@ protocol ThemeProtocol {
   func install()
 }
 
-
 struct DefaultTheme: ThemeProtocol {
   
   var errorColor: UIColor {
