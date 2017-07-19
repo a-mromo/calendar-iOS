@@ -111,55 +111,6 @@ class PatientsTableViewController: UITableViewController {
     save()
   }
   
-  /*
-  
-  func createSearchBar() {
-    searchController.searchResultsUpdater = self
-    searchController.delegate = self
-    searchController.hidesNavigationBarDuringPresentation = false
-    searchController.dimsBackgroundDuringPresentation = false
-    
-    let placeholderAttributes: [NSAttributedStringKey : AnyObject] = [
-      NSAttributedStringKey(rawValue: NSAttributedStringKey.font.rawValue):
-        UIFont.systemFont(ofSize: UIFont.systemFontSize)
-    ]
-    
-    let buttonAttributes: [NSAttributedStringKey : AnyObject] = [
-      NSAttributedStringKey(rawValue: NSAttributedStringKey.foregroundColor.rawValue):
-        UIColor(hexCode: "#11A9FB")!,
-      NSAttributedStringKey(rawValue: NSAttributedStringKey.font.rawValue):
-        UIFont.systemFont(ofSize: UIFont.buttonFontSize)
-    ]
-    
-    let attributedPlaceholder: NSAttributedString = NSAttributedString(string: "Search Patient", attributes: placeholderAttributes)
-    UITextField.appearance(whenContainedInInstancesOf: [UISearchBar.self]).attributedPlaceholder = attributedPlaceholder
-    
-    UIBarButtonItem.appearance(whenContainedInInstancesOf: [UISearchBar.self]).title = "Delete"
-    UIBarButtonItem.appearance(whenContainedInInstancesOf: [UISearchBar.self]).setTitleTextAttributes(buttonAttributes, for: .normal)
-    
-    UISearchBar.appearance().backgroundColor = UIColor(hexCode: "#FFFFFF")!
-    
-    let searchBarCursor = searchController.searchBar.subviews[0]
-    searchBarCursor.tintColor = UIColor(hexCode: "#00EAF8")!
-
-//    navigationController?.navigationBar.barStyle = .blackOpaque
-    if #available(iOS 11.0, *) {
-      navigationController?.navigationBar.prefersLargeTitles = true
-      navigationItem.searchController = searchController
-    }
-    else {
-      tableView.tableHeaderView = searchController.searchBar
-    }
-    
-//    let textFieldInsideSearchBar = searchController.searchBar.value(forKey: "searchField") as? UITextField
-//    textFieldInsideSearchBar?.textColor = UIColor.purple
-//
-//    let imageV = textFieldInsideSearchBar?.leftView as! UIImageView
-//    imageV.image = imageV.image?.withRenderingMode(UIImageRenderingMode.alwaysTemplate)
-//    imageV.tintColor = UIColor.purple
-  }
- 
- */
   
   override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
     if editingStyle == .delete {

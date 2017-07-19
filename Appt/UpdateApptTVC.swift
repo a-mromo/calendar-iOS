@@ -34,7 +34,7 @@ class UpdateApptTVC: NewApptTableViewController {
         dateDetailLabel.text = dateFormatter(date: date)
         patientLabel.text = patient.fullName
         costTextField.text = cost
-        notesTextField.text = note
+        noteTextView.text = note
         datePicker.date = date
       }
     }
@@ -47,7 +47,7 @@ class UpdateApptTVC: NewApptTableViewController {
     }
     appointment.patient = patient
     appointment.date = datePicker.date
-    appointment.note = notesTextField.text
+    appointment.note = noteTextView.text
     appointment.cost = costTextField.text
     appointment.dateModified = Date()
     

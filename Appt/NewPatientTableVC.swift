@@ -33,6 +33,7 @@ class NewPatientTableVC: UITableViewController {
   override func viewDidLoad() {
     super.viewDidLoad()
     noLargeTitles()
+    setTextFieldDelegates()
   }
   
   override func viewWillAppear(_ animated: Bool) {

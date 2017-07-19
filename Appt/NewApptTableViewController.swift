@@ -11,6 +11,7 @@ import CoreData
 
 class NewApptTableViewController: UITableViewController {
   
+  
   var patient: Patient?
   
   let segueSelectPatient = "SegueSelectPatientsTVC"
@@ -20,8 +21,10 @@ class NewApptTableViewController: UITableViewController {
   
   var datePickerHidden = false
   
+  
   @IBOutlet weak var patientLabel: UILabel!
-  @IBOutlet weak var notesTextField: UITextField!
+  @IBOutlet weak var noteTextView: UITextView!
+
   @IBOutlet weak var costTextField: UITextField!
   
   @IBOutlet weak var dateDetailLabel: UILabel!
@@ -30,7 +33,6 @@ class NewApptTableViewController: UITableViewController {
   @IBAction func cancelButton(_ sender: UIBarButtonItem) {
     dismiss(animated: true, completion: nil)
   }
-  
 
   @IBAction func confirmAppointment(_ sender: UIBarButtonItem) {
     
@@ -38,7 +40,7 @@ class NewApptTableViewController: UITableViewController {
     
     appointment.patient = patient
     appointment.date = datePicker.date
-    appointment.note = notesTextField.text
+    appointment.note = noteTextView.text
     appointment.cost = costTextField.text
     appointment.dateCreated = Date()
     
@@ -56,7 +58,12 @@ class NewApptTableViewController: UITableViewController {
     super.viewDidLoad()
     datePickerChanged()
     noLargeTitles()
+    setTextFieldDelegates()
+    setTextViewDelegates()
+    setDoneOnKeyboard()
+    noteTextView.placeholder = "Notes"
   }
+  
   
   func noLargeTitles(){
     if #available(iOS 11.0, *) {
@@ -79,6 +86,7 @@ class NewApptTableViewController: UITableViewController {
     tableView.beginUpdates()
     tableView.endUpdates()
   }
+  
   
   override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
     if indexPath.section == 0 && indexPath.row == 0 {
