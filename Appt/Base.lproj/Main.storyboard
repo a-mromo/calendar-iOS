@@ -14,7 +14,7 @@
         <scene sceneID="MDh-69-vcW">
             <objects>
                 <tableViewController id="fIE-P4-CUA" customClass="ApptDetailTVC" customModule="Appt" customModuleProvider="target" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="plain" separatorStyle="singleLineEtched" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="lgU-Nm-oKg">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="lgU-Nm-oKg">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -671,7 +671,7 @@
                                                 <constraint firstAttribute="height" constant="2" id="bBT-tx-hLS"/>
                                             </constraints>
                                         </imageView>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Patient Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fIO-OW-aAw">
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Patient Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fIO-OW-aAw">
                                             <rect key="frame" x="18" y="9" width="320" height="26"/>
                                             <fontDescription key="fontDescription" type="system" weight="medium" pointSize="21"/>
                                             <nil key="textColor"/>
@@ -680,7 +680,7 @@
                                     </subviews>
                                     <constraints>
                                         <constraint firstItem="fIO-OW-aAw" firstAttribute="centerY" secondItem="axr-xT-jyF" secondAttribute="centerY" id="2ID-fu-gW7"/>
-                                        <constraint firstAttribute="trailingMargin" relation="greaterThanOrEqual" secondItem="fIO-OW-aAw" secondAttribute="trailing" constant="29" id="S3s-b3-K2B"/>
+                                        <constraint firstAttribute="trailingMargin" relation="lessThanOrEqual" secondItem="fIO-OW-aAw" secondAttribute="trailing" constant="29" id="S3s-b3-K2B"/>
                                         <constraint firstItem="fIO-OW-aAw" firstAttribute="leading" secondItem="axr-xT-jyF" secondAttribute="leadingMargin" constant="10" id="u8O-kk-FoI"/>
                                     </constraints>
                                 </tableViewCellContentView>
@@ -1063,7 +1063,7 @@
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <imageView userInteractionEnabled="NO" alpha="0.5" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="F0I-LX-Phc">
+                                        <imageView hidden="YES" userInteractionEnabled="NO" alpha="0.5" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="F0I-LX-Phc">
                                             <rect key="frame" x="18" y="41" width="338" height="2"/>
                                             <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                             <constraints>
@@ -1322,7 +1322,7 @@
         <image name="today" width="36" height="40"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="Ity-bc-bUT"/>
+        <segue reference="XoE-ck-qRf"/>
         <segue reference="fIu-1r-FSG"/>
     </inferredMetricsTieBreakers>
 </document>
