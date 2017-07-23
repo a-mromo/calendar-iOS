@@ -60,7 +60,7 @@ class NewApptTableViewController: UITableViewController {
     noLargeTitles()
     setTextFieldDelegates()
     setTextViewDelegates()
-//    setDoneOnKeyboard()
+    setDoneOnKeyboard()
     noteTextView.placeholder = "Notes"
   }
   
