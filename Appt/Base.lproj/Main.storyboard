@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13156.6" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="49e-Tb-3d3">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13168.3" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="49e-Tb-3d3">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13137.5"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13147.4"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -690,7 +690,6 @@
                                 </constraints>
                                 <connections>
                                     <outlet property="patientNameLabel" destination="fIO-OW-aAw" id="HJ9-7r-lc3"/>
-                                    <segue destination="wRX-H1-73d" kind="show" identifier="SeguePatientDetail" id="fuW-V8-V3a"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -714,7 +713,7 @@
         <!--Patient DetailTVC-->
         <scene sceneID="ml1-O5-V5B">
             <objects>
-                <tableViewController id="wRX-H1-73d" customClass="PatientDetailTVC" customModule="Appt" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController storyboardIdentifier="PatientDetailTVC" useStoryboardIdentifierAsRestorationIdentifier="YES" id="wRX-H1-73d" customClass="PatientDetailTVC" customModule="Appt" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="plain" separatorStyle="none" rowHeight="64" sectionHeaderHeight="28" sectionFooterHeight="28" id="GhR-BV-Wx0">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -868,7 +867,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="xvQ-J2-Fau" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2625" y="358"/>
+            <point key="canvasLocation" x="2737" y="375"/>
         </scene>
         <!--New Appointment-->
         <scene sceneID="oza-tD-scN">
@@ -1323,6 +1322,6 @@
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="XoE-ck-qRf"/>
-        <segue reference="fIu-1r-FSG"/>
+        <segue reference="vH7-U6-gh3"/>
     </inferredMetricsTieBreakers>
 </document>

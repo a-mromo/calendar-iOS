@@ -31,7 +31,7 @@ struct DefaultTheme: ThemeProtocol {
     UINavigationBar.appearance().barTintColor = UIColor(hexCode: "#11A9FB")!
     UINavigationBar.appearance().tintColor = UIColor(hexCode: "#ffffff")!
     UIApplication.shared.statusBarStyle = .lightContent
-    UINavigationBar.appearance().titleTextAttributes = [NSAttributedStringKey.foregroundColor.rawValue: UIColor(hexCode: "#ffffff")!]
+    UINavigationBar.appearance().titleTextAttributes = [NSAttributedStringKey(rawValue: NSAttributedStringKey.foregroundColor.rawValue): UIColor(hexCode: "#ffffff")!]
     UITabBar.appearance().tintColor = UIColor(hexCode: "#794DFF")!
   }
   
@@ -53,7 +53,11 @@ struct DefaultTheme: ThemeProtocol {
     
     UIBarButtonItem.appearance(whenContainedInInstancesOf: [UISearchBar.self]).title = "Delete"
     UIBarButtonItem.appearance(whenContainedInInstancesOf: [UISearchBar.self]).setTitleTextAttributes(buttonAttributes, for: .normal)
+    
     UISearchBar.appearance().backgroundColor = UIColor(hexCode: "#FFFFFF")!
+    
+//    UITextField.appearance(whenContainedInInstancesOf: [UISearchBar.self]).tintColor = UIColor.orange
+//    UITextField.appearance(whenContainedInInstancesOf: [UISearchBar.self]).backgroundColor = UIColor.orange
   }
   
   func largeTitles () {

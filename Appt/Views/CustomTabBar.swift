@@ -21,6 +21,5 @@ class CustomTabBar: UITabBarController {
     tabBar.unselectedItemTintColor = UIColor(hexCode: "DADADA")
     tabBar.isTranslucent = true
   }
- 
   
 }

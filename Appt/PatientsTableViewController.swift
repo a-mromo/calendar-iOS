@@ -76,7 +76,7 @@ class PatientsTableViewController: UITableViewController {
   }
   
   override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-    
+
     if searchController.isActive && searchController.searchBar.text != "" {
       self.selectedPatient = filteredPatient[indexPath.row]
       performSegue(withIdentifier: "patientSelected", sender: self)

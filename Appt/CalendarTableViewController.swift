@@ -8,7 +8,7 @@
 
 import UIKit
 import CoreData
-import Firebase
+//import Firebase
 
 class CalendarTableViewController: UITableViewController {
 
@@ -29,7 +29,7 @@ class CalendarTableViewController: UITableViewController {
   
   override func viewDidLoad() {
     super.viewDidLoad()
-    FirebaseApp.configure()
+//    FirebaseApp.configure()
     persistentContainer.loadPersistentStores { (persistentStoreDescription, error) in
       
       do {

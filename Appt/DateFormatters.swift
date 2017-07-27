@@ -9,8 +9,6 @@
 import Foundation
 import UIKit
 
-
-
 func timeAgoSinceDate(_ date:Date,currentDate:Date, numericDates:Bool) -> String {
   let calendar = Calendar.current
   let now = currentDate

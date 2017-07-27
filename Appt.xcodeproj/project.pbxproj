@@ -10,6 +10,7 @@
 		6C18DB9A1F1EAA7700E806C2 /* TextViewPlaceholder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C18DB991F1EAA7700E806C2 /* TextViewPlaceholder.swift */; };
 		6C18DB9C1F1ECBEB00E806C2 /* TextFieldDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C18DB9B1F1ECBEB00E806C2 /* TextFieldDelegate.swift */; };
 		6C18DB9E1F1ECF3000E806C2 /* TextViewDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C18DB9D1F1ECF3000E806C2 /* TextViewDelegate.swift */; };
+		6C1FACB91F280F18004B575C /* AdSupport.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6C1FACB81F280ABF004B575C /* AdSupport.framework */; };
 		6C3208441EE0127C00ED6BDF /* ActivityTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C3208431EE0127C00ED6BDF /* ActivityTableViewController.swift */; };
 		6C3208461EE0153100ED6BDF /* ActivityCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C3208451EE0153100ED6BDF /* ActivityCell.swift */; };
 		6C3208481EE09E8400ED6BDF /* CalendarTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C3208471EE09E8400ED6BDF /* CalendarTableViewController.swift */; };
@@ -59,6 +60,7 @@
 		6C18DB991F1EAA7700E806C2 /* TextViewPlaceholder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextViewPlaceholder.swift; sourceTree = "<group>"; };
 		6C18DB9B1F1ECBEB00E806C2 /* TextFieldDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextFieldDelegate.swift; sourceTree = "<group>"; };
 		6C18DB9D1F1ECF3000E806C2 /* TextViewDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextViewDelegate.swift; sourceTree = "<group>"; };
+		6C1FACB81F280ABF004B575C /* AdSupport.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AdSupport.framework; path = System/Library/Frameworks/AdSupport.framework; sourceTree = SDKROOT; };
 		6C3208431EE0127C00ED6BDF /* ActivityTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ActivityTableViewController.swift; sourceTree = "<group>"; };
 		6C3208451EE0153100ED6BDF /* ActivityCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ActivityCell.swift; sourceTree = "<group>"; };
 		6C3208471EE09E8400ED6BDF /* CalendarTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CalendarTableViewController.swift; sourceTree = "<group>"; };
@@ -105,6 +107,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6C1FACB91F280F18004B575C /* AdSupport.framework in Frameworks */,
 				F75E3407425B7E152C83F722 /* Pods_Appt.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -220,6 +223,7 @@
 		D6964751799FCB183E75EB01 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				6C1FACB81F280ABF004B575C /* AdSupport.framework */,
 				9C907701AFA057029D027F64 /* Pods_Appt.framework */,
 				6D2BF4E6ED9B2DDB484F4FF1 /* Pods_ApptTests.framework */,
 			);
