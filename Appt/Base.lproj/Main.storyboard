@@ -1319,7 +1319,7 @@
         <image name="today" width="36" height="40"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="fIu-1r-FSG"/>
         <segue reference="Ity-bc-bUT"/>
+        <segue reference="vH7-U6-gh3"/>
     </inferredMetricsTieBreakers>
 </document>
