@@ -148,6 +148,7 @@
 			children = (
 				6C7E6CCC1EDE445C002D1936 /* Model */,
 				6C9665EA1F1B04CF000228FE /* Views */,
+				6C4151C81ECA7ACF00ACDAE7 /* Main.storyboard */,
 				6C4151C21ECA7ACF00ACDAE7 /* AppDelegate.swift */,
 				6C18DB9B1F1ECBEB00E806C2 /* TextFieldDelegate.swift */,
 				6C18DB9D1F1ECF3000E806C2 /* TextViewDelegate.swift */,
@@ -160,7 +161,6 @@
 				6C59DE681F02974F00E32887 /* UpdateApptTVC.swift */,
 				6CED20621ED4CA6800A6CD8B /* NewPatientTableVC.swift */,
 				6C7E6CCA1EDE177A002D1936 /* CoreDataStore.swift */,
-				6C4151C81ECA7ACF00ACDAE7 /* Main.storyboard */,
 				6CE055521EDF18FC00312499 /* PatientsTabTVC.swift */,
 				6C4A3AF41EFB213B00D91CA5 /* PatientDetailTVC.swift */,
 				6C4A3AEE1EF9C1CA00D91CA5 /* ApptDetailTVC.swift */,

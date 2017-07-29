@@ -76,15 +76,28 @@ class PatientsTableViewController: UITableViewController {
   }
   
   override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-
-    if searchController.isActive && searchController.searchBar.text != "" {
-      self.selectedPatient = filteredPatient[indexPath.row]
-      performSegue(withIdentifier: "patientSelected", sender: self)
-    } else {
-      self.selectedPatient = fetchedResultsController.object(at: indexPath)
-      performSegue(withIdentifier: "patientSelected", sender: self)
+    guard let destinationVC = self.navigationController?.viewControllers[0] as? NewApptTableViewController
+      else {
+        print("Could not instantiate view controller with identifier PatientDetailTVC")
+        return
     }
     
+    if searchController.isActive && searchController.searchBar.text != "" {
+      destinationVC.patient = filteredPatient[indexPath.row]
+    } else {
+      destinationVC.patient = fetchedResultsController.object(at: indexPath)
+    }
+    
+    self.navigationController?.popViewController(animated: true)
+
+  }
+  
+  override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+    if segue.identifier == "patientSelected" {
+      if let destinationVC = segue.destination as? NewApptTableViewController {
+        destinationVC.patient = self.selectedPatient
+      }
+    }
   }
   
   func fetchPatients() {

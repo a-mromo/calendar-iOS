@@ -64,6 +64,12 @@ class NewApptTableViewController: UITableViewController {
     noteTextView.placeholder = "Notes"
   }
   
+  override func viewWillAppear(_ animated: Bool) {
+    if patient != nil {
+      patientLabel.text = patient?.fullName
+    }
+  }
+  
   
   func noLargeTitles(){
     if #available(iOS 11.0, *) {
@@ -104,13 +110,13 @@ class NewApptTableViewController: UITableViewController {
     }
   }
   
-  @IBAction func unwindToThisView(sender: UIStoryboardSegue) {
-    if sender.identifier == "patientSelected" {
-      let patientsVC = sender.source as! PatientsTableViewController
-      print("UnwindToThisView()")
-      self.patient = patientsVC.selectedPatient
-      patientLabel.text = self.patient?.fullName
-    }
-  }
+//  @IBAction func unwindToThisView(sender: UIStoryboardSegue) {
+//    if sender.identifier == "patientSelected" {
+//      let patientsVC = sender.source as! PatientsTableViewController
+//      print("UnwindToThisView()")
+//      self.patient = patientsVC.selectedPatient
+//      patientLabel.text = self.patient?.fullName
+//    }
+//  }
   
 }

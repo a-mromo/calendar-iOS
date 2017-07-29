@@ -872,7 +872,7 @@
         <!--New Appointment-->
         <scene sceneID="oza-tD-scN">
             <objects>
-                <tableViewController id="RzE-LA-tqo" customClass="NewApptTableViewController" customModule="Appt" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController storyboardIdentifier="NewApptTableViewController" id="RzE-LA-tqo" customClass="NewApptTableViewController" customModule="Appt" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="grouped" separatorStyle="default" rowHeight="44" sectionHeaderHeight="18" sectionFooterHeight="18" id="xib-ur-9EL">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -1081,7 +1081,6 @@
                                 </constraints>
                                 <connections>
                                     <outlet property="patientNameLabel" destination="Z0l-A4-HZ3" id="TgL-YU-hoJ"/>
-                                    <segue destination="QNn-4x-Fj7" kind="unwind" identifier="patientSelected" unwindAction="unwindToThisViewWithSender:" id="hmp-aR-afE"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -1099,7 +1098,6 @@
                     </navigationItem>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="5D2-JR-Tdj" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <exit id="QNn-4x-Fj7" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="4543" y="-334"/>
         </scene>
@@ -1321,7 +1319,7 @@
         <image name="today" width="36" height="40"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="XoE-ck-qRf"/>
-        <segue reference="vH7-U6-gh3"/>
+        <segue reference="fIu-1r-FSG"/>
+        <segue reference="Ity-bc-bUT"/>
     </inferredMetricsTieBreakers>
 </document>
