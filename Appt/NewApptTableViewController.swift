@@ -8,11 +8,13 @@
 
 import UIKit
 import CoreData
+import JTAppleCalendar
 
 class NewApptTableViewController: UITableViewController {
   
   
   var patient: Patient?
+  let formatter = DateFormatter()
   
   let segueSelectPatient = "SegueSelectPatientsTVC"
   
@@ -21,6 +23,16 @@ class NewApptTableViewController: UITableViewController {
   
   var datePickerHidden = false
   
+  // Calendar Color
+  let outsideMonthColor = UIColor(hexCode: "#584a66")!
+  let monthColor = UIColor.white
+  let selectedMonthColor = UIColor(hexCode: "#3a294b")!
+  let currentDateSelectedViewColor = UIColor(hexCode: "#4e3f5d")!
+  
+  
+  @IBOutlet var calendarView: JTAppleCalendarView!
+  @IBOutlet var monthLabel: UILabel!
+  @IBOutlet var yearLabel: UILabel!
   
   @IBOutlet weak var patientLabel: UILabel!
   @IBOutlet weak var noteTextView: UITextView!
@@ -39,7 +51,8 @@ class NewApptTableViewController: UITableViewController {
     let appointment = Appointment(context: persistentContainer.viewContext)
     
     appointment.patient = patient
-    appointment.date = datePicker.date
+//    appointment.date = datePicker.date
+    appointment.date = calendarView.selectedDates.first
     appointment.note = noteTextView.text
     appointment.cost = costTextField.text
     appointment.dateCreated = Date()
@@ -56,12 +69,25 @@ class NewApptTableViewController: UITableViewController {
   
   override func viewDidLoad() {
     super.viewDidLoad()
+    setupCalendarView()
     datePickerChanged()
     noLargeTitles()
     setTextFieldDelegates()
     setTextViewDelegates()
     setDoneOnKeyboard()
     noteTextView.placeholder = "Notes"
+    
+  }
+  
+  func setupCalendarView() {
+    // Setup Calendar Spacing
+    calendarView.minimumLineSpacing = 0
+    calendarView.minimumInteritemSpacing = 0
+    
+    // Setup Labels
+    calendarView.visibleDates{ (visibleDates) in
+      self.setupViewsFromCalendar(from: visibleDates)
+    }
   }
   
   override func viewWillAppear(_ animated: Bool) {
@@ -110,13 +136,102 @@ class NewApptTableViewController: UITableViewController {
     }
   }
   
-//  @IBAction func unwindToThisView(sender: UIStoryboardSegue) {
-//    if sender.identifier == "patientSelected" {
-//      let patientsVC = sender.source as! PatientsTableViewController
-//      print("UnwindToThisView()")
-//      self.patient = patientsVC.selectedPatient
-//      patientLabel.text = self.patient?.fullName
-//    }
-//  }
+}
+
+extension NewApptTableViewController {
+  func handleCellSelected(view: JTAppleCell?, cellState: CellState) {
+    guard let validCell = view as? CustomCell else { return }
+    if validCell.isSelected {
+      validCell.selectedView.isHidden = false
+    } else {
+      validCell.selectedView.isHidden = true
+    }
+  }
+  
+  func handleCellTextColor(view: JTAppleCell?, cellState: CellState) {
+    guard let validCell = view as? CustomCell else {
+      return
+    }
+    
+    if validCell.isSelected {
+      validCell.dateLabel.textColor = selectedMonthColor
+    } else {
+      if cellState.dateBelongsTo == .thisMonth {
+        validCell.dateLabel.textColor = monthColor
+      } else {
+        validCell.dateLabel.textColor = outsideMonthColor
+      }
+      
+    }
+  }
+  
+  
+  func setupViewsFromCalendar(from visibleDates: DateSegmentInfo ) {
+    guard let date = visibleDates.monthDates.first?.date else { return }
+    
+    self.formatter.dateFormat = "yyyy"
+    self.yearLabel.text = self.formatter.string(from: date)
+    
+    self.formatter.dateFormat = "MMMM"
+    self.monthLabel.text = self.formatter.string(from: date)
+  }
+}
+
+
+extension NewApptTableViewController: JTAppleCalendarViewDataSource {
+  func configureCalendar(_ calendar: JTAppleCalendarView) -> ConfigurationParameters {
+    formatter.dateFormat = "yyyy MM dd"
+    formatter.timeZone = Calendar.current.timeZone
+    formatter.locale = Calendar.current.locale
+   
+    var parameters: ConfigurationParameters
+    var startDate = Date()
+    var endDate = Date()
+    if let calendarStartDate = formatter.date(from: "2017 01 01"),
+      let calendarEndndDate = formatter.date(from: "2017 12 31") {
+      startDate = calendarStartDate
+      endDate = calendarEndndDate
+    }
+    parameters = ConfigurationParameters(startDate: startDate, endDate: endDate)
+    
+    return parameters
+  }
+}
+
+
+extension NewApptTableViewController: JTAppleCalendarViewDelegate {
+  // Display Cell
+  func calendar(_ calendar: JTAppleCalendarView, cellForItemAt date: Date, cellState: CellState, indexPath: IndexPath) -> JTAppleCell {
+    let cell = calendar.dequeueReusableJTAppleCell(withReuseIdentifier: "CustomCell", for: indexPath) as! CustomCell
+    cell.dateLabel.text = cellState.text
+    
+    handleCellSelected(view: cell, cellState: cellState)
+    handleCellTextColor(view: cell, cellState: cellState)
+    
+    return cell
+  }
+  
+  func calendar(_ calendar: JTAppleCalendarView, didSelectDate date: Date, cell: JTAppleCell?, cellState: CellState) {
+    handleCellSelected(view: cell, cellState: cellState)
+    handleCellTextColor(view: cell, cellState: cellState)
+    
+  }
+  
+  func calendar(_ calendar: JTAppleCalendarView, didDeselectDate date: Date, cell: JTAppleCell?, cellState: CellState) {
+    handleCellSelected(view: cell, cellState: cellState)
+    handleCellTextColor(view: cell, cellState: cellState)
+  }
+  
+  func calendar(_ calendar: JTAppleCalendarView, didScrollToDateSegmentWith visibleDates: DateSegmentInfo) {
+    setupViewsFromCalendar(from: visibleDates)
+  }
   
 }
+
+
+
+
+
+
+
+
