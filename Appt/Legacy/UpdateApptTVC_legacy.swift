@@ -6,20 +6,34 @@
 //  Copyright © 2017 AgustinMendoza. All rights reserved.
 //
 
+// This class avoided duplicating code from the NewApptTableViewController class, to create
+// the UpdateApptTVC.
+// Was unable to implement the JTLAppleCalendar in this view by inherinting from another class.
+// Decided to duplicate the code from NewApptTableViewController and update it with the changes from
+// this file.
+// Renamed this file and clas with the "_legacy"
+
+
 import UIKit
 import CoreData
 
-class UpdateApptTVC: NewApptTableViewController {
+class UpdateApptTVC_legacy: NewApptTableViewController {
   
   var appointment: Appointment?
   
     override func viewDidLoad() {
         super.viewDidLoad()
       noLargeTitles()
+//      setupCalendarView()
+      setupKeyboardNotification()
+      
+      calendarView.visibleDates{ (visibleDates) in
+        self.setupViewsFromCalendar(from: visibleDates)
+      }
     }
   
   override func viewWillAppear(_ animated: Bool) {
-    datePickerChanged()
+//    datePickerChanged()
     loadAppointment()
   }
 
@@ -31,11 +45,17 @@ class UpdateApptTVC: NewApptTableViewController {
         let cost = appointment.cost,
         let note = appointment.note {
         
-        dateDetailLabel.text = dateFormatter(date: date)
+        let dates: [Date] = [date]
+        calendarView.scrollToDate(date)
+//        calendarView.date
+//        dateDetailLabel.text = dateFormatter(date: date)
         patientLabel.text = patient.fullName
         costTextField.text = cost
         noteTextView.text = note
-        datePicker.date = date
+//        datePicker.date = date
+        
+        print("Appointment date: \(String(describing: dates.first))")
+//        print("CalendarView date: \(calendarView.selectDates)")
       }
     }
   }
@@ -46,7 +66,8 @@ class UpdateApptTVC: NewApptTableViewController {
       return
     }
     appointment.patient = patient
-    appointment.date = datePicker.date
+//    appointment.date = datePicker.date
+    appointment.date = calendarView.selectedDates.first
     appointment.note = noteTextView.text
     appointment.cost = costTextField.text
     appointment.dateModified = Date()
@@ -66,3 +87,5 @@ class UpdateApptTVC: NewApptTableViewController {
   }
   
 }
+ 
+

@@ -1,8 +1,8 @@
 //
-//  NewApptTableViewController.swift
+//  UpdateApptTVC.swift
 //  Appt
 //
-//  Created by Agustin Mendoza Romo on 5/17/17.
+//  Created by Agustin Mendoza Romo on 8/6/17.
 //  Copyright © 2017 AgustinMendoza. All rights reserved.
 //
 
@@ -10,9 +10,10 @@ import UIKit
 import CoreData
 import JTAppleCalendar
 
-class NewApptTableViewController: UITableViewController {
+class UpdateApptTVC: UITableViewController {
   
   var patient: Patient?
+  var appointment: Appointment?
   let formatter = DateFormatter()
   
   let segueSelectPatient = "SegueSelectPatientsTVC"
@@ -37,43 +38,39 @@ class NewApptTableViewController: UITableViewController {
   @IBOutlet weak var patientLabel: UILabel!
   @IBOutlet weak var noteTextView: UITextView!
   @IBOutlet weak var costTextField: UITextField!
-  @IBOutlet weak var dateDetailLabel: UILabel!
-  @IBOutlet weak var datePicker: UIDatePicker!
+//  @IBOutlet weak var dateDetailLabel: UILabel!
+//  @IBOutlet weak var datePicker: UIDatePicker!
   
   @IBAction func cancelButton(_ sender: UIBarButtonItem) {
     dismiss(animated: true, completion: nil)
   }
   
   @IBAction func confirmAppointment(_ sender: UIBarButtonItem) {
-    let appointment = Appointment(context: persistentContainer.viewContext)
     
+    guard let appointment = appointment else {
+      return
+    }
     appointment.patient = patient
+    //    appointment.date = datePicker.date
     appointment.date = calendarView.selectedDates.first
     appointment.note = noteTextView.text
     appointment.cost = costTextField.text
-    appointment.dateCreated = Date()
+    appointment.dateModified = Date()
     
-    do {
-      try persistentContainer.viewContext.save()
-      print("Appointment Saved")
-    } catch {
-      print("Unable to Save Changes")
-      print("\(error), \(error.localizedDescription)")
-    }
+    updateAppt()
     dismiss(animated: true, completion: nil)
   }
+
   
   override func viewDidLoad() {
     super.viewDidLoad()
-    monthLabel.lineBreakMode = .byCharWrapping
-    setupCalendarView()
     noLargeTitles()
-    setTextFieldDelegates()
-    setTextViewDelegates()
-    setDoneOnKeyboard()
-    noteTextView.placeholder = "Notes"
-
+    //      setupCalendarView()
     setupKeyboardNotification()
+    
+    calendarView.visibleDates{ (visibleDates) in
+      self.setupViewsFromCalendar(from: visibleDates)
+    }
     
   }
   
@@ -82,10 +79,42 @@ class NewApptTableViewController: UITableViewController {
   }
   
   override func viewWillAppear(_ animated: Bool) {
-    if patient != nil {
-      patientLabel.text = patient?.fullName
+    loadAppointment()
+  }
+  
+  func loadAppointment() {
+    if let appointment = appointment {
+      if let date = appointment.date,
+        let patient = appointment.patient,
+        let cost = appointment.cost,
+        let note = appointment.note {
+        
+        let dates: [Date] = [date]
+        calendarView.scrollToDate(date)
+        //        calendarView.date
+        //        dateDetailLabel.text = dateFormatter(date: date)
+        patientLabel.text = patient.fullName
+        costTextField.text = cost
+        noteTextView.text = note
+        //        datePicker.date = date
+        
+        print("Appointment date: \(String(describing: dates.first))")
+        //        print("CalendarView date: \(calendarView.selectDates)")
+      }
     }
   }
+  
+  
+  func updateAppt() {
+    do {
+      try persistentContainer.viewContext.save()
+      print("Appointment Saved")
+    } catch {
+      print("Unable to Save Changes")
+      print("\(error), \(error.localizedDescription)")
+    }
+  }
+  
   
   func noLargeTitles(){
     if #available(iOS 11.0, *) {
@@ -93,7 +122,7 @@ class NewApptTableViewController: UITableViewController {
       tableView.dragDelegate = self as? UITableViewDragDelegate
     }
   }
-
+  
   func setupKeyboardNotification() {
     NotificationCenter.default.addObserver(self, selector: #selector(NewApptTableViewController.keyboardWillShow(notification:)), name: NSNotification.Name.UIKeyboardDidShow, object: nil)
     NotificationCenter.default.addObserver(self, selector: #selector(NewApptTableViewController.keyboardWillHide(notification:)), name: NSNotification.Name.UIKeyboardDidHide, object: nil)
@@ -112,7 +141,7 @@ class NewApptTableViewController: UITableViewController {
     })
   }
   
-
+  
   
   override func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
     if section == 0 {
@@ -126,14 +155,14 @@ class NewApptTableViewController: UITableViewController {
 
 
 // Date picker
-extension NewApptTableViewController {
+extension UpdateApptTVC {
   @IBAction func datePickerValue(_ sender: UIDatePicker) {
     datePickerChanged()
   }
   
   // Run datePickerChanged() in viewDidLoad() to display selected date in Label
   func datePickerChanged() {
-//    dateDetailLabel.text = DateFormatter.localizedString(from: datePicker.date, dateStyle: DateFormatter.Style.short, timeStyle: DateFormatter.Style.short)
+    //    dateDetailLabel.text = DateFormatter.localizedString(from: datePicker.date, dateStyle: DateFormatter.Style.short, timeStyle: DateFormatter.Style.short)
   }
   
   func toggleDatePicker() {
@@ -145,24 +174,24 @@ extension NewApptTableViewController {
   
   // Toggle DatePicker
   
-//  override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-//    if indexPath.section == 0 && indexPath.row == 0 {
-//      toggleDatePicker()
-//    }
-//  }
-//
-//  override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-//    // Use the datePicker row. The one below is from a previous iteration
-//    if datePickerHidden && indexPath.section == 0 && indexPath.row == 1 {
-//      return 0
-//    } else {
-//      return super.tableView(tableView, heightForRowAt: indexPath)
-//    }
-//  }
+  //  override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+  //    if indexPath.section == 0 && indexPath.row == 0 {
+  //      toggleDatePicker()
+  //    }
+  //  }
+  //
+  //  override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+  //    // Use the datePicker row. The one below is from a previous iteration
+  //    if datePickerHidden && indexPath.section == 0 && indexPath.row == 1 {
+  //      return 0
+  //    } else {
+  //      return super.tableView(tableView, heightForRowAt: indexPath)
+  //    }
+  //  }
 }
 
 
-extension NewApptTableViewController {
+extension UpdateApptTVC {
   func handleCellSelected(view: JTAppleCell?, cellState: CellState) {
     guard let validCell = view as? CustomCell else { return }
     if validCell.isSelected {
@@ -202,21 +231,21 @@ extension NewApptTableViewController {
   func setupViewsFromCalendar(from visibleDates: DateSegmentInfo ) {
     guard let date = visibleDates.monthDates.first?.date else { return }
     
-    self.formatter.dateFormat = "yyyy"
-    self.yearLabel.text = self.formatter.string(from: date)
+    formatter.dateFormat = "yyyy"
+    yearLabel.text = formatter.string(from: date)
     
-    self.formatter.dateFormat = "MMMM"
-    self.monthLabel.text = self.formatter.string(from: date)
+    formatter.dateFormat = "MMMM"
+    monthLabel.text = formatter.string(from: date)
   }
   
-//  func calendarViewDateChanged() {
-//    guard let calendarDate = calendarView.selectedDates.first else { return }
-//    dateDetailLabel.text = DateFormatter.localizedString(from: calendarDate, dateStyle: DateFormatter.Style.short, timeStyle: DateFormatter.Style.short)
-//  }
+  //  func calendarViewDateChanged() {
+  //    guard let calendarDate = calendarView.selectedDates.first else { return }
+  //    dateDetailLabel.text = DateFormatter.localizedString(from: calendarDate, dateStyle: DateFormatter.Style.short, timeStyle: DateFormatter.Style.short)
+  //  }
 }
 
 
-extension NewApptTableViewController: JTAppleCalendarViewDataSource {
+extension UpdateApptTVC: JTAppleCalendarViewDataSource {
   func configureCalendar(_ calendar: JTAppleCalendarView) -> ConfigurationParameters {
     formatter.dateFormat = "yyyy MM dd"
     formatter.timeZone = Calendar.current.timeZone
@@ -237,7 +266,7 @@ extension NewApptTableViewController: JTAppleCalendarViewDataSource {
 }
 
 
-extension NewApptTableViewController: JTAppleCalendarViewDelegate {
+extension UpdateApptTVC: JTAppleCalendarViewDelegate {
   // Display Cell
   func calendar(_ calendar: JTAppleCalendarView, cellForItemAt date: Date, cellState: CellState, indexPath: IndexPath) -> JTAppleCell {
     let cell = calendar.dequeueReusableJTAppleCell(withReuseIdentifier: "CustomCell", for: indexPath) as! CustomCell
@@ -252,7 +281,7 @@ extension NewApptTableViewController: JTAppleCalendarViewDelegate {
   func calendar(_ calendar: JTAppleCalendarView, didSelectDate date: Date, cell: JTAppleCell?, cellState: CellState) {
     handleCellSelected(view: cell, cellState: cellState)
     handleCellTextColor(view: cell, cellState: cellState)
-//    calendarViewDateChanged()
+    //    calendarViewDateChanged()
   }
   
   func calendar(_ calendar: JTAppleCalendarView, didDeselectDate date: Date, cell: JTAppleCell?, cellState: CellState) {
@@ -265,6 +294,3 @@ extension NewApptTableViewController: JTAppleCalendarViewDelegate {
   }
   
 }
-
-
-
