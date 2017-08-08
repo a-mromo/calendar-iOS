@@ -46,7 +46,7 @@ class UpdateApptTVC: UITableViewController, AppointmentTVC {
   @IBOutlet weak var patientLabel: UILabel!
   @IBOutlet weak var noteTextView: UITextView!
   @IBOutlet weak var costTextField: UITextField!
-//  @IBOutlet weak var dateDetailLabel: UILabel!
+  @IBOutlet weak var dateDetailLabel: UILabel!
 //  @IBOutlet weak var datePicker: UIDatePicker!
   
   @IBAction func cancelButton(_ sender: UIBarButtonItem) {
@@ -172,6 +172,34 @@ class UpdateApptTVC: UITableViewController, AppointmentTVC {
   }
 }
 
+
+extension UpdateApptTVC {
+  func toggleCalendarView() {
+    calendarViewHidden = !calendarViewHidden
+    
+    tableView.beginUpdates()
+    tableView.endUpdates()
+  }
+  
+  func updateDateDetailLabel(date: Date){
+    formatter.dateFormat = "MMMM dd, yyyy"
+    dateDetailLabel.text = formatter.string(from: date)
+  }
+  
+  override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+    if indexPath.section == 0 && indexPath.row == 0 {
+      toggleCalendarView()
+    }
+  }
+  
+  override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+    if calendarViewHidden && indexPath.section == 0 && indexPath.row == 1 {
+      return 0
+    } else {
+      return super.tableView(tableView, heightForRowAt: indexPath)
+    }
+  }
+}
 
 
 // Date picker
@@ -301,6 +329,8 @@ extension UpdateApptTVC: JTAppleCalendarViewDelegate {
   func calendar(_ calendar: JTAppleCalendarView, didSelectDate date: Date, cell: JTAppleCell?, cellState: CellState) {
     handleCellSelected(view: cell, cellState: cellState)
     handleCellTextColor(view: cell, cellState: cellState)
+    
+    updateDateDetailLabel(date: date)
     //    calendarViewDateChanged()
   }
   

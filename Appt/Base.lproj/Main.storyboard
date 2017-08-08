@@ -185,18 +185,40 @@
                         <sections>
                             <tableViewSection id="GOI-93-YHM">
                                 <cells>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" id="REk-Tr-Wmc">
+                                        <rect key="frame" x="0.0" y="35" width="375" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="REk-Tr-Wmc" id="LG9-lK-4ve">
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Day of Month" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Izf-SL-SqP">
+                                                    <rect key="frame" x="16" y="11.5" width="192" height="21"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                                    <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <color key="backgroundColor" red="0.33333333329999998" green="0.2274509804" blue="0.3803921569" alpha="1" colorSpace="calibratedRGB"/>
+                                        </tableViewCellContentView>
+                                        <constraints>
+                                            <constraint firstAttribute="trailing" relation="lessThanOrEqual" secondItem="Izf-SL-SqP" secondAttribute="trailing" constant="167" id="NbE-z1-hDE"/>
+                                            <constraint firstItem="Izf-SL-SqP" firstAttribute="leading" secondItem="REk-Tr-Wmc" secondAttribute="leading" constant="16" id="hDo-YA-npa"/>
+                                            <constraint firstItem="Izf-SL-SqP" firstAttribute="centerY" secondItem="REk-Tr-Wmc" secondAttribute="centerY" id="zpa-3W-tA2"/>
+                                        </constraints>
+                                    </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="480" id="ayL-4W-QaM">
-                                        <rect key="frame" x="0.0" y="35" width="375" height="480"/>
+                                        <rect key="frame" x="0.0" y="79" width="375" height="480"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="ayL-4W-QaM" id="pip-dK-YJu">
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="479.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillProportionally" translatesAutoresizingMaskIntoConstraints="NO" id="DQg-CQ-KVc" userLabel="Calendar stack">
-                                                    <rect key="frame" x="0.0" y="-1828.5" width="375" height="2308"/>
+                                                    <rect key="frame" x="0.0" y="-2248" width="375" height="2727.5"/>
                                                     <subviews>
                                                         <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillProportionally" translatesAutoresizingMaskIntoConstraints="NO" id="LmP-yg-2v7" userLabel="Title Stack View">
-                                                            <rect key="frame" x="0.0" y="0.0" width="375" height="65.5"/>
+                                                            <rect key="frame" x="0.0" y="0.0" width="375" height="65"/>
                                                             <subviews>
                                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Year" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wMk-jF-fOp">
                                                                     <rect key="frame" x="0.0" y="0.0" width="375" height="21"/>
@@ -205,7 +227,7 @@
                                                                     <nil key="highlightedColor"/>
                                                                 </label>
                                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Month" textAlignment="natural" lineBreakMode="characterWrap" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RO5-hu-z3S">
-                                                                    <rect key="frame" x="0.0" y="21" width="375" height="44.5"/>
+                                                                    <rect key="frame" x="0.0" y="21" width="375" height="44"/>
                                                                     <fontDescription key="fontDescription" type="system" pointSize="36"/>
                                                                     <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                                                     <nil key="highlightedColor"/>
@@ -213,7 +235,7 @@
                                                             </subviews>
                                                         </stackView>
                                                         <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="AFj-AJ-73a" userLabel="DoW Stack">
-                                                            <rect key="frame" x="0.0" y="65.5" width="375" height="20.5"/>
+                                                            <rect key="frame" x="0.0" y="65" width="375" height="20.5"/>
                                                             <subviews>
                                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Sun" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ax7-Or-PVO">
                                                                     <rect key="frame" x="0.0" y="0.0" width="53.5" height="20.5"/>
@@ -270,7 +292,7 @@
                                                             </constraints>
                                                         </stackView>
                                                         <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" pagingEnabled="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="ONw-Np-zXi" customClass="JTAppleCalendarView" customModule="JTAppleCalendar">
-                                                            <rect key="frame" x="0.0" y="86" width="375" height="2222"/>
+                                                            <rect key="frame" x="0.0" y="85.5" width="375" height="2642"/>
                                                             <color key="backgroundColor" red="0.2274509804" green="0.16078431369999999" blue="0.29411764709999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="height" constant="340" id="vXV-VZ-JcD"/>
@@ -343,7 +365,7 @@
                             <tableViewSection id="yku-lL-lH7">
                                 <cells>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" textLabel="fTu-VI-V4k" detailTextLabel="5xa-7D-j1j" style="IBUITableViewCellStyleValue1" id="4N4-gv-5oj">
-                                        <rect key="frame" x="0.0" y="551" width="375" height="44"/>
+                                        <rect key="frame" x="0.0" y="595" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="4N4-gv-5oj" id="onr-Zz-OEG">
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
@@ -374,7 +396,7 @@
                             <tableViewSection id="ueK-XT-ays">
                                 <cells>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="RL0-4e-ixv">
-                                        <rect key="frame" x="0.0" y="631" width="375" height="44"/>
+                                        <rect key="frame" x="0.0" y="675" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="RL0-4e-ixv" id="jfR-ae-xWS">
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
@@ -399,7 +421,7 @@
                             <tableViewSection id="imG-CW-AtQ">
                                 <cells>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="160" id="1go-bx-CZ0">
-                                        <rect key="frame" x="0.0" y="711" width="375" height="160"/>
+                                        <rect key="frame" x="0.0" y="755" width="375" height="160"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="1go-bx-CZ0" id="xpo-tA-CdL">
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="159.5"/>
@@ -444,6 +466,7 @@
                     <connections>
                         <outlet property="calendarView" destination="ONw-Np-zXi" id="w9d-mi-RgD"/>
                         <outlet property="costTextField" destination="mcx-0C-ghM" id="BSF-2o-n5i"/>
+                        <outlet property="dateDetailLabel" destination="Izf-SL-SqP" id="iUE-u7-tdb"/>
                         <outlet property="monthLabel" destination="RO5-hu-z3S" id="N3A-qy-lgp"/>
                         <outlet property="noteTextView" destination="jWG-nX-MpS" id="ALl-1H-Yg0"/>
                         <outlet property="patientLabel" destination="5xa-7D-j1j" id="zGb-Yf-mzT"/>
@@ -1020,7 +1043,7 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillProportionally" translatesAutoresizingMaskIntoConstraints="NO" id="k9m-mm-fAV" userLabel="Calendar stack">
-                                                    <rect key="frame" x="0.0" y="-3625.5" width="375" height="4105"/>
+                                                    <rect key="frame" x="0.0" y="-3829" width="375" height="4308.5"/>
                                                     <subviews>
                                                         <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillProportionally" translatesAutoresizingMaskIntoConstraints="NO" id="sjg-Sc-qeP" userLabel="Title Stack View">
                                                             <rect key="frame" x="0.0" y="0.0" width="375" height="65"/>
@@ -1097,7 +1120,7 @@
                                                             </constraints>
                                                         </stackView>
                                                         <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" pagingEnabled="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="SO9-34-Uii" customClass="JTAppleCalendarView" customModule="JTAppleCalendar">
-                                                            <rect key="frame" x="0.0" y="85.5" width="375" height="4019.5"/>
+                                                            <rect key="frame" x="0.0" y="85.5" width="375" height="4223"/>
                                                             <color key="backgroundColor" red="0.22745098039215686" green="0.16078431372549018" blue="0.29411764705882354" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="height" constant="340" id="z7B-lk-4Wh"/>
@@ -1562,7 +1585,7 @@
         <image name="today" width="36" height="40"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="Ity-bc-bUT"/>
+        <segue reference="XoE-ck-qRf"/>
         <segue reference="vH7-U6-gh3"/>
     </inferredMetricsTieBreakers>
 </document>

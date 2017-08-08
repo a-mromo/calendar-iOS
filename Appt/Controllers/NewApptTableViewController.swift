@@ -144,6 +144,11 @@ extension NewApptTableViewController {
     tableView.endUpdates()
   }
   
+  func updateDateDetailLabel(date: Date){
+    formatter.dateFormat = "MMMM dd, yyyy"
+    dateDetailLabel.text = formatter.string(from: date)
+  }
+  
   override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
     if indexPath.section == 0 && indexPath.row == 0 {
       toggleCalendarView()
@@ -157,6 +162,7 @@ extension NewApptTableViewController {
       return super.tableView(tableView, heightForRowAt: indexPath)
     }
   }
+  
 }
 
 // Date picker
@@ -288,8 +294,7 @@ extension NewApptTableViewController: JTAppleCalendarViewDelegate {
     handleCellSelected(view: cell, cellState: cellState)
     handleCellTextColor(view: cell, cellState: cellState)
     
-    formatter.dateFormat = "MMMM dd, yyyy"
-    dateDetailLabel.text = formatter.string(from: date)
+    updateDateDetailLabel(date: date)
 //    calendarViewDateChanged()
   }
   
