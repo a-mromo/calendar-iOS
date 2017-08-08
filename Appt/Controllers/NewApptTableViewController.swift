@@ -10,7 +10,14 @@ import UIKit
 import CoreData
 import JTAppleCalendar
 
-class NewApptTableViewController: UITableViewController {
+protocol AppointmentTVC {
+  var patient: Patient? { get set }
+  
+  func confirmAppointment()
+  func setupCalendarView()
+}
+
+class NewApptTableViewController: UITableViewController, AppointmentTVC {
   
   var patient: Patient?
   let formatter = DateFormatter()
@@ -45,22 +52,7 @@ class NewApptTableViewController: UITableViewController {
   }
   
   @IBAction func confirmAppointment(_ sender: UIBarButtonItem) {
-    let appointment = Appointment(context: persistentContainer.viewContext)
-    
-    appointment.patient = patient
-    appointment.date = calendarView.selectedDates.first
-    appointment.note = noteTextView.text
-    appointment.cost = costTextField.text
-    appointment.dateCreated = Date()
-    
-    do {
-      try persistentContainer.viewContext.save()
-      print("Appointment Saved")
-    } catch {
-      print("Unable to Save Changes")
-      print("\(error), \(error.localizedDescription)")
-    }
-    dismiss(animated: true, completion: nil)
+    confirmAppointment()
   }
   
   override func viewDidLoad() {
@@ -86,6 +78,25 @@ class NewApptTableViewController: UITableViewController {
     if patient != nil {
       patientLabel.text = patient?.fullName
     }
+  }
+  
+  func confirmAppointment() {
+    let appointment = Appointment(context: persistentContainer.viewContext)
+    
+    appointment.patient = patient
+    appointment.date = calendarView.selectedDates.first
+    appointment.note = noteTextView.text
+    appointment.cost = costTextField.text
+    appointment.dateCreated = Date()
+    
+    do {
+      try persistentContainer.viewContext.save()
+      print("Appointment Saved")
+    } catch {
+      print("Unable to Save Changes")
+      print("\(error), \(error.localizedDescription)")
+    }
+    dismiss(animated: true, completion: nil)
   }
   
   func noLargeTitles(){

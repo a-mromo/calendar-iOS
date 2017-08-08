@@ -10,11 +10,18 @@ import UIKit
 import CoreData
 import JTAppleCalendar
 
-class UpdateApptTVC: UITableViewController {
+class UpdateApptTVC: UITableViewController, AppointmentTVC {
   
-  var patient: Patient?
+  var patient: Patient? {
+    didSet {
+      if patient?.fullName != nil {
+        patientLabel.text = patient?.fullName
+      }
+    }
+  }
   var appointment: Appointment?
   let formatter = DateFormatter()
+  var appointmentLoaded: Bool! 
   
   let segueSelectPatient = "SegueSelectPatientsTVC"
   
@@ -46,26 +53,14 @@ class UpdateApptTVC: UITableViewController {
   }
   
   @IBAction func confirmAppointment(_ sender: UIBarButtonItem) {
-    
-    guard let appointment = appointment else {
-      return
-    }
-    appointment.patient = patient
-    //    appointment.date = datePicker.date
-    appointment.date = calendarView.selectedDates.first
-    appointment.note = noteTextView.text
-    appointment.cost = costTextField.text
-    appointment.dateModified = Date()
-    
-    updateAppt()
-    dismiss(animated: true, completion: nil)
+    confirmAppointment()
   }
 
   
   override func viewDidLoad() {
     super.viewDidLoad()
     noLargeTitles()
-    //      setupCalendarView()
+    setupCalendarView()
     setupKeyboardNotification()
     
     calendarView.visibleDates{ (visibleDates) in
@@ -79,7 +74,11 @@ class UpdateApptTVC: UITableViewController {
   }
   
   override func viewWillAppear(_ animated: Bool) {
-    loadAppointment()
+    if appointmentLoaded {
+      loadAppointment()
+      appointmentLoaded = false
+    }
+    
   }
   
   func loadAppointment() {
@@ -90,10 +89,12 @@ class UpdateApptTVC: UITableViewController {
         let note = appointment.note {
         
         let dates: [Date] = [date]
-        calendarView.scrollToDate(date)
+        calendarView.scrollToDate(date, animateScroll: false)
+        calendarView.selectDates( dates )
         //        calendarView.date
         //        dateDetailLabel.text = dateFormatter(date: date)
         patientLabel.text = patient.fullName
+        self.patient = patient
         costTextField.text = cost
         noteTextView.text = note
         //        datePicker.date = date
@@ -113,6 +114,21 @@ class UpdateApptTVC: UITableViewController {
       print("Unable to Save Changes")
       print("\(error), \(error.localizedDescription)")
     }
+  }
+  
+  func confirmAppointment() {
+    guard let appointment = appointment else {
+      return
+    }
+    appointment.patient = patient
+    //    appointment.date = datePicker.date
+    appointment.date = calendarView.selectedDates.first
+    appointment.note = noteTextView.text
+    appointment.cost = costTextField.text
+    appointment.dateModified = Date()
+    
+    updateAppt()
+    dismiss(animated: true, completion: nil)
   }
   
   

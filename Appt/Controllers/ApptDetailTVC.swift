@@ -55,6 +55,7 @@ class ApptDetailTVC: UITableViewController {
       if let destinationNavigationViewController = segue.destination as? UINavigationController {
         let controller = (destinationNavigationViewController.topViewController as! UpdateApptTVC)
         controller.appointment = appointment
+        controller.appointmentLoaded = true
       }
     }
   }

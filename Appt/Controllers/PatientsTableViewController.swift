@@ -76,29 +76,37 @@ class PatientsTableViewController: UITableViewController {
   }
   
   override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-    guard let destinationVC = self.navigationController?.viewControllers[0] as? NewApptTableViewController
-      else {
-        print("Could not instantiate view controller with identifier PatientDetailTVC")
-        return
-    }
+  
+//    guard let destinationVC = self.navigationController?.viewControllers[0] as?  NewApptTableViewController
+//      else {
+//        print("Could not instantiate view controller with identifier PatientDetailTVC")
+//        return
+//    }
     
-    if searchController.isActive && searchController.searchBar.text != "" {
-      destinationVC.patient = filteredPatient[indexPath.row]
-    } else {
-      destinationVC.patient = fetchedResultsController.object(at: indexPath)
+    if let destinationVC = self.navigationController?.viewControllers[0] as?  NewApptTableViewController {
+      if searchController.isActive && searchController.searchBar.text != "" {
+        destinationVC.patient = filteredPatient[indexPath.row]
+      } else {
+        destinationVC.patient = fetchedResultsController.object(at: indexPath)
+      }
+      self.navigationController?.popViewController(animated: true)
+    } else if let destinationVC = self.navigationController?.viewControllers[0] as?  UpdateApptTVC {
+      if searchController.isActive && searchController.searchBar.text != "" {
+        destinationVC.patient = filteredPatient[indexPath.row]
+      } else {
+        destinationVC.patient = fetchedResultsController.object(at: indexPath)
+      }
+      self.navigationController?.popViewController(animated: true)
     }
-    
-    self.navigationController?.popViewController(animated: true)
-
   }
   
-  override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-    if segue.identifier == "patientSelected" {
-      if let destinationVC = segue.destination as? NewApptTableViewController {
-        destinationVC.patient = self.selectedPatient
-      }
-    }
-  }
+//  override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+//    if segue.identifier == "patientSelected" {
+//      if let destinationVC = segue.destination as? NewApptTableViewController {
+//        destinationVC.patient = self.selectedPatient
+//      }
+//    }
+//  }
   
   func fetchPatients() {
     do {
