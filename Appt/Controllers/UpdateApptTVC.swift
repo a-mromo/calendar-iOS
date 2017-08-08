@@ -19,6 +19,7 @@ class UpdateApptTVC: UITableViewController, AppointmentTVC {
       }
     }
   }
+  
   var appointment: Appointment?
   let formatter = DateFormatter()
   var appointmentLoaded: Bool! 
@@ -62,6 +63,9 @@ class UpdateApptTVC: UITableViewController, AppointmentTVC {
     noLargeTitles()
     setupCalendarView()
     setupKeyboardNotification()
+    setTextFieldDelegates()
+    setTextViewDelegates()
+    setDoneOnKeyboard()
     
     calendarView.visibleDates{ (visibleDates) in
       self.setupViewsFromCalendar(from: visibleDates)

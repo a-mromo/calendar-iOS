@@ -20,6 +20,19 @@ extension NewApptTableViewController: UITextFieldDelegate {
   }
 }
 
+// NEEDS REFACTORING -- DUPLICATED CODE -- SEE LEGACY CODE FILE
+
+extension UpdateApptTVC: UITextFieldDelegate {
+  func setTextFieldDelegates(){
+    self.costTextField.delegate = self
+  }
+  
+  func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+    self.view.endEditing(true)
+    return false
+  }
+}
+
 
 extension NewPatientTableVC: UITextFieldDelegate {
   
@@ -36,4 +49,5 @@ extension NewPatientTableVC: UITextFieldDelegate {
     return false
   }
 }
+
 
