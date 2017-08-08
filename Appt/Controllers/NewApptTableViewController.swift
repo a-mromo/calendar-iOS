@@ -59,15 +59,16 @@ class NewApptTableViewController: UITableViewController, AppointmentTVC {
     super.viewDidLoad()
 //    monthLabel.lineBreakMode = .byCharWrapping
     setupCalendarView()
-    calendarView.scrollToDate(Date())
+    
     noLargeTitles()
     setTextFieldDelegates()
     setTextViewDelegates()
     setDoneOnKeyboard()
     noteTextView.placeholder = "Notes"
-
     setupKeyboardNotification()
     
+    calendarView.scrollToDate(Date(), animateScroll: false)
+    calendarView.selectDates( [Date()] )
   }
   
   deinit {
@@ -135,7 +136,28 @@ class NewApptTableViewController: UITableViewController, AppointmentTVC {
   }
 }
 
-
+extension NewApptTableViewController {
+  func toggleCalendarView() {
+    calendarViewHidden = !calendarViewHidden
+    
+    tableView.beginUpdates()
+    tableView.endUpdates()
+  }
+  
+  override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+    if indexPath.section == 0 && indexPath.row == 0 {
+      toggleCalendarView()
+    }
+  }
+  
+  override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+    if calendarViewHidden && indexPath.section == 0 && indexPath.row == 1 {
+      return 0
+    } else {
+      return super.tableView(tableView, heightForRowAt: indexPath)
+    }
+  }
+}
 
 // Date picker
 extension NewApptTableViewController {
@@ -219,6 +241,7 @@ extension NewApptTableViewController {
     
     formatter.dateFormat = "MMMM"
     monthLabel.text = formatter.string(from: date)
+    
   }
   
 //  func calendarViewDateChanged() {
@@ -264,12 +287,16 @@ extension NewApptTableViewController: JTAppleCalendarViewDelegate {
   func calendar(_ calendar: JTAppleCalendarView, didSelectDate date: Date, cell: JTAppleCell?, cellState: CellState) {
     handleCellSelected(view: cell, cellState: cellState)
     handleCellTextColor(view: cell, cellState: cellState)
+    
+    formatter.dateFormat = "MMMM dd, yyyy"
+    dateDetailLabel.text = formatter.string(from: date)
 //    calendarViewDateChanged()
   }
   
   func calendar(_ calendar: JTAppleCalendarView, didDeselectDate date: Date, cell: JTAppleCell?, cellState: CellState) {
     handleCellSelected(view: cell, cellState: cellState)
     handleCellTextColor(view: cell, cellState: cellState)
+    
   }
   
   func calendar(_ calendar: JTAppleCalendarView, didScrollToDateSegmentWith visibleDates: DateSegmentInfo) {
