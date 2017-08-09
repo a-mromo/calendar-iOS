@@ -9,6 +9,39 @@
 import UIKit
 
 extension Date {
+  func year() -> Int
+  {
+    //Get Hour
+    let calendar = Calendar.current
+    let components = calendar.dateComponents([.year], from: self as Date)
+    let year = components.year
+    
+    //Return Hour
+    return year!
+  }
+  
+  func month() -> Int
+  {
+    //Get Hour
+    let calendar = Calendar.current
+    let components = calendar.dateComponents([.month], from: self as Date)
+    let month = components.month
+    
+    //Return Hour
+    return month!
+  }
+  
+  func day() -> Int
+  {
+    //Get Hour
+    let calendar = Calendar.current
+    let components = calendar.dateComponents([.day], from: self as Date)
+    let day = components.day
+    
+    //Return Hour
+    return day!
+  }
+  
   func hour() -> Int
   {
     //Get Hour

@@ -18,6 +18,7 @@
 		6C3342931F3A6229007F626D /* TimeSlotsCVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C3342921F3A6229007F626D /* TimeSlotsCVC.swift */; };
 		6C3342971F3A643D007F626D /* TimeSlotCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C3342961F3A643D007F626D /* TimeSlotCell.swift */; };
 		6C3342991F3A9ACC007F626D /* TimeSlotFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C3342981F3A9ACC007F626D /* TimeSlotFormatter.swift */; };
+		6C33429B1F3AD8EF007F626D /* TimeSlotter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C33429A1F3AD8EF007F626D /* TimeSlotter.swift */; };
 		6C4151C31ECA7ACF00ACDAE7 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C4151C21ECA7ACF00ACDAE7 /* AppDelegate.swift */; };
 		6C4151CA1ECA7ACF00ACDAE7 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6C4151C81ECA7ACF00ACDAE7 /* Main.storyboard */; };
 		6C4151CC1ECA7ACF00ACDAE7 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6C4151CB1ECA7ACF00ACDAE7 /* Assets.xcassets */; };
@@ -75,6 +76,7 @@
 		6C3342921F3A6229007F626D /* TimeSlotsCVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeSlotsCVC.swift; sourceTree = "<group>"; };
 		6C3342961F3A643D007F626D /* TimeSlotCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeSlotCell.swift; sourceTree = "<group>"; };
 		6C3342981F3A9ACC007F626D /* TimeSlotFormatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeSlotFormatter.swift; sourceTree = "<group>"; };
+		6C33429A1F3AD8EF007F626D /* TimeSlotter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeSlotter.swift; sourceTree = "<group>"; };
 		6C4151BF1ECA7ACF00ACDAE7 /* Appt.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Appt.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		6C4151C21ECA7ACF00ACDAE7 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		6C4151C91ECA7ACF00ACDAE7 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -238,6 +240,7 @@
 			children = (
 				6C4A3AF01EF9E53C00D91CA5 /* DateFormatters.swift */,
 				6C3342981F3A9ACC007F626D /* TimeSlotFormatter.swift */,
+				6C33429A1F3AD8EF007F626D /* TimeSlotter.swift */,
 			);
 			path = Support;
 			sourceTree = "<group>";
@@ -496,6 +499,7 @@
 				6C3208461EE0153100ED6BDF /* ActivityCell.swift in Sources */,
 				6CED20611ED3926100A6CD8B /* PatientCell.swift in Sources */,
 				6CED205F1ED38DA700A6CD8B /* PatientsTableViewController.swift in Sources */,
+				6C33429B1F3AD8EF007F626D /* TimeSlotter.swift in Sources */,
 				6CE055631EDFED6600312499 /* Appointment+CoreDataProperties.swift in Sources */,
 				6CE413821F37C66F00D459B5 /* UpdateApptTVC.swift in Sources */,
 				6C952E581ECD629E005CB5B7 /* NewApptTableViewController.swift in Sources */,
