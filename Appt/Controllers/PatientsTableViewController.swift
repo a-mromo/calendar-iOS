@@ -27,7 +27,6 @@ class PatientsTableViewController: UITableViewController {
     fetchRequest.sortDescriptors = [NSSortDescriptor(key: "lastName", ascending: true)]
     let fetchedResultsController = NSFetchedResultsController(fetchRequest: fetchRequest, managedObjectContext: self.persistentContainer.viewContext, sectionNameKeyPath: nil, cacheName: nil)
     fetchedResultsController.delegate = self
-    
     return fetchedResultsController
   }()
   
@@ -155,7 +154,6 @@ extension PatientsTableViewController: NSFetchedResultsControllerDelegate {
   
   func controllerDidChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
     tableView.endUpdates()
-    
   }
   
   func controller(_ controller: NSFetchedResultsController<NSFetchRequestResult>, didChange anObject: Any, at indexPath: IndexPath?, for type: NSFetchedResultsChangeType, newIndexPath: IndexPath?) {

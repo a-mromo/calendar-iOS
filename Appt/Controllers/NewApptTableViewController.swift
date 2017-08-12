@@ -12,7 +12,7 @@ import JTAppleCalendar
 
 protocol AppointmentTVC {
   var patient: Patient? { get set }
-  
+  var selectedTimeSlot: Date? { get set }
   func confirmAppointment()
   func setupCalendarView()
 }
@@ -20,6 +20,8 @@ protocol AppointmentTVC {
 class NewApptTableViewController: UITableViewController, AppointmentTVC {
   
   var patient: Patient?
+  var selectedTimeSlot: Date?
+  var appointmentsOfTheDay: [Appointment]?
   let formatter = DateFormatter()
   
   let segueSelectPatient = "SegueSelectPatientsTVC"
@@ -27,7 +29,7 @@ class NewApptTableViewController: UITableViewController, AppointmentTVC {
   let persistentContainer = CoreDataStore.instance.persistentContainer
   var managedObjectContext: NSManagedObjectContext?
   
-  var datePickerHidden = false
+
   var calendarViewHidden = false
   
   // Calendar Color
@@ -37,10 +39,26 @@ class NewApptTableViewController: UITableViewController, AppointmentTVC {
   let currentDateSelectedViewColor = UIColor(hexCode: "#4e3f5d")!
   
   
+  // Load Appointments for given date
+  
+  lazy var fetchedResultsController: NSFetchedResultsController<Appointment> = {
+    let fetchRequest: NSFetchRequest<Appointment> = Appointment.fetchRequest()
+    fetchRequest.sortDescriptors = [NSSortDescriptor(key: "date", ascending: false)]
+    if let selectedDate = calendarView.selectedDates.first {
+      fetchRequest.predicate = getPredicate(for: selectedDate )
+    }
+    let fetchedResultsController = NSFetchedResultsController(fetchRequest: fetchRequest, managedObjectContext: self.persistentContainer.viewContext, sectionNameKeyPath: nil, cacheName: nil)
+    fetchedResultsController.delegate = self
+    
+    return fetchedResultsController
+  }()
+  
+  
   @IBOutlet var calendarView: JTAppleCalendarView!
   @IBOutlet var monthLabel: UILabel!
   @IBOutlet var yearLabel: UILabel!
   
+  @IBOutlet weak var timeSlotLabel: UILabel!
   @IBOutlet weak var patientLabel: UILabel!
   @IBOutlet weak var noteTextView: UITextView!
   @IBOutlet weak var costTextField: UITextField!
@@ -59,6 +77,18 @@ class NewApptTableViewController: UITableViewController, AppointmentTVC {
     super.viewDidLoad()
 //    monthLabel.lineBreakMode = .byCharWrapping
     setupCalendarView()
+    
+    fetchAppointmentsForDay()
+//    appointmentsOfTheDay = fetchedResultsController.fetchedObjects
+//
+//    if appointmentsOfTheDay != nil {
+//      for appointment in appointmentsOfTheDay! {
+//        print("Appointment date is: \(appointment.date)")
+//      }
+//    } else {
+//      print("Appointment is empty")
+//    }
+    
     
     noLargeTitles()
     setTextFieldDelegates()
@@ -79,13 +109,17 @@ class NewApptTableViewController: UITableViewController, AppointmentTVC {
     if patient != nil {
       patientLabel.text = patient?.fullName
     }
+    if selectedTimeSlot != nil {
+      timeSlotLabel.text = selectedTimeSlot?.toHourMinuteString()
+    }
   }
   
   func confirmAppointment() {
     let appointment = Appointment(context: persistentContainer.viewContext)
     
     appointment.patient = patient
-    appointment.date = calendarView.selectedDates.first
+//    appointment.date = calendarView.selectedDates.first
+    appointment.date = selectedTimeSlot
     appointment.note = noteTextView.text
     appointment.cost = costTextField.text
     appointment.dateCreated = Date()
@@ -165,41 +199,6 @@ extension NewApptTableViewController {
   
 }
 
-// Date picker
-extension NewApptTableViewController {
-  @IBAction func datePickerValue(_ sender: UIDatePicker) {
-    datePickerChanged()
-  }
-  
-  // Run datePickerChanged() in viewDidLoad() to display selected date in Label
-  func datePickerChanged() {
-//    dateDetailLabel.text = DateFormatter.localizedString(from: datePicker.date, dateStyle: DateFormatter.Style.short, timeStyle: DateFormatter.Style.short)
-  }
-  
-  func toggleDatePicker() {
-    datePickerHidden = !datePickerHidden
-    
-    tableView.beginUpdates()
-    tableView.endUpdates()
-  }
-  
-  // Toggle DatePicker
-  
-//  override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-//    if indexPath.section == 0 && indexPath.row == 0 {
-//      toggleDatePicker()
-//    }
-//  }
-//
-//  override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-//    // Use the datePicker row. The one below is from a previous iteration
-//    if datePickerHidden && indexPath.section == 0 && indexPath.row == 1 {
-//      return 0
-//    } else {
-//      return super.tableView(tableView, heightForRowAt: indexPath)
-//    }
-//  }
-}
 
 
 extension NewApptTableViewController {
@@ -254,10 +253,71 @@ extension NewApptTableViewController {
 //    guard let calendarDate = calendarView.selectedDates.first else { return }
 //    dateDetailLabel.text = DateFormatter.localizedString(from: calendarDate, dateStyle: DateFormatter.Style.short, timeStyle: DateFormatter.Style.short)
 //  }
+  
+  override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+    let calendarDate = calendarView.selectedDates.first
+    if segue.identifier == "segueTimeSlots" {
+      let destinationVC = segue.destination as! TimeSlotsCVC
+      destinationVC.appointmentDate = calendarDate
+      if let currentAppointments = appointmentsOfTheDay {
+      destinationVC.currentAppointments = currentAppointments
+      }
+    }
+  }
 }
 
 
 extension NewApptTableViewController: JTAppleCalendarViewDataSource {
+  
+  func loadAppointmentsForDate(date: Date){
+    var calendar = Calendar.current
+    calendar.timeZone = NSTimeZone.local
+    
+    let dateFrom = calendar.startOfDay(for: date)
+    var components = calendar.dateComponents([.year, .month, .day, .hour, .minute], from: dateFrom)
+    components.day! += 1
+    let dateTo = calendar.date(from: components)
+    
+    let datePredicate = NSPredicate(format: "(%@ <= date) AND (date < %@)", argumentArray: [dateFrom, dateTo])
+    if let fetchedObjects = fetchedResultsController.fetchedObjects {
+      appointmentsOfTheDay = fetchedObjects.filter({ return datePredicate.evaluate(with: $0) })
+    }
+    
+    if appointmentsOfTheDay != nil {
+      for appointment in appointmentsOfTheDay! {
+        print("Appointment date is: \(appointment.date)")
+      }
+    } else {
+      print("Appointment is empty")
+    }
+//    tableView.reloadData()
+  }
+  
+  func getPredicate(for date: Date) -> NSPredicate {
+    var calendar = Calendar.current
+    calendar.timeZone = NSTimeZone.local
+    
+    let dateFrom = calendar.startOfDay(for: date)
+    var components = calendar.dateComponents([.year, .month, .day, .hour, .minute], from: dateFrom)
+    components.day! += 1
+    let dateTo = calendar.date(from: components)
+    let datePredicate = NSPredicate(format: "(%@ <= date) AND (date < %@)", argumentArray: [dateFrom, dateTo])
+    
+    return datePredicate
+  }
+  
+  func fetchAppointmentsForDay() {
+    do {
+      try self.fetchedResultsController.performFetch()
+      print("AppointmentForDay Fetch Successful")
+    } catch {
+      let fetchError = error as NSError
+      print("Unable to Perform AppointmentForDay Fetch Request")
+      print("\(fetchError), \(fetchError.localizedDescription)")
+    }
+  }
+  
+  
   func configureCalendar(_ calendar: JTAppleCalendarView) -> ConfigurationParameters {
     formatter.dateFormat = "yyyy MM dd"
     formatter.timeZone = Calendar.current.timeZone
@@ -295,6 +355,8 @@ extension NewApptTableViewController: JTAppleCalendarViewDelegate {
     handleCellTextColor(view: cell, cellState: cellState)
     
     updateDateDetailLabel(date: date)
+    loadAppointmentsForDate(date: date)
+  
 //    calendarViewDateChanged()
   }
   
@@ -306,6 +368,45 @@ extension NewApptTableViewController: JTAppleCalendarViewDelegate {
   
   func calendar(_ calendar: JTAppleCalendarView, didScrollToDateSegmentWith visibleDates: DateSegmentInfo) {
     setupViewsFromCalendar(from: visibleDates)
+  }
+  
+}
+
+extension NewApptTableViewController: NSFetchedResultsControllerDelegate {
+  
+  func controllerWillChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
+    tableView.beginUpdates()
+  }
+  
+  func controllerDidChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
+    tableView.endUpdates()
+    
+  }
+  
+  func controller(_ controller: NSFetchedResultsController<NSFetchRequestResult>, didChange anObject: Any, at indexPath: IndexPath?, for type: NSFetchedResultsChangeType, newIndexPath: IndexPath?) {
+    switch (type) {
+    case .insert:
+      if let indexPath = newIndexPath {
+        print("Appt Added")
+        tableView.insertRows(at: [indexPath], with: .fade)
+      }
+      break;
+    case .delete:
+      if let indexPath = indexPath {
+        tableView.deleteRows(at: [indexPath], with: .fade)
+      }
+      break;
+    case .update:
+      if let indexPath = indexPath {
+        print("Appt Changed and updated")
+        tableView.reloadRows(at: [indexPath], with: .fade)
+      }
+    default:
+      print("...")
+    }
+  }
+  
+  func controller(_ controller: NSFetchedResultsController<NSFetchRequestResult>, didChange sectionInfo: NSFetchedResultsSectionInfo, atSectionIndex sectionIndex: Int, for type: NSFetchedResultsChangeType) {
   }
   
 }

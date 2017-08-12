@@ -81,3 +81,8 @@ func dateFormatter (date: Date) -> String{
   return dateString
 }
 
+
+func createCompleteDate(year: Int, month: Int, withDay day: Int, hour: Int, minute: Int) -> Date {
+  return DateComponents(calendar: Calendar.current, timeZone: TimeZone(identifier: "US/Pacific"), year: year, month: month, day: day, hour: hour, minute: minute, second: 0).date!
+}
+

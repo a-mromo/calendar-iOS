@@ -17,6 +17,8 @@ class TimeSlotter {
   var closeTimeHour: Int!
   var closeTimeMinutes: Int!
   
+  var currentDate = Date()
+  
   var appointmentLength: Int!
   var appointmentInterval: Int!
   var currentAppointments = [Date]()
@@ -82,13 +84,10 @@ class TimeSlotter {
   }
   
   func createDate(withDay day: Int, hour: Int, minute: Int) -> Date {
-//    let timeZone: TimeZone = TimeZone(identifier: "US/Pacific")!
     return DateComponents(calendar: Calendar.current, year: 2017, month: 7, day: day, hour: hour, minute: minute, second: 0).date!
   }
   
   func createCompleteDate(year: Int, month: Int, withDay day: Int, hour: Int, minute: Int) -> Date {
-//    let timeZone: TimeZone = TimeZone(abbreviation: "US/Pacific")!
-//    let timeZone: TimeZone = TimeZone(identifier: "US/Pacific")!
     return DateComponents(calendar: Calendar.current, timeZone: TimeZone(identifier: "US/Pacific"), year: year, month: month, day: day, hour: hour, minute: minute, second: 0).date!
   }
 }

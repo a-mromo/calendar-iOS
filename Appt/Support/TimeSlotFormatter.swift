@@ -74,4 +74,14 @@ extension Date {
     //Return Short Time String
     return timeString
   }
+  
+  func toHourMinuteString() -> String {
+    var hourMinute: String
+    if self.minute() == 0 {
+      hourMinute = "\(self.hour()):\(self.minute())" + "0"
+    } else {
+      hourMinute = "\(self.hour()):\(self.minute())"
+    }
+    return hourMinute
+  }
 }

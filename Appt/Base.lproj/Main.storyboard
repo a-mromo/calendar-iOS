@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13168.3" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="49e-Tb-3d3">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13178.6" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="49e-Tb-3d3">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13147.4"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13156.2"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -215,7 +215,7 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillProportionally" translatesAutoresizingMaskIntoConstraints="NO" id="DQg-CQ-KVc" userLabel="Calendar stack">
-                                                    <rect key="frame" x="0.0" y="-3247.5" width="375" height="3727"/>
+                                                    <rect key="frame" x="0.0" y="-3527.5" width="375" height="4007"/>
                                                     <subviews>
                                                         <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillProportionally" translatesAutoresizingMaskIntoConstraints="NO" id="LmP-yg-2v7" userLabel="Title Stack View">
                                                             <rect key="frame" x="0.0" y="0.0" width="375" height="65"/>
@@ -292,7 +292,7 @@
                                                             </constraints>
                                                         </stackView>
                                                         <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" pagingEnabled="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="ONw-Np-zXi" customClass="JTAppleCalendarView" customModule="JTAppleCalendar">
-                                                            <rect key="frame" x="0.0" y="85.5" width="375" height="3641.5"/>
+                                                            <rect key="frame" x="0.0" y="85.5" width="375" height="3921.5"/>
                                                             <color key="backgroundColor" red="0.2274509804" green="0.16078431369999999" blue="0.29411764709999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="height" constant="340" id="vXV-VZ-JcD"/>
@@ -614,7 +614,6 @@
                     <tabBarItem key="tabBarItem" title="Appointments" image="today" id="acW-dT-cKf"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="J3s-Jx-d2p">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
@@ -633,7 +632,6 @@
                     <tabBarItem key="tabBarItem" title="Patients" image="person" id="cPa-gy-q4n"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="RzV-s7-Jw0">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
@@ -651,7 +649,6 @@
                 <navigationController id="MCk-NH-DkV" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Activity" image="schedule" id="rJO-tK-SB5"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="kbi-uZ-5Js">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <connections>
@@ -791,7 +788,6 @@
                 <navigationController id="chm-rR-fES" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Settings" image="settings" id="UGZ-6X-bgo"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="WKc-Xs-tkv">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <connections>
@@ -1065,7 +1061,7 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillProportionally" translatesAutoresizingMaskIntoConstraints="NO" id="k9m-mm-fAV" userLabel="Calendar stack">
-                                                    <rect key="frame" x="0.0" y="-4879.5" width="375" height="5359"/>
+                                                    <rect key="frame" x="0.0" y="-6698" width="375" height="7177.5"/>
                                                     <subviews>
                                                         <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillProportionally" translatesAutoresizingMaskIntoConstraints="NO" id="sjg-Sc-qeP" userLabel="Title Stack View">
                                                             <rect key="frame" x="0.0" y="0.0" width="375" height="65"/>
@@ -1142,7 +1138,7 @@
                                                             </constraints>
                                                         </stackView>
                                                         <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" pagingEnabled="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="SO9-34-Uii" customClass="JTAppleCalendarView" customModule="JTAppleCalendar">
-                                                            <rect key="frame" x="0.0" y="85.5" width="375" height="5273.5"/>
+                                                            <rect key="frame" x="0.0" y="85.5" width="375" height="7092"/>
                                                             <color key="backgroundColor" red="0.22745098039215686" green="0.16078431372549018" blue="0.29411764705882354" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="height" constant="340" id="z7B-lk-4Wh"/>
@@ -1232,7 +1228,7 @@
                                             <constraint firstItem="AWg-pS-Pe1" firstAttribute="centerY" secondItem="swT-oj-Gap" secondAttribute="centerY" id="yIN-wp-q8L"/>
                                         </constraints>
                                         <connections>
-                                            <segue destination="qKJ-D7-gKV" kind="show" id="DkU-Xe-fvp"/>
+                                            <segue destination="qKJ-D7-gKV" kind="show" identifier="segueTimeSlots" id="DkU-Xe-fvp"/>
                                         </connections>
                                     </tableViewCell>
                                 </cells>
@@ -1346,6 +1342,7 @@
                         <outlet property="monthLabel" destination="ryU-EC-tOT" id="x1v-xP-Xnv"/>
                         <outlet property="noteTextView" destination="TU1-Ko-LIS" id="gn1-7f-iXh"/>
                         <outlet property="patientLabel" destination="tC3-av-2Id" id="6b2-RK-oEV"/>
+                        <outlet property="timeSlotLabel" destination="AWg-pS-Pe1" id="VLS-bJ-ZZO"/>
                         <outlet property="yearLabel" destination="fB4-L4-OeW" id="Mow-QY-Rji"/>
                     </connections>
                 </tableViewController>
@@ -1634,7 +1631,7 @@
                 <navigationController wantsFullScreenLayout="YES" automaticallyAdjustsScrollViewInsets="NO" id="1ki-jv-XM3" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="ypS-jY-kZY">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                        <rect key="frame" x="0.0" y="20" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
@@ -1652,7 +1649,7 @@
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="eRa-eg-FW6" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="hCl-8p-bS5">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                        <rect key="frame" x="0.0" y="20" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
@@ -1670,7 +1667,7 @@
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="Qe9-GD-gEO" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="z8R-4f-v6G">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                        <rect key="frame" x="0.0" y="20" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
@@ -1690,7 +1687,7 @@
         <image name="today" width="36" height="40"/>
     </resources>
     <inferredMetricsTieBreakers>
+        <segue reference="ZlX-X9-4ez"/>
         <segue reference="Ity-bc-bUT"/>
-        <segue reference="vH7-U6-gh3"/>
     </inferredMetricsTieBreakers>
 </document>

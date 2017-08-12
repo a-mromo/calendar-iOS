@@ -12,6 +12,8 @@ import JTAppleCalendar
 
 class UpdateApptTVC: UITableViewController, AppointmentTVC {
   
+  var selectedTimeSlot: Date?
+  
   var patient: Patient? {
     didSet {
       if patient?.fullName != nil {
