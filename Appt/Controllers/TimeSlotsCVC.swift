@@ -31,9 +31,10 @@ class TimeSlotsCVC: UICollectionViewController {
     if let appointmentsArray = currentAppointments {
       timeSlotter.currentAppointments = appointmentsArray.map { $0.date! }
     }
-    guard let timeSlots = timeSlotter.getTimeSlotsforDate(date: appointmentDate) else { return }
+    guard let timeSlots = timeSlotter.getTimeSlotsforDate(date: appointmentDate) else {
+      print("There is no appointments")
+      return }
     
-    timeSlots.map { print("\($0.hour()):\($0.minute())") }
     self.timeSlots = timeSlots
   }
   
@@ -65,8 +66,9 @@ class TimeSlotsCVC: UICollectionViewController {
     if let destinationVC = self.navigationController?.viewControllers[0] as?  NewApptTableViewController {
       destinationVC.selectedTimeSlot = timeSlots[indexPath.row]
       self.navigationController?.popViewController(animated: true)
-    } else {
-      print("Unable to select timeSlot")
+    } else if let destinationVC = self.navigationController?.viewControllers[0] as? UpdateApptTVC {
+      destinationVC.selectedTimeSlot = timeSlots[indexPath.row]
+      self.navigationController?.popViewController(animated: true)
     }
   }
   

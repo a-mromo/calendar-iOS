@@ -13,6 +13,7 @@ import JTAppleCalendar
 protocol AppointmentTVC {
   var patient: Patient? { get set }
   var selectedTimeSlot: Date? { get set }
+  var appointmentsOfTheDay: [Appointment]? { get set }
   func confirmAppointment()
   func setupCalendarView()
 }
@@ -285,7 +286,7 @@ extension NewApptTableViewController: JTAppleCalendarViewDataSource {
     
     if appointmentsOfTheDay != nil {
       for appointment in appointmentsOfTheDay! {
-        print("Appointment date is: \(appointment.date)")
+        print("Appointment date is: \(String(describing: appointment.date))")
       }
     } else {
       print("Appointment is empty")
@@ -301,7 +302,7 @@ extension NewApptTableViewController: JTAppleCalendarViewDataSource {
     var components = calendar.dateComponents([.year, .month, .day, .hour, .minute], from: dateFrom)
     components.day! += 1
     let dateTo = calendar.date(from: components)
-    let datePredicate = NSPredicate(format: "(%@ <= date) AND (date < %@)", argumentArray: [dateFrom, dateTo])
+    let datePredicate = NSPredicate(format: "(%@ <= date) AND (date < %@)", argumentArray: [dateFrom, dateTo as Any])
     
     return datePredicate
   }
@@ -332,7 +333,6 @@ extension NewApptTableViewController: JTAppleCalendarViewDataSource {
       endDate = calendarEndndDate
     }
     parameters = ConfigurationParameters(startDate: startDate, endDate: endDate)
-    
     return parameters
   }
 }

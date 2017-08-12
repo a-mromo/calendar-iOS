@@ -215,7 +215,7 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillProportionally" translatesAutoresizingMaskIntoConstraints="NO" id="DQg-CQ-KVc" userLabel="Calendar stack">
-                                                    <rect key="frame" x="0.0" y="-3527.5" width="375" height="4007"/>
+                                                    <rect key="frame" x="0.0" y="-5011.5" width="375" height="5491"/>
                                                     <subviews>
                                                         <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillProportionally" translatesAutoresizingMaskIntoConstraints="NO" id="LmP-yg-2v7" userLabel="Title Stack View">
                                                             <rect key="frame" x="0.0" y="0.0" width="375" height="65"/>
@@ -292,7 +292,7 @@
                                                             </constraints>
                                                         </stackView>
                                                         <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" pagingEnabled="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="ONw-Np-zXi" customClass="JTAppleCalendarView" customModule="JTAppleCalendar">
-                                                            <rect key="frame" x="0.0" y="85.5" width="375" height="3921.5"/>
+                                                            <rect key="frame" x="0.0" y="85.5" width="375" height="5405.5"/>
                                                             <color key="backgroundColor" red="0.2274509804" green="0.16078431369999999" blue="0.29411764709999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="height" constant="340" id="vXV-VZ-JcD"/>
@@ -381,6 +381,9 @@
                                             <constraint firstItem="Cbl-Mm-tiv" firstAttribute="centerY" secondItem="FUg-hs-F4A" secondAttribute="centerY" id="xJT-pJ-6Fg"/>
                                             <constraint firstAttribute="trailing" relation="lessThanOrEqual" secondItem="Cbl-Mm-tiv" secondAttribute="trailing" constant="167" id="zmM-hR-EiP"/>
                                         </constraints>
+                                        <connections>
+                                            <segue destination="qKJ-D7-gKV" kind="show" identifier="segueTimeSlotsFromUpdate" id="TJR-rU-u6g"/>
+                                        </connections>
                                     </tableViewCell>
                                 </cells>
                             </tableViewSection>
@@ -492,12 +495,13 @@
                         <outlet property="monthLabel" destination="RO5-hu-z3S" id="N3A-qy-lgp"/>
                         <outlet property="noteTextView" destination="jWG-nX-MpS" id="ALl-1H-Yg0"/>
                         <outlet property="patientLabel" destination="5xa-7D-j1j" id="zGb-Yf-mzT"/>
+                        <outlet property="timeSlotLabel" destination="Cbl-Mm-tiv" id="dc8-tm-RcE"/>
                         <outlet property="yearLabel" destination="wMk-jF-fOp" id="IPe-kT-c4M"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Qwf-MQ-FOz" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3564" y="-1058"/>
+            <point key="canvasLocation" x="3555" y="-1173"/>
         </scene>
         <!--Appointments-->
         <scene sceneID="C2o-cJ-TW2">
@@ -1061,10 +1065,10 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillProportionally" translatesAutoresizingMaskIntoConstraints="NO" id="k9m-mm-fAV" userLabel="Calendar stack">
-                                                    <rect key="frame" x="0.0" y="-6698" width="375" height="7177.5"/>
+                                                    <rect key="frame" x="0.0" y="-7630.5" width="375" height="8110"/>
                                                     <subviews>
                                                         <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillProportionally" translatesAutoresizingMaskIntoConstraints="NO" id="sjg-Sc-qeP" userLabel="Title Stack View">
-                                                            <rect key="frame" x="0.0" y="0.0" width="375" height="65"/>
+                                                            <rect key="frame" x="0.0" y="0.0" width="375" height="65.5"/>
                                                             <subviews>
                                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Year" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fB4-L4-OeW">
                                                                     <rect key="frame" x="0.0" y="0.0" width="375" height="21"/>
@@ -1073,7 +1077,7 @@
                                                                     <nil key="highlightedColor"/>
                                                                 </label>
                                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Month" textAlignment="natural" lineBreakMode="characterWrap" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ryU-EC-tOT">
-                                                                    <rect key="frame" x="0.0" y="21" width="375" height="44"/>
+                                                                    <rect key="frame" x="0.0" y="21" width="375" height="44.5"/>
                                                                     <fontDescription key="fontDescription" type="system" pointSize="36"/>
                                                                     <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                                                     <nil key="highlightedColor"/>
@@ -1081,7 +1085,7 @@
                                                             </subviews>
                                                         </stackView>
                                                         <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="hBN-Pn-C2w" userLabel="DoW Stack">
-                                                            <rect key="frame" x="0.0" y="65" width="375" height="20.5"/>
+                                                            <rect key="frame" x="0.0" y="65.5" width="375" height="20.5"/>
                                                             <subviews>
                                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Sun" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KfO-42-CHz">
                                                                     <rect key="frame" x="0.0" y="0.0" width="53.5" height="20.5"/>
@@ -1138,7 +1142,7 @@
                                                             </constraints>
                                                         </stackView>
                                                         <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" pagingEnabled="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="SO9-34-Uii" customClass="JTAppleCalendarView" customModule="JTAppleCalendar">
-                                                            <rect key="frame" x="0.0" y="85.5" width="375" height="7092"/>
+                                                            <rect key="frame" x="0.0" y="86" width="375" height="8024"/>
                                                             <color key="backgroundColor" red="0.22745098039215686" green="0.16078431372549018" blue="0.29411764705882354" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="height" constant="340" id="z7B-lk-4Wh"/>
@@ -1348,7 +1352,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="9RA-Y0-KUj" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3564" y="-389"/>
+            <point key="canvasLocation" x="3555" y="-374"/>
         </scene>
         <!--Patient-->
         <scene sceneID="eLH-ia-1oA">
@@ -1409,7 +1413,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="5D2-JR-Tdj" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4543" y="-334"/>
+            <point key="canvasLocation" x="4518" y="-375"/>
         </scene>
         <!--Time SlotsCVC-->
         <scene sceneID="yeE-lz-upW">
@@ -1687,7 +1691,8 @@
         <image name="today" width="36" height="40"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="ZlX-X9-4ez"/>
-        <segue reference="Ity-bc-bUT"/>
+        <segue reference="fIu-1r-FSG"/>
+        <segue reference="TJR-rU-u6g"/>
+        <segue reference="XoE-ck-qRf"/>
     </inferredMetricsTieBreakers>
 </document>

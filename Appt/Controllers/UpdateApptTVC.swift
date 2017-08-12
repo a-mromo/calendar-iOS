@@ -12,8 +12,10 @@ import JTAppleCalendar
 
 class UpdateApptTVC: UITableViewController, AppointmentTVC {
   
-  var selectedTimeSlot: Date?
   
+  
+  var selectedTimeSlot: Date?
+  var appointmentsOfTheDay: [Appointment]?
   var patient: Patient? {
     didSet {
       if patient?.fullName != nil {
@@ -41,10 +43,26 @@ class UpdateApptTVC: UITableViewController, AppointmentTVC {
   let currentDateSelectedViewColor = UIColor(hexCode: "#4e3f5d")!
   
   
+  // Load Appointments For given Date
+  lazy var fetchedResultsController: NSFetchedResultsController<Appointment> = {
+    let fetchRequest: NSFetchRequest<Appointment> = Appointment.fetchRequest()
+    fetchRequest.sortDescriptors = [NSSortDescriptor(key: "date", ascending: false)]
+    if let selectedDate = calendarView.selectedDates.first {
+      fetchRequest.predicate = getPredicate(for: selectedDate )
+    }
+    let fetchedResultsController = NSFetchedResultsController(fetchRequest: fetchRequest, managedObjectContext: self.persistentContainer.viewContext, sectionNameKeyPath: nil, cacheName: nil)
+    fetchedResultsController.delegate = self
+    
+    return fetchedResultsController
+  }()
+  
+  
+  
   @IBOutlet var calendarView: JTAppleCalendarView!
   @IBOutlet var monthLabel: UILabel!
   @IBOutlet var yearLabel: UILabel!
   
+  @IBOutlet weak var timeSlotLabel: UILabel!
   @IBOutlet weak var patientLabel: UILabel!
   @IBOutlet weak var noteTextView: UITextView!
   @IBOutlet weak var costTextField: UITextField!
@@ -64,6 +82,7 @@ class UpdateApptTVC: UITableViewController, AppointmentTVC {
     super.viewDidLoad()
     noLargeTitles()
     setupCalendarView()
+    fetchAppointmentsForDay()
     setupKeyboardNotification()
     setTextFieldDelegates()
     setTextViewDelegates()
@@ -83,6 +102,9 @@ class UpdateApptTVC: UITableViewController, AppointmentTVC {
     if appointmentLoaded {
       loadAppointment()
       appointmentLoaded = false
+    }
+    if selectedTimeSlot != nil {
+      timeSlotLabel.text = selectedTimeSlot?.toHourMinuteString()
     }
     
   }
@@ -127,8 +149,8 @@ class UpdateApptTVC: UITableViewController, AppointmentTVC {
       return
     }
     appointment.patient = patient
-    //    appointment.date = datePicker.date
-    appointment.date = calendarView.selectedDates.first
+//    appointment.date = calendarView.selectedDates.first
+    appointment.date = selectedTimeSlot
     appointment.note = noteTextView.text
     appointment.cost = costTextField.text
     appointment.dateModified = Date()
@@ -292,10 +314,72 @@ extension UpdateApptTVC {
   //    guard let calendarDate = calendarView.selectedDates.first else { return }
   //    dateDetailLabel.text = DateFormatter.localizedString(from: calendarDate, dateStyle: DateFormatter.Style.short, timeStyle: DateFormatter.Style.short)
   //  }
+  
+  
+  override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+    let calendarDate = calendarView.selectedDates.first
+    if segue.identifier == "segueTimeSlotsFromUpdate" {
+      let destinationVC = segue.destination as! TimeSlotsCVC
+      destinationVC.appointmentDate = calendarDate
+      if let currentAppointments = appointmentsOfTheDay {
+        destinationVC.currentAppointments = currentAppointments
+      }
+    }
+  }
 }
 
 
 extension UpdateApptTVC: JTAppleCalendarViewDataSource {
+  
+  func loadAppointmentsForDate(date: Date){
+    var calendar = Calendar.current
+    calendar.timeZone = NSTimeZone.local
+    
+    let dateFrom = calendar.startOfDay(for: date)
+    var components = calendar.dateComponents([.year, .month, .day, .hour, .minute], from: dateFrom)
+    components.day! += 1
+    let dateTo = calendar.date(from: components)
+    
+    let datePredicate = NSPredicate(format: "(%@ <= date) AND (date < %@)", argumentArray: [dateFrom, dateTo])
+    if let fetchedObjects = fetchedResultsController.fetchedObjects {
+      appointmentsOfTheDay = fetchedObjects.filter({ return datePredicate.evaluate(with: $0) })
+    }
+    
+    if appointmentsOfTheDay != nil {
+      for appointment in appointmentsOfTheDay! {
+        print("Appointment date is: \(String(describing: appointment.date))")
+      }
+    } else {
+      print("Appointment is empty")
+    }
+    //    tableView.reloadData()
+  }
+  
+  func getPredicate(for date: Date) -> NSPredicate {
+    var calendar = Calendar.current
+    calendar.timeZone = NSTimeZone.local
+    
+    let dateFrom = calendar.startOfDay(for: date)
+    var components = calendar.dateComponents([.year, .month, .day, .hour, .minute], from: dateFrom)
+    components.day! += 1
+    let dateTo = calendar.date(from: components)
+    let datePredicate = NSPredicate(format: "(%@ <= date) AND (date < %@)", argumentArray: [dateFrom, dateTo as Any])
+    
+    return datePredicate
+  }
+  
+  func fetchAppointmentsForDay() {
+    do {
+      try self.fetchedResultsController.performFetch()
+      print("AppointmentForDay Fetch Successful")
+    } catch {
+      let fetchError = error as NSError
+      print("Unable to Perform AppointmentForDay Fetch Request")
+      print("\(fetchError), \(fetchError.localizedDescription)")
+    }
+  }
+  
+  
   func configureCalendar(_ calendar: JTAppleCalendarView) -> ConfigurationParameters {
     formatter.dateFormat = "yyyy MM dd"
     formatter.timeZone = Calendar.current.timeZone
@@ -333,6 +417,7 @@ extension UpdateApptTVC: JTAppleCalendarViewDelegate {
     handleCellTextColor(view: cell, cellState: cellState)
     
     updateDateDetailLabel(date: date)
+    loadAppointmentsForDate(date: date)
     //    calendarViewDateChanged()
   }
   
@@ -343,6 +428,46 @@ extension UpdateApptTVC: JTAppleCalendarViewDelegate {
   
   func calendar(_ calendar: JTAppleCalendarView, didScrollToDateSegmentWith visibleDates: DateSegmentInfo) {
     setupViewsFromCalendar(from: visibleDates)
+  }
+  
+}
+
+
+extension UpdateApptTVC: NSFetchedResultsControllerDelegate {
+  
+  func controllerWillChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
+    tableView.beginUpdates()
+  }
+  
+  func controllerDidChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
+    tableView.endUpdates()
+    
+  }
+  
+  func controller(_ controller: NSFetchedResultsController<NSFetchRequestResult>, didChange anObject: Any, at indexPath: IndexPath?, for type: NSFetchedResultsChangeType, newIndexPath: IndexPath?) {
+    switch (type) {
+    case .insert:
+      if let indexPath = newIndexPath {
+        print("Appt Added")
+        tableView.insertRows(at: [indexPath], with: .fade)
+      }
+      break;
+    case .delete:
+      if let indexPath = indexPath {
+        tableView.deleteRows(at: [indexPath], with: .fade)
+      }
+      break;
+    case .update:
+      if let indexPath = indexPath {
+        print("Appt Changed and updated")
+        tableView.reloadRows(at: [indexPath], with: .fade)
+      }
+    default:
+      print("...")
+    }
+  }
+  
+  func controller(_ controller: NSFetchedResultsController<NSFetchRequestResult>, didChange sectionInfo: NSFetchedResultsSectionInfo, atSectionIndex sectionIndex: Int, for type: NSFetchedResultsChangeType) {
   }
   
 }
