@@ -204,7 +204,7 @@ extension NewApptTableViewController {
 
 extension NewApptTableViewController {
   func handleCellSelected(view: JTAppleCell?, cellState: CellState) {
-    guard let validCell = view as? CustomCell else { return }
+    guard let validCell = view as? CalendarDayCell else { return }
     if validCell.isSelected {
       validCell.selectedView.isHidden = false
     } else {
@@ -213,7 +213,7 @@ extension NewApptTableViewController {
   }
   
   func handleCellTextColor(view: JTAppleCell?, cellState: CellState) {
-    guard let validCell = view as? CustomCell else {
+    guard let validCell = view as? CalendarDayCell else {
       return
     }
     
@@ -341,7 +341,7 @@ extension NewApptTableViewController: JTAppleCalendarViewDataSource {
 extension NewApptTableViewController: JTAppleCalendarViewDelegate {
   // Display Cell
   func calendar(_ calendar: JTAppleCalendarView, cellForItemAt date: Date, cellState: CellState, indexPath: IndexPath) -> JTAppleCell {
-    let cell = calendar.dequeueReusableJTAppleCell(withReuseIdentifier: "CustomCell", for: indexPath) as! CustomCell
+    let cell = calendar.dequeueReusableJTAppleCell(withReuseIdentifier: "CalendarDayCell", for: indexPath) as! CalendarDayCell
     cell.dateLabel.text = cellState.text
     
     handleCellSelected(view: cell, cellState: cellState)

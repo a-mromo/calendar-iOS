@@ -1,5 +1,5 @@
 //
-//  CustomCell.swift
+//  CalendarDayCell.swift
 //  Appt
 //
 //  Created by Agustin Mendoza Romo on 7/29/17.
@@ -9,7 +9,7 @@
 import UIKit
 import JTAppleCalendar
 
-class CustomCell: JTAppleCell {
+class CalendarDayCell: JTAppleCell {
   @IBOutlet weak var dateLabel: UILabel!
   @IBOutlet weak var selectedView: UIView!
 }
