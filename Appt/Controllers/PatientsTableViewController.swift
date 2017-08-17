@@ -118,17 +118,9 @@ class PatientsTableViewController: UITableViewController {
     }
   }
   
-  func save() {
-    do {
-      try persistentContainer.viewContext.save()
-    } catch {
-      print("Unable to Save Changes")
-      print("\(error), \(error.localizedDescription)")
-    }
-  }
-  
+
   @objc func applicationDidEnterBackground(_ notification: Notification) {
-    save()
+    CoreDataStore.instance.save()
   }
   
   
@@ -136,7 +128,7 @@ class PatientsTableViewController: UITableViewController {
     if editingStyle == .delete {
       let patient = fetchedResultsController.object(at: indexPath)
       persistentContainer.viewContext.delete(patient)
-      save()
+      CoreDataStore.instance.save()
     }
   }
   

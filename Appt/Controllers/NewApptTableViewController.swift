@@ -76,21 +76,10 @@ class NewApptTableViewController: UITableViewController, AppointmentTVC {
   
   override func viewDidLoad() {
     super.viewDidLoad()
-//    monthLabel.lineBreakMode = .byCharWrapping
     setupCalendarView()
     
     fetchAppointmentsForDay()
-//    appointmentsOfTheDay = fetchedResultsController.fetchedObjects
-//
-//    if appointmentsOfTheDay != nil {
-//      for appointment in appointmentsOfTheDay! {
-//        print("Appointment date is: \(appointment.date)")
-//      }
-//    } else {
-//      print("Appointment is empty")
-//    }
-    
-    
+
     noLargeTitles()
     setTextFieldDelegates()
     setTextViewDelegates()
@@ -119,19 +108,13 @@ class NewApptTableViewController: UITableViewController, AppointmentTVC {
     let appointment = Appointment(context: persistentContainer.viewContext)
     
     appointment.patient = patient
-//    appointment.date = calendarView.selectedDates.first
     appointment.date = selectedTimeSlot
     appointment.note = noteTextView.text
     appointment.cost = costTextField.text
     appointment.dateCreated = Date()
     
-    do {
-      try persistentContainer.viewContext.save()
-      print("Appointment Saved")
-    } catch {
-      print("Unable to Save Changes")
-      print("\(error), \(error.localizedDescription)")
-    }
+    CoreDataStore.instance.save()
+
     dismiss(animated: true, completion: nil)
   }
   

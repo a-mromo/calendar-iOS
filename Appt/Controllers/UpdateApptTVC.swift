@@ -134,28 +134,18 @@ class UpdateApptTVC: UITableViewController, AppointmentTVC {
   }
   
   
-  func updateAppt() {
-    do {
-      try persistentContainer.viewContext.save()
-      print("Appointment Saved")
-    } catch {
-      print("Unable to Save Changes")
-      print("\(error), \(error.localizedDescription)")
-    }
-  }
   
   func confirmAppointment() {
     guard let appointment = appointment else {
       return
     }
     appointment.patient = patient
-//    appointment.date = calendarView.selectedDates.first
     appointment.date = selectedTimeSlot
     appointment.note = noteTextView.text
     appointment.cost = costTextField.text
     appointment.dateModified = Date()
     
-    updateAppt()
+    CoreDataStore.instance.save()
     dismiss(animated: true, completion: nil)
   }
   

@@ -176,7 +176,6 @@
 				6CE413851F37ED8B00D459B5 /* Controllers */,
 				6C4151C81ECA7ACF00ACDAE7 /* Main.storyboard */,
 				6C4151C21ECA7ACF00ACDAE7 /* AppDelegate.swift */,
-				6C7E6CCA1EDE177A002D1936 /* CoreDataStore.swift */,
 				6C4151CB1ECA7ACF00ACDAE7 /* Assets.xcassets */,
 				6C4151CD1ECA7ACF00ACDAE7 /* LaunchScreen.storyboard */,
 				6C5B10E71F244CD9008B6CB6 /* GoogleService-Info.plist */,
@@ -204,6 +203,7 @@
 				6CE0555F1EDFED6600312499 /* Appointment+CoreDataProperties.swift */,
 				6CE055601EDFED6600312499 /* Patient+CoreDataClass.swift */,
 				6CE055611EDFED6600312499 /* Patient+CoreDataProperties.swift */,
+				6C7E6CCA1EDE177A002D1936 /* CoreDataStore.swift */,
 			);
 			name = Model;
 			path = ..;

@@ -59,7 +59,7 @@ class NewPatientTableVC: UITableViewController {
       patient.homePhone = homePhoneTextField.text
       patient.email = patientEmailTextField.text
       
-      save()
+      CoreDataStore.instance.save()
     } else {
       updatePatient()
     }
@@ -74,14 +74,6 @@ class NewPatientTableVC: UITableViewController {
     patientEmailTextField.text = patient.email
   }
   
-  func save() {
-    do {
-      try persistentContainer.viewContext.save()
-    } catch {
-      print("Unable to Save Changes")
-      print("\(error), \(error.localizedDescription)")
-    }
-  }
   
   func updatePatient() {
     guard let patient = patient else { return }
@@ -92,7 +84,7 @@ class NewPatientTableVC: UITableViewController {
     patient.homePhone = homePhoneTextField.text
     patient.email = patientEmailTextField.text
     
-    save()
+    CoreDataStore.instance.save()
   }
   
   // Needs impementing textFieldDidChanged
