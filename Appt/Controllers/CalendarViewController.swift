@@ -8,13 +8,16 @@
 
 import UIKit
 import CoreData
+import JTAppleCalendar
 
 class CalendarViewController: UIViewController {
   
   @IBOutlet weak var tableView: UITableView!
+  @IBOutlet weak var calendarView: JTAppleCalendarView!
+  var appointmentsOfTheDay: [Appointment]?
   
   private let segueNewApptTVC = "SegueNewApptTVC"
-  
+  let formatter = DateFormatter()
   private let segueApptDetail = "SegueApptDetail"
   
   let persistentContainer = CoreDataStore.instance.persistentContainer
@@ -29,12 +32,27 @@ class CalendarViewController: UIViewController {
   }()
   
   
+  // Calendar Color
+  let outsideMonthColor = UIColor.lightGray
+  let monthColor = UIColor.darkGray
+  let selectedMonthColor = UIColor.white
+  let currentDateSelectedViewColor = UIColor.black
+  
+  
   override func viewDidLoad() {
     super.viewDidLoad()
     
     tableView.delegate = self
     tableView.dataSource = self
+    fetchAppointments()
+    noLargeTitles()
+    setupCalendarView()
     
+    calendarView.scrollToDate(Date(), animateScroll: false)
+    calendarView.selectDates( [Date()] )
+  }
+  
+  func fetchAppointments() {
     persistentContainer.loadPersistentStores { (persistentStoreDescription, error) in
       
       do {
@@ -69,6 +87,13 @@ class CalendarViewController: UIViewController {
     } catch {
       print("Unable to Save Changes")
       print("\(error), \(error.localizedDescription)")
+    }
+  }
+  
+  func noLargeTitles(){
+    if #available(iOS 11.0, *) {
+      navigationItem.largeTitleDisplayMode = .never
+      tableView.dragDelegate = self as? UITableViewDragDelegate
     }
   }
 }
@@ -156,4 +181,172 @@ extension CalendarViewController: NSFetchedResultsControllerDelegate {
   }
   
 }
+
+extension CalendarViewController {
+  func loadAppointmentsForDate(date: Date){
+    var calendar = Calendar.current
+    calendar.timeZone = NSTimeZone.local
+    
+    let dateFrom = calendar.startOfDay(for: date)
+    var components = calendar.dateComponents([.year, .month, .day, .hour, .minute], from: dateFrom)
+    components.day! += 1
+    let dateTo = calendar.date(from: components)
+    
+    let datePredicate = NSPredicate(format: "(%@ <= date) AND (date < %@)", argumentArray: [dateFrom, dateTo])
+    if let fetchedObjects = fetchedResultsController.fetchedObjects {
+      appointmentsOfTheDay = fetchedObjects.filter({ return datePredicate.evaluate(with: $0) })
+    }
+    
+    guard let appointmentsOfTheDay = self.appointmentsOfTheDay else { return }
+    appointmentsOfTheDay.map { print("Appointment date is: \($0.date)") }
+    
+    
+    guard let gotoObject = appointmentsOfTheDay.first else {
+      return
+    }
+    
+    guard let indexPath = fetchedResultsController.indexPath(forObject: gotoObject) else {
+      return
+    }
+    
+    self.tableView.scrollToRow(at: indexPath, at: .top, animated: true)
+  }
+  
+  func getPredicate(for date: Date) -> NSPredicate {
+    var calendar = Calendar.current
+    calendar.timeZone = NSTimeZone.local
+    
+    let dateFrom = calendar.startOfDay(for: date)
+    var components = calendar.dateComponents([.year, .month, .day, .hour, .minute], from: dateFrom)
+    components.day! += 1
+    let dateTo = calendar.date(from: components)
+    let datePredicate = NSPredicate(format: "(%@ <= date) AND (date < %@)", argumentArray: [dateFrom, dateTo as Any])
+    
+    return datePredicate
+  }
+  
+}
+
+
+
+extension CalendarViewController {
+  func handleCellSelected(view: JTAppleCell?, cellState: CellState) {
+    guard let validCell = view as? CalendarDayCell else { return }
+    if validCell.isSelected {
+      validCell.selectedView.isHidden = false
+    } else {
+      validCell.selectedView.isHidden = true
+    }
+  }
+  
+  func handleCellTextColor(view: JTAppleCell?, cellState: CellState) {
+    guard let validCell = view as? CalendarDayCell else {
+      return
+    }
+    
+    let todaysDate = Date()
+    if todaysDate.day() == cellState.date.day() {
+      validCell.dateLabel.textColor = UIColor.purple
+    } else { 
+      validCell.dateLabel.textColor = cellState.isSelected ? UIColor.purple : UIColor.darkGray
+    }
+    
+    
+    if validCell.isSelected {
+      validCell.dateLabel.textColor = selectedMonthColor
+    } else {
+      if cellState.dateBelongsTo == .thisMonth {
+        validCell.dateLabel.textColor = monthColor
+      } else {
+        validCell.dateLabel.textColor = outsideMonthColor
+      }
+    }
+  }
+  
+  func setupCalendarView() {
+    // Setup Calendar Spacing
+    calendarView.minimumLineSpacing = 0
+    calendarView.minimumInteritemSpacing = 0
+    
+    // Setup Labels
+//    calendarView.visibleDates{ (visibleDates) in
+//      self.setupViewsFromCalendar(from: visibleDates)
+//    }
+  }
+  
+//  func setupViewsFromCalendar(from visibleDates: DateSegmentInfo ) {
+//    guard let date = visibleDates.monthDates.first?.date else { return }
+//
+//    formatter.dateFormat = "yyyy"
+//    yearLabel.text = formatter.string(from: date)
+//
+//    formatter.dateFormat = "MMMM"
+//    monthLabel.text = formatter.string(from: date)
+//
+//  }
+  
+  
+}
+
+
+
+extension CalendarViewController: JTAppleCalendarViewDataSource {
+  
+  func configureCalendar(_ calendar: JTAppleCalendarView) -> ConfigurationParameters {
+    formatter.dateFormat = "yyyy MM dd"
+    formatter.timeZone = Calendar.current.timeZone
+    formatter.locale = Calendar.current.locale
+    
+    var parameters: ConfigurationParameters
+    var startDate = Date()
+    var endDate = Date()
+    if let calendarStartDate = formatter.date(from: "2017 01 01"),
+      let calendarEndndDate = formatter.date(from: "2017 12 31") {
+      startDate = calendarStartDate
+      endDate = calendarEndndDate
+    }
+    parameters = ConfigurationParameters(startDate: startDate, endDate: endDate, numberOfRows: 1)
+    return parameters
+  }
+  
+  
+}
+
+
+extension CalendarViewController: JTAppleCalendarViewDelegate {
+  
+  func calendar(_ calendar: JTAppleCalendarView, cellForItemAt date: Date, cellState: CellState, indexPath: IndexPath) -> JTAppleCell {
+    let cell = calendar.dequeueReusableJTAppleCell(withReuseIdentifier: "CalendarDayCell", for: indexPath) as! CalendarDayCell
+    cell.dateLabel.text = cellState.text
+    
+    handleCellSelected(view: cell, cellState: cellState)
+    handleCellTextColor(view: cell, cellState: cellState)
+    
+    return cell
+  }
+  
+  
+  func calendar(_ calendar: JTAppleCalendarView, didSelectDate date: Date, cell: JTAppleCell?, cellState: CellState) {
+    handleCellSelected(view: cell, cellState: cellState)
+    handleCellTextColor(view: cell, cellState: cellState)
+    
+//    updateDateDetailLabel(date: date)
+    loadAppointmentsForDate(date: date)
+    
+    //    calendarViewDateChanged()
+  }
+  
+  func calendar(_ calendar: JTAppleCalendarView, didDeselectDate date: Date, cell: JTAppleCell?, cellState: CellState) {
+    handleCellSelected(view: cell, cellState: cellState)
+    handleCellTextColor(view: cell, cellState: cellState)
+  }
+  
+//  func calendar(_ calendar: JTAppleCalendarView, didScrollToDateSegmentWith visibleDates: DateSegmentInfo) {
+//    setupViewsFromCalendar(from: visibleDates)
+//  }
+  
+  
+  
+}
+
 

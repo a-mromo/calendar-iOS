@@ -35,7 +35,7 @@ extension Date {
   {
     //Get Hour
     let calendar = Calendar.current
-    let components = calendar.dateComponents([.day], from: self as Date)
+    let components = calendar.dateComponents([.day], from: self)
     let day = components.day
     
     //Return Hour
@@ -46,7 +46,7 @@ extension Date {
   {
     //Get Hour
     let calendar = Calendar.current
-    let components = calendar.dateComponents([.hour], from: self as Date)
+    let components = calendar.dateComponents([.hour], from: self)
     let hour = components.hour
     
     //Return Hour
@@ -57,7 +57,7 @@ extension Date {
   {
     //Get Minute
     let calendar = Calendar.current
-    let components = calendar.dateComponents([.minute], from: self as Date)
+    let components = calendar.dateComponents([.minute], from: self)
     let minute = components.minute
     
     //Return Minute
@@ -69,7 +69,7 @@ extension Date {
     //Get Short Time String
     let formatter = DateFormatter()
     formatter.timeStyle = .short
-    let timeString = formatter.string(from: self as Date)
+    let timeString = formatter.string(from: self)
     
     //Return Short Time String
     return timeString

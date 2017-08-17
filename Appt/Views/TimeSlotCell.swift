@@ -10,7 +10,7 @@ import UIKit
 
 class TimeSlotCell: UICollectionViewCell {
   
-  @IBOutlet var timeLabel: UILabel!
-  
+  @IBOutlet weak var timeLabel: UILabel!
+  @IBOutlet var timeSlotView: UIView!
   
 }

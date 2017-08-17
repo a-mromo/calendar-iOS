@@ -34,10 +34,10 @@ class NewApptTableViewController: UITableViewController, AppointmentTVC {
   var calendarViewHidden = false
   
   // Calendar Color
-  let outsideMonthColor = UIColor(hexCode: "#584a66")!
-  let monthColor = UIColor.white
-  let selectedMonthColor = UIColor(hexCode: "#3a294b")!
-  let currentDateSelectedViewColor = UIColor(hexCode: "#4e3f5d")!
+  let outsideMonthColor = UIColor.lightGray
+  let monthColor = UIColor.darkGray
+  let selectedMonthColor = UIColor.white
+  let currentDateSelectedViewColor = UIColor.black
   
   
   // Load Appointments for given date
@@ -268,8 +268,7 @@ extension NewApptTableViewController {
 }
 
 
-extension NewApptTableViewController: JTAppleCalendarViewDataSource {
-  
+extension NewApptTableViewController {
   func loadAppointmentsForDate(date: Date){
     var calendar = Calendar.current
     calendar.timeZone = NSTimeZone.local
@@ -291,7 +290,7 @@ extension NewApptTableViewController: JTAppleCalendarViewDataSource {
     } else {
       print("Appointment is empty")
     }
-//    tableView.reloadData()
+    //    tableView.reloadData()
   }
   
   func getPredicate(for date: Date) -> NSPredicate {
@@ -317,7 +316,9 @@ extension NewApptTableViewController: JTAppleCalendarViewDataSource {
       print("\(fetchError), \(fetchError.localizedDescription)")
     }
   }
-  
+}
+
+extension NewApptTableViewController: JTAppleCalendarViewDataSource {
   
   func configureCalendar(_ calendar: JTAppleCalendarView) -> ConfigurationParameters {
     formatter.dateFormat = "yyyy MM dd"
