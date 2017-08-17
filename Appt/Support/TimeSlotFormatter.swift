@@ -13,7 +13,7 @@ extension Date {
   {
     //Get Hour
     let calendar = Calendar.current
-    let components = calendar.dateComponents([.year], from: self as Date)
+    let components = calendar.dateComponents([.year], from: self)
     let year = components.year
     
     //Return Hour
@@ -24,7 +24,7 @@ extension Date {
   {
     //Get Hour
     let calendar = Calendar.current
-    let components = calendar.dateComponents([.month], from: self as Date)
+    let components = calendar.dateComponents([.month], from: self)
     let month = components.month
     
     //Return Hour
