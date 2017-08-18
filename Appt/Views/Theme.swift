@@ -56,8 +56,6 @@ struct DefaultTheme: ThemeProtocol {
     
     UISearchBar.appearance().backgroundColor = UIColor(hexCode: "#FFFFFF")!
     
-//    UITextField.appearance(whenContainedInInstancesOf: [UISearchBar.self]).tintColor = UIColor.orange
-//    UITextField.appearance(whenContainedInInstancesOf: [UISearchBar.self]).backgroundColor = UIColor.orange
   }
   
   func largeTitles () {
@@ -66,6 +64,7 @@ struct DefaultTheme: ThemeProtocol {
       UINavigationBar.appearance().largeTitleTextAttributes = [NSAttributedStringKey(rawValue: NSAttributedStringKey.foregroundColor.rawValue): UIColor(hexCode: "#ffffff")!]
     }
   }
+  
 }
 
 struct Theme {

@@ -15,9 +15,9 @@ class CalendarViewController: UIViewController {
   @IBOutlet weak var tableView: UITableView!
   @IBOutlet weak var calendarView: JTAppleCalendarView!
   var appointmentsOfTheDay: [Appointment]?
+  let formatter = DateFormatter()
   
   private let segueNewApptTVC = "SegueNewApptTVC"
-  let formatter = DateFormatter()
   private let segueApptDetail = "SegueApptDetail"
   
   let persistentContainer = CoreDataStore.instance.persistentContainer
@@ -27,9 +27,10 @@ class CalendarViewController: UIViewController {
     fetchRequest.sortDescriptors = [NSSortDescriptor(key: "date", ascending: false)]
     let fetchedResultsController = NSFetchedResultsController(fetchRequest: fetchRequest, managedObjectContext: self.persistentContainer.viewContext, sectionNameKeyPath: nil, cacheName: nil)
     fetchedResultsController.delegate = self
-    
+
     return fetchedResultsController
   }()
+  
   
   
   // Calendar Color
@@ -44,7 +45,7 @@ class CalendarViewController: UIViewController {
     
     tableView.delegate = self
     tableView.dataSource = self
-    fetchAppointments()
+    performFetch()
     noLargeTitles()
     setupCalendarView()
     
@@ -52,7 +53,7 @@ class CalendarViewController: UIViewController {
     calendarView.selectDates( [Date()] )
   }
   
-  func fetchAppointments() {
+  func performFetch() {
     persistentContainer.loadPersistentStores { (persistentStoreDescription, error) in
       
       do {
@@ -66,6 +67,7 @@ class CalendarViewController: UIViewController {
     }
   }
   
+  
   override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
     if segue.identifier == segueApptDetail {
       if let indexPath = tableView.indexPathForSelectedRow {
@@ -77,18 +79,9 @@ class CalendarViewController: UIViewController {
   }
   
   func applicationDidEnterBackground(_ notification: Notification) {
-    save()
+    CoreDataStore.instance.save()
   }
   
-  func save() {
-    do {
-      try persistentContainer.viewContext.save()
-      print("Saved Changes")
-    } catch {
-      print("Unable to Save Changes")
-      print("\(error), \(error.localizedDescription)")
-    }
-  }
   
   func noLargeTitles(){
     if #available(iOS 11.0, *) {
@@ -134,7 +127,7 @@ extension CalendarViewController: UITableViewDelegate, UITableViewDataSource {
       
       // Delete Appointment
       persistentContainer.viewContext.delete(appointment)
-      save()
+      CoreDataStore.instance.save()
     }
   }
   
