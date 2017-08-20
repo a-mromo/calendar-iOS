@@ -22,17 +22,24 @@ struct DefaultTheme: ThemeProtocol {
   
   func install() {
     customNavBar()
+    customTabBar()
     largeTitles()
     customSearchBar()
   }
   
   func customNavBar(){
-    UIApplication.shared.statusBarStyle = .lightContent
-    UINavigationBar.appearance().barTintColor = UIColor(hexCode: "#11A9FB")!
-    UINavigationBar.appearance().tintColor = UIColor(hexCode: "#ffffff")!
-    UIApplication.shared.statusBarStyle = .lightContent
-    UINavigationBar.appearance().titleTextAttributes = [NSAttributedStringKey(rawValue: NSAttributedStringKey.foregroundColor.rawValue): UIColor(hexCode: "#ffffff")!]
+    UIApplication.shared.statusBarStyle = .default
+    UINavigationBar.appearance().barTintColor = UIColor(hexCode: "#FFFFFF")!
+    UINavigationBar.appearance().tintColor = UIColor(hexCode: "#000000")!
+    UINavigationBar.appearance().titleTextAttributes = [NSAttributedStringKey(rawValue: NSAttributedStringKey.foregroundColor.rawValue): UIColor(hexCode: "#000000")!]
+    UINavigationBar.appearance().setBackgroundImage(UIImage(), for: .any, barMetrics: .default)
+    UINavigationBar.appearance().shadowImage = UIImage()
+    
+  }
+  
+  func customTabBar(){
     UITabBar.appearance().tintColor = UIColor(hexCode: "#794DFF")!
+    UITabBar.appearance().backgroundColor = .white
   }
   
   func customSearchBar() {
