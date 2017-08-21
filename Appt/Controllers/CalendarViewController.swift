@@ -42,13 +42,14 @@ class CalendarViewController: UIViewController {
   
   override func viewDidLoad() {
     super.viewDidLoad()
-    
     tableView.delegate = self
     tableView.dataSource = self
     performFetch()
     noLargeTitles()
     setupCalendarView()
     
+    calendarView.dropShadowDown()
+
     calendarView.scrollToDate(Date(), animateScroll: false)
     calendarView.selectDates( [Date()] )
   }
@@ -109,16 +110,18 @@ extension CalendarViewController: UITableViewDelegate, UITableViewDataSource {
     
     let cell = tableView.dequeueReusableCell(withIdentifier: "AppointmentCell", for: indexPath) as! AppointmentCell
     
+    cell.apptCard.dropShadow()
     let appointment = fetchedResultsController.object(at: indexPath)
-    
     cell.nameLabel.text = appointment.patient?.fullName
     if let date = appointment.date {
-      cell.dateLabel.text = dateFormatter(date: date)
+      formatter.dateFormat = "H:mm"
+      cell.dateLabel.text = formatter.string(from: date)
     }
     cell.noteLabel.text = appointment.note
     
     return cell
   }
+  
   
   func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
     if editingStyle == .delete {
@@ -192,7 +195,6 @@ extension CalendarViewController {
     
     guard let appointmentsOfTheDay = self.appointmentsOfTheDay else { return }
     appointmentsOfTheDay.map { print("Appointment date is: \($0.date)") }
-    
     
     guard let gotoObject = appointmentsOfTheDay.first else {
       return

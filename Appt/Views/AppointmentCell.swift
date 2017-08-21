@@ -13,6 +13,7 @@ class AppointmentCell: UITableViewCell {
   @IBOutlet weak var dateLabel: UILabel!
   @IBOutlet weak var nameLabel: UILabel!
   @IBOutlet weak var noteLabel: UILabel!
+  @IBOutlet weak var apptCard: UIView!
   
 
 }

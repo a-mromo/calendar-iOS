@@ -28,6 +28,7 @@
 		6C4A3AF51EFB213B00D91CA5 /* PatientDetailTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C4A3AF41EFB213B00D91CA5 /* PatientDetailTVC.swift */; };
 		6C59DE691F02974F00E32887 /* UpdateApptTVC_legacy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C59DE681F02974F00E32887 /* UpdateApptTVC_legacy.swift */; };
 		6C5B10E81F244CD9008B6CB6 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 6C5B10E71F244CD9008B6CB6 /* GoogleService-Info.plist */; };
+		6C6EBDA01F4A2B0C00A2E2F9 /* Shadows.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C6EBD9F1F4A2B0C00A2E2F9 /* Shadows.swift */; };
 		6C7E6CCB1EDE177A002D1936 /* CoreDataStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C7E6CCA1EDE177A002D1936 /* CoreDataStore.swift */; };
 		6C8793451F43E4BE0028AA3D /* ActivityTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C3208431EE0127C00ED6BDF /* ActivityTableViewController.swift */; };
 		6C8793461F43E4DC0028AA3D /* CalendarTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C3208471EE09E8400ED6BDF /* CalendarTableViewController.swift */; };
@@ -93,6 +94,7 @@
 		6C4A3AF41EFB213B00D91CA5 /* PatientDetailTVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PatientDetailTVC.swift; sourceTree = "<group>"; };
 		6C59DE681F02974F00E32887 /* UpdateApptTVC_legacy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdateApptTVC_legacy.swift; sourceTree = "<group>"; };
 		6C5B10E71F244CD9008B6CB6 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../../../../../Downloads/GoogleService-Info.plist"; sourceTree = "<group>"; };
+		6C6EBD9F1F4A2B0C00A2E2F9 /* Shadows.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Shadows.swift; sourceTree = "<group>"; };
 		6C7E6CCA1EDE177A002D1936 /* CoreDataStore.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoreDataStore.swift; sourceTree = "<group>"; };
 		6C952E571ECD629E005CB5B7 /* NewApptTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewApptTableViewController.swift; sourceTree = "<group>"; };
 		6C9665E41F1AB637000228FE /* UIColor+Hex.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Hex.swift"; sourceTree = "<group>"; };
@@ -225,6 +227,7 @@
 				6C18DB9B1F1ECBEB00E806C2 /* TextFieldDelegate.swift */,
 				6C18DB9D1F1ECF3000E806C2 /* TextViewDelegate.swift */,
 				6C18DB991F1EAA7700E806C2 /* TextViewPlaceholder.swift */,
+				6C6EBD9F1F4A2B0C00A2E2F9 /* Shadows.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -483,6 +486,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				6C7E6CCB1EDE177A002D1936 /* CoreDataStore.swift in Sources */,
+				6C6EBDA01F4A2B0C00A2E2F9 /* Shadows.swift in Sources */,
 				6C9665E71F1AB69F000228FE /* CustomSearchBar.swift in Sources */,
 				6CE055651EDFED6600312499 /* Patient+CoreDataProperties.swift in Sources */,
 				6C9665E91F1B01A5000228FE /* CustomTabBar.swift in Sources */,

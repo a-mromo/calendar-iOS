@@ -40,6 +40,7 @@ struct DefaultTheme: ThemeProtocol {
   func customTabBar(){
     UITabBar.appearance().tintColor = UIColor(hexCode: "#794DFF")!
     UITabBar.appearance().backgroundColor = .white
+    UITabBar.appearance().dropShadow()
   }
   
   func customSearchBar() {

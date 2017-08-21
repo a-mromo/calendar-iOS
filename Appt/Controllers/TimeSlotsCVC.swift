@@ -16,6 +16,7 @@ class TimeSlotsCVC: UICollectionViewController {
   
   var timeSlotter = TimeSlotter()
   var appointmentDate: Date!
+  var formatter = DateFormatter()
   var timeSlots = [Date]()
   let currentDate = Date()
   var currentAppointments: [Appointment]?
@@ -57,11 +58,9 @@ class TimeSlotsCVC: UICollectionViewController {
     cell.timeSlotView.layer.borderColor = UIColor.darkGray.cgColor
     
     let timeSlot = timeSlots[indexPath.row]
-    if timeSlot.minute() == 0 {
-      cell.timeLabel.text = "\(timeSlot.hour()):\(timeSlot.minute())" + "0"
-    } else {
-      cell.timeLabel.text = "\(timeSlot.hour()):\(timeSlot.minute())"
-    }
+    formatter.dateFormat = "H:mm"
+    cell.timeLabel.text = formatter.string(from: timeSlot)
+
     return cell
   }
   
