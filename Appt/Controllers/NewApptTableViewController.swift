@@ -256,7 +256,6 @@ extension NewApptTableViewController {
     } else {
       print("Appointment is empty")
     }
-    //    tableView.reloadData()
   }
   
   func fullDayPredicate(for date: Date) -> NSPredicate {
@@ -356,6 +355,7 @@ extension NewApptTableViewController: NSFetchedResultsControllerDelegate {
       }
       break;
     case .delete:
+      print("Appt Deleted")
       if let indexPath = indexPath {
         tableView.deleteRows(at: [indexPath], with: .fade)
       }

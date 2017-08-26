@@ -76,14 +76,15 @@ class NewPatientTableVC: UITableViewController {
   
   
   func updatePatient() {
-    guard let patient = patient else { return }
+//    guard let patient = patient else { return }
+//
+//    patient.name = nameTextField.text
+//    patient.lastName = lastNameTextField.text
+//    patient.mobilePhone = mobilePhoneTextField.text
+//    patient.homePhone = homePhoneTextField.text
+//    patient.email = patientEmailTextField.text
     
-    patient.name = nameTextField.text
-    patient.lastName = lastNameTextField.text
-    patient.mobilePhone = mobilePhoneTextField.text
-    patient.homePhone = homePhoneTextField.text
-    patient.email = patientEmailTextField.text
-    
+    patientFromTextFields()
     CoreDataStore.instance.save()
   }
   

@@ -48,7 +48,7 @@ class UpdateApptTVC: UITableViewController, AppointmentTVC {
     let fetchRequest: NSFetchRequest<Appointment> = Appointment.fetchRequest()
     fetchRequest.sortDescriptors = [NSSortDescriptor(key: "date", ascending: false)]
     if let selectedDate = calendarView.selectedDates.first {
-      fetchRequest.predicate = getPredicate(for: selectedDate )
+      fetchRequest.predicate = fullDayPredicate(for: selectedDate )
     }
     let fetchedResultsController = NSFetchedResultsController(fetchRequest: fetchRequest, managedObjectContext: self.persistentContainer.viewContext, sectionNameKeyPath: nil, cacheName: nil)
     fetchedResultsController.delegate = self
@@ -122,10 +122,8 @@ class UpdateApptTVC: UITableViewController, AppointmentTVC {
         self.patient = patient
         costTextField.text = cost
         noteTextView.text = note
-        //        datePicker.date = date
         
         print("Appointment date: \(String(describing: dates.first))")
-        //        print("CalendarView date: \(calendarView.selectDates)")
       }
     }
   }
@@ -133,9 +131,7 @@ class UpdateApptTVC: UITableViewController, AppointmentTVC {
   
   
   func confirmAppointment() {
-    guard let appointment = appointment else {
-      return
-    }
+    guard let appointment = appointment else { return }
     appointment.patient = patient
     appointment.date = selectedTimeSlot
     appointment.note = noteTextView.text
@@ -167,7 +163,6 @@ class UpdateApptTVC: UITableViewController, AppointmentTVC {
   
   @objc func keyboardWillHide(notification: NSNotification) {
     UIView.animate(withDuration: 0.2, animations: {
-      // For some reason adding inset in keyboardWillShow is animated by itself but removing is not, that's why we have to use animateWithDuration here
       self.tableView.contentInset = UIEdgeInsetsMake(0, 0, 0, 0)
     })
   }
@@ -210,43 +205,6 @@ extension UpdateApptTVC {
       return super.tableView(tableView, heightForRowAt: indexPath)
     }
   }
-}
-
-
-// Date picker
-extension UpdateApptTVC {
-  @IBAction func datePickerValue(_ sender: UIDatePicker) {
-    datePickerChanged()
-  }
-  
-  // Run datePickerChanged() in viewDidLoad() to display selected date in Label
-  func datePickerChanged() {
-    //    dateDetailLabel.text = DateFormatter.localizedString(from: datePicker.date, dateStyle: DateFormatter.Style.short, timeStyle: DateFormatter.Style.short)
-  }
-  
-  func toggleDatePicker() {
-    datePickerHidden = !datePickerHidden
-    
-    tableView.beginUpdates()
-    tableView.endUpdates()
-  }
-  
-  // Toggle DatePicker
-  
-  //  override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-  //    if indexPath.section == 0 && indexPath.row == 0 {
-  //      toggleDatePicker()
-  //    }
-  //  }
-  //
-  //  override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-  //    // Use the datePicker row. The one below is from a previous iteration
-  //    if datePickerHidden && indexPath.section == 0 && indexPath.row == 1 {
-  //      return 0
-  //    } else {
-  //      return super.tableView(tableView, heightForRowAt: indexPath)
-  //    }
-  //  }
 }
 
 
@@ -319,17 +277,9 @@ extension UpdateApptTVC {
 extension UpdateApptTVC: JTAppleCalendarViewDataSource {
   
   func loadAppointmentsForDate(date: Date){
-    var calendar = Calendar.current
-    calendar.timeZone = NSTimeZone.local
-    
-    let dateFrom = calendar.startOfDay(for: date)
-    var components = calendar.dateComponents([.year, .month, .day, .hour, .minute], from: dateFrom)
-    components.day! += 1
-    let dateTo = calendar.date(from: components)
-    
-    let datePredicate = NSPredicate(format: "(%@ <= date) AND (date < %@)", argumentArray: [dateFrom, dateTo])
+    let dayPredicate = fullDayPredicate(for: date)
     if let fetchedObjects = fetchedResultsController.fetchedObjects {
-      appointmentsOfTheDay = fetchedObjects.filter({ return datePredicate.evaluate(with: $0) })
+      appointmentsOfTheDay = fetchedObjects.filter({ return dayPredicate.evaluate(with: $0) })
     }
     
     if appointmentsOfTheDay != nil {
@@ -339,10 +289,9 @@ extension UpdateApptTVC: JTAppleCalendarViewDataSource {
     } else {
       print("Appointment is empty")
     }
-    //    tableView.reloadData()
   }
   
-  func getPredicate(for date: Date) -> NSPredicate {
+  func fullDayPredicate(for date: Date) -> NSPredicate {
     var calendar = Calendar.current
     calendar.timeZone = NSTimeZone.local
     

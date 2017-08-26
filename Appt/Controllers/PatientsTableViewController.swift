@@ -13,14 +13,13 @@ class PatientsTableViewController: UITableViewController {
   
   var selectedPatient: Patient?
   var filteredPatient = [Patient]()
+  private let segueAddPatient = "SegueAddPatientTVC"
   
   let searchController = UISearchController(searchResultsController: nil)
   
+  let persistentContainer = CoreDataStore.instance.persistentContainer
   var managedObjectContext: NSManagedObjectContext?
   
-  private let segueAddPatient = "SegueAddPatientTVC"
-  
-  let persistentContainer = CoreDataStore.instance.persistentContainer
   
   lazy var fetchedResultsController: NSFetchedResultsController<Patient> = {
     let fetchRequest: NSFetchRequest<Patient> = Patient.fetchRequest()
@@ -75,12 +74,6 @@ class PatientsTableViewController: UITableViewController {
   }
   
   override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-  
-//    guard let destinationVC = self.navigationController?.viewControllers[0] as?  NewApptTableViewController
-//      else {
-//        print("Could not instantiate view controller with identifier PatientDetailTVC")
-//        return
-//    }
     
     if let destinationVC = self.navigationController?.viewControllers[0] as?  NewApptTableViewController {
       if searchController.isActive && searchController.searchBar.text != "" {
@@ -99,13 +92,6 @@ class PatientsTableViewController: UITableViewController {
     }
   }
   
-//  override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-//    if segue.identifier == "patientSelected" {
-//      if let destinationVC = segue.destination as? NewApptTableViewController {
-//        destinationVC.patient = self.selectedPatient
-//      }
-//    }
-//  }
   
   func fetchPatients() {
     do {
@@ -157,6 +143,7 @@ extension PatientsTableViewController: NSFetchedResultsControllerDelegate {
       }
       break;
     case .delete:
+      print("Patient Deleted")
       if let indexPath = indexPath {
         tableView.deleteRows(at: [indexPath], with: .fade)
       }
@@ -191,7 +178,6 @@ extension PatientsTableViewController: UISearchControllerDelegate, UISearchResul
   }
   
   func didDismissSearchController(_ searchController: UISearchController) {
-//    filteredPatient = nil
     filteredPatient.removeAll()
     tableView.reloadData()
   }
