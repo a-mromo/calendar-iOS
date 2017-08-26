@@ -30,7 +30,6 @@ class NewApptTableViewController: UITableViewController, AppointmentTVC {
   let persistentContainer = CoreDataStore.instance.persistentContainer
   var managedObjectContext: NSManagedObjectContext?
   
-
   var calendarViewHidden = false
   
   // Calendar Color
@@ -41,12 +40,11 @@ class NewApptTableViewController: UITableViewController, AppointmentTVC {
   
   
   // Load Appointments for given date
-  
   lazy var fetchedResultsController: NSFetchedResultsController<Appointment> = {
     let fetchRequest: NSFetchRequest<Appointment> = Appointment.fetchRequest()
     fetchRequest.sortDescriptors = [NSSortDescriptor(key: "date", ascending: false)]
     if let selectedDate = calendarView.selectedDates.first {
-      fetchRequest.predicate = getPredicate(for: selectedDate )
+      fetchRequest.predicate = fullDayPredicate(for: selectedDate)
     }
     let fetchedResultsController = NSFetchedResultsController(fetchRequest: fetchRequest, managedObjectContext: self.persistentContainer.viewContext, sectionNameKeyPath: nil, cacheName: nil)
     fetchedResultsController.delegate = self
@@ -138,12 +136,9 @@ class NewApptTableViewController: UITableViewController, AppointmentTVC {
   
   @objc func keyboardWillHide(notification: NSNotification) {
     UIView.animate(withDuration: 0.2, animations: {
-      // For some reason adding inset in keyboardWillShow is animated by itself but removing is not, that's why we have to use animateWithDuration here
       self.tableView.contentInset = UIEdgeInsetsMake(0, 0, 0, 0)
     })
   }
-  
-
   
   override func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
     if section == 0 {
@@ -180,7 +175,6 @@ extension NewApptTableViewController {
       return super.tableView(tableView, heightForRowAt: indexPath)
     }
   }
-  
 }
 
 
@@ -233,11 +227,6 @@ extension NewApptTableViewController {
     
   }
   
-//  func calendarViewDateChanged() {
-//    guard let calendarDate = calendarView.selectedDates.first else { return }
-//    dateDetailLabel.text = DateFormatter.localizedString(from: calendarDate, dateStyle: DateFormatter.Style.short, timeStyle: DateFormatter.Style.short)
-//  }
-  
   override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
     let calendarDate = calendarView.selectedDates.first
     if segue.identifier == "segueTimeSlots" {
@@ -253,17 +242,11 @@ extension NewApptTableViewController {
 
 extension NewApptTableViewController {
   func loadAppointmentsForDate(date: Date){
-    var calendar = Calendar.current
-    calendar.timeZone = NSTimeZone.local
     
-    let dateFrom = calendar.startOfDay(for: date)
-    var components = calendar.dateComponents([.year, .month, .day, .hour, .minute], from: dateFrom)
-    components.day! += 1
-    let dateTo = calendar.date(from: components)
+    let dayPredicate = fullDayPredicate(for: date)
     
-    let datePredicate = NSPredicate(format: "(%@ <= date) AND (date < %@)", argumentArray: [dateFrom, dateTo])
     if let fetchedObjects = fetchedResultsController.fetchedObjects {
-      appointmentsOfTheDay = fetchedObjects.filter({ return datePredicate.evaluate(with: $0) })
+      appointmentsOfTheDay = fetchedObjects.filter({ return dayPredicate.evaluate(with: $0) })
     }
     
     if appointmentsOfTheDay != nil {
@@ -276,7 +259,7 @@ extension NewApptTableViewController {
     //    tableView.reloadData()
   }
   
-  func getPredicate(for date: Date) -> NSPredicate {
+  func fullDayPredicate(for date: Date) -> NSPredicate {
     var calendar = Calendar.current
     calendar.timeZone = NSTimeZone.local
     
@@ -347,13 +330,11 @@ extension NewApptTableViewController: JTAppleCalendarViewDelegate {
   func calendar(_ calendar: JTAppleCalendarView, didDeselectDate date: Date, cell: JTAppleCell?, cellState: CellState) {
     handleCellSelected(view: cell, cellState: cellState)
     handleCellTextColor(view: cell, cellState: cellState)
-    
   }
   
   func calendar(_ calendar: JTAppleCalendarView, didScrollToDateSegmentWith visibleDates: DateSegmentInfo) {
     setupViewsFromCalendar(from: visibleDates)
   }
-  
 }
 
 extension NewApptTableViewController: NSFetchedResultsControllerDelegate {
@@ -364,7 +345,6 @@ extension NewApptTableViewController: NSFetchedResultsControllerDelegate {
   
   func controllerDidChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
     tableView.endUpdates()
-    
   }
   
   func controller(_ controller: NSFetchedResultsController<NSFetchRequestResult>, didChange anObject: Any, at indexPath: IndexPath?, for type: NSFetchedResultsChangeType, newIndexPath: IndexPath?) {
@@ -392,7 +372,6 @@ extension NewApptTableViewController: NSFetchedResultsControllerDelegate {
   
   func controller(_ controller: NSFetchedResultsController<NSFetchRequestResult>, didChange sectionInfo: NSFetchedResultsSectionInfo, atSectionIndex sectionIndex: Int, for type: NSFetchedResultsChangeType) {
   }
-  
 }
 
 

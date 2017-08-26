@@ -31,15 +31,12 @@ class CalendarViewController: UIViewController {
     return fetchedResultsController
   }()
   
-  
-  
   // Calendar Color
   let outsideMonthColor = UIColor.lightGray
   let monthColor = UIColor.darkGray
   let selectedMonthColor = UIColor.white
   let currentDateSelectedViewColor = UIColor.black
-  
-  
+
   override func viewDidLoad() {
     super.viewDidLoad()
     tableView.delegate = self
@@ -180,34 +177,23 @@ extension CalendarViewController: NSFetchedResultsControllerDelegate {
 
 extension CalendarViewController {
   func loadAppointmentsForDate(date: Date){
-    var calendar = Calendar.current
-    calendar.timeZone = NSTimeZone.local
     
-    let dateFrom = calendar.startOfDay(for: date)
-    var components = calendar.dateComponents([.year, .month, .day, .hour, .minute], from: dateFrom)
-    components.day! += 1
-    let dateTo = calendar.date(from: components)
+    let dayPredicate = fullDayPredicate(for: date)
     
-    let datePredicate = NSPredicate(format: "(%@ <= date) AND (date < %@)", argumentArray: [dateFrom, dateTo])
     if let fetchedObjects = fetchedResultsController.fetchedObjects {
-      appointmentsOfTheDay = fetchedObjects.filter({ return datePredicate.evaluate(with: $0) })
+      appointmentsOfTheDay = fetchedObjects.filter({ return dayPredicate.evaluate(with: $0) })
     }
     
     guard let appointmentsOfTheDay = self.appointmentsOfTheDay else { return }
-    appointmentsOfTheDay.map { print("Appointment date is: \($0.date)") }
-    
-    guard let gotoObject = appointmentsOfTheDay.first else {
-      return
-    }
-    
-    guard let indexPath = fetchedResultsController.indexPath(forObject: gotoObject) else {
-      return
-    }
-    
+    // Print Appointments of the Day
+    appointmentsOfTheDay.map { print("Appointment date is: \(String(describing: $0.date))") }
+    guard let gotoObject = appointmentsOfTheDay.first else { return }
+    guard let indexPath = fetchedResultsController.indexPath(forObject: gotoObject) else { return }
+  
     self.tableView.scrollToRow(at: indexPath, at: .top, animated: true)
   }
   
-  func getPredicate(for date: Date) -> NSPredicate {
+  func fullDayPredicate(for date: Date) -> NSPredicate {
     var calendar = Calendar.current
     calendar.timeZone = NSTimeZone.local
     

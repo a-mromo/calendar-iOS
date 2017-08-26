@@ -72,7 +72,6 @@ struct DefaultTheme: ThemeProtocol {
       UINavigationBar.appearance().largeTitleTextAttributes = [NSAttributedStringKey(rawValue: NSAttributedStringKey.foregroundColor.rawValue): UIColor(hexCode: "#ffffff")!]
     }
   }
-  
 }
 
 struct Theme {

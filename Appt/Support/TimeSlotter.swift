@@ -33,13 +33,13 @@ class TimeSlotter {
     self.appointmentInterval = appointmentInterval
   }
   
-  func setOfficeHoursForDate(date: Date) {
+  func setWorkingHoursForDate(date: Date) {
     openTime = createCompleteDate(year: date.year(), month: date.month(), withDay: date.day(), hour: openTimeHour, minute: openTimeMinutes)
     closeTime = createCompleteDate(year: date.year(), month: date.month(), withDay: date.day(), hour: closeTimeHour, minute: closeTimeMinutes)
   }
   
   func getTimeSlotsforDate(date: Date) -> [Date]? {
-    setOfficeHoursForDate(date: date)
+    setWorkingHoursForDate(date: date)
     setPossibleAppointments()
     checkAvailability()
     return possibleAppointments
@@ -66,14 +66,14 @@ class TimeSlotter {
         }
       }
       
-      for existingAppointmentStart in currentAppointments {
-        let existingAppointmentEnd = Calendar.current.date(byAdding: .minute, value: appointmentLength, to: existingAppointmentStart)!
+      for currentAppointmentStart in currentAppointments {
+        let currentAppointmentEnd = Calendar.current.date(byAdding: .minute, value: appointmentLength, to: currentAppointmentStart)!
         // see https://stackoverflow.com/a/5601502 for a list of relations between two interval. We are interested in "overlaps with"
         //
         // a interval overlaps a second interval if
         // - the interval starts earlier then the second intervals ends. And
         // - the second interval starts earlier than the first interval ends
-        if possibleAppointmentStart < existingAppointmentEnd && existingAppointmentStart < possibleAppointmentEnd {
+        if possibleAppointmentStart < currentAppointmentEnd && currentAppointmentStart < possibleAppointmentEnd {
           if let appointmentIndex = possibleAppointments.index(of: possibleAppointmentStart) {
             possibleAppointments.remove(at: appointmentIndex)
             break

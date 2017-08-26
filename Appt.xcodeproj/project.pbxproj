@@ -215,15 +215,15 @@
 			isa = PBXGroup;
 			children = (
 				6C2981F51F2D237900D8AE52 /* CalendarDayCell.swift */,
+				6C4151E61ECA82ED00ACDAE7 /* AppointmentCell.swift */,
+				6C3208451EE0153100ED6BDF /* ActivityCell.swift */,
+				6CED20601ED3926100A6CD8B /* PatientCell.swift */,
 				6CC2D19B1F13FD990097DDFE /* Theme.swift */,
 				6C3342961F3A643D007F626D /* TimeSlotCell.swift */,
 				6C9665E41F1AB637000228FE /* UIColor+Hex.swift */,
 				6C9665E61F1AB69F000228FE /* CustomSearchBar.swift */,
 				6C9665E81F1B01A5000228FE /* CustomTabBar.swift */,
-				6C4151E61ECA82ED00ACDAE7 /* AppointmentCell.swift */,
 				6CE4E3181F1C5A810030C4C8 /* CustomSearch.swift */,
-				6CED20601ED3926100A6CD8B /* PatientCell.swift */,
-				6C3208451EE0153100ED6BDF /* ActivityCell.swift */,
 				6C18DB9B1F1ECBEB00E806C2 /* TextFieldDelegate.swift */,
 				6C18DB9D1F1ECF3000E806C2 /* TextViewDelegate.swift */,
 				6C18DB991F1EAA7700E806C2 /* TextViewPlaceholder.swift */,

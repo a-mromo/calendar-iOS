@@ -57,7 +57,6 @@ class UpdateApptTVC: UITableViewController, AppointmentTVC {
   }()
   
   
-  
   @IBOutlet var calendarView: JTAppleCalendarView!
   @IBOutlet var monthLabel: UILabel!
   @IBOutlet var yearLabel: UILabel!
@@ -67,7 +66,7 @@ class UpdateApptTVC: UITableViewController, AppointmentTVC {
   @IBOutlet weak var noteTextView: UITextView!
   @IBOutlet weak var costTextField: UITextField!
   @IBOutlet weak var dateDetailLabel: UILabel!
-//  @IBOutlet weak var datePicker: UIDatePicker!
+
   
   @IBAction func cancelButton(_ sender: UIBarButtonItem) {
     dismiss(animated: true, completion: nil)
@@ -119,8 +118,6 @@ class UpdateApptTVC: UITableViewController, AppointmentTVC {
         let dates: [Date] = [date]
         calendarView.scrollToDate(date, animateScroll: false)
         calendarView.selectDates( dates )
-        //        calendarView.date
-        //        dateDetailLabel.text = dateFormatter(date: date)
         patientLabel.text = patient.fullName
         self.patient = patient
         costTextField.text = cost

@@ -215,7 +215,7 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillProportionally" translatesAutoresizingMaskIntoConstraints="NO" id="DQg-CQ-KVc" userLabel="Calendar stack">
-                                                    <rect key="frame" x="0.0" y="-748.5" width="375" height="1198"/>
+                                                    <rect key="frame" x="0.0" y="-864" width="375" height="1313.5"/>
                                                     <subviews>
                                                         <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillProportionally" translatesAutoresizingMaskIntoConstraints="NO" id="LmP-yg-2v7" userLabel="Title Stack View">
                                                             <rect key="frame" x="0.0" y="0.0" width="375" height="65"/>
@@ -292,7 +292,7 @@
                                                             </constraints>
                                                         </stackView>
                                                         <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" pagingEnabled="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="ONw-Np-zXi" customClass="JTAppleCalendarView" customModule="JTAppleCalendar">
-                                                            <rect key="frame" x="0.0" y="85.5" width="375" height="1112.5"/>
+                                                            <rect key="frame" x="0.0" y="85.5" width="375" height="1228"/>
                                                             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="height" constant="340" id="vXV-VZ-JcD"/>
@@ -517,7 +517,6 @@
                         <segue destination="uZg-nr-cVL" kind="relationship" relationship="viewControllers" id="u7Y-xg-7CH"/>
                         <segue destination="acz-Tj-zWs" kind="relationship" relationship="viewControllers" id="lzU-1b-eKA"/>
                         <segue destination="MCk-NH-DkV" kind="relationship" relationship="viewControllers" id="zm1-Bd-ipj"/>
-                        <segue destination="chm-rR-fES" kind="relationship" relationship="viewControllers" id="oiE-7k-qFS"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="HuB-VB-40B" sceneMemberID="firstResponder"/>
@@ -635,19 +634,6 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="rWw-eR-Wa4" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1688.8" y="1156.3718140929536"/>
-        </scene>
-        <!--Settings-->
-        <scene sceneID="ggp-91-Coi">
-            <objects>
-                <navigationController id="chm-rR-fES" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Settings" image="settings" id="UGZ-6X-bgo"/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="WKc-Xs-tkv">
-                        <autoresizingMask key="autoresizingMask"/>
-                    </navigationBar>
-                </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="6Z5-xd-wjv" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="750" y="1922"/>
         </scene>
         <!--Patients-->
         <scene sceneID="DFX-RE-R04">
@@ -912,7 +898,7 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillProportionally" translatesAutoresizingMaskIntoConstraints="NO" id="k9m-mm-fAV" userLabel="Calendar stack">
-                                                    <rect key="frame" x="0.0" y="-864" width="375" height="1313.5"/>
+                                                    <rect key="frame" x="0.0" y="-991.5" width="375" height="1441"/>
                                                     <subviews>
                                                         <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillProportionally" translatesAutoresizingMaskIntoConstraints="NO" id="sjg-Sc-qeP" userLabel="Title Stack View">
                                                             <rect key="frame" x="0.0" y="0.0" width="375" height="65"/>
@@ -989,7 +975,7 @@
                                                             </constraints>
                                                         </stackView>
                                                         <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" pagingEnabled="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="SO9-34-Uii" customClass="JTAppleCalendarView" customModule="JTAppleCalendar">
-                                                            <rect key="frame" x="0.0" y="85.5" width="375" height="1228"/>
+                                                            <rect key="frame" x="0.0" y="85.5" width="375" height="1355.5"/>
                                                             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="height" constant="340" id="z7B-lk-4Wh"/>
@@ -1870,7 +1856,6 @@
     <resources>
         <image name="person" width="32" height="32"/>
         <image name="schedule" width="40" height="40"/>
-        <image name="settings" width="40" height="40"/>
         <image name="today" width="36" height="40"/>
     </resources>
     <inferredMetricsTieBreakers>
