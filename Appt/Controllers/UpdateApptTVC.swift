@@ -105,7 +105,6 @@ class UpdateApptTVC: UITableViewController, AppointmentTVC {
     if selectedTimeSlot != nil {
       timeSlotLabel.text = selectedTimeSlot?.toHourMinuteString()
     }
-    
   }
   
   func loadAppointment() {
@@ -115,15 +114,14 @@ class UpdateApptTVC: UITableViewController, AppointmentTVC {
         let cost = appointment.cost,
         let note = appointment.note {
         
-        let dates: [Date] = [date]
         calendarView.scrollToDate(date, animateScroll: false)
-        calendarView.selectDates( dates )
+        calendarView.selectDates( [date] )
         patientLabel.text = patient.fullName
         self.patient = patient
         costTextField.text = cost
         noteTextView.text = note
         
-        print("Appointment date: \(String(describing: dates.first))")
+        print("Appointment date: \(String(describing: date))")
       }
     }
   }
@@ -166,7 +164,6 @@ class UpdateApptTVC: UITableViewController, AppointmentTVC {
       self.tableView.contentInset = UIEdgeInsetsMake(0, 0, 0, 0)
     })
   }
-  
   
   
   override func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
@@ -337,7 +334,7 @@ extension UpdateApptTVC: JTAppleCalendarViewDataSource {
 
 
 extension UpdateApptTVC: JTAppleCalendarViewDelegate {
-  // Display Cell
+
   func calendar(_ calendar: JTAppleCalendarView, cellForItemAt date: Date, cellState: CellState, indexPath: IndexPath) -> JTAppleCell {
     let cell = calendar.dequeueReusableJTAppleCell(withReuseIdentifier: "CalendarDayCell", for: indexPath) as! CalendarDayCell
     cell.dateLabel.text = cellState.text

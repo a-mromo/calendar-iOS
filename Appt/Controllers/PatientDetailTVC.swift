@@ -29,10 +29,6 @@ class PatientDetailTVC: UITableViewController {
   }
   
   
-  @IBAction func editPatient(_ sender: UIButton) {
-    
-  }
-  
   func noLargeTitles(){
     if #available(iOS 11.0, *) {
       navigationItem.largeTitleDisplayMode = .never
