@@ -103,7 +103,8 @@ class NewApptTableViewController: UITableViewController, AppointmentTVC {
   
   func confirmAppointment() {
     let appointment = Appointment(context: persistentContainer.viewContext)
-    
+    guard let patient = self.patient else { return }
+    guard let selectedTimeSlot = self.selectedTimeSlot else { return }
     appointment.patient = patient
     appointment.date = selectedTimeSlot
     appointment.note = noteTextView.text

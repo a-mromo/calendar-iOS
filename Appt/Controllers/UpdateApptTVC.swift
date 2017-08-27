@@ -103,33 +103,40 @@ class UpdateApptTVC: UITableViewController, AppointmentTVC {
   }
   
   func loadAppointment() {
-    if let appointment = appointment {
-      if let date = appointment.date,
-        let patient = appointment.patient,
-        let cost = appointment.cost,
-        let note = appointment.note {
-        
-        calendarView.scrollToDate(date, animateScroll: false)
-        calendarView.selectDates( [date] )
-        patientLabel.text = patient.fullName
-        self.patient = patient
-        costTextField.text = cost
-        noteTextView.text = note
-        
-        print("Appointment date: \(String(describing: date))")
-      }
+    
+    guard let appointment = self.appointment else { return }
+    calendarView.scrollToDate(appointment.date, animateScroll: false)
+    calendarView.selectDates( [appointment.date] )
+    
+    self.patient = appointment.patient
+    patientLabel.text = appointment.patient.fullName
+    
+    if let cost = appointment.cost {
+      costTextField.text = cost
     }
+    if let note = appointment.note {
+      noteTextView.text = note
+    }
+    print("Appointment date: \(String(describing: appointment.date))")
+    
   }
   
   
   
   func confirmAppointment() {
     guard let appointment = appointment else { return }
+    guard let patient = self.patient else { return }
+    guard let selectedTimeSlot = self.selectedTimeSlot else { return }
     appointment.patient = patient
     appointment.date = selectedTimeSlot
-    appointment.note = noteTextView.text
-    appointment.cost = costTextField.text
     appointment.dateModified = Date()
+    
+    if noteTextView.text != nil {
+      appointment.note = noteTextView.text
+    }
+    if costTextField.text != nil {
+      appointment.cost = costTextField.text
+    }
     
     CoreDataStore.instance.save()
     dismiss(animated: true, completion: nil)
