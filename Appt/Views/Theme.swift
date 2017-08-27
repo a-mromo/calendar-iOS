@@ -37,7 +37,6 @@ struct DefaultTheme: ThemeProtocol {
     UINavigationBar.appearance().barTintColor = UIColor(hexCode: "#FFFFFF")!
     UINavigationBar.appearance().tintColor = UIColor(hexCode: "#000000")!
     UINavigationBar.appearance().titleTextAttributes = [NSAttributedStringKey(rawValue: NSAttributedStringKey.foregroundColor.rawValue): UIColor(hexCode: "#000000")!]
-    UINavigationBar.appearance().setBackgroundImage(UIImage(), for: .any, barMetrics: .default)
     UINavigationBar.appearance().shadowImage = UIImage()
     
   }
