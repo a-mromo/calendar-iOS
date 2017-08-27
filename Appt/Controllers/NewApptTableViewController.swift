@@ -28,7 +28,6 @@ class NewApptTableViewController: UITableViewController, AppointmentTVC {
   let segueSelectPatient = "SegueSelectPatientsTVC"
   
   let persistentContainer = CoreDataStore.instance.persistentContainer
-  var managedObjectContext: NSManagedObjectContext?
   
   var calendarViewHidden = false
   

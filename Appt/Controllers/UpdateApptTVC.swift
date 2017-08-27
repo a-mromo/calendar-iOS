@@ -12,8 +12,6 @@ import JTAppleCalendar
 
 class UpdateApptTVC: UITableViewController, AppointmentTVC {
   
-  
-  
   var selectedTimeSlot: Date?
   var appointmentsOfTheDay: [Appointment]?
   var patient: Patient? {
@@ -31,9 +29,7 @@ class UpdateApptTVC: UITableViewController, AppointmentTVC {
   let segueSelectPatient = "SegueSelectPatientsTVC"
   
   let persistentContainer = CoreDataStore.instance.persistentContainer
-  var managedObjectContext: NSManagedObjectContext?
   
-  var datePickerHidden = false
   var calendarViewHidden = false
   
   // Calendar Color

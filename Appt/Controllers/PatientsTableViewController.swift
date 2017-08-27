@@ -18,8 +18,6 @@ class PatientsTableViewController: UITableViewController {
   let searchController = UISearchController(searchResultsController: nil)
   
   let persistentContainer = CoreDataStore.instance.persistentContainer
-  var managedObjectContext: NSManagedObjectContext?
-  
   
   lazy var fetchedResultsController: NSFetchedResultsController<Patient> = {
     let fetchRequest: NSFetchRequest<Patient> = Patient.fetchRequest()
