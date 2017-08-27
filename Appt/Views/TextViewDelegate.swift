@@ -36,10 +36,6 @@ extension NewApptTableViewController {
   }
 }
 
-
-
-// NEEDS REFACTORING -- DUPLICATED CODE -- SEE LEGACY CODE FILE
-
 extension UpdateApptTVC:  UITextViewDelegate {
   
   func setTextViewDelegates(){
