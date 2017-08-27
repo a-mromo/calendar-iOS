@@ -41,12 +41,15 @@ class ApptDetailTVC: UITableViewController {
   }
   
   func setupUI() {
-    if let date = appointment?.date, let patientName = appointment?.patient?.fullName, let cost = appointment?.cost, let note = appointment?.note {
-      
-      dateLabel.text = dateFormatter(date: date)
-      patientNameLabel.text = patientName
-      apptCostLabel.text = String(cost)
-      noteLabel.text = note
+    guard let appointment = self.appointment else { return }
+      dateLabel.text = dateFormatter(date: appointment.date)
+      patientNameLabel.text = appointment.patient.fullName
+    
+    if appointment.cost != nil {
+      apptCostLabel.text = String(describing: appointment.cost)
+    }
+    if appointment.note != nil {
+      noteLabel.text = appointment.note
     }
   }
   

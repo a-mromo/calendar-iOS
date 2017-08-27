@@ -42,9 +42,17 @@ class PatientDetailTVC: UITableViewController {
   func setupUI() {
     guard let patient = patient else { return }
     nameLabel.text = patient.fullName
-    mobilePhoneLabel.text = patient.mobilePhone
-    homePhoneLabel.text = patient.homePhone
-    emailLabel.text = patient.email
+    
+    if patient.mobilePhone != nil {
+      mobilePhoneLabel.text = patient.mobilePhone
+    }
+    if patient.homePhone != nil {
+      homePhoneLabel.text = patient.homePhone
+    }
+    if patient.email != nil {
+      emailLabel.text = patient.email
+    }
+    
   }
   
   override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
