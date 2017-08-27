@@ -9,6 +9,11 @@
 import UIKit
 
 extension UISearchBar {
+  
+  func didPresentSearchController(searchController: UISearchController) {
+    searchController.searchBar.showsCancelButton = false
+  }
+  
   public func setSerchTextcolor(color: UIColor) {
     let clrChange = subviews.flatMap { $0.subviews }
     guard let sc = (clrChange.filter { $0 is UITextField }).first as? UITextField else { return }
@@ -27,7 +32,6 @@ extension PatientsTableViewController {
     let searchBarCursor = searchController.searchBar.subviews[0]
     searchBarCursor.tintColor = UIColor(hexCode: "#00EAF8")!
     
-    //    navigationController?.navigationBar.barStyle = .blackOpaque
     if #available(iOS 11.0, *) {
       navigationController?.navigationBar.prefersLargeTitles = true
       navigationItem.searchController = searchController
@@ -36,11 +40,5 @@ extension PatientsTableViewController {
       tableView.tableHeaderView = searchController.searchBar
     }
     
-    //    let textFieldInsideSearchBar = searchController.searchBar.value(forKey: "searchField") as? UITextField
-    //    textFieldInsideSearchBar?.textColor = UIColor.purple
-    //
-    //    let imageV = textFieldInsideSearchBar?.leftView as! UIImageView
-    //    imageV.image = imageV.image?.withRenderingMode(UIImageRenderingMode.alwaysTemplate)
-    //    imageV.tintColor = UIColor.purple
   }
 }

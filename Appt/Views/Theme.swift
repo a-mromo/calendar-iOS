@@ -38,9 +38,10 @@ struct DefaultTheme: ThemeProtocol {
   }
   
   func customTabBar(){
-    UITabBar.appearance().tintColor = UIColor(hexCode: "#794DFF")!
+    UITabBar.appearance().tintColor = UIColor(hexCode: "#C57BFD")!
+    UITabBar.appearance().unselectedItemTintColor = UIColor(hexCode: "#C57BFD")!
     UITabBar.appearance().backgroundColor = .white
-    UITabBar.appearance().dropShadow()
+    UITabBar.appearance().dropShadowTop()
   }
   
   func customSearchBar() {
@@ -69,7 +70,7 @@ struct DefaultTheme: ThemeProtocol {
   func largeTitles () {
     if #available(iOS 11.0, *) {
       UINavigationBar.appearance().prefersLargeTitles = true
-      UINavigationBar.appearance().largeTitleTextAttributes = [NSAttributedStringKey(rawValue: NSAttributedStringKey.foregroundColor.rawValue): UIColor(hexCode: "#ffffff")!]
+      UINavigationBar.appearance().largeTitleTextAttributes = [NSAttributedStringKey(rawValue: NSAttributedStringKey.foregroundColor.rawValue): UIColor(hexCode: "#C57BFD")!]
     }
   }
 }

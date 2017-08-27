@@ -45,7 +45,7 @@ class CalendarViewController: UIViewController {
     noLargeTitles()
     setupCalendarView()
     
-    calendarView.dropShadowDown()
+    calendarView.dropShadowBottom()
 
     calendarView.scrollToDate(Date(), animateScroll: false)
     calendarView.selectDates( [Date()] )

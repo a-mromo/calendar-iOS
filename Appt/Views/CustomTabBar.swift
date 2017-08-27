@@ -18,7 +18,6 @@ class CustomTabBar: UITabBarController {
     newTabBarFrame.origin.y = self.view.frame.size.height - newTabBarHeight
 
     tabBar.frame = newTabBarFrame
-    tabBar.unselectedItemTintColor = UIColor(hexCode: "DADADA")
     tabBar.isTranslucent = true
   }
   

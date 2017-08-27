@@ -40,7 +40,7 @@ class ApptDetailTVC: UITableViewController {
     performSegue(withIdentifier: segueEditAppt, sender: self)
   }
   
-  func setupUI () {
+  func setupUI() {
     if let date = appointment?.date, let patientName = appointment?.patient?.fullName, let cost = appointment?.cost, let note = appointment?.note {
       
       dateLabel.text = dateFormatter(date: date)
