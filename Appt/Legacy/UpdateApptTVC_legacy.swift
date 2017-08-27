@@ -39,25 +39,20 @@ class UpdateApptTVC_legacy: NewApptTableViewController {
 
   
   func loadAppointment() {
-    if let appointment = appointment {
-      if let date = appointment.date,
-        let patient = appointment.patient,
-        let cost = appointment.cost,
-        let note = appointment.note {
-        
-        let dates: [Date] = [date]
-        calendarView.scrollToDate(date)
-//        calendarView.date
-//        dateDetailLabel.text = dateFormatter(date: date)
-        patientLabel.text = patient.fullName
-        costTextField.text = cost
-        noteTextView.text = note
-//        datePicker.date = date
-        
-        print("Appointment date: \(String(describing: dates.first))")
-//        print("CalendarView date: \(calendarView.selectDates)")
-      }
+    guard let appointment = self.appointment else { return }
+    calendarView.scrollToDate(appointment.date, animateScroll: false)
+    calendarView.selectDates( [appointment.date] )
+    
+    self.patient = appointment.patient
+    patientLabel.text = appointment.patient.fullName
+    
+    if let cost = appointment.cost {
+      costTextField.text = cost
     }
+    if let note = appointment.note {
+      noteTextView.text = note
+    }
+    print("Appointment date: \(String(describing: appointment.date))")
   }
   
   override func confirmAppointment(_ sender: UIBarButtonItem) {

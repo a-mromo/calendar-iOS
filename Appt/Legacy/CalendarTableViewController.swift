@@ -95,11 +95,11 @@ class CalendarTableViewController: UITableViewController {
     
     let appointment = fetchedResultsController.object(at: indexPath)
     
-    cell.nameLabel.text = appointment.patient?.fullName
-    if let date = appointment.date {
-      cell.dateLabel.text = dateFormatter(date: date)
+    cell.nameLabel.text = appointment.patient.fullName
+    cell.dateLabel.text = dateFormatter(date: appointment.date)
+    if appointment.note != nil {
+      cell.noteLabel.text = appointment.note
     }
-    cell.noteLabel.text = appointment.note
     
     return cell
   }
