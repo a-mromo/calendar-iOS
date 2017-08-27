@@ -17,22 +17,12 @@ class ActivityTableViewController: CalendarTableViewController {
     let cell = tableView.dequeueReusableCell(withIdentifier: "ActivityCell", for: indexPath) as! ActivityCell
     
     let appointment = fetchedResultsController.object(at: indexPath)
+    //      cell.timeIntervalLabel.text = dateFormatter(date: appointment.date)
+    let timeAgo:String = timeAgoSinceDate(appointment.dateCreated, currentDate: Date(), numericDates: true)
     
-    var patientName = ""
-    var apptDate = ""
+    cell.timeIntervalLabel.text = timeAgo
+    cell.activityLabel.text = "New appointment with \(String(describing: appointment.patient.fullName)) for \(dateFormatter(date: appointment.date))"
     
-    if let patient = appointment.patient?.fullName,
-      let date = appointment.date,
-      let dateCreated = appointment.dateCreated
-    {
-      patientName = patient
-      cell.timeIntervalLabel.text = dateFormatter(date: date)
-      apptDate = dateFormatter(date: date)
-      let timeAgo:String = timeAgoSinceDate(dateCreated, currentDate: Date(), numericDates: true)
-      cell.timeIntervalLabel.text = timeAgo
-    }
-    
-    cell.activityLabel.text = "New appointment with \(String(describing: patientName)) for \(apptDate)"
     return cell
   }
   
