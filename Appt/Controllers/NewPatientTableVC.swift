@@ -76,8 +76,8 @@ class NewPatientTableVC: UITableViewController {
   
   
   func patientFromTextFields(_ patient: Patient) {
-    patient.name = nameTextField.text
-    patient.lastName = lastNameTextField.text
+    patient.name = nameTextField.text!
+    patient.lastName = lastNameTextField.text!
     patient.mobilePhone = mobilePhoneTextField.text
     patient.homePhone = homePhoneTextField.text
     patient.email = patientEmailTextField.text

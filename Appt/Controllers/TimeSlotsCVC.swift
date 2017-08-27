@@ -30,7 +30,7 @@ class TimeSlotsCVC: UICollectionViewController {
   func setupTimeSlotter() {
     timeSlotter.configureTimeSlotter(openTimeHour: 9, openTimeMinutes: 0, closeTimeHour: 17, closeTimeMinutes: 0, appointmentLength: 30, appointmentInterval: 15)
     if let appointmentsArray = currentAppointments {
-      timeSlotter.currentAppointments = appointmentsArray.map { $0.date! }
+      timeSlotter.currentAppointments = appointmentsArray.map { $0.date }
     }
     guard let timeSlots = timeSlotter.getTimeSlotsforDate(date: appointmentDate) else {
       print("There is no appointments")
