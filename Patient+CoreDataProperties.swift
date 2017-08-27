@@ -18,17 +18,13 @@ extension Patient {
   
   @NSManaged public var email: String?
   @NSManaged public var homePhone: String?
-  @NSManaged public var lastName: String?
+  @NSManaged public var lastName: String
   @NSManaged public var mobilePhone: String?
-  @NSManaged public var name: String?
+  @NSManaged public var name: String
   @NSManaged public var appointment: NSSet?
   
-  public var fullName: String? {
-    if let firstName = name, let lastName = lastName {
-      return firstName + " " + lastName
-    } else {
-      return "Error: Missing name and/or full name."
-    }
+  public var fullName: String {
+      return name + " " + lastName
   }
   
 }
