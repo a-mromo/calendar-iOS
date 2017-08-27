@@ -23,8 +23,8 @@ class NewPatientTableVC: UITableViewController {
   
   @IBAction func cancel(_ sender: UIBarButtonItem) {
     dismiss(animated: true)
-    
   }
+  
   @IBAction func saveButton(_ sender: UIBarButtonItem) {
     dismiss(animated: true)
     savePatient()
@@ -52,13 +52,7 @@ class NewPatientTableVC: UITableViewController {
   func savePatient() {
     if self.patient == nil {
       let patient = Patient(context:persistentContainer.viewContext)
-      
-      patient.name = nameTextField.text
-      patient.lastName = lastNameTextField.text
-      patient.mobilePhone = mobilePhoneTextField.text
-      patient.homePhone = homePhoneTextField.text
-      patient.email = patientEmailTextField.text
-      
+      patientFromTextFields(patient)
       CoreDataStore.instance.save()
     } else {
       updatePatient()
@@ -74,23 +68,14 @@ class NewPatientTableVC: UITableViewController {
     patientEmailTextField.text = patient.email
   }
   
-  
   func updatePatient() {
-//    guard let patient = patient else { return }
-//
-//    patient.name = nameTextField.text
-//    patient.lastName = lastNameTextField.text
-//    patient.mobilePhone = mobilePhoneTextField.text
-//    patient.homePhone = homePhoneTextField.text
-//    patient.email = patientEmailTextField.text
-    
-    patientFromTextFields()
+    guard let patient = patient else { return }
+    patientFromTextFields(patient)
     CoreDataStore.instance.save()
   }
   
-  // Needs impementing textFieldDidChanged
-  func patientFromTextFields() {
-    guard let patient = patient else { return }
+  
+  func patientFromTextFields(_ patient: Patient) {
     
     patient.name = nameTextField.text
     patient.lastName = lastNameTextField.text

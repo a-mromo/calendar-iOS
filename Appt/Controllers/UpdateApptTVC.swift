@@ -29,7 +29,6 @@ class UpdateApptTVC: UITableViewController, AppointmentTVC {
   let segueSelectPatient = "SegueSelectPatientsTVC"
   
   let persistentContainer = CoreDataStore.instance.persistentContainer
-  
   var calendarViewHidden = false
   
   // Calendar Color
@@ -39,7 +38,7 @@ class UpdateApptTVC: UITableViewController, AppointmentTVC {
   let currentDateSelectedViewColor = UIColor.black
   
   
-  // Load Appointments For given Date
+  // Load Appointments for selected Date in Calendar
   lazy var fetchedResultsController: NSFetchedResultsController<Appointment> = {
     let fetchRequest: NSFetchRequest<Appointment> = Appointment.fetchRequest()
     fetchRequest.sortDescriptors = [NSSortDescriptor(key: "date", ascending: false)]
