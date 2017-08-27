@@ -30,7 +30,7 @@ extension PatientsTableViewController {
     searchController.dimsBackgroundDuringPresentation = false
     
     let searchBarCursor = searchController.searchBar.subviews[0]
-    searchBarCursor.tintColor = UIColor(hexCode: "#00EAF8")!
+    searchBarCursor.tintColor = .darkGray
     
     if #available(iOS 11.0, *) {
       navigationController?.navigationBar.prefersLargeTitles = true

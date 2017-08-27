@@ -37,7 +37,6 @@
 		6C9665E91F1B01A5000228FE /* CustomTabBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C9665E81F1B01A5000228FE /* CustomTabBar.swift */; };
 		6CAE91291F4019AE00C037A8 /* CalendarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6CAE91281F4019AE00C037A8 /* CalendarViewController.swift */; };
 		6CC2D19C1F13FD990097DDFE /* Theme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6CC2D19B1F13FD990097DDFE /* Theme.swift */; };
-		6CD2FB791ECB6FFD009C7088 /* AppointmentModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 6CD2FB771ECB6FFD009C7088 /* AppointmentModel.xcdatamodeld */; };
 		6CE055531EDF18FC00312499 /* PatientsTabTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6CE055521EDF18FC00312499 /* PatientsTabTVC.swift */; };
 		6CE055621EDFED6600312499 /* Appointment+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6CE0555E1EDFED6600312499 /* Appointment+CoreDataClass.swift */; };
 		6CE055631EDFED6600312499 /* Appointment+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6CE0555F1EDFED6600312499 /* Appointment+CoreDataProperties.swift */; };
@@ -71,6 +70,8 @@
 		6C18DB9D1F1ECF3000E806C2 /* TextViewDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextViewDelegate.swift; sourceTree = "<group>"; };
 		6C1FACB81F280ABF004B575C /* AdSupport.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AdSupport.framework; path = System/Library/Frameworks/AdSupport.framework; sourceTree = SDKROOT; };
 		6C2981F51F2D237900D8AE52 /* CalendarDayCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarDayCell.swift; sourceTree = "<group>"; };
+		6C2E08591F532CB400540611 /* AppointmentModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = AppointmentModel.xcdatamodel; sourceTree = "<group>"; };
+		6C2E085A1F532D6100540611 /* AppointmentModel2.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = AppointmentModel2.xcdatamodel; sourceTree = "<group>"; };
 		6C3208431EE0127C00ED6BDF /* ActivityTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ActivityTableViewController.swift; sourceTree = "<group>"; };
 		6C3208451EE0153100ED6BDF /* ActivityCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ActivityCell.swift; sourceTree = "<group>"; };
 		6C3208471EE09E8400ED6BDF /* CalendarTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CalendarTableViewController.swift; sourceTree = "<group>"; };
@@ -100,7 +101,6 @@
 		6C9665E81F1B01A5000228FE /* CustomTabBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTabBar.swift; sourceTree = "<group>"; };
 		6CAE91281F4019AE00C037A8 /* CalendarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarViewController.swift; sourceTree = "<group>"; };
 		6CC2D19B1F13FD990097DDFE /* Theme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Theme.swift; sourceTree = "<group>"; };
-		6CD2FB781ECB6FFD009C7088 /* AppointmentModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = AppointmentModel.xcdatamodel; sourceTree = "<group>"; };
 		6CE055521EDF18FC00312499 /* PatientsTabTVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PatientsTabTVC.swift; sourceTree = "<group>"; };
 		6CE0555E1EDFED6600312499 /* Appointment+CoreDataClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Appointment+CoreDataClass.swift"; sourceTree = "<group>"; };
 		6CE0555F1EDFED6600312499 /* Appointment+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Appointment+CoreDataProperties.swift"; sourceTree = "<group>"; };
@@ -198,7 +198,7 @@
 		6C7E6CCC1EDE445C002D1936 /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				6CD2FB771ECB6FFD009C7088 /* AppointmentModel.xcdatamodeld */,
+				6C2E08581F532CB400540611 /* AppointmentModel.xcdatamodeld */,
 				6CE0555E1EDFED6600312499 /* Appointment+CoreDataClass.swift */,
 				6CE0555F1EDFED6600312499 /* Appointment+CoreDataProperties.swift */,
 				6CE055601EDFED6600312499 /* Patient+CoreDataClass.swift */,
@@ -507,7 +507,6 @@
 				6C952E581ECD629E005CB5B7 /* NewApptTableViewController.swift in Sources */,
 				6CED20631ED4CA6800A6CD8B /* NewPatientTableVC.swift in Sources */,
 				6CE055621EDFED6600312499 /* Appointment+CoreDataClass.swift in Sources */,
-				6CD2FB791ECB6FFD009C7088 /* AppointmentModel.xcdatamodeld in Sources */,
 				6C8793451F43E4BE0028AA3D /* ActivityTableViewController.swift in Sources */,
 				6C3342931F3A6229007F626D /* TimeSlotsCVC.swift in Sources */,
 				6C4A3AF11EF9E53C00D91CA5 /* DateFormatters.swift in Sources */,
@@ -762,12 +761,13 @@
 /* End XCConfigurationList section */
 
 /* Begin XCVersionGroup section */
-		6CD2FB771ECB6FFD009C7088 /* AppointmentModel.xcdatamodeld */ = {
+		6C2E08581F532CB400540611 /* AppointmentModel.xcdatamodeld */ = {
 			isa = XCVersionGroup;
 			children = (
-				6CD2FB781ECB6FFD009C7088 /* AppointmentModel.xcdatamodel */,
+				6C2E085A1F532D6100540611 /* AppointmentModel2.xcdatamodel */,
+				6C2E08591F532CB400540611 /* AppointmentModel.xcdatamodel */,
 			);
-			currentVersion = 6CD2FB781ECB6FFD009C7088 /* AppointmentModel.xcdatamodel */;
+			currentVersion = 6C2E085A1F532D6100540611 /* AppointmentModel2.xcdatamodel */;
 			path = AppointmentModel.xcdatamodeld;
 			sourceTree = "<group>";
 			versionGroupType = wrapper.xcdatamodel;

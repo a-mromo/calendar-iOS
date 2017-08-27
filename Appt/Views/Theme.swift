@@ -10,6 +10,7 @@ import UIKit
 
 protocol ThemeProtocol {
   var errorColor: UIColor { get }
+  var brandingColor: UIColor { get }
   
   func install()
 }
@@ -18,6 +19,10 @@ struct DefaultTheme: ThemeProtocol {
   
   var errorColor: UIColor {
     return .red
+  }
+  
+  var brandingColor: UIColor {
+    return UIColor(hexCode: "#C57BFD")!
   }
   
   func install() {
@@ -38,8 +43,8 @@ struct DefaultTheme: ThemeProtocol {
   }
   
   func customTabBar(){
-    UITabBar.appearance().tintColor = UIColor(hexCode: "#C57BFD")!
-    UITabBar.appearance().unselectedItemTintColor = UIColor(hexCode: "#C57BFD")!
+    UITabBar.appearance().tintColor = brandingColor
+    UITabBar.appearance().unselectedItemTintColor = .darkGray
     UITabBar.appearance().backgroundColor = .white
     UITabBar.appearance().dropShadowTop()
   }
@@ -52,7 +57,7 @@ struct DefaultTheme: ThemeProtocol {
     
     let buttonAttributes: [NSAttributedStringKey : AnyObject] = [
       NSAttributedStringKey(rawValue: NSAttributedStringKey.foregroundColor.rawValue):
-        UIColor(hexCode: "#11A9FB")!,
+        brandingColor,
       NSAttributedStringKey(rawValue: NSAttributedStringKey.font.rawValue):
         UIFont.systemFont(ofSize: UIFont.buttonFontSize)
     ]
@@ -70,7 +75,7 @@ struct DefaultTheme: ThemeProtocol {
   func largeTitles () {
     if #available(iOS 11.0, *) {
       UINavigationBar.appearance().prefersLargeTitles = true
-      UINavigationBar.appearance().largeTitleTextAttributes = [NSAttributedStringKey(rawValue: NSAttributedStringKey.foregroundColor.rawValue): UIColor(hexCode: "#C57BFD")!]
+      UINavigationBar.appearance().largeTitleTextAttributes = [NSAttributedStringKey(rawValue: NSAttributedStringKey.foregroundColor.rawValue): brandingColor]
     }
   }
 }
