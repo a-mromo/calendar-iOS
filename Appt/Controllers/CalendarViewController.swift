@@ -109,11 +109,9 @@ extension CalendarViewController: UITableViewDelegate, UITableViewDataSource {
     
     cell.apptCard.dropShadow()
     let appointment = fetchedResultsController.object(at: indexPath)
-    cell.nameLabel.text = appointment.patient?.fullName
-    if let date = appointment.date {
-      formatter.dateFormat = "H:mm"
-      cell.dateLabel.text = formatter.string(from: date)
-    }
+    cell.nameLabel.text = appointment.patient.fullName
+    formatter.dateFormat = "H:mm"
+    cell.dateLabel.text = formatter.string(from: appointment.date)
     cell.noteLabel.text = appointment.note
     
     return cell
