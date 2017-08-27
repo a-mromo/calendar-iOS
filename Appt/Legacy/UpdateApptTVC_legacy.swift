@@ -57,15 +57,19 @@ class UpdateApptTVC_legacy: NewApptTableViewController {
   
   override func confirmAppointment(_ sender: UIBarButtonItem) {
     
-    guard let appointment = appointment else {
-      return
-    }
+    guard let appointment = appointment else { return }
+    guard let patient = self.patient else { return }
+    guard let selectedTimeSlot = self.selectedTimeSlot else { return }
     appointment.patient = patient
-//    appointment.date = datePicker.date
-    appointment.date = calendarView.selectedDates.first
-    appointment.note = noteTextView.text
-    appointment.cost = costTextField.text
+    appointment.date = selectedTimeSlot
     appointment.dateModified = Date()
+    
+    if noteTextView.text != nil {
+      appointment.note = noteTextView.text
+    }
+    if costTextField.text != nil {
+      appointment.cost = costTextField.text
+    }
     
     updateAppt()
     dismiss(animated: true, completion: nil)
