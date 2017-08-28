@@ -87,13 +87,13 @@ class NewPatientTableVC: UITableViewController {
     patient.name = nameTextField.text!
     patient.lastName = lastNameTextField.text!
     
-    if mobilePhoneTextField.text != nil {
+    if mobilePhoneTextField.text != "" {
       patient.mobilePhone = mobilePhoneTextField.text
     }
-    if homePhoneTextField.text != nil {
+    if homePhoneTextField.text != "" {
       patient.homePhone = homePhoneTextField.text
     }
-    if patientEmailTextField.text != nil {
+    if patientEmailTextField.text != "" {
       patient.email = patientEmailTextField.text
     }
   }
