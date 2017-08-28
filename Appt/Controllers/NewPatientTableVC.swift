@@ -26,8 +26,10 @@ class NewPatientTableVC: UITableViewController {
   }
   
   @IBAction func saveButton(_ sender: UIBarButtonItem) {
-    dismiss(animated: true)
-    savePatient()
+    if case emptyRequiredFields() = false {
+      dismiss(animated: true)
+      savePatient()
+    }
   }
   
   override func viewDidLoad() {
@@ -60,27 +62,57 @@ class NewPatientTableVC: UITableViewController {
   }
   
   func loadPatient() {
-    guard let patient = patient else { return }
+    guard let patient = self.patient else { return }
     nameTextField.text = patient.name
     lastNameTextField.text = patient.lastName
-    mobilePhoneTextField.text = patient.mobilePhone
-    homePhoneTextField.text = patient.homePhone
-    patientEmailTextField.text = patient.email
+
+    if patient.mobilePhone != nil {
+      mobilePhoneTextField.text = patient.mobilePhone
+    }
+    if patient.homePhone != nil {
+      homePhoneTextField.text = patient.homePhone
+    }
+    if patient.email != nil {
+      patientEmailTextField.text = patient.email
+    }
   }
   
   func updatePatient() {
-    guard let patient = patient else { return }
+    guard let patient = self.patient else { return }
     patientFromTextFields(patient)
     CoreDataStore.instance.save()
   }
   
-  
   func patientFromTextFields(_ patient: Patient) {
     patient.name = nameTextField.text!
     patient.lastName = lastNameTextField.text!
-    patient.mobilePhone = mobilePhoneTextField.text
-    patient.homePhone = homePhoneTextField.text
-    patient.email = patientEmailTextField.text
+    
+    if mobilePhoneTextField.text != nil {
+      patient.mobilePhone = mobilePhoneTextField.text
+    }
+    if homePhoneTextField.text != nil {
+      patient.homePhone = homePhoneTextField.text
+    }
+    if patientEmailTextField.text != nil {
+      patient.email = patientEmailTextField.text
+    }
+  }
+  
+  func emptyRequiredFields() -> Bool {
+    if nameTextField.text == "" || lastNameTextField.text == "" {
+      userInfoAlert()
+      return true
+    } else {
+      return false
+    }
+  }
+  
+  func userInfoAlert() {
+    let alert = UIAlertController(title: "Full Name Required", message: "Please fill in the name and last name of the patient", preferredStyle: .alert)
+    alert.addAction(UIAlertAction(title: NSLocalizedString("OK", comment: "Default action"), style: .`default`, handler: { _ in
+      NSLog("The \"OK\" alert occured.")
+    }))
+    self.present(alert, animated: true, completion: nil)
   }
   
 }
