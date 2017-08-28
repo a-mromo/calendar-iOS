@@ -169,10 +169,10 @@ class UpdateApptTVC: UITableViewController, AppointmentTVC {
   
   
   override func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-    if section == 0 {
-      return 1
+    if calendarViewHidden && section == 0 {
+      return 40
     } else {
-      return 22
+      return 1
     }
   }
 }

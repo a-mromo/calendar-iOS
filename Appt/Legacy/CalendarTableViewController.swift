@@ -29,7 +29,7 @@ class CalendarTableViewController: UITableViewController {
   
   override func viewDidLoad() {
     super.viewDidLoad()
-//    FirebaseApp.configure()
+    
     persistentContainer.loadPersistentStores { (persistentStoreDescription, error) in
       
       do {

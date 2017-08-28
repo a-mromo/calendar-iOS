@@ -61,7 +61,6 @@ class NewApptTableViewController: UITableViewController, AppointmentTVC {
   @IBOutlet weak var noteTextView: UITextView!
   @IBOutlet weak var costTextField: UITextField!
   @IBOutlet weak var dateDetailLabel: UILabel!
-  @IBOutlet weak var datePicker: UIDatePicker!
   
   @IBAction func cancelButton(_ sender: UIBarButtonItem) {
     dismiss(animated: true, completion: nil)
@@ -140,13 +139,6 @@ class NewApptTableViewController: UITableViewController, AppointmentTVC {
     })
   }
   
-  override func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-    if section == 0 {
-      return 1
-    } else {
-      return 22
-    }
-  }
 }
 
 extension NewApptTableViewController {
@@ -173,6 +165,14 @@ extension NewApptTableViewController {
       return 0
     } else {
       return super.tableView(tableView, heightForRowAt: indexPath)
+    }
+  }
+  
+  override func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+    if calendarViewHidden && section == 0 {
+      return 40
+    } else {
+      return 1
     }
   }
 }
