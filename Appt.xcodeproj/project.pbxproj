@@ -90,7 +90,6 @@
 		6C4A3AF01EF9E53C00D91CA5 /* DateFormatters.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateFormatters.swift; sourceTree = "<group>"; };
 		6C4A3AF41EFB213B00D91CA5 /* PatientDetailTVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PatientDetailTVC.swift; sourceTree = "<group>"; };
 		6C59DE681F02974F00E32887 /* UpdateApptTVC_legacy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdateApptTVC_legacy.swift; sourceTree = "<group>"; };
-		6C5B10E71F244CD9008B6CB6 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../../../../../Downloads/GoogleService-Info.plist"; sourceTree = "<group>"; };
 		6C6EBD9F1F4A2B0C00A2E2F9 /* Shadows.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Shadows.swift; sourceTree = "<group>"; };
 		6C7E6CCA1EDE177A002D1936 /* CoreDataStore.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoreDataStore.swift; sourceTree = "<group>"; };
 		6C952E571ECD629E005CB5B7 /* NewApptTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewApptTableViewController.swift; sourceTree = "<group>"; };
@@ -175,7 +174,6 @@
 				6C4151C21ECA7ACF00ACDAE7 /* AppDelegate.swift */,
 				6C4151CB1ECA7ACF00ACDAE7 /* Assets.xcassets */,
 				6C4151CD1ECA7ACF00ACDAE7 /* LaunchScreen.storyboard */,
-				6C5B10E71F244CD9008B6CB6 /* GoogleService-Info.plist */,
 				6C4151D01ECA7ACF00ACDAE7 /* Info.plist */,
 				6CE413841F37ECEA00D459B5 /* Support */,
 				6CE413831F37E76300D459B5 /* Legacy */,
