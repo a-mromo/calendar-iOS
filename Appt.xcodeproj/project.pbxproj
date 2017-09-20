@@ -26,12 +26,9 @@
 		6C4A3AEF1EF9C1CA00D91CA5 /* ApptDetailTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C4A3AEE1EF9C1CA00D91CA5 /* ApptDetailTVC.swift */; };
 		6C4A3AF11EF9E53C00D91CA5 /* DateFormatters.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C4A3AF01EF9E53C00D91CA5 /* DateFormatters.swift */; };
 		6C4A3AF51EFB213B00D91CA5 /* PatientDetailTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C4A3AF41EFB213B00D91CA5 /* PatientDetailTVC.swift */; };
-		6C59DE691F02974F00E32887 /* UpdateApptTVC_legacy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C59DE681F02974F00E32887 /* UpdateApptTVC_legacy.swift */; };
-		6C5B10E81F244CD9008B6CB6 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 6C5B10E71F244CD9008B6CB6 /* GoogleService-Info.plist */; };
 		6C6EBDA01F4A2B0C00A2E2F9 /* Shadows.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C6EBD9F1F4A2B0C00A2E2F9 /* Shadows.swift */; };
 		6C7E6CCB1EDE177A002D1936 /* CoreDataStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C7E6CCA1EDE177A002D1936 /* CoreDataStore.swift */; };
 		6C8793451F43E4BE0028AA3D /* ActivityTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C3208431EE0127C00ED6BDF /* ActivityTableViewController.swift */; };
-		6C8793461F43E4DC0028AA3D /* CalendarTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C3208471EE09E8400ED6BDF /* CalendarTableViewController.swift */; };
 		6C952E581ECD629E005CB5B7 /* NewApptTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C952E571ECD629E005CB5B7 /* NewApptTableViewController.swift */; };
 		6C9665E51F1AB637000228FE /* UIColor+Hex.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C9665E41F1AB637000228FE /* UIColor+Hex.swift */; };
 		6C9665E91F1B01A5000228FE /* CustomTabBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C9665E81F1B01A5000228FE /* CustomTabBar.swift */; };
@@ -369,7 +366,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				6C4151CF1ECA7ACF00ACDAE7 /* LaunchScreen.storyboard in Resources */,
-				6C5B10E81F244CD9008B6CB6 /* GoogleService-Info.plist in Resources */,
 				6C4151CC1ECA7ACF00ACDAE7 /* Assets.xcassets in Resources */,
 				6C4151CA1ECA7ACF00ACDAE7 /* Main.storyboard in Resources */,
 			);
@@ -512,10 +508,8 @@
 				6C4A3AF11EF9E53C00D91CA5 /* DateFormatters.swift in Sources */,
 				6CAE91291F4019AE00C037A8 /* CalendarViewController.swift in Sources */,
 				6C4A3AEF1EF9C1CA00D91CA5 /* ApptDetailTVC.swift in Sources */,
-				6C8793461F43E4DC0028AA3D /* CalendarTableViewController.swift in Sources */,
 				6C4A3AF51EFB213B00D91CA5 /* PatientDetailTVC.swift in Sources */,
 				6C3342971F3A643D007F626D /* TimeSlotCell.swift in Sources */,
-				6C59DE691F02974F00E32887 /* UpdateApptTVC_legacy.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
