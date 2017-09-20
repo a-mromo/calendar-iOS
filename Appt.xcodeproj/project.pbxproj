@@ -71,7 +71,6 @@
 		6C2E085A1F532D6100540611 /* AppointmentModel2.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = AppointmentModel2.xcdatamodel; sourceTree = "<group>"; };
 		6C3208431EE0127C00ED6BDF /* ActivityTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ActivityTableViewController.swift; sourceTree = "<group>"; };
 		6C3208451EE0153100ED6BDF /* ActivityCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ActivityCell.swift; sourceTree = "<group>"; };
-		6C3208471EE09E8400ED6BDF /* CalendarTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CalendarTableViewController.swift; sourceTree = "<group>"; };
 		6C3342921F3A6229007F626D /* TimeSlotsCVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeSlotsCVC.swift; sourceTree = "<group>"; };
 		6C3342961F3A643D007F626D /* TimeSlotCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeSlotCell.swift; sourceTree = "<group>"; };
 		6C3342981F3A9ACC007F626D /* TimeSlotFormatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeSlotFormatter.swift; sourceTree = "<group>"; };
@@ -89,7 +88,6 @@
 		6C4A3AEE1EF9C1CA00D91CA5 /* ApptDetailTVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApptDetailTVC.swift; sourceTree = "<group>"; };
 		6C4A3AF01EF9E53C00D91CA5 /* DateFormatters.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateFormatters.swift; sourceTree = "<group>"; };
 		6C4A3AF41EFB213B00D91CA5 /* PatientDetailTVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PatientDetailTVC.swift; sourceTree = "<group>"; };
-		6C59DE681F02974F00E32887 /* UpdateApptTVC_legacy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdateApptTVC_legacy.swift; sourceTree = "<group>"; };
 		6C6EBD9F1F4A2B0C00A2E2F9 /* Shadows.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Shadows.swift; sourceTree = "<group>"; };
 		6C7E6CCA1EDE177A002D1936 /* CoreDataStore.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoreDataStore.swift; sourceTree = "<group>"; };
 		6C952E571ECD629E005CB5B7 /* NewApptTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewApptTableViewController.swift; sourceTree = "<group>"; };
@@ -176,7 +174,6 @@
 				6C4151CD1ECA7ACF00ACDAE7 /* LaunchScreen.storyboard */,
 				6C4151D01ECA7ACF00ACDAE7 /* Info.plist */,
 				6CE413841F37ECEA00D459B5 /* Support */,
-				6CE413831F37E76300D459B5 /* Legacy */,
 			);
 			path = Appt;
 			sourceTree = "<group>";
@@ -222,15 +219,6 @@
 				6C6EBD9F1F4A2B0C00A2E2F9 /* Shadows.swift */,
 			);
 			path = Views;
-			sourceTree = "<group>";
-		};
-		6CE413831F37E76300D459B5 /* Legacy */ = {
-			isa = PBXGroup;
-			children = (
-				6C3208471EE09E8400ED6BDF /* CalendarTableViewController.swift */,
-				6C59DE681F02974F00E32887 /* UpdateApptTVC_legacy.swift */,
-			);
-			path = Legacy;
 			sourceTree = "<group>";
 		};
 		6CE413841F37ECEA00D459B5 /* Support */ = {
