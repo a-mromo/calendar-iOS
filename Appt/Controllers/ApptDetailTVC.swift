@@ -18,6 +18,7 @@ class ApptDetailTVC: UITableViewController {
   @IBOutlet weak var patientNameLabel: UILabel!
   @IBOutlet weak var apptCostLabel: UILabel!
   @IBOutlet weak var noteLabel: UILabel!
+  @IBOutlet weak var noteTextView: UITextView!
   
   override func viewDidLoad() {
     super.viewDidLoad()
@@ -49,7 +50,7 @@ class ApptDetailTVC: UITableViewController {
       apptCostLabel.text = String(describing: appointment.cost)
     }
     if appointment.note != nil {
-      noteLabel.text = appointment.note
+      noteTextView.text = appointment.note
     }
   }
   
