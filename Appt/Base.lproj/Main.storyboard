@@ -122,22 +122,31 @@
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="167.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="cdO-Pa-v6j">
-                                                    <rect key="frame" x="20" y="8" width="335" height="151.5"/>
+                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="eZa-gs-7Nu">
+                                                    <rect key="frame" x="12" y="8" width="351" height="152"/>
+                                                    <subviews>
+                                                        <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="cdO-Pa-v6j">
+                                                            <rect key="frame" x="20" y="12" width="311" height="132"/>
+                                                            <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
+                                                            <color key="textColor" red="0.43137254901960786" green="0.43137254901960786" blue="0.43137254901960786" alpha="1" colorSpace="calibratedRGB"/>
+                                                            <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                                            <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                                        </textView>
+                                                    </subviews>
                                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                                    <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
-                                                    <color key="textColor" red="0.43137254901960786" green="0.43137254901960786" blue="0.43137254901960786" alpha="1" colorSpace="calibratedRGB"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="16"/>
-                                                    <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
-                                                </textView>
+                                                    <constraints>
+                                                        <constraint firstItem="cdO-Pa-v6j" firstAttribute="top" secondItem="eZa-gs-7Nu" secondAttribute="top" constant="12" id="Ueo-CC-WzC"/>
+                                                        <constraint firstItem="cdO-Pa-v6j" firstAttribute="leading" secondItem="eZa-gs-7Nu" secondAttribute="leading" constant="20" id="WND-7Z-Eac"/>
+                                                        <constraint firstAttribute="trailing" secondItem="cdO-Pa-v6j" secondAttribute="trailing" constant="20" id="aJg-O4-ILQ"/>
+                                                        <constraint firstAttribute="bottom" secondItem="cdO-Pa-v6j" secondAttribute="bottom" constant="8" id="fZk-uz-bF6"/>
+                                                    </constraints>
+                                                </view>
                                             </subviews>
                                             <constraints>
-                                                <constraint firstAttribute="bottom" secondItem="cdO-Pa-v6j" secondAttribute="bottom" constant="8" id="NFe-hb-KCh"/>
-                                                <constraint firstItem="cdO-Pa-v6j" firstAttribute="leading" secondItem="B7p-xG-zpi" secondAttribute="leading" constant="20" id="WOQ-qQ-Mok"/>
-                                                <constraint firstItem="cdO-Pa-v6j" firstAttribute="top" secondItem="B7p-xG-zpi" secondAttribute="top" constant="8" id="cqn-Co-R8g"/>
-                                                <constraint firstItem="cdO-Pa-v6j" firstAttribute="centerY" secondItem="B7p-xG-zpi" secondAttribute="centerY" id="gz5-uw-01D"/>
-                                                <constraint firstAttribute="trailing" secondItem="cdO-Pa-v6j" secondAttribute="trailing" constant="20" id="j4e-Sv-EcL"/>
-                                                <constraint firstItem="cdO-Pa-v6j" firstAttribute="centerX" secondItem="B7p-xG-zpi" secondAttribute="centerX" id="vvt-kw-5ki"/>
+                                                <constraint firstItem="eZa-gs-7Nu" firstAttribute="top" secondItem="B7p-xG-zpi" secondAttribute="top" constant="8" id="GdD-KV-0RR"/>
+                                                <constraint firstItem="eZa-gs-7Nu" firstAttribute="leading" secondItem="B7p-xG-zpi" secondAttribute="leading" constant="12" id="aNG-fU-2JD"/>
+                                                <constraint firstAttribute="trailing" secondItem="eZa-gs-7Nu" secondAttribute="trailing" constant="12" id="tOq-Km-kNl"/>
+                                                <constraint firstAttribute="bottom" secondItem="eZa-gs-7Nu" secondAttribute="bottom" constant="8" id="tSB-iL-2Ds"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <color key="backgroundColor" red="0.93725490196078431" green="0.93725490196078431" blue="0.96470588235294119" alpha="1" colorSpace="calibratedRGB"/>
@@ -181,7 +190,8 @@
                     </tableView>
                     <connections>
                         <outlet property="apptCostLabel" destination="nVm-NA-OtR" id="U7M-8V-dc7"/>
-                        <outlet property="dateLabel" destination="FLk-DW-PDW" id="jqm-jN-ucH"/>
+                        <outlet property="dateLabel" destination="5WE-A5-gih" id="Rcb-3o-9aA"/>
+                        <outlet property="hourLabel" destination="FLk-DW-PDW" id="lfh-XL-yLE"/>
                         <outlet property="noteTextView" destination="cdO-Pa-v6j" id="hMA-br-Bip"/>
                         <outlet property="patientNameLabel" destination="CtN-Gw-ld1" id="rqi-XO-AUz"/>
                     </connections>
@@ -231,7 +241,7 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillProportionally" translatesAutoresizingMaskIntoConstraints="NO" id="DQg-CQ-KVc" userLabel="Calendar stack">
-                                                    <rect key="frame" x="0.0" y="-3102" width="375" height="3551.5"/>
+                                                    <rect key="frame" x="0.0" y="-3188.5" width="375" height="3638"/>
                                                     <subviews>
                                                         <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillProportionally" translatesAutoresizingMaskIntoConstraints="NO" id="LmP-yg-2v7" userLabel="Title Stack View">
                                                             <rect key="frame" x="0.0" y="0.0" width="375" height="65"/>
@@ -308,7 +318,7 @@
                                                             </constraints>
                                                         </stackView>
                                                         <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" pagingEnabled="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="ONw-Np-zXi" customClass="JTAppleCalendarView" customModule="JTAppleCalendar">
-                                                            <rect key="frame" x="0.0" y="85.5" width="375" height="3466"/>
+                                                            <rect key="frame" x="0.0" y="85.5" width="375" height="3552.5"/>
                                                             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="height" constant="340" id="vXV-VZ-JcD"/>
@@ -918,7 +928,7 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillProportionally" translatesAutoresizingMaskIntoConstraints="NO" id="k9m-mm-fAV" userLabel="Calendar stack">
-                                                    <rect key="frame" x="0.0" y="-2213.5" width="375" height="2663"/>
+                                                    <rect key="frame" x="0.0" y="-2278" width="375" height="2727.5"/>
                                                     <subviews>
                                                         <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillProportionally" translatesAutoresizingMaskIntoConstraints="NO" id="sjg-Sc-qeP" userLabel="Title Stack View">
                                                             <rect key="frame" x="0.0" y="0.0" width="375" height="65"/>
@@ -995,7 +1005,7 @@
                                                             </constraints>
                                                         </stackView>
                                                         <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" pagingEnabled="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="SO9-34-Uii" customClass="JTAppleCalendarView" customModule="JTAppleCalendar">
-                                                            <rect key="frame" x="0.0" y="85.5" width="375" height="2577.5"/>
+                                                            <rect key="frame" x="0.0" y="85.5" width="375" height="2642"/>
                                                             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="height" constant="340" id="z7B-lk-4Wh"/>

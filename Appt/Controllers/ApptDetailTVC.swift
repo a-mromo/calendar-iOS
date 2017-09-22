@@ -14,10 +14,10 @@ class ApptDetailTVC: UITableViewController {
   
   var segueEditAppt = "SegueEditAppt"
   
+  @IBOutlet weak var hourLabel: UILabel!
   @IBOutlet weak var dateLabel: UILabel!
   @IBOutlet weak var patientNameLabel: UILabel!
   @IBOutlet weak var apptCostLabel: UILabel!
-  @IBOutlet weak var noteLabel: UILabel!
   @IBOutlet weak var noteTextView: UITextView!
   
   override func viewDidLoad() {
@@ -44,13 +44,16 @@ class ApptDetailTVC: UITableViewController {
   func setupUI() {
     guard let appointment = self.appointment else { return }
       dateLabel.text = dateFormatter(date: appointment.date)
+      let apptTimeStart = appointment.date
+      let apptTimeEnd = appointment.date + 1800
+    hourLabel.text = "\(hourFormatter(date: apptTimeStart)) - \(hourFormatter(date: apptTimeEnd))"
       patientNameLabel.text = appointment.patient.fullName
     
-    if appointment.cost != nil {
-      apptCostLabel.text = String(describing: appointment.cost)
+    if let cost = appointment.cost {
+      apptCostLabel.text = "$\(cost)"
     }
-    if appointment.note != nil {
-      noteTextView.text = appointment.note
+    if let note = appointment.note {
+      noteTextView.text = "\(note)"
     }
   }
   

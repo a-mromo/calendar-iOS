@@ -74,7 +74,16 @@ func timeAgoSinceDate(_ date:Date,currentDate:Date, numericDates:Bool) -> String
 
 func dateFormatter (date: Date) -> String{
   let formatter = DateFormatter()
-  formatter.dateStyle = .short
+  formatter.dateStyle = .long
+  formatter.timeStyle = .none
+  
+  let dateString = formatter.string(from: date as Date)
+  return dateString
+}
+
+func hourFormatter (date: Date) -> String{
+  let formatter = DateFormatter()
+  formatter.dateStyle = .none
   formatter.timeStyle = .short
   
   let dateString = formatter.string(from: date as Date)
