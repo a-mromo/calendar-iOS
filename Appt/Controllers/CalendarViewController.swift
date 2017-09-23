@@ -107,7 +107,6 @@ extension CalendarViewController: UITableViewDelegate, UITableViewDataSource {
     
     let cell = tableView.dequeueReusableCell(withIdentifier: "AppointmentCell", for: indexPath) as! AppointmentCell
     
-    cell.apptCard.dropShadow()
     let appointment = fetchedResultsController.object(at: indexPath)
     cell.nameLabel.text = appointment.patient.fullName
     formatter.dateFormat = "H:mm"

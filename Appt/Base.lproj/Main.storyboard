@@ -28,8 +28,8 @@
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="183.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="IqV-X8-KCp">
-                                                    <rect key="frame" x="12" y="8" width="351" height="167.5"/>
+                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="IqV-X8-KCp" customClass="CardView" customModule="Appt" customModuleProvider="target">
+                                                    <rect key="frame" x="12" y="12" width="351" height="159.5"/>
                                                     <subviews>
                                                         <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Patient Name" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CtN-Gw-ld1">
                                                             <rect key="frame" x="20" y="15" width="150.5" height="29"/>
@@ -102,10 +102,10 @@
                                             </subviews>
                                             <constraints>
                                                 <constraint firstAttribute="trailing" secondItem="IqV-X8-KCp" secondAttribute="trailing" constant="12" id="3gK-pN-Jo5"/>
-                                                <constraint firstItem="IqV-X8-KCp" firstAttribute="top" secondItem="Xpt-YQ-P1g" secondAttribute="top" constant="8" id="CEX-vE-cf0"/>
+                                                <constraint firstItem="IqV-X8-KCp" firstAttribute="top" secondItem="Xpt-YQ-P1g" secondAttribute="top" constant="12" id="CEX-vE-cf0"/>
                                                 <constraint firstItem="IqV-X8-KCp" firstAttribute="centerX" secondItem="Xpt-YQ-P1g" secondAttribute="centerX" id="bLX-bx-cA6"/>
                                                 <constraint firstItem="IqV-X8-KCp" firstAttribute="centerY" secondItem="Xpt-YQ-P1g" secondAttribute="centerY" id="ngy-FQ-Wae"/>
-                                                <constraint firstAttribute="bottom" secondItem="IqV-X8-KCp" secondAttribute="bottom" constant="8" id="noR-4x-3ra"/>
+                                                <constraint firstAttribute="bottom" secondItem="IqV-X8-KCp" secondAttribute="bottom" constant="12" id="noR-4x-3ra"/>
                                                 <constraint firstItem="IqV-X8-KCp" firstAttribute="leading" secondItem="Xpt-YQ-P1g" secondAttribute="leading" constant="12" id="sLB-XR-4Ef"/>
                                             </constraints>
                                         </tableViewCellContentView>
@@ -122,11 +122,11 @@
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="167.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="eZa-gs-7Nu">
-                                                    <rect key="frame" x="12" y="8" width="351" height="152"/>
+                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="eZa-gs-7Nu" customClass="CardView" customModule="Appt" customModuleProvider="target">
+                                                    <rect key="frame" x="12" y="8" width="351" height="147.5"/>
                                                     <subviews>
-                                                        <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="cdO-Pa-v6j">
-                                                            <rect key="frame" x="20" y="12" width="311" height="132"/>
+                                                        <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" textAlignment="natural" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cdO-Pa-v6j">
+                                                            <rect key="frame" x="20" y="12" width="311" height="123.5"/>
                                                             <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
                                                             <color key="textColor" red="0.43137254901960786" green="0.43137254901960786" blue="0.43137254901960786" alpha="1" colorSpace="calibratedRGB"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="16"/>
@@ -138,7 +138,7 @@
                                                         <constraint firstItem="cdO-Pa-v6j" firstAttribute="top" secondItem="eZa-gs-7Nu" secondAttribute="top" constant="12" id="Ueo-CC-WzC"/>
                                                         <constraint firstItem="cdO-Pa-v6j" firstAttribute="leading" secondItem="eZa-gs-7Nu" secondAttribute="leading" constant="20" id="WND-7Z-Eac"/>
                                                         <constraint firstAttribute="trailing" secondItem="cdO-Pa-v6j" secondAttribute="trailing" constant="20" id="aJg-O4-ILQ"/>
-                                                        <constraint firstAttribute="bottom" secondItem="cdO-Pa-v6j" secondAttribute="bottom" constant="8" id="fZk-uz-bF6"/>
+                                                        <constraint firstAttribute="bottom" secondItem="cdO-Pa-v6j" secondAttribute="bottom" constant="12" id="fZk-uz-bF6"/>
                                                     </constraints>
                                                 </view>
                                             </subviews>
@@ -146,7 +146,7 @@
                                                 <constraint firstItem="eZa-gs-7Nu" firstAttribute="top" secondItem="B7p-xG-zpi" secondAttribute="top" constant="8" id="GdD-KV-0RR"/>
                                                 <constraint firstItem="eZa-gs-7Nu" firstAttribute="leading" secondItem="B7p-xG-zpi" secondAttribute="leading" constant="12" id="aNG-fU-2JD"/>
                                                 <constraint firstAttribute="trailing" secondItem="eZa-gs-7Nu" secondAttribute="trailing" constant="12" id="tOq-Km-kNl"/>
-                                                <constraint firstAttribute="bottom" secondItem="eZa-gs-7Nu" secondAttribute="bottom" constant="8" id="tSB-iL-2Ds"/>
+                                                <constraint firstAttribute="bottom" secondItem="eZa-gs-7Nu" secondAttribute="bottom" constant="12" id="tSB-iL-2Ds"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <color key="backgroundColor" red="0.93725490196078431" green="0.93725490196078431" blue="0.96470588235294119" alpha="1" colorSpace="calibratedRGB"/>
@@ -237,7 +237,7 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillProportionally" translatesAutoresizingMaskIntoConstraints="NO" id="DQg-CQ-KVc" userLabel="Calendar stack">
-                                                    <rect key="frame" x="0.0" y="-3188.5" width="375" height="3638"/>
+                                                    <rect key="frame" x="0.0" y="-3462" width="375" height="3911.5"/>
                                                     <subviews>
                                                         <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillProportionally" translatesAutoresizingMaskIntoConstraints="NO" id="LmP-yg-2v7" userLabel="Title Stack View">
                                                             <rect key="frame" x="0.0" y="0.0" width="375" height="65"/>
@@ -314,7 +314,7 @@
                                                             </constraints>
                                                         </stackView>
                                                         <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" pagingEnabled="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="ONw-Np-zXi" customClass="JTAppleCalendarView" customModule="JTAppleCalendar">
-                                                            <rect key="frame" x="0.0" y="85.5" width="375" height="3552.5"/>
+                                                            <rect key="frame" x="0.0" y="85.5" width="375" height="3826"/>
                                                             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="height" constant="340" id="vXV-VZ-JcD"/>
@@ -722,7 +722,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="OR2-JH-K1h" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1688.8" y="357.57121439280365"/>
+            <point key="canvasLocation" x="1657" y="421"/>
         </scene>
         <!--Patient DetailTVC-->
         <scene sceneID="ml1-O5-V5B">
@@ -924,7 +924,7 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillProportionally" translatesAutoresizingMaskIntoConstraints="NO" id="k9m-mm-fAV" userLabel="Calendar stack">
-                                                    <rect key="frame" x="0.0" y="-2278" width="375" height="2727.5"/>
+                                                    <rect key="frame" x="0.0" y="-2481" width="375" height="2930.5"/>
                                                     <subviews>
                                                         <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillProportionally" translatesAutoresizingMaskIntoConstraints="NO" id="sjg-Sc-qeP" userLabel="Title Stack View">
                                                             <rect key="frame" x="0.0" y="0.0" width="375" height="65"/>
@@ -1001,7 +1001,7 @@
                                                             </constraints>
                                                         </stackView>
                                                         <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" pagingEnabled="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="SO9-34-Uii" customClass="JTAppleCalendarView" customModule="JTAppleCalendar">
-                                                            <rect key="frame" x="0.0" y="85.5" width="375" height="2642"/>
+                                                            <rect key="frame" x="0.0" y="85.5" width="375" height="2845"/>
                                                             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="height" constant="340" id="z7B-lk-4Wh"/>
@@ -1579,7 +1579,7 @@
                                                         <constraint firstAttribute="width" constant="288" id="Eqn-Jo-XsW"/>
                                                     </constraints>
                                                 </imageView>
-                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="yPZ-nK-vSd">
+                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="yPZ-nK-vSd" customClass="CardView" customModule="Appt" customModuleProvider="target">
                                                     <rect key="frame" x="116" y="7" width="239" height="66"/>
                                                     <subviews>
                                                         <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="3" translatesAutoresizingMaskIntoConstraints="NO" id="RNc-79-Sm0">
@@ -1606,11 +1606,6 @@
                                                         <constraint firstItem="RNc-79-Sm0" firstAttribute="leading" secondItem="yPZ-nK-vSd" secondAttribute="leading" constant="12" id="hWz-xq-8ZM"/>
                                                         <constraint firstAttribute="trailing" secondItem="RNc-79-Sm0" secondAttribute="trailing" constant="12" id="ti5-rL-c8x"/>
                                                     </constraints>
-                                                    <userDefinedRuntimeAttributes>
-                                                        <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
-                                                            <integer key="value" value="8"/>
-                                                        </userDefinedRuntimeAttribute>
-                                                    </userDefinedRuntimeAttributes>
                                                 </view>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="12:00" textAlignment="right" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rej-lt-Ogk">
                                                     <rect key="frame" x="10" y="27" width="56.5" height="26.5"/>
@@ -1644,7 +1639,6 @@
                                             <constraint firstAttribute="bottom" secondItem="yPZ-nK-vSd" secondAttribute="bottom" constant="7" id="xIb-Qc-cRA"/>
                                         </constraints>
                                         <connections>
-                                            <outlet property="apptCard" destination="yPZ-nK-vSd" id="l24-cU-lAC"/>
                                             <outlet property="dateLabel" destination="rej-lt-Ogk" id="mth-dc-Uh1"/>
                                             <outlet property="nameLabel" destination="xwD-Kh-sbJ" id="H6d-bc-wrw"/>
                                             <outlet property="noteLabel" destination="eCW-IA-jN7" id="KlC-nF-Ge6"/>
@@ -1808,7 +1802,7 @@
         <image name="today" width="36" height="40"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="fIu-1r-FSG"/>
+        <segue reference="ZlX-X9-4ez"/>
         <segue reference="TJR-rU-u6g"/>
         <segue reference="XoE-ck-qRf"/>
     </inferredMetricsTieBreakers>
