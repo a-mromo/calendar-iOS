@@ -14,22 +14,22 @@
         <scene sceneID="MDh-69-vcW">
             <objects>
                 <tableViewController id="fIE-P4-CUA" customClass="ApptDetailTVC" customModule="Appt" customModuleProvider="target" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="grouped" separatorStyle="default" rowHeight="44" sectionHeaderHeight="18" sectionFooterHeight="18" id="lgU-Nm-oKg">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="grouped" separatorStyle="none" rowHeight="44" sectionHeaderHeight="18" sectionFooterHeight="8" id="lgU-Nm-oKg">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                         <sections>
                             <tableViewSection headerTitle="Appointment Info" id="KR7-RE-ZCE" userLabel="Appt Info Card">
                                 <cells>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" rowHeight="184" id="OV7-jB-FSa">
-                                        <rect key="frame" x="0.0" y="55.5" width="375" height="184"/>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" rowHeight="192" id="OV7-jB-FSa">
+                                        <rect key="frame" x="0.0" y="55.5" width="375" height="192"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="OV7-jB-FSa" id="Xpt-YQ-P1g">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="183.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="192"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="IqV-X8-KCp" customClass="CardView" customModule="Appt" customModuleProvider="target">
-                                                    <rect key="frame" x="12" y="12" width="351" height="159.5"/>
+                                                    <rect key="frame" x="12" y="4" width="351" height="175.5"/>
                                                     <subviews>
                                                         <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Patient Name" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CtN-Gw-ld1">
                                                             <rect key="frame" x="20" y="15" width="150.5" height="29"/>
@@ -102,9 +102,7 @@
                                             </subviews>
                                             <constraints>
                                                 <constraint firstAttribute="trailing" secondItem="IqV-X8-KCp" secondAttribute="trailing" constant="12" id="3gK-pN-Jo5"/>
-                                                <constraint firstItem="IqV-X8-KCp" firstAttribute="top" secondItem="Xpt-YQ-P1g" secondAttribute="top" constant="12" id="CEX-vE-cf0"/>
-                                                <constraint firstItem="IqV-X8-KCp" firstAttribute="centerX" secondItem="Xpt-YQ-P1g" secondAttribute="centerX" id="bLX-bx-cA6"/>
-                                                <constraint firstItem="IqV-X8-KCp" firstAttribute="centerY" secondItem="Xpt-YQ-P1g" secondAttribute="centerY" id="ngy-FQ-Wae"/>
+                                                <constraint firstItem="IqV-X8-KCp" firstAttribute="top" secondItem="Xpt-YQ-P1g" secondAttribute="top" constant="4" id="CEX-vE-cf0"/>
                                                 <constraint firstAttribute="bottom" secondItem="IqV-X8-KCp" secondAttribute="bottom" constant="12" id="noR-4x-3ra"/>
                                                 <constraint firstItem="IqV-X8-KCp" firstAttribute="leading" secondItem="Xpt-YQ-P1g" secondAttribute="leading" constant="12" id="sLB-XR-4Ef"/>
                                             </constraints>
@@ -116,17 +114,17 @@
                             <tableViewSection headerTitle="Notes" id="aTK-r9-B7D" userLabel="Notes Card">
                                 <cells>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" rowHeight="168" id="ahY-4h-jcP">
-                                        <rect key="frame" x="0.0" y="295.5" width="375" height="168"/>
+                                        <rect key="frame" x="0.0" y="293.5" width="375" height="168"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="ahY-4h-jcP" id="B7p-xG-zpi">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="167.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="168"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="eZa-gs-7Nu" customClass="CardView" customModule="Appt" customModuleProvider="target">
-                                                    <rect key="frame" x="12" y="8" width="351" height="147.5"/>
+                                                    <rect key="frame" x="12" y="4" width="351" height="151.5"/>
                                                     <subviews>
                                                         <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" textAlignment="natural" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cdO-Pa-v6j">
-                                                            <rect key="frame" x="20" y="12" width="311" height="123.5"/>
+                                                            <rect key="frame" x="20" y="12" width="311" height="127.5"/>
                                                             <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
                                                             <color key="textColor" red="0.43137254901960786" green="0.43137254901960786" blue="0.43137254901960786" alpha="1" colorSpace="calibratedRGB"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="16"/>
@@ -143,7 +141,7 @@
                                                 </view>
                                             </subviews>
                                             <constraints>
-                                                <constraint firstItem="eZa-gs-7Nu" firstAttribute="top" secondItem="B7p-xG-zpi" secondAttribute="top" constant="8" id="GdD-KV-0RR"/>
+                                                <constraint firstItem="eZa-gs-7Nu" firstAttribute="top" secondItem="B7p-xG-zpi" secondAttribute="top" constant="4" id="GdD-KV-0RR"/>
                                                 <constraint firstItem="eZa-gs-7Nu" firstAttribute="leading" secondItem="B7p-xG-zpi" secondAttribute="leading" constant="12" id="aNG-fU-2JD"/>
                                                 <constraint firstAttribute="trailing" secondItem="eZa-gs-7Nu" secondAttribute="trailing" constant="12" id="tOq-Km-kNl"/>
                                                 <constraint firstAttribute="bottom" secondItem="eZa-gs-7Nu" secondAttribute="bottom" constant="12" id="tSB-iL-2Ds"/>
@@ -152,10 +150,10 @@
                                         <color key="backgroundColor" red="0.93725490196078431" green="0.93725490196078431" blue="0.96470588235294119" alpha="1" colorSpace="calibratedRGB"/>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" rowHeight="63" id="6jn-wq-YvE">
-                                        <rect key="frame" x="0.0" y="463.5" width="375" height="63"/>
+                                        <rect key="frame" x="0.0" y="461.5" width="375" height="63"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="6jn-wq-YvE" id="780-su-Eps">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="62.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="63"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XGy-Oy-ui4">
@@ -194,7 +192,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="665-EN-xqK" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1656.8" y="-1058.3208395802101"/>
+            <point key="canvasLocation" x="1657" y="-1083"/>
         </scene>
         <!--Ib Calendar Data Source-->
         <scene sceneID="02k-DN-jwv">
