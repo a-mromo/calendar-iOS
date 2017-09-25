@@ -45,6 +45,7 @@
 		6CED205F1ED38DA700A6CD8B /* PatientsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6CED205E1ED38DA700A6CD8B /* PatientsTableViewController.swift */; };
 		6CED20611ED3926100A6CD8B /* PatientCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6CED20601ED3926100A6CD8B /* PatientCell.swift */; };
 		6CED20631ED4CA6800A6CD8B /* NewPatientTableVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6CED20621ED4CA6800A6CD8B /* NewPatientTableVC.swift */; };
+		6CFA0E2C1F78407F00580CB2 /* Buttons.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6CFA0E2B1F78407F00580CB2 /* Buttons.swift */; };
 		839AFE48B24B86F244EFC449 /* Pods_Appt.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F07C45688795D050C791FE8A /* Pods_Appt.framework */; };
 		D5A8E007B157A412CB593820 /* Pods_ApptTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5A2CB454C1A0C38481346EFC /* Pods_ApptTests.framework */; };
 /* End PBXBuildFile section */
@@ -107,6 +108,7 @@
 		6CED205E1ED38DA700A6CD8B /* PatientsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PatientsTableViewController.swift; sourceTree = "<group>"; };
 		6CED20601ED3926100A6CD8B /* PatientCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PatientCell.swift; sourceTree = "<group>"; };
 		6CED20621ED4CA6800A6CD8B /* NewPatientTableVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewPatientTableVC.swift; sourceTree = "<group>"; };
+		6CFA0E2B1F78407F00580CB2 /* Buttons.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Buttons.swift; path = "/Users/agustinoromo/Developer/UCSD/iOS I&II Final Project/Appt/Appt/Views/Buttons.swift"; sourceTree = "<absolute>"; };
 		955A5EEA452C883E892441CC /* Pods-Appt.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Appt.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Appt/Pods-Appt.debug.xcconfig"; sourceTree = "<group>"; };
 		AFE1B20E66A925858ACDCCC6 /* Pods-ApptTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ApptTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-ApptTests/Pods-ApptTests.debug.xcconfig"; sourceTree = "<group>"; };
 		F07C45688795D050C791FE8A /* Pods_Appt.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Appt.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -220,6 +222,7 @@
 				6C18DB991F1EAA7700E806C2 /* TextViewPlaceholder.swift */,
 				6C6EBD9F1F4A2B0C00A2E2F9 /* Shadows.swift */,
 				6C06D6B41F7612B7005416A6 /* CardView.swift */,
+				6CFA0E2B1F78407F00580CB2 /* Buttons.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -490,6 +493,7 @@
 				6CE055631EDFED6600312499 /* Appointment+CoreDataProperties.swift in Sources */,
 				6CE413821F37C66F00D459B5 /* UpdateApptTVC.swift in Sources */,
 				6C952E581ECD629E005CB5B7 /* NewApptTableViewController.swift in Sources */,
+				6CFA0E2C1F78407F00580CB2 /* Buttons.swift in Sources */,
 				6CED20631ED4CA6800A6CD8B /* NewPatientTableVC.swift in Sources */,
 				6CE055621EDFED6600312499 /* Appointment+CoreDataClass.swift in Sources */,
 				6C8793451F43E4BE0028AA3D /* ActivityTableViewController.swift in Sources */,

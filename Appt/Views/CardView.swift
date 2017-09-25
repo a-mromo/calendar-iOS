@@ -9,25 +9,31 @@
 import UIKit
 
 class CardView: UIView {
-
-    /*
-    // Only override draw() if you perform custom drawing.
-    // An empty implementation adversely affects performance during animation.
-    override func draw(_ rect: CGRect) {
-        // Drawing code
-    }
-    */
   
   override func draw(_ rect: CGRect) {
     
     self.layer.shadowColor = UIColor.black.cgColor
-    self.layer.shadowOffset = CGSize(width: 0, height: 6)
+    self.layer.shadowOffset = CGSize(width: 0, height: 4)
     self.layer.shadowOpacity = 0.2
     self.layer.shadowRadius = 4
     self.clipsToBounds = false
     self.layer.masksToBounds = false
-    self.layer.cornerRadius = 8
+    self.layer.cornerRadius = 8.0
     
   }
+}
 
+class CardViewLight: UIView {
+  
+  override func draw(_ rect: CGRect) {
+    
+    self.layer.shadowColor = UIColor.black.cgColor
+    self.layer.shadowOffset = CGSize(width: 0, height: 4)
+    self.layer.shadowOpacity = 0.08
+    self.layer.shadowRadius = 4
+    self.clipsToBounds = false
+    self.layer.masksToBounds = false
+    self.layer.cornerRadius = 8.0
+    
+  }
 }

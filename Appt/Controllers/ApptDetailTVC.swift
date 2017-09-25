@@ -20,6 +20,8 @@ class ApptDetailTVC: UITableViewController {
   @IBOutlet weak var apptCostLabel: UILabel!
   @IBOutlet weak var noteTextView: UITextView!
   
+  @IBOutlet weak var editApptButton: UIButton!
+  
   override func viewDidLoad() {
     super.viewDidLoad()
     noLargeTitles()

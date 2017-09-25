@@ -156,7 +156,7 @@
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="63"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XGy-Oy-ui4">
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XGy-Oy-ui4" customClass="WireButton" customModule="Appt" customModuleProvider="target">
                                                     <rect key="frame" x="128" y="16" width="119" height="30"/>
                                                     <state key="normal" title="Edit Appointment">
                                                         <color key="titleColor" red="0.71764705882352942" green="0.3529411764705882" blue="0.99607843137254903" alpha="1" colorSpace="calibratedRGB"/>
@@ -185,6 +185,7 @@
                     <connections>
                         <outlet property="apptCostLabel" destination="nVm-NA-OtR" id="U7M-8V-dc7"/>
                         <outlet property="dateLabel" destination="5WE-A5-gih" id="Rcb-3o-9aA"/>
+                        <outlet property="editApptButton" destination="XGy-Oy-ui4" id="7YS-4y-zyz"/>
                         <outlet property="hourLabel" destination="FLk-DW-PDW" id="lfh-XL-yLE"/>
                         <outlet property="noteTextView" destination="cdO-Pa-v6j" id="hMA-br-Bip"/>
                         <outlet property="patientNameLabel" destination="CtN-Gw-ld1" id="rqi-XO-AUz"/>
@@ -235,7 +236,7 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillProportionally" translatesAutoresizingMaskIntoConstraints="NO" id="DQg-CQ-KVc" userLabel="Calendar stack">
-                                                    <rect key="frame" x="0.0" y="-3462" width="375" height="3911.5"/>
+                                                    <rect key="frame" x="0.0" y="-5041.5" width="375" height="5491"/>
                                                     <subviews>
                                                         <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillProportionally" translatesAutoresizingMaskIntoConstraints="NO" id="LmP-yg-2v7" userLabel="Title Stack View">
                                                             <rect key="frame" x="0.0" y="0.0" width="375" height="65"/>
@@ -312,7 +313,7 @@
                                                             </constraints>
                                                         </stackView>
                                                         <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" pagingEnabled="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="ONw-Np-zXi" customClass="JTAppleCalendarView" customModule="JTAppleCalendar">
-                                                            <rect key="frame" x="0.0" y="85.5" width="375" height="3826"/>
+                                                            <rect key="frame" x="0.0" y="85.5" width="375" height="5405.5"/>
                                                             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="height" constant="340" id="vXV-VZ-JcD"/>
@@ -663,43 +664,33 @@
         <scene sceneID="DFX-RE-R04">
             <objects>
                 <tableViewController id="Lou-6q-Myy" customClass="PatientsTabTVC" customModule="Appt" customModuleProvider="target" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="k91-it-90D">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="k91-it-90D">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="sectionIndexBackgroundColor" red="0.93725490196078431" green="0.93725490196078431" blue="0.96470588235294119" alpha="1" colorSpace="calibratedRGB"/>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="PatientCell" id="7QX-s8-GOs" customClass="PatientCell" customModule="Appt" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="28" width="375" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="7QX-s8-GOs" id="axr-xT-jyF">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <imageView hidden="YES" userInteractionEnabled="NO" alpha="0.5" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="rqy-It-Fk4">
-                                            <rect key="frame" x="18" y="42" width="338" height="2"/>
-                                            <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
-                                            <constraints>
-                                                <constraint firstAttribute="width" constant="338" id="4X0-Xx-jOX"/>
-                                                <constraint firstAttribute="height" constant="2" id="bBT-tx-hLS"/>
-                                            </constraints>
-                                        </imageView>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Patient Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fIO-OW-aAw">
-                                            <rect key="frame" x="18" y="9" width="320" height="26"/>
-                                            <fontDescription key="fontDescription" type="system" weight="medium" pointSize="21"/>
+                                            <rect key="frame" x="16" y="10" width="116.5" height="24"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                     </subviews>
                                     <constraints>
-                                        <constraint firstItem="fIO-OW-aAw" firstAttribute="centerY" secondItem="axr-xT-jyF" secondAttribute="centerY" id="2ID-fu-gW7"/>
-                                        <constraint firstAttribute="trailingMargin" relation="lessThanOrEqual" secondItem="fIO-OW-aAw" secondAttribute="trailing" constant="29" id="S3s-b3-K2B"/>
-                                        <constraint firstItem="fIO-OW-aAw" firstAttribute="leading" secondItem="axr-xT-jyF" secondAttribute="leadingMargin" constant="10" id="u8O-kk-FoI"/>
+                                        <constraint firstItem="fIO-OW-aAw" firstAttribute="centerY" secondItem="axr-xT-jyF" secondAttribute="centerY" id="4je-zs-mvE"/>
+                                        <constraint firstItem="fIO-OW-aAw" firstAttribute="leading" secondItem="axr-xT-jyF" secondAttribute="leading" constant="16" id="AID-S3-zW9"/>
+                                        <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="fIO-OW-aAw" secondAttribute="trailing" constant="16" id="GQp-Ah-yIz"/>
                                     </constraints>
                                 </tableViewCellContentView>
-                                <constraints>
-                                    <constraint firstItem="rqy-It-Fk4" firstAttribute="centerX" secondItem="7QX-s8-GOs" secondAttribute="centerX" id="JEH-b4-PMG"/>
-                                    <constraint firstAttribute="bottom" secondItem="rqy-It-Fk4" secondAttribute="bottom" id="JdA-1a-CHy"/>
-                                </constraints>
+                                <color key="backgroundColor" red="0.93725490196078431" green="0.93725490196078431" blue="0.96470588235294119" alpha="1" colorSpace="calibratedRGB"/>
                                 <connections>
                                     <outlet property="patientNameLabel" destination="fIO-OW-aAw" id="HJ9-7r-lc3"/>
                                 </connections>
@@ -922,7 +913,7 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillProportionally" translatesAutoresizingMaskIntoConstraints="NO" id="k9m-mm-fAV" userLabel="Calendar stack">
-                                                    <rect key="frame" x="0.0" y="-2481" width="375" height="2930.5"/>
+                                                    <rect key="frame" x="0.0" y="-3655.5" width="375" height="4105"/>
                                                     <subviews>
                                                         <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillProportionally" translatesAutoresizingMaskIntoConstraints="NO" id="sjg-Sc-qeP" userLabel="Title Stack View">
                                                             <rect key="frame" x="0.0" y="0.0" width="375" height="65"/>
@@ -999,7 +990,7 @@
                                                             </constraints>
                                                         </stackView>
                                                         <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" pagingEnabled="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="SO9-34-Uii" customClass="JTAppleCalendarView" customModule="JTAppleCalendar">
-                                                            <rect key="frame" x="0.0" y="85.5" width="375" height="2845"/>
+                                                            <rect key="frame" x="0.0" y="85.5" width="375" height="4019.5"/>
                                                             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="height" constant="340" id="z7B-lk-4Wh"/>
@@ -1219,41 +1210,33 @@
         <scene sceneID="eLH-ia-1oA">
             <objects>
                 <tableViewController id="Gdr-G0-hUB" customClass="PatientsTableViewController" customModule="Appt" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="ts1-9E-NxP">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="ts1-9E-NxP">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="sectionIndexBackgroundColor" red="0.93725490196078431" green="0.93725490196078431" blue="0.96470588235294119" alpha="1" colorSpace="calibratedRGB"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="PatientCell" rowHeight="44" id="S0U-An-QV2" customClass="PatientCell" customModule="Appt" customModuleProvider="target">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="PatientCell" id="S0U-An-QV2" customClass="PatientCell" customModule="Appt" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="28" width="375" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="S0U-An-QV2" id="SHe-X3-vWG">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Patient Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Z0l-A4-HZ3">
-                                            <rect key="frame" x="31" y="9" width="300" height="25.5"/>
-                                            <fontDescription key="fontDescription" type="system" weight="medium" pointSize="21"/>
+                                            <rect key="frame" x="20" y="10" width="116.5" height="24"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <imageView hidden="YES" userInteractionEnabled="NO" alpha="0.5" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="F0I-LX-Phc">
-                                            <rect key="frame" x="18" y="41" width="338" height="2"/>
-                                            <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
-                                            <constraints>
-                                                <constraint firstAttribute="height" constant="2" id="0H9-YE-10X"/>
-                                                <constraint firstAttribute="width" constant="338" id="b1M-1c-wl6"/>
-                                            </constraints>
-                                        </imageView>
                                     </subviews>
+                                    <constraints>
+                                        <constraint firstItem="Z0l-A4-HZ3" firstAttribute="leading" secondItem="SHe-X3-vWG" secondAttribute="leading" constant="20" id="A2V-vm-Zr2"/>
+                                        <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="Z0l-A4-HZ3" secondAttribute="trailing" constant="20" id="EaV-6w-d7l"/>
+                                        <constraint firstItem="Z0l-A4-HZ3" firstAttribute="centerY" secondItem="SHe-X3-vWG" secondAttribute="centerY" id="xRC-mK-DZz"/>
+                                    </constraints>
                                 </tableViewCellContentView>
-                                <constraints>
-                                    <constraint firstItem="Z0l-A4-HZ3" firstAttribute="leading" secondItem="S0U-An-QV2" secondAttribute="leading" constant="31" id="4ch-B5-4Ca"/>
-                                    <constraint firstItem="Z0l-A4-HZ3" firstAttribute="centerY" secondItem="S0U-An-QV2" secondAttribute="centerY" id="8tI-hf-uew"/>
-                                    <constraint firstItem="F0I-LX-Phc" firstAttribute="centerX" secondItem="S0U-An-QV2" secondAttribute="centerX" id="RMx-b4-Bl1"/>
-                                    <constraint firstAttribute="bottom" secondItem="F0I-LX-Phc" secondAttribute="bottom" constant="1" id="baJ-LE-BFO"/>
-                                    <constraint firstAttribute="trailing" secondItem="Z0l-A4-HZ3" secondAttribute="trailing" constant="44" id="efd-aa-xhP"/>
-                                </constraints>
+                                <color key="backgroundColor" red="0.93725490196078431" green="0.93725490196078431" blue="0.96470588235294119" alpha="1" colorSpace="calibratedRGB"/>
                                 <connections>
                                     <outlet property="patientNameLabel" destination="Z0l-A4-HZ3" id="TgL-YU-hoJ"/>
                                 </connections>
@@ -1569,19 +1552,11 @@
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="80"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <imageView hidden="YES" userInteractionEnabled="NO" alpha="0.5" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="J2M-id-RhK">
-                                                    <rect key="frame" x="43" y="77" width="288" height="2"/>
-                                                    <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
-                                                    <constraints>
-                                                        <constraint firstAttribute="height" constant="2" id="AFF-iC-0EQ"/>
-                                                        <constraint firstAttribute="width" constant="288" id="Eqn-Jo-XsW"/>
-                                                    </constraints>
-                                                </imageView>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="yPZ-nK-vSd" customClass="CardView" customModule="Appt" customModuleProvider="target">
-                                                    <rect key="frame" x="116" y="7" width="239" height="66"/>
+                                                    <rect key="frame" x="116" y="8" width="239" height="64"/>
                                                     <subviews>
                                                         <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="3" translatesAutoresizingMaskIntoConstraints="NO" id="RNc-79-Sm0">
-                                                            <rect key="frame" x="12" y="11" width="215" height="44"/>
+                                                            <rect key="frame" x="12" y="10" width="215" height="44"/>
                                                             <subviews>
                                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Name" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xwD-Kh-sbJ">
                                                                     <rect key="frame" x="0.0" y="0.0" width="215" height="21.5"/>
@@ -1618,23 +1593,20 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>
-                                            <color key="backgroundColor" red="0.96470588235294119" green="0.96470588235294119" blue="0.96470588235294119" alpha="1" colorSpace="calibratedRGB"/>
                                             <constraints>
                                                 <constraint firstItem="yPZ-nK-vSd" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="fZJ-Li-xe9" secondAttribute="trailing" constant="14" id="AzO-bW-ezp"/>
                                                 <constraint firstItem="fZJ-Li-xe9" firstAttribute="leading" secondItem="rej-lt-Ogk" secondAttribute="trailing" constant="3.5" id="yaC-0y-0JP"/>
                                             </constraints>
                                         </tableViewCellContentView>
-                                        <color key="backgroundColor" red="0.96470588235294119" green="0.96470588235294119" blue="0.96470588235294119" alpha="1" colorSpace="calibratedRGB"/>
+                                        <color key="backgroundColor" red="0.93725490196078431" green="0.93725490196078431" blue="0.96470588235294119" alpha="1" colorSpace="calibratedRGB"/>
                                         <constraints>
                                             <constraint firstItem="rej-lt-Ogk" firstAttribute="leading" secondItem="sic-WS-AXc" secondAttribute="leading" constant="10" id="02f-so-BOX"/>
-                                            <constraint firstItem="J2M-id-RhK" firstAttribute="centerX" secondItem="sic-WS-AXc" secondAttribute="centerX" id="1kQ-Yd-9Ao"/>
-                                            <constraint firstAttribute="bottom" secondItem="J2M-id-RhK" secondAttribute="bottom" constant="1" id="AN3-AT-8Fh"/>
                                             <constraint firstItem="yPZ-nK-vSd" firstAttribute="leading" secondItem="sic-WS-AXc" secondAttribute="leading" constant="116" id="SZe-cU-CWL"/>
                                             <constraint firstAttribute="trailing" secondItem="yPZ-nK-vSd" secondAttribute="trailing" constant="20" id="TV4-n6-aDa"/>
-                                            <constraint firstItem="yPZ-nK-vSd" firstAttribute="top" secondItem="sic-WS-AXc" secondAttribute="top" constant="7" id="dcF-tu-D0c"/>
+                                            <constraint firstItem="yPZ-nK-vSd" firstAttribute="top" secondItem="sic-WS-AXc" secondAttribute="top" constant="8" id="dcF-tu-D0c"/>
                                             <constraint firstItem="rej-lt-Ogk" firstAttribute="centerY" secondItem="sic-WS-AXc" secondAttribute="centerY" id="tp8-78-kP6"/>
                                             <constraint firstItem="fZJ-Li-xe9" firstAttribute="centerY" secondItem="sic-WS-AXc" secondAttribute="centerY" id="vd7-zs-3EL"/>
-                                            <constraint firstAttribute="bottom" secondItem="yPZ-nK-vSd" secondAttribute="bottom" constant="7" id="xIb-Qc-cRA"/>
+                                            <constraint firstAttribute="bottom" secondItem="yPZ-nK-vSd" secondAttribute="bottom" constant="8" id="xIb-Qc-cRA"/>
                                         </constraints>
                                         <connections>
                                             <outlet property="dateLabel" destination="rej-lt-Ogk" id="mth-dc-Uh1"/>

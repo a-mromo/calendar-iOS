@@ -25,6 +25,10 @@ struct DefaultTheme: ThemeProtocol {
     return UIColor(hexCode: "#C57BFD")!
   }
   
+  var mainUIColor: UIColor {
+    return UIColor(hexCode: "#B75AFE")!
+  }
+  
   func install() {
     customNavBar()
     customTabBar()
