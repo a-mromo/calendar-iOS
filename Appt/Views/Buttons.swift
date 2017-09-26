@@ -1,6 +1,6 @@
 //
 //  Buttons.swift
-//  
+//
 //
 //  Created by Agustin Mendoza Romo on 9/24/17.
 //
@@ -21,4 +21,5 @@ class WireButton: UIButton {
   }
   
 }
+
 
