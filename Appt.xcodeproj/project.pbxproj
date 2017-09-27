@@ -27,6 +27,7 @@
 		6C4A3AEF1EF9C1CA00D91CA5 /* ApptDetailTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C4A3AEE1EF9C1CA00D91CA5 /* ApptDetailTVC.swift */; };
 		6C4A3AF11EF9E53C00D91CA5 /* DateFormatters.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C4A3AF01EF9E53C00D91CA5 /* DateFormatters.swift */; };
 		6C4A3AF51EFB213B00D91CA5 /* PatientDetailTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C4A3AF41EFB213B00D91CA5 /* PatientDetailTVC.swift */; };
+		6C6594441F7B2C07003E9020 /* AppointmentModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 6C2E08581F532CB400540611 /* AppointmentModel.xcdatamodeld */; };
 		6C6965551F7A01200051170E /* Buttons.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C6965541F7A01200051170E /* Buttons.swift */; };
 		6C6EBDA01F4A2B0C00A2E2F9 /* Shadows.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C6EBD9F1F4A2B0C00A2E2F9 /* Shadows.swift */; };
 		6C7E6CCB1EDE177A002D1936 /* CoreDataStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C7E6CCA1EDE177A002D1936 /* CoreDataStore.swift */; };
@@ -484,6 +485,7 @@
 				6CC2D19C1F13FD990097DDFE /* Theme.swift in Sources */,
 				6C18DB9C1F1ECBEB00E806C2 /* TextFieldDelegate.swift in Sources */,
 				6C18DB9A1F1EAA7700E806C2 /* TextViewPlaceholder.swift in Sources */,
+				6C6594441F7B2C07003E9020 /* AppointmentModel.xcdatamodeld in Sources */,
 				6C4151C31ECA7ACF00ACDAE7 /* AppDelegate.swift in Sources */,
 				6C3342991F3A9ACC007F626D /* TimeSlotFormatter.swift in Sources */,
 				6C3208461EE0153100ED6BDF /* ActivityCell.swift in Sources */,
