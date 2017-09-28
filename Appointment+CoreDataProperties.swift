@@ -19,7 +19,7 @@ extension Appointment {
     @NSManaged public var cost: String?
     @NSManaged public var date: Date
     @NSManaged public var dateCreated: Date
-    @NSManaged public var dateModified: Date
+    @NSManaged public var dateModified: Date?
     @NSManaged public var note: String?
     @NSManaged public var patient: Patient
   

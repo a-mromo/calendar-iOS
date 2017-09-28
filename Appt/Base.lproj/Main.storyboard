@@ -236,7 +236,7 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillProportionally" translatesAutoresizingMaskIntoConstraints="NO" id="DQg-CQ-KVc" userLabel="Calendar stack">
-                                                    <rect key="frame" x="0.0" y="-6386" width="375" height="6835.5"/>
+                                                    <rect key="frame" x="0.0" y="-6905.5" width="375" height="7355"/>
                                                     <subviews>
                                                         <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillProportionally" translatesAutoresizingMaskIntoConstraints="NO" id="LmP-yg-2v7" userLabel="Title Stack View">
                                                             <rect key="frame" x="0.0" y="0.0" width="375" height="65"/>
@@ -313,7 +313,7 @@
                                                             </constraints>
                                                         </stackView>
                                                         <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" pagingEnabled="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="ONw-Np-zXi" customClass="JTAppleCalendarView" customModule="JTAppleCalendar">
-                                                            <rect key="frame" x="0.0" y="85.5" width="375" height="6750"/>
+                                                            <rect key="frame" x="0.0" y="85.5" width="375" height="7269.5"/>
                                                             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="height" constant="340" id="vXV-VZ-JcD"/>
@@ -913,7 +913,7 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillProportionally" translatesAutoresizingMaskIntoConstraints="NO" id="k9m-mm-fAV" userLabel="Calendar stack">
-                                                    <rect key="frame" x="0.0" y="-4655.5" width="375" height="5105"/>
+                                                    <rect key="frame" x="0.0" y="-5041.5" width="375" height="5491"/>
                                                     <subviews>
                                                         <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillProportionally" translatesAutoresizingMaskIntoConstraints="NO" id="sjg-Sc-qeP" userLabel="Title Stack View">
                                                             <rect key="frame" x="0.0" y="0.0" width="375" height="65"/>
@@ -990,7 +990,7 @@
                                                             </constraints>
                                                         </stackView>
                                                         <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" pagingEnabled="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="SO9-34-Uii" customClass="JTAppleCalendarView" customModule="JTAppleCalendar">
-                                                            <rect key="frame" x="0.0" y="85.5" width="375" height="5019.5"/>
+                                                            <rect key="frame" x="0.0" y="85.5" width="375" height="5405.5"/>
                                                             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="height" constant="340" id="z7B-lk-4Wh"/>
@@ -1586,17 +1586,7 @@
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="AM" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fZJ-Li-xe9">
-                                                    <rect key="frame" x="70" y="31" width="21.5" height="17"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                    <nil key="textColor"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
                                             </subviews>
-                                            <constraints>
-                                                <constraint firstItem="yPZ-nK-vSd" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="fZJ-Li-xe9" secondAttribute="trailing" constant="14" id="AzO-bW-ezp"/>
-                                                <constraint firstItem="fZJ-Li-xe9" firstAttribute="leading" secondItem="rej-lt-Ogk" secondAttribute="trailing" constant="3.5" id="yaC-0y-0JP"/>
-                                            </constraints>
                                         </tableViewCellContentView>
                                         <color key="backgroundColor" red="0.93725490196078431" green="0.93725490196078431" blue="0.96470588235294119" alpha="1" colorSpace="calibratedRGB"/>
                                         <constraints>
@@ -1605,7 +1595,6 @@
                                             <constraint firstAttribute="trailing" secondItem="yPZ-nK-vSd" secondAttribute="trailing" constant="20" id="TV4-n6-aDa"/>
                                             <constraint firstItem="yPZ-nK-vSd" firstAttribute="top" secondItem="sic-WS-AXc" secondAttribute="top" constant="8" id="dcF-tu-D0c"/>
                                             <constraint firstItem="rej-lt-Ogk" firstAttribute="centerY" secondItem="sic-WS-AXc" secondAttribute="centerY" id="tp8-78-kP6"/>
-                                            <constraint firstItem="fZJ-Li-xe9" firstAttribute="centerY" secondItem="sic-WS-AXc" secondAttribute="centerY" id="vd7-zs-3EL"/>
                                             <constraint firstAttribute="bottom" secondItem="yPZ-nK-vSd" secondAttribute="bottom" constant="8" id="xIb-Qc-cRA"/>
                                         </constraints>
                                         <connections>
