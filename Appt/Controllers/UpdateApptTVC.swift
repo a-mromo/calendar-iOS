@@ -54,7 +54,7 @@ class UpdateApptTVC: UITableViewController, AppointmentTVC {
   
   @IBOutlet var calendarView: JTAppleCalendarView!
   @IBOutlet var calendarDateLabel: UILabel!
-  @IBOutlet var yearLabel: UILabel!
+//  @IBOutlet var yearLabel: UILabel!
   
   @IBOutlet weak var timeSlotLabel: UILabel!
   @IBOutlet weak var patientLabel: UILabel!
