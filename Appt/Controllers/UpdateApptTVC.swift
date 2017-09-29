@@ -53,7 +53,7 @@ class UpdateApptTVC: UITableViewController, AppointmentTVC {
   
   
   @IBOutlet var calendarView: JTAppleCalendarView!
-  @IBOutlet var monthLabel: UILabel!
+  @IBOutlet var calendarDateLabel: UILabel!
   @IBOutlet var yearLabel: UILabel!
   
   @IBOutlet weak var timeSlotLabel: UILabel!
@@ -246,12 +246,11 @@ extension UpdateApptTVC {
   
   func setupViewsFromCalendar(from visibleDates: DateSegmentInfo ) {
     guard let date = visibleDates.monthDates.first?.date else { return }
+//    formatter.dateFormat = "yyyy"
+//    yearLabel.text = formatter.string(from: date)
     
-    formatter.dateFormat = "yyyy"
-    yearLabel.text = formatter.string(from: date)
-    
-    formatter.dateFormat = "MMMM"
-    monthLabel.text = formatter.string(from: date)
+    formatter.dateFormat = "MMMM yyyy"
+    calendarDateLabel.text = formatter.string(from: date)
   }
   
   //  func calendarViewDateChanged() {
