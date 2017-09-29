@@ -52,8 +52,8 @@ class TimeSlotsCVC: UICollectionViewController {
   override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
     let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath) as! TimeSlotCell
     
-    cell.timeSlotView.layer.borderWidth = 2
-    cell.timeSlotView.layer.borderColor = UIColor.darkGray.cgColor
+//    cell.timeSlotView.layer.borderWidth = 2
+//    cell.timeSlotView.layer.borderColor = UIColor.darkGray.cgColor
     
     let timeSlot = timeSlots[indexPath.row]
     formatter.dateFormat = "H:mm"
