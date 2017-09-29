@@ -52,6 +52,11 @@ class TimeSlotsCVC: UICollectionViewController {
   override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
     let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath) as! TimeSlotCell
     
+    if cell.isSelected {
+      cell.timeSlotView.backgroundColor = UIColor(hexCode: "#B75AFE")
+      cell.timeLabel.textColor = .white
+    }
+    
 //    cell.timeSlotView.layer.borderWidth = 2
 //    cell.timeSlotView.layer.borderColor = UIColor.darkGray.cgColor
     
@@ -62,7 +67,10 @@ class TimeSlotsCVC: UICollectionViewController {
     return cell
   }
   
+  
+  
   override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+  
     if let destinationVC = self.navigationController?.viewControllers[0] as?  NewApptTableViewController {
       destinationVC.selectedTimeSlot = timeSlots[indexPath.row]
       self.navigationController?.popViewController(animated: true)
