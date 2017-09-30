@@ -29,7 +29,7 @@ class UpdateApptTVC: UITableViewController, AppointmentTVC {
   let segueSelectPatient = "SegueSelectPatientsTVC"
   
   let persistentContainer = CoreDataStore.instance.persistentContainer
-  var calendarViewHidden = false
+  var calendarViewHidden = true
   
   // Calendar Color
   let outsideMonthColor = UIColor.lightGray
@@ -168,13 +168,13 @@ class UpdateApptTVC: UITableViewController, AppointmentTVC {
   }
   
   
-  override func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-    if calendarViewHidden && section == 0 {
-      return 40
-    } else {
-      return 1
-    }
-  }
+//  override func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+//    if calendarViewHidden && section == 0 {
+//      return 40
+//    } else {
+//      return 1
+//    }
+//  }
 }
 
 
@@ -246,8 +246,6 @@ extension UpdateApptTVC {
   
   func setupViewsFromCalendar(from visibleDates: DateSegmentInfo ) {
     guard let date = visibleDates.monthDates.first?.date else { return }
-//    formatter.dateFormat = "yyyy"
-//    yearLabel.text = formatter.string(from: date)
     
     formatter.dateFormat = "MMMM yyyy"
     calendarDateLabel.text = formatter.string(from: date)
