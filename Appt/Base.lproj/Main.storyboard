@@ -229,24 +229,18 @@
                                             <constraint firstItem="Izf-SL-SqP" firstAttribute="centerY" secondItem="REk-Tr-Wmc" secondAttribute="centerY" id="zpa-3W-tA2"/>
                                         </constraints>
                                     </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="320" id="ayL-4W-QaM">
-                                        <rect key="frame" x="0.0" y="56" width="375" height="320"/>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="300" id="ayL-4W-QaM">
+                                        <rect key="frame" x="0.0" y="56" width="375" height="300"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="ayL-4W-QaM" id="pip-dK-YJu">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="319.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="299.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Bla-Rk-0MO">
-                                                    <rect key="frame" x="12" y="4" width="351" height="303.5"/>
+                                                    <rect key="frame" x="12" y="4" width="351" height="283.5"/>
                                                     <subviews>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Month + Year" textAlignment="center" lineBreakMode="characterWrap" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RO5-hu-z3S">
-                                                            <rect key="frame" x="124.5" y="8" width="103" height="19.5"/>
-                                                            <fontDescription key="fontDescription" type="boldSystem" pointSize="16"/>
-                                                            <color key="textColor" red="0.11764705882352941" green="0.11764705882352941" blue="0.11764705882352941" alpha="1" colorSpace="calibratedRGB"/>
-                                                            <nil key="highlightedColor"/>
-                                                        </label>
                                                         <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="AFj-AJ-73a" userLabel="DoW Stack">
-                                                            <rect key="frame" x="0.0" y="31.5" width="351" height="20.5"/>
+                                                            <rect key="frame" x="0.0" y="4" width="351" height="20.5"/>
                                                             <subviews>
                                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Sun" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ax7-Or-PVO">
                                                                     <rect key="frame" x="0.0" y="0.0" width="50" height="20.5"/>
@@ -303,7 +297,7 @@
                                                             </constraints>
                                                         </stackView>
                                                         <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" pagingEnabled="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="ONw-Np-zXi" customClass="JTAppleCalendarView" customModule="JTAppleCalendar">
-                                                            <rect key="frame" x="0.0" y="56" width="351" height="250"/>
+                                                            <rect key="frame" x="0.0" y="28.5" width="351" height="250"/>
                                                             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="height" constant="250" id="vXV-VZ-JcD"/>
@@ -364,11 +358,9 @@
                                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                     <constraints>
                                                         <constraint firstAttribute="trailing" secondItem="AFj-AJ-73a" secondAttribute="trailing" id="FcZ-Tt-jcV"/>
-                                                        <constraint firstItem="AFj-AJ-73a" firstAttribute="top" secondItem="RO5-hu-z3S" secondAttribute="bottom" constant="4" id="LNR-hI-XHA"/>
                                                         <constraint firstItem="ONw-Np-zXi" firstAttribute="top" secondItem="AFj-AJ-73a" secondAttribute="bottom" constant="4" id="LvW-GV-wJD"/>
-                                                        <constraint firstItem="RO5-hu-z3S" firstAttribute="centerX" secondItem="Bla-Rk-0MO" secondAttribute="centerX" id="T2F-bR-iE1"/>
                                                         <constraint firstAttribute="trailing" secondItem="ONw-Np-zXi" secondAttribute="trailing" id="TTg-Q8-7MS"/>
-                                                        <constraint firstItem="RO5-hu-z3S" firstAttribute="top" secondItem="Bla-Rk-0MO" secondAttribute="top" constant="8" id="pqt-2A-5xX"/>
+                                                        <constraint firstItem="AFj-AJ-73a" firstAttribute="top" secondItem="Bla-Rk-0MO" secondAttribute="top" constant="4" id="nj5-xV-8Hi"/>
                                                         <constraint firstItem="ONw-Np-zXi" firstAttribute="leading" secondItem="Bla-Rk-0MO" secondAttribute="leading" id="vi1-mb-fGO"/>
                                                         <constraint firstItem="AFj-AJ-73a" firstAttribute="leading" secondItem="Bla-Rk-0MO" secondAttribute="leading" id="wNM-Y1-vDM"/>
                                                     </constraints>
@@ -385,7 +377,7 @@
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" rowHeight="56" id="FUg-hs-F4A">
-                                        <rect key="frame" x="0.0" y="376" width="375" height="56"/>
+                                        <rect key="frame" x="0.0" y="356" width="375" height="56"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="FUg-hs-F4A" id="eIn-Lw-bn9">
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="55.5"/>
@@ -410,7 +402,7 @@
                                         </connections>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" textLabel="fTu-VI-V4k" rowHeight="56" style="IBUITableViewCellStyleDefault" id="4N4-gv-5oj">
-                                        <rect key="frame" x="0.0" y="432" width="375" height="56"/>
+                                        <rect key="frame" x="0.0" y="412" width="375" height="56"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="4N4-gv-5oj" id="onr-Zz-OEG">
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="55.5"/>
@@ -430,7 +422,7 @@
                                         </connections>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" focusStyle="custom" rowHeight="56" id="RL0-4e-ixv">
-                                        <rect key="frame" x="0.0" y="488" width="375" height="56"/>
+                                        <rect key="frame" x="0.0" y="468" width="375" height="56"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="RL0-4e-ixv" id="jfR-ae-xWS">
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="55.5"/>
@@ -451,7 +443,7 @@
                                         </tableViewCellContentView>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" rowHeight="160" id="1go-bx-CZ0">
-                                        <rect key="frame" x="0.0" y="544" width="375" height="160"/>
+                                        <rect key="frame" x="0.0" y="524" width="375" height="160"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="1go-bx-CZ0" id="xpo-tA-CdL">
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="159.5"/>
@@ -495,7 +487,6 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
-                        <outlet property="calendarDateLabel" destination="RO5-hu-z3S" id="N3A-qy-lgp"/>
                         <outlet property="calendarView" destination="ONw-Np-zXi" id="w9d-mi-RgD"/>
                         <outlet property="costTextField" destination="mcx-0C-ghM" id="BSF-2o-n5i"/>
                         <outlet property="dateDetailLabel" destination="Izf-SL-SqP" id="iUE-u7-tdb"/>
@@ -893,7 +884,7 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillProportionally" translatesAutoresizingMaskIntoConstraints="NO" id="k9m-mm-fAV" userLabel="Calendar stack">
-                                                    <rect key="frame" x="0.0" y="-7273.5" width="375" height="7723"/>
+                                                    <rect key="frame" x="0.0" y="-8277" width="375" height="8726.5"/>
                                                     <subviews>
                                                         <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillProportionally" translatesAutoresizingMaskIntoConstraints="NO" id="sjg-Sc-qeP" userLabel="Title Stack View">
                                                             <rect key="frame" x="0.0" y="0.0" width="375" height="65"/>
@@ -970,7 +961,7 @@
                                                             </constraints>
                                                         </stackView>
                                                         <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" pagingEnabled="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="SO9-34-Uii" customClass="JTAppleCalendarView" customModule="JTAppleCalendar">
-                                                            <rect key="frame" x="0.0" y="85.5" width="375" height="7637.5"/>
+                                                            <rect key="frame" x="0.0" y="85.5" width="375" height="8641"/>
                                                             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="height" constant="340" id="z7B-lk-4Wh"/>
@@ -1532,7 +1523,7 @@
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <color key="sectionIndexBackgroundColor" red="0.96470588235294119" green="0.96470588235294119" blue="0.96470588235294119" alpha="1" colorSpace="calibratedRGB"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="AppointmentCell" rowHeight="80" id="sic-WS-AXc" customClass="AppointmentCell" customModule="Appt" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="AppointmentCell" rowHeight="80" id="sic-WS-AXc" customClass="AppointmentCell" customModule="Appt" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="375" height="80"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="sic-WS-AXc" id="UtO-je-f4e">
