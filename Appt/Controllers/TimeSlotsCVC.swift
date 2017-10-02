@@ -46,10 +46,10 @@ class TimeSlotsCVC: UICollectionViewController {
   
   func navBarDropShadow() {
     self.navigationController?.navigationBar.layer.masksToBounds = false
-    self.navigationController?.navigationBar.layer.shadowColor = UIColor.lightGray.cgColor
-    self.navigationController?.navigationBar.layer.shadowOpacity = 0.8
-    self.navigationController?.navigationBar.layer.shadowOffset = CGSize(width: 0, height: 2.0)
-    self.navigationController?.navigationBar.layer.shadowRadius = 2
+    self.navigationController?.navigationBar.layer.shadowColor = UIColor.black.cgColor
+    self.navigationController?.navigationBar.layer.shadowOpacity = 0.2
+    self.navigationController?.navigationBar.layer.shadowOffset = CGSize(width: 0, height: 4)
+    self.navigationController?.navigationBar.layer.shadowRadius = 4
   }
   
   func navBarNoShadow(){

@@ -26,6 +26,7 @@ class ApptDetailTVC: UITableViewController {
     super.viewDidLoad()
     noLargeTitles()
     setupUI()
+    navBarDropShadow()
   }
   
   func noLargeTitles(){
@@ -37,6 +38,10 @@ class ApptDetailTVC: UITableViewController {
   
   override func viewWillAppear(_ animated: Bool) {
     setupUI()
+  }
+  
+  override func viewWillDisappear(_ animated: Bool) {
+    navBarNoShadow()
   }
   
   @IBAction func editAppt(_ sender: UIButton) {
@@ -67,5 +72,21 @@ class ApptDetailTVC: UITableViewController {
         controller.appointmentLoaded = true
       }
     }
+  }
+  
+  func navBarDropShadow() {
+    self.navigationController?.navigationBar.layer.masksToBounds = false
+    self.navigationController?.navigationBar.layer.shadowColor = UIColor.black.cgColor
+    self.navigationController?.navigationBar.layer.shadowOpacity = 0.2
+    self.navigationController?.navigationBar.layer.shadowOffset = CGSize(width: 0, height: 4)
+    self.navigationController?.navigationBar.layer.shadowRadius = 4
+  }
+  
+  func navBarNoShadow(){
+    self.navigationController?.navigationBar.layer.masksToBounds = true
+    self.navigationController?.navigationBar.layer.shadowColor = .none
+    self.navigationController?.navigationBar.layer.shadowOpacity = 0
+    self.navigationController?.navigationBar.layer.shadowOffset = CGSize(width: 0, height: 0)
+    self.navigationController?.navigationBar.layer.shadowRadius = 0
   }
 }
