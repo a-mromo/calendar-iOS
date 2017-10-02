@@ -859,7 +859,7 @@
                                                     <rect key="frame" x="0.0" y="0.0" width="375" height="200"/>
                                                     <color key="backgroundColor" red="0.93725490196078431" green="0.93725490196078431" blue="0.96470588235294119" alpha="1" colorSpace="calibratedRGB"/>
                                                     <connections>
-                                                        <segue destination="BEG-1v-eCq" kind="embed" id="Gq8-Ga-grp"/>
+                                                        <segue destination="BEG-1v-eCq" kind="embed" identifier="AppointmentForPatient" id="Gq8-Ga-grp"/>
                                                     </connections>
                                                 </containerView>
                                             </subviews>

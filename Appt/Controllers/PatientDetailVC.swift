@@ -11,13 +11,20 @@ import UIKit
 class PatientDetailVC: UIViewController {
   
   var testArray = ["First Item", "Second Item", "Third Item", "Fourth Item", "Fifth Item"]
+  var patient: Patient?
   
   @IBOutlet weak var tableView: UITableView!
   
   override func viewDidLoad() {
     tableView.dataSource = self
     tableView.delegate = self
+    if let patientPassed = patient {
+      print("Patient was succesfully passed: \(patientPassed.fullName)")
+    } else {
+      print("ERROR: Couldn't passed patient between views")
+    }
   }
+  
   
 }
 

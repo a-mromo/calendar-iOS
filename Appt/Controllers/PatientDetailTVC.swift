@@ -15,6 +15,7 @@ class PatientDetailTVC: UITableViewController {
   var appointmentsForPatient: [Appointment]?
   let persistentContainer = CoreDataStore.instance.persistentContainer
   private let segueEditPatient = "SegueEditPatient"
+  private let segueAppts = "AppointmentForPatient"
   
   // Load Appointments for given date
   lazy var fetchedResultsController: NSFetchedResultsController<Appointment> = {
@@ -80,6 +81,12 @@ class PatientDetailTVC: UITableViewController {
         let targetController = destinationNavigationViewController.topViewController as! NewPatientTableVC
         targetController.patient = patient
       }
+    } else if segue.identifier == segueAppts {
+      if let destinationNavigationVC = segue.destination as? PatientDetailVC {
+        if let selectedPatient = patient {
+          destinationNavigationVC.patient = selectedPatient
+        }
+      }
     }
   }
   
@@ -126,7 +133,7 @@ extension PatientDetailTVC {
     
     if let fetchedAppointments = fetchedResultsController.fetchedObjects {
       appointmentsForPatient = fetchedAppointments
-      print(appointmentsForPatient)
+//      print(appointmentsForPatient)
     } else {
       print("Patients has no appointments")
     }
