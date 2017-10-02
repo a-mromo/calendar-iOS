@@ -33,9 +33,10 @@ class PatientsTableViewController: UITableViewController {
     
     fetchPatients()
     createSearchBar()
-    title = "Patients"
     
     NotificationCenter.default.addObserver(self, selector: #selector(applicationDidEnterBackground(_:)), name: Notification.Name.UIApplicationDidEnterBackground, object: nil)
+    
+    self.navigationItem.backBarButtonItem = UIBarButtonItem(title: "Back", style: UIBarButtonItemStyle.plain, target: nil, action: nil)
     
   }
   

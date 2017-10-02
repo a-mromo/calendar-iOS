@@ -1035,7 +1035,7 @@
                                             <segue destination="qKJ-D7-gKV" kind="show" identifier="segueTimeSlots" id="DkU-Xe-fvp"/>
                                         </connections>
                                     </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" textLabel="Raq-EX-Vhb" rowHeight="56" style="IBUITableViewCellStyleDefault" id="gno-if-dso">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" textLabel="Raq-EX-Vhb" rowHeight="56" style="IBUITableViewCellStyleDefault" id="gno-if-dso">
                                         <rect key="frame" x="0.0" y="412" width="375" height="56"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="gno-if-dso" id="qVq-XG-Tsx">
@@ -1055,7 +1055,7 @@
                                             <segue destination="Gdr-G0-hUB" kind="show" identifier="SegueSelectPatientsTVC" id="Ity-bc-bUT"/>
                                         </connections>
                                     </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="56" id="U6A-DS-8EK">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" rowHeight="56" id="U6A-DS-8EK">
                                         <rect key="frame" x="0.0" y="468" width="375" height="56"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="U6A-DS-8EK" id="el9-gY-aCk">
@@ -1133,7 +1133,7 @@
             </objects>
             <point key="canvasLocation" x="3555" y="-374"/>
         </scene>
-        <!--Patient-->
+        <!--Select a Patient-->
         <scene sceneID="eLH-ia-1oA">
             <objects>
                 <tableViewController id="Gdr-G0-hUB" customClass="PatientsTableViewController" customModule="Appt" sceneMemberID="viewController">
@@ -1150,7 +1150,7 @@
                                     <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Patient Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Z0l-A4-HZ3">
+                                        <label opaque="NO" multipleTouchEnabled="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Patient Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Z0l-A4-HZ3">
                                             <rect key="frame" x="20" y="10" width="116.5" height="24"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                             <nil key="textColor"/>
@@ -1163,7 +1163,7 @@
                                         <constraint firstItem="Z0l-A4-HZ3" firstAttribute="centerY" secondItem="SHe-X3-vWG" secondAttribute="centerY" id="xRC-mK-DZz"/>
                                     </constraints>
                                 </tableViewCellContentView>
-                                <color key="backgroundColor" red="0.93725490196078431" green="0.93725490196078431" blue="0.96470588235294119" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <connections>
                                     <outlet property="patientNameLabel" destination="Z0l-A4-HZ3" id="TgL-YU-hoJ"/>
                                 </connections>
@@ -1174,7 +1174,8 @@
                             <outlet property="delegate" destination="Gdr-G0-hUB" id="lY6-Hb-I1P"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Patient" id="yVm-wH-uGs">
+                    <navigationItem key="navigationItem" title="Select a Patient" id="yVm-wH-uGs">
+                        <barButtonItem key="backBarButtonItem" title="Back" id="qQH-WE-PDT"/>
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="YRb-EA-AZN">
                             <connections>
                                 <segue destination="eRa-eg-FW6" kind="presentation" identifier="SegueAddPatientTVC" modalPresentationStyle="currentContext" id="fIu-1r-FSG"/>
@@ -1695,7 +1696,7 @@
         <image name="today" width="36" height="40"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="ZlX-X9-4ez"/>
+        <segue reference="fIu-1r-FSG"/>
         <segue reference="DkU-Xe-fvp"/>
         <segue reference="Ity-bc-bUT"/>
     </inferredMetricsTieBreakers>
