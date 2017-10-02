@@ -1,5 +1,5 @@
 //
-//  PatientDetailVC.swift
+//  ApptsForPatientContainerView.swift
 //  Appt
 //
 //  Created by Agustin Mendoza Romo on 10/2/17.
@@ -8,7 +8,7 @@
 
 import UIKit
 
-class PatientDetailVC: UIViewController {
+class ApptsForPatientContainerView: UIViewController {
   
   var testArray = ["First Item", "Second Item", "Third Item", "Fourth Item", "Fifth Item"]
   var patient: Patient?
@@ -28,7 +28,7 @@ class PatientDetailVC: UIViewController {
   
 }
 
-extension PatientDetailVC: UITableViewDataSource, UITableViewDelegate {
+extension ApptsForPatientContainerView: UITableViewDataSource, UITableViewDelegate {
   
   func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
     return 80
@@ -69,7 +69,7 @@ extension PatientDetailVC: UITableViewDataSource, UITableViewDelegate {
  
 
 
-class PatientDetailVC: UIViewController {
+class ApptsForPatientContainerView: UIViewController {
   var patient: Patient?
   var appointmentsForPatient: [Appointment]?
   let persistentContainer = CoreDataStore.instance.persistentContainer
@@ -147,7 +147,7 @@ class PatientDetailVC: UIViewController {
 
 }
 
-extension PatientDetailVC: UITableViewDataSource, UITableViewDelegate {
+extension ApptsForPatientContainerView: UITableViewDataSource, UITableViewDelegate {
   
   func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
     return 1

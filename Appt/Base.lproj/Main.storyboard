@@ -1737,10 +1737,10 @@
             </objects>
             <point key="canvasLocation" x="1656.8" y="-334.18290854572717"/>
         </scene>
-        <!--Patient DetailVC-->
+        <!--Appts For Patient Container View-->
         <scene sceneID="jMA-QH-gtV">
             <objects>
-                <viewController id="BEG-1v-eCq" customClass="PatientDetailVC" customModule="Appt" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="BEG-1v-eCq" customClass="ApptsForPatientContainerView" customModule="Appt" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="WGL-fI-3Km">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="200"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>

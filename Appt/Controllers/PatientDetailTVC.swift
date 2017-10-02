@@ -82,7 +82,7 @@ class PatientDetailTVC: UITableViewController {
         targetController.patient = patient
       }
     } else if segue.identifier == segueAppts {
-      if let destinationNavigationVC = segue.destination as? PatientDetailVC {
+      if let destinationNavigationVC = segue.destination as? ApptsForPatientContainerView {
         if let selectedPatient = patient {
           destinationNavigationVC.patient = selectedPatient
         }
