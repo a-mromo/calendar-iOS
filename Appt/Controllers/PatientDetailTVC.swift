@@ -7,12 +7,27 @@
 //
 
 import UIKit
+import CoreData
 
 class PatientDetailTVC: UITableViewController {
   
   var patient: Patient?
-  
+  var appointmentsForPatient: [Appointment]?
+  let persistentContainer = CoreDataStore.instance.persistentContainer
   private let segueEditPatient = "SegueEditPatient"
+  
+  // Load Appointments for given date
+  lazy var fetchedResultsController: NSFetchedResultsController<Appointment> = {
+    let fetchRequest: NSFetchRequest<Appointment> = Appointment.fetchRequest()
+    fetchRequest.sortDescriptors = [NSSortDescriptor(key: "date", ascending: false)]
+    if let patient = self.patient {
+      fetchRequest.predicate = NSPredicate(format: "patient == %@", patient)
+    }
+    let fetchedResultsController = NSFetchedResultsController(fetchRequest: fetchRequest, managedObjectContext: self.persistentContainer.viewContext, sectionNameKeyPath: nil, cacheName: nil)
+    fetchedResultsController.delegate = self
+    
+    return fetchedResultsController
+  }()
   
   @IBOutlet weak var nameLabel: UILabel!
   @IBOutlet weak var mobilePhoneLabel: UILabel!
@@ -25,11 +40,14 @@ class PatientDetailTVC: UITableViewController {
   override func viewDidLoad() {
         super.viewDidLoad()
     noLargeTitles()
+    checkAppointments()
+    
     }
   
   override func viewWillAppear(_ animated: Bool) {
     setupUI()
   }
+  
   
   
   func noLargeTitles(){
@@ -65,4 +83,102 @@ class PatientDetailTVC: UITableViewController {
     }
   }
   
+ 
+//  override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+//    let cell = UITableViewCell()
+//    if indexPath.section == 0 {
+//      if indexPath.row == 0 {
+//
+//      }
+//    } else if indexPath.section == 1 {
+//      let cell = tableView.dequeueReusableCell(withIdentifier: "PatientAppointmentCell", for: indexPath) as! PatientAppointmentCell
+//      if let appointments = appointmentsForPatient {
+//        let appointment = appointments[indexPath.row]
+//
+//        cell.dateLabel.text = shortDateFormatter( date: appointment.date)
+//        if let note = appointment.note {
+//          cell.noteLabel.text = note
+//        } else {
+//          cell.noteLabel.text = "There isn't any note for appointment with \(appointment.patient.fullName)"
+//        }
+//      }
+//      return cell
+//    }
+//    return cell
+//  }
+  
+  
+//  func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+//    var cell:CustomCell? = tableView.dequeueReusableCell(withIdentifier: "Cell") as?  CustomCell
+//    if cell == nil {
+//      cell = CustomCell(style: UITableViewCellStyle.default, reuseIdentifier: "Cell")
+//    }
+//    cell?.dataArr = ["subMenu->1","subMenu->2","subMenu->3","subMenu->4","subMenu->5"]
+//    return cell!
+//  }
+//
 }
+
+extension PatientDetailTVC {
+  
+  func checkAppointments() {
+    fetchAppointmentsForPatient()
+    
+    if let fetchedAppointments = fetchedResultsController.fetchedObjects {
+      appointmentsForPatient = fetchedAppointments
+      print(appointmentsForPatient)
+    } else {
+      print("Patients has no appointments")
+    }
+  }
+  
+  func fetchAppointmentsForPatient() {
+    do {
+      try self.fetchedResultsController.performFetch()
+      print("AppointmentForDay Fetch Successful")
+    } catch {
+      let fetchError = error as NSError
+      print("Unable to Perform AppointmentForDay Fetch Request")
+      print("\(fetchError), \(fetchError.localizedDescription)")
+    }
+  }
+}
+
+extension PatientDetailTVC: NSFetchedResultsControllerDelegate {
+  
+  func controllerWillChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
+    tableView.beginUpdates()
+  }
+  
+  func controllerDidChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
+    tableView.endUpdates()
+  }
+  
+  func controller(_ controller: NSFetchedResultsController<NSFetchRequestResult>, didChange anObject: Any, at indexPath: IndexPath?, for type: NSFetchedResultsChangeType, newIndexPath: IndexPath?) {
+    switch (type) {
+    case .insert:
+      if let indexPath = newIndexPath {
+        print("Appt Added")
+        tableView.insertRows(at: [indexPath], with: .fade)
+      }
+      break;
+    case .delete:
+      print("Appt Deleted")
+      if let indexPath = indexPath {
+        tableView.deleteRows(at: [indexPath], with: .fade)
+      }
+      break;
+    case .update:
+      if let indexPath = indexPath {
+        print("Appt Changed and updated")
+        tableView.reloadRows(at: [indexPath], with: .fade)
+      }
+    default:
+      print("...")
+    }
+  }
+  
+  func controller(_ controller: NSFetchedResultsController<NSFetchRequestResult>, didChange sectionInfo: NSFetchedResultsSectionInfo, atSectionIndex sectionIndex: Int, for type: NSFetchedResultsChangeType) {
+  }
+}
+

@@ -688,22 +688,22 @@
         <scene sceneID="ml1-O5-V5B">
             <objects>
                 <tableViewController storyboardIdentifier="PatientDetailTVC" useStoryboardIdentifierAsRestorationIdentifier="YES" id="wRX-H1-73d" customClass="PatientDetailTVC" customModule="Appt" customModuleProvider="target" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="grouped" separatorStyle="none" rowHeight="64" sectionHeaderHeight="18" sectionFooterHeight="18" id="GhR-BV-Wx0">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="grouped" separatorStyle="none" rowHeight="64" sectionHeaderHeight="-1" sectionFooterHeight="-1" id="GhR-BV-Wx0">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                         <sections>
                             <tableViewSection headerTitle="Patient Info" id="HR2-Ig-Tux">
                                 <cells>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="260" id="3CJ-9d-zW0">
-                                        <rect key="frame" x="0.0" y="55.5" width="375" height="260"/>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="272" id="3CJ-9d-zW0">
+                                        <rect key="frame" x="0.0" y="55.5" width="375" height="272"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="3CJ-9d-zW0" id="KQk-sL-haB">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="260"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="272"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="GLq-pc-E9T" customClass="CardView" customModule="Appt" customModuleProvider="target">
-                                                    <rect key="frame" x="12" y="4" width="351" height="244"/>
+                                                    <rect key="frame" x="12" y="4" width="351" height="256"/>
                                                     <subviews>
                                                         <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Patient Name" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="skY-qF-Gjb">
                                                             <rect key="frame" x="20" y="15" width="150.5" height="29"/>
@@ -820,6 +820,58 @@
                                         </tableViewCellContentView>
                                         <color key="backgroundColor" red="0.93725490196078431" green="0.93725490196078431" blue="0.96470588235294119" alpha="1" colorSpace="calibratedRGB"/>
                                     </tableViewCell>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="zYS-oD-lTP">
+                                        <rect key="frame" x="0.0" y="327.5" width="375" height="64"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="zYS-oD-lTP" id="mTK-d6-VlQ">
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="64"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7DK-7U-VvR" customClass="WireButton" customModule="Appt" customModuleProvider="target">
+                                                    <rect key="frame" x="148" y="17" width="79" height="30"/>
+                                                    <state key="normal" title="Edit Patient">
+                                                        <color key="titleColor" red="0.71764705882352942" green="0.3529411764705882" blue="0.99607843137254903" alpha="1" colorSpace="calibratedRGB"/>
+                                                    </state>
+                                                    <connections>
+                                                        <action selector="editPatient:" destination="wRX-H1-73d" eventType="touchUpInside" id="MGu-O6-us6"/>
+                                                    </connections>
+                                                </button>
+                                            </subviews>
+                                        </tableViewCellContentView>
+                                        <color key="backgroundColor" red="0.93725490196078431" green="0.93725490196078431" blue="0.96470588235294119" alpha="1" colorSpace="calibratedRGB"/>
+                                        <constraints>
+                                            <constraint firstItem="7DK-7U-VvR" firstAttribute="centerY" secondItem="zYS-oD-lTP" secondAttribute="centerY" id="1q8-2s-xZw"/>
+                                            <constraint firstItem="7DK-7U-VvR" firstAttribute="centerX" secondItem="zYS-oD-lTP" secondAttribute="centerX" id="caQ-gl-Dtq"/>
+                                        </constraints>
+                                    </tableViewCell>
+                                </cells>
+                            </tableViewSection>
+                            <tableViewSection headerTitle="Appointments" id="uDi-EE-rgq">
+                                <cells>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="200" id="kde-Io-Dx8" customClass="PatientAppointmentCell" customModule="Appt" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="447" width="375" height="200"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="kde-Io-Dx8" id="PWs-i8-uTE">
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="200"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="SdR-Rg-DMc">
+                                                    <rect key="frame" x="0.0" y="0.0" width="375" height="200"/>
+                                                    <color key="backgroundColor" red="0.93725490196078431" green="0.93725490196078431" blue="0.96470588235294119" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <connections>
+                                                        <segue destination="BEG-1v-eCq" kind="embed" id="Gq8-Ga-grp"/>
+                                                    </connections>
+                                                </containerView>
+                                            </subviews>
+                                        </tableViewCellContentView>
+                                        <color key="backgroundColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.96470588239999999" alpha="1" colorSpace="calibratedRGB"/>
+                                        <constraints>
+                                            <constraint firstItem="SdR-Rg-DMc" firstAttribute="leading" secondItem="kde-Io-Dx8" secondAttribute="leading" id="IjY-oZ-URK"/>
+                                            <constraint firstItem="SdR-Rg-DMc" firstAttribute="top" secondItem="kde-Io-Dx8" secondAttribute="top" id="Mug-B0-XYp"/>
+                                            <constraint firstAttribute="bottom" secondItem="SdR-Rg-DMc" secondAttribute="bottom" id="Uoa-IV-DCW"/>
+                                            <constraint firstAttribute="trailing" secondItem="SdR-Rg-DMc" secondAttribute="trailing" id="mSL-i3-yRs"/>
+                                        </constraints>
+                                    </tableViewCell>
                                 </cells>
                             </tableViewSection>
                         </sections>
@@ -837,7 +889,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="xvQ-J2-Fau" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2624.8000000000002" y="373.76311844077964"/>
+            <point key="canvasLocation" x="2624.5" y="440.5"/>
         </scene>
         <!--Ib Calendar Data Source-->
         <scene sceneID="oza-tD-scN">
@@ -1685,6 +1737,102 @@
             </objects>
             <point key="canvasLocation" x="1656.8" y="-334.18290854572717"/>
         </scene>
+        <!--Patient DetailVC-->
+        <scene sceneID="jMA-QH-gtV">
+            <objects>
+                <viewController id="BEG-1v-eCq" customClass="PatientDetailVC" customModule="Appt" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="WGL-fI-3Km">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="200"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="GgM-we-RKk">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="200"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="PatientAppointmentCell" rowHeight="80" id="gzd-nH-QKH" customClass="PatientAppointmentCell" customModule="Appt" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="28" width="375" height="80"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="gzd-nH-QKH" id="qhj-Fo-O0t">
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="80"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="-4" translatesAutoresizingMaskIntoConstraints="NO" id="8Df-dm-RH4" userLabel="Date StackView">
+                                                    <rect key="frame" x="29" y="20.5" width="70" height="39.5"/>
+                                                    <subviews>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="NOV 24" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cgN-dZ-6Zb">
+                                                            <rect key="frame" x="0.0" y="0.0" width="70" height="24"/>
+                                                            <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                                            <nil key="textColor"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1:00 PM" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PqD-W5-pLr">
+                                                            <rect key="frame" x="0.0" y="20" width="70" height="19.5"/>
+                                                            <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                                            <color key="textColor" red="0.5568627451" green="0.5568627451" blue="0.5568627451" alpha="1" colorSpace="calibratedRGB"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                    </subviews>
+                                                    <constraints>
+                                                        <constraint firstItem="PqD-W5-pLr" firstAttribute="centerX" secondItem="8Df-dm-RH4" secondAttribute="centerX" id="lMS-E5-bxC"/>
+                                                        <constraint firstItem="cgN-dZ-6Zb" firstAttribute="centerX" secondItem="8Df-dm-RH4" secondAttribute="centerX" id="yt6-ht-L3C"/>
+                                                    </constraints>
+                                                </stackView>
+                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="rUJ-bD-rox" customClass="CardView" customModule="Appt" customModuleProvider="target">
+                                                    <rect key="frame" x="128" y="4" width="227" height="64"/>
+                                                    <subviews>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Note" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5cr-Uu-nSQ">
+                                                            <rect key="frame" x="8" y="4" width="211" height="56"/>
+                                                            <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                                            <color key="textColor" red="0.5568627451" green="0.5568627451" blue="0.5568627451" alpha="1" colorSpace="calibratedRGB"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                    </subviews>
+                                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                    <constraints>
+                                                        <constraint firstItem="5cr-Uu-nSQ" firstAttribute="top" secondItem="rUJ-bD-rox" secondAttribute="top" constant="4" id="U3f-FG-Ogn"/>
+                                                        <constraint firstItem="5cr-Uu-nSQ" firstAttribute="leading" secondItem="rUJ-bD-rox" secondAttribute="leading" constant="8" id="U6a-SS-Ldm"/>
+                                                        <constraint firstAttribute="bottom" secondItem="5cr-Uu-nSQ" secondAttribute="bottom" constant="4" id="aVl-aV-gp6"/>
+                                                        <constraint firstAttribute="trailing" secondItem="5cr-Uu-nSQ" secondAttribute="trailing" constant="8" id="bzf-XA-sg7"/>
+                                                    </constraints>
+                                                </view>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="rUJ-bD-rox" firstAttribute="leading" secondItem="qhj-Fo-O0t" secondAttribute="leading" constant="128" id="Rgy-Kl-Rhi"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                        <color key="backgroundColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.96470588239999999" alpha="1" colorSpace="calibratedRGB"/>
+                                        <constraints>
+                                            <constraint firstAttribute="trailing" secondItem="rUJ-bD-rox" secondAttribute="trailing" constant="20" id="3Ga-1z-88x"/>
+                                            <constraint firstItem="rUJ-bD-rox" firstAttribute="top" secondItem="gzd-nH-QKH" secondAttribute="top" constant="4" id="L0X-mB-MrK"/>
+                                            <constraint firstItem="8Df-dm-RH4" firstAttribute="centerY" secondItem="gzd-nH-QKH" secondAttribute="centerY" id="Mi8-QU-M0v"/>
+                                            <constraint firstItem="8Df-dm-RH4" firstAttribute="leading" secondItem="gzd-nH-QKH" secondAttribute="leading" constant="29" id="Sxg-gI-n8Y"/>
+                                            <constraint firstAttribute="bottom" secondItem="rUJ-bD-rox" secondAttribute="bottom" constant="12" id="fZa-bi-ufQ"/>
+                                        </constraints>
+                                        <connections>
+                                            <outlet property="dateLabel" destination="cgN-dZ-6Zb" id="HbE-Nf-kv2"/>
+                                            <outlet property="hourLabel" destination="PqD-W5-pLr" id="aUD-rd-AD1"/>
+                                            <outlet property="noteLabel" destination="5cr-Uu-nSQ" id="nqW-1j-oVM"/>
+                                        </connections>
+                                    </tableViewCell>
+                                </prototypes>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" red="0.93725490196078431" green="0.93725490196078431" blue="0.96470588235294119" alpha="1" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="GgM-we-RKk" secondAttribute="trailing" id="45r-ha-mc7"/>
+                            <constraint firstItem="GgM-we-RKk" firstAttribute="leading" secondItem="WGL-fI-3Km" secondAttribute="leading" id="LJX-Pl-uWD"/>
+                            <constraint firstItem="GgM-we-RKk" firstAttribute="top" secondItem="WGL-fI-3Km" secondAttribute="top" id="hpa-BS-Bi7"/>
+                            <constraint firstAttribute="bottom" secondItem="GgM-we-RKk" secondAttribute="bottom" id="ktB-RW-263"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="tableView" destination="GgM-we-RKk" id="qck-Dp-gHZ"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="J8X-76-gzT" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3473" y="479"/>
+        </scene>
     </scenes>
     <resources>
         <image name="person" width="32" height="32"/>
@@ -1692,7 +1840,7 @@
         <image name="today" width="36" height="40"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="fIu-1r-FSG"/>
+        <segue reference="ZlX-X9-4ez"/>
         <segue reference="TJR-rU-u6g"/>
         <segue reference="XoE-ck-qRf"/>
     </inferredMetricsTieBreakers>

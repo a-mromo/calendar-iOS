@@ -77,7 +77,16 @@ func dateFormatter (date: Date) -> String{
   formatter.dateStyle = .long
   formatter.timeStyle = .none
   
-  let dateString = formatter.string(from: date as Date)
+  let dateString = formatter.string(from: date)
+  return dateString
+}
+
+func shortDateFormatter (date: Date) -> String{
+  let formatter = DateFormatter()
+  formatter.dateStyle = .short
+  formatter.timeStyle = .none
+  
+  let dateString = formatter.string(from: date)
   return dateString
 }
 
@@ -86,7 +95,7 @@ func hourFormatter (date: Date) -> String{
   formatter.dateStyle = .none
   formatter.timeStyle = .short
   
-  let dateString = formatter.string(from: date as Date)
+  let dateString = formatter.string(from: date)
   return dateString
 }
 
