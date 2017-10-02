@@ -88,5 +88,6 @@ class ApptDetailTVC: UITableViewController {
     self.navigationController?.navigationBar.layer.shadowOpacity = 0
     self.navigationController?.navigationBar.layer.shadowOffset = CGSize(width: 0, height: 0)
     self.navigationController?.navigationBar.layer.shadowRadius = 0
+    self.navigationController?.navigationBar.layer.backgroundColor = UIColor.white.cgColor
   }
 }

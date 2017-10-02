@@ -16,6 +16,8 @@ class CustomTabBar: UITabBarController {
     let newTabBarHeight: CGFloat = 50
     newTabBarFrame.size.height = newTabBarHeight
     newTabBarFrame.origin.y = self.view.frame.size.height - newTabBarHeight
+    
+    
 
     tabBar.frame = newTabBarFrame
     tabBar.isTranslucent = true

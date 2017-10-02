@@ -38,7 +38,7 @@ struct DefaultTheme: ThemeProtocol {
   
   func customNavBar(){
     UIApplication.shared.statusBarStyle = .default
-    UINavigationBar.appearance().barTintColor = UIColor(hexCode: "#FFFFFF")!
+    UINavigationBar.appearance().barTintColor = UIColor(hexCode: "#ffffff")!
     UINavigationBar.appearance().tintColor = UIColor(hexCode: "#000000")!
     UINavigationBar.appearance().titleTextAttributes = [NSAttributedStringKey(rawValue: NSAttributedStringKey.foregroundColor.rawValue): UIColor(hexCode: "#000000")!]
     UINavigationBar.appearance().shadowImage = UIImage()
@@ -49,7 +49,9 @@ struct DefaultTheme: ThemeProtocol {
     UITabBar.appearance().tintColor = brandingColor
     UITabBar.appearance().unselectedItemTintColor = .darkGray
     UITabBar.appearance().backgroundColor = .white
+    UITabBar.appearance().layer.backgroundColor = UIColor.white.cgColor
     UITabBar.appearance().dropShadowTop()
+    UITabBar.appearance().clipsToBounds = true
   }
   
   func customSearchBar() {
