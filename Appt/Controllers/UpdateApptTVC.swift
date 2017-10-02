@@ -63,7 +63,6 @@ class UpdateApptTVC: UITableViewController, AppointmentTVC {
   @IBOutlet weak var costTextField: UITextField!
   @IBOutlet weak var dateDetailLabel: UILabel!
 
-  
   @IBAction func cancelButton(_ sender: UIBarButtonItem) {
     dismiss(animated: true, completion: nil)
   }

@@ -26,10 +26,9 @@ class NewApptTableViewController: UITableViewController, AppointmentTVC {
   let formatter = DateFormatter()
   
   let segueSelectPatient = "SegueSelectPatientsTVC"
-  
   let persistentContainer = CoreDataStore.instance.persistentContainer
-  
-  var calendarViewHidden = false
+  var calendarViewHidden = true
+  var appointmentScrolled = false
   
   // Calendar Color
   let outsideMonthColor = UIColor.lightGray
@@ -53,9 +52,6 @@ class NewApptTableViewController: UITableViewController, AppointmentTVC {
   
   
   @IBOutlet var calendarView: JTAppleCalendarView!
-  @IBOutlet var calendarDateLabel: UILabel!
-  @IBOutlet var yearLabel: UILabel!
-  
   @IBOutlet weak var timeSlotLabel: UILabel!
   @IBOutlet weak var patientLabel: UILabel!
   @IBOutlet weak var noteTextView: UITextView!
@@ -147,6 +143,7 @@ extension NewApptTableViewController {
     
     tableView.beginUpdates()
     tableView.endUpdates()
+    appointmentScrolled = true
   }
   
   func updateDateDetailLabel(date: Date){
@@ -168,13 +165,25 @@ extension NewApptTableViewController {
     }
   }
   
-  override func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-    if calendarViewHidden && section == 0 {
-      return 40
-    } else {
-      return 1
-    }
+  override func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+    let headerView = UIView()
+    headerView.backgroundColor = UIColor.white
+    return headerView
   }
+  
+  override func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
+    let footerView = UIView()
+    footerView.backgroundColor = UIColor.white
+    return footerView
+  }
+  
+//  override func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+//    if calendarViewHidden && section == 0 {
+//      return 40
+//    } else {
+//      return 1
+//    }
+//  }
 }
 
 
@@ -218,11 +227,14 @@ extension NewApptTableViewController {
   
   func setupViewsFromCalendar(from visibleDates: DateSegmentInfo ) {
     guard let date = visibleDates.monthDates.first?.date else { return }
-    //    formatter.dateFormat = "yyyy"
-    //    yearLabel.text = formatter.string(from: date)
+
+    formatter.dateFormat = "MMMM dd, yyyy"
+    dateDetailLabel.text = formatter.string(from: date)
     
-    formatter.dateFormat = "MMMM yyyy"
-    calendarDateLabel.text = formatter.string(from: date)
+    calendarView.selectDates( [date] )
+    
+    updateDateDetailLabel(date: date)
+    loadAppointmentsForDate(date: date)
   }
   
   override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -330,7 +342,9 @@ extension NewApptTableViewController: JTAppleCalendarViewDelegate {
   }
   
   func calendar(_ calendar: JTAppleCalendarView, didScrollToDateSegmentWith visibleDates: DateSegmentInfo) {
-    setupViewsFromCalendar(from: visibleDates)
+    if appointmentScrolled {
+      setupViewsFromCalendar(from: visibleDates)
+    }
   }
 }
 
