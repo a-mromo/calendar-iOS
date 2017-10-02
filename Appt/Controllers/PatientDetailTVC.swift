@@ -115,15 +115,6 @@ class PatientDetailTVC: UITableViewController {
 //  }
   
   
-//  func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-//    var cell:CustomCell? = tableView.dequeueReusableCell(withIdentifier: "Cell") as?  CustomCell
-//    if cell == nil {
-//      cell = CustomCell(style: UITableViewCellStyle.default, reuseIdentifier: "Cell")
-//    }
-//    cell?.dataArr = ["subMenu->1","subMenu->2","subMenu->3","subMenu->4","subMenu->5"]
-//    return cell!
-//  }
-//
 }
 
 extension PatientDetailTVC {
