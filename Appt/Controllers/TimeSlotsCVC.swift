@@ -25,6 +25,11 @@ class TimeSlotsCVC: UICollectionViewController {
     super.viewDidLoad()
     print(appointmentDate)
     setupTimeSlotter()
+    navBarDropShadow()
+  }
+  
+  override func viewWillDisappear(_ animated: Bool) {
+    navBarNoShadow()
   }
   
   func setupTimeSlotter() {
@@ -37,6 +42,22 @@ class TimeSlotsCVC: UICollectionViewController {
       return }
     
     self.timeSlots = timeSlots
+  }
+  
+  func navBarDropShadow() {
+    self.navigationController?.navigationBar.layer.masksToBounds = false
+    self.navigationController?.navigationBar.layer.shadowColor = UIColor.lightGray.cgColor
+    self.navigationController?.navigationBar.layer.shadowOpacity = 0.8
+    self.navigationController?.navigationBar.layer.shadowOffset = CGSize(width: 0, height: 2.0)
+    self.navigationController?.navigationBar.layer.shadowRadius = 2
+  }
+  
+  func navBarNoShadow(){
+    self.navigationController?.navigationBar.layer.masksToBounds = true
+    self.navigationController?.navigationBar.layer.shadowColor = .none
+    self.navigationController?.navigationBar.layer.shadowOpacity = 0
+    self.navigationController?.navigationBar.layer.shadowOffset = CGSize(width: 0, height: 0)
+    self.navigationController?.navigationBar.layer.shadowRadius = 0
   }
   
 
@@ -56,9 +77,6 @@ class TimeSlotsCVC: UICollectionViewController {
       cell.timeSlotView.backgroundColor = UIColor(hexCode: "#B75AFE")
       cell.timeLabel.textColor = .white
     }
-    
-//    cell.timeSlotView.layer.borderWidth = 2
-//    cell.timeSlotView.layer.borderColor = UIColor.darkGray.cgColor
     
     let timeSlot = timeSlots[indexPath.row]
     formatter.dateFormat = "H:mm"
