@@ -318,7 +318,7 @@
                                                                         <subviews>
                                                                             <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ZC9-ES-Gsu">
                                                                                 <rect key="frame" x="39" y="39" width="40" height="40"/>
-                                                                                <color key="backgroundColor" red="0.47450980392156861" green="0.30196078431372547" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                                                <color key="backgroundColor" red="0.77254901960784317" green="0.4823529411764706" blue="0.99215686274509807" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                                                 <constraints>
                                                                                     <constraint firstAttribute="height" constant="40" id="Rpy-Vu-nYu"/>
                                                                                     <constraint firstAttribute="width" constant="40" id="V42-ng-nQs"/>
@@ -1047,7 +1047,7 @@
                                                                 <subviews>
                                                                     <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gR6-TG-cSR">
                                                                         <rect key="frame" x="39" y="39" width="40" height="40"/>
-                                                                        <color key="backgroundColor" red="0.47450980392156861" green="0.30196078431372547" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                                        <color key="backgroundColor" red="0.77254901960784317" green="0.4823529411764706" blue="0.99215686274509807" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                                         <constraints>
                                                                             <constraint firstAttribute="width" constant="40" id="9QK-NH-c2s"/>
                                                                             <constraint firstAttribute="height" constant="40" id="Dag-Jn-JAF"/>

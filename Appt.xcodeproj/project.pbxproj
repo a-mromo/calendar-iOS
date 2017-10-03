@@ -223,6 +223,7 @@
 				6C6EBD9F1F4A2B0C00A2E2F9 /* Shadows.swift */,
 				6C06D6B41F7612B7005416A6 /* CardView.swift */,
 				6C6965541F7A01200051170E /* Buttons.swift */,
+				6CC2D19B1F13FD990097DDFE /* Theme.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -263,7 +264,6 @@
 				6CEC71A21F82AA5200CCC316 /* PatientAppointmentCell.swift */,
 				6C3208451EE0153100ED6BDF /* ActivityCell.swift */,
 				6CED20601ED3926100A6CD8B /* PatientCell.swift */,
-				6CC2D19B1F13FD990097DDFE /* Theme.swift */,
 				6C3342961F3A643D007F626D /* TimeSlotCell.swift */,
 			);
 			path = Cells;
