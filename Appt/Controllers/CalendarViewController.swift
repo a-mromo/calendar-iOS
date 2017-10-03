@@ -244,24 +244,16 @@ extension CalendarViewController {
     // Setup Calendar Spacing
     calendarView.minimumLineSpacing = 0
     calendarView.minimumInteritemSpacing = 0
-    
-    // Setup Labels
-//    calendarView.visibleDates{ (visibleDates) in
-//      self.setupViewsFromCalendar(from: visibleDates)
-//    }
   }
   
-//  func setupViewsFromCalendar(from visibleDates: DateSegmentInfo ) {
-//    guard let date = visibleDates.monthDates.first?.date else { return }
-//
-//    formatter.dateFormat = "yyyy"
-//    yearLabel.text = formatter.string(from: date)
-//
-//    formatter.dateFormat = "MMMM"
-//    monthLabel.text = formatter.string(from: date)
-//
-//  }
   
+  
+  func setupViewsFromCalendar(from visibleDates: DateSegmentInfo ) {
+    guard let date = visibleDates.monthDates.first?.date else { return }
+    
+    formatter.dateFormat = "MMMM"
+    title = formatter.string(from: date).uppercased()
+  }
   
 }
 
@@ -307,9 +299,7 @@ extension CalendarViewController: JTAppleCalendarViewDelegate {
     handleCellSelected(view: cell, cellState: cellState)
     handleCellTextColor(view: cell, cellState: cellState)
     
-//    updateDateDetailLabel(date: date)
     loadAppointmentsForDate(date: date)
-    
     //    calendarViewDateChanged()
   }
   
@@ -318,9 +308,9 @@ extension CalendarViewController: JTAppleCalendarViewDelegate {
     handleCellTextColor(view: cell, cellState: cellState)
   }
   
-//  func calendar(_ calendar: JTAppleCalendarView, didScrollToDateSegmentWith visibleDates: DateSegmentInfo) {
-//    setupViewsFromCalendar(from: visibleDates)
-//  }
+  func calendar(_ calendar: JTAppleCalendarView, didScrollToDateSegmentWith visibleDates: DateSegmentInfo) {
+    setupViewsFromCalendar(from: visibleDates)
+  }
   
   
   
