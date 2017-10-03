@@ -54,7 +54,7 @@ class ActivityTableViewController: UITableViewController {
   }
   
   override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-    return 80
+    return 96
   }
   
   
@@ -67,7 +67,7 @@ class ActivityTableViewController: UITableViewController {
     let timeAgo:String = timeAgoSinceDate(appointment.dateCreated, currentDate: Date(), numericDates: true)
     
     cell.timeIntervalLabel.text = timeAgo
-    cell.activityLabel.text = "New appointment with \(String(describing: appointment.patient.fullName)) for \(dateFormatter(date: appointment.date))"
+    cell.activityLabel.text = "New appointment with \(String(describing: appointment.patient.fullName)) for \(dateFormatter(date: appointment.date)) at \(hourFormatter(date: appointment.date))"
     
     return cell
   }

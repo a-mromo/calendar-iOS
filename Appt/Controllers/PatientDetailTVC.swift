@@ -101,7 +101,8 @@ class PatientDetailTVC: UITableViewController {
         if appointmentsForPatient?.count != 0 { return 200 }
         else { return 0.0 }
       case 1:
-        return 80
+        if appointmentsForPatient?.count != 0 { return 0 }
+        else { return 80 }
       case 2:
         return 80
       default:
