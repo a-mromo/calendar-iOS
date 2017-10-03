@@ -90,7 +90,31 @@ class PatientDetailTVC: UITableViewController {
     }
   }
   
- 
+  override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+   
+    switch indexPath.section {
+    case 0:
+      if indexPath.row == 0 { return 272 }
+    case 1:
+      switch indexPath.row {
+      case 0:
+        if appointmentsForPatient?.count != 0 { return 200 }
+        else { return 0.0 }
+      case 1:
+        return 80
+      case 2:
+        return 80
+      default:
+        return UITableViewAutomaticDimension
+      }
+    default:
+      return UITableViewAutomaticDimension
+    }
+    return UITableViewAutomaticDimension
+    
+  }
+  
+  
 //  override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
 //    let cell = UITableViewCell()
 //    if indexPath.section == 0 {
@@ -116,6 +140,7 @@ class PatientDetailTVC: UITableViewController {
   
   
 }
+
 
 extension PatientDetailTVC {
   
