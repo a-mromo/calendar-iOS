@@ -695,7 +695,7 @@
                         <sections>
                             <tableViewSection headerTitle="Patient Info" id="HR2-Ig-Tux">
                                 <cells>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="272" id="3CJ-9d-zW0">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" rowHeight="272" id="3CJ-9d-zW0">
                                         <rect key="frame" x="0.0" y="55.5" width="375" height="272"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="3CJ-9d-zW0" id="KQk-sL-haB">
@@ -820,36 +820,12 @@
                                         </tableViewCellContentView>
                                         <color key="backgroundColor" red="0.93725490196078431" green="0.93725490196078431" blue="0.96470588235294119" alpha="1" colorSpace="calibratedRGB"/>
                                     </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="zYS-oD-lTP">
-                                        <rect key="frame" x="0.0" y="327.5" width="375" height="64"/>
-                                        <autoresizingMask key="autoresizingMask"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="zYS-oD-lTP" id="mTK-d6-VlQ">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="64"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                            <subviews>
-                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7DK-7U-VvR" customClass="WireButton" customModule="Appt" customModuleProvider="target">
-                                                    <rect key="frame" x="148" y="17" width="79" height="30"/>
-                                                    <state key="normal" title="Edit Patient">
-                                                        <color key="titleColor" red="0.71764705882352942" green="0.3529411764705882" blue="0.99607843137254903" alpha="1" colorSpace="calibratedRGB"/>
-                                                    </state>
-                                                    <connections>
-                                                        <action selector="editPatient:" destination="wRX-H1-73d" eventType="touchUpInside" id="MGu-O6-us6"/>
-                                                    </connections>
-                                                </button>
-                                            </subviews>
-                                        </tableViewCellContentView>
-                                        <color key="backgroundColor" red="0.93725490196078431" green="0.93725490196078431" blue="0.96470588235294119" alpha="1" colorSpace="calibratedRGB"/>
-                                        <constraints>
-                                            <constraint firstItem="7DK-7U-VvR" firstAttribute="centerY" secondItem="zYS-oD-lTP" secondAttribute="centerY" id="1q8-2s-xZw"/>
-                                            <constraint firstItem="7DK-7U-VvR" firstAttribute="centerX" secondItem="zYS-oD-lTP" secondAttribute="centerX" id="caQ-gl-Dtq"/>
-                                        </constraints>
-                                    </tableViewCell>
                                 </cells>
                             </tableViewSection>
                             <tableViewSection headerTitle="Appointments" id="uDi-EE-rgq">
                                 <cells>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="200" id="kde-Io-Dx8" customClass="PatientAppointmentCell" customModule="Appt" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="447" width="375" height="200"/>
+                                        <rect key="frame" x="0.0" y="383" width="375" height="200"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="kde-Io-Dx8" id="PWs-i8-uTE">
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="200"/>
@@ -870,6 +846,30 @@
                                             <constraint firstItem="SdR-Rg-DMc" firstAttribute="top" secondItem="kde-Io-Dx8" secondAttribute="top" id="Mug-B0-XYp"/>
                                             <constraint firstAttribute="bottom" secondItem="SdR-Rg-DMc" secondAttribute="bottom" id="Uoa-IV-DCW"/>
                                             <constraint firstAttribute="trailing" secondItem="SdR-Rg-DMc" secondAttribute="trailing" id="mSL-i3-yRs"/>
+                                        </constraints>
+                                    </tableViewCell>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="zYS-oD-lTP">
+                                        <rect key="frame" x="0.0" y="583" width="375" height="64"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="zYS-oD-lTP" id="mTK-d6-VlQ">
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="64"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7DK-7U-VvR" customClass="WireButton" customModule="Appt" customModuleProvider="target">
+                                                    <rect key="frame" x="148" y="17" width="79" height="30"/>
+                                                    <state key="normal" title="Edit Patient">
+                                                        <color key="titleColor" red="0.71764705882352942" green="0.3529411764705882" blue="0.99607843137254903" alpha="1" colorSpace="calibratedRGB"/>
+                                                    </state>
+                                                    <connections>
+                                                        <action selector="editPatient:" destination="wRX-H1-73d" eventType="touchUpInside" id="MGu-O6-us6"/>
+                                                    </connections>
+                                                </button>
+                                            </subviews>
+                                        </tableViewCellContentView>
+                                        <color key="backgroundColor" red="0.93725490196078431" green="0.93725490196078431" blue="0.96470588235294119" alpha="1" colorSpace="calibratedRGB"/>
+                                        <constraints>
+                                            <constraint firstItem="7DK-7U-VvR" firstAttribute="centerY" secondItem="zYS-oD-lTP" secondAttribute="centerY" id="1q8-2s-xZw"/>
+                                            <constraint firstItem="7DK-7U-VvR" firstAttribute="centerX" secondItem="zYS-oD-lTP" secondAttribute="centerX" id="caQ-gl-Dtq"/>
                                         </constraints>
                                     </tableViewCell>
                                 </cells>
@@ -1741,6 +1741,10 @@
         <scene sceneID="jMA-QH-gtV">
             <objects>
                 <viewController id="BEG-1v-eCq" customClass="ApptsForPatientContainerView" customModule="Appt" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="Lbd-HC-7qf"/>
+                        <viewControllerLayoutGuide type="bottom" id="Fqz-O9-ucc"/>
+                    </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="WGL-fI-3Km">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="200"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -1768,7 +1772,7 @@
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1:00 PM" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PqD-W5-pLr">
                                                             <rect key="frame" x="0.0" y="20" width="70" height="19.5"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="16"/>
-                                                            <color key="textColor" red="0.5568627451" green="0.5568627451" blue="0.5568627451" alpha="1" colorSpace="calibratedRGB"/>
+                                                            <color key="textColor" red="0.36862745098039218" green="0.36862745098039218" blue="0.36862745098039218" alpha="1" colorSpace="calibratedRGB"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                     </subviews>
@@ -1778,12 +1782,12 @@
                                                     </constraints>
                                                 </stackView>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="rUJ-bD-rox" customClass="CardView" customModule="Appt" customModuleProvider="target">
-                                                    <rect key="frame" x="116" y="4" width="239" height="64"/>
+                                                    <rect key="frame" x="104" y="4" width="251" height="64"/>
                                                     <subviews>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Note" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5cr-Uu-nSQ">
-                                                            <rect key="frame" x="8" y="4" width="223" height="56"/>
+                                                            <rect key="frame" x="8" y="4" width="235" height="56"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="16"/>
-                                                            <color key="textColor" red="0.5568627451" green="0.5568627451" blue="0.5568627451" alpha="1" colorSpace="calibratedRGB"/>
+                                                            <color key="textColor" red="0.36862745098039218" green="0.36862745098039218" blue="0.36862745098039218" alpha="1" colorSpace="calibratedRGB"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                     </subviews>
@@ -1797,7 +1801,7 @@
                                                 </view>
                                             </subviews>
                                             <constraints>
-                                                <constraint firstItem="rUJ-bD-rox" firstAttribute="leading" secondItem="qhj-Fo-O0t" secondAttribute="leading" constant="116" id="Rgy-Kl-Rhi"/>
+                                                <constraint firstItem="rUJ-bD-rox" firstAttribute="leading" secondItem="qhj-Fo-O0t" secondAttribute="leading" constant="104" id="Rgy-Kl-Rhi"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <color key="backgroundColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.96470588239999999" alpha="1" colorSpace="calibratedRGB"/>

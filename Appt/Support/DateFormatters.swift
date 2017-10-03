@@ -82,9 +82,12 @@ func dateFormatter (date: Date) -> String{
 }
 
 func shortDateFormatter (date: Date) -> String{
+  
+  let template = "dMMM"
+  
+  let format = DateFormatter.dateFormat(fromTemplate: template, options: 0, locale: NSLocale.current)
   let formatter = DateFormatter()
-  formatter.dateStyle = .short
-  formatter.timeStyle = .none
+  formatter.dateFormat = format
   
   let dateString = formatter.string(from: date)
   return dateString
@@ -103,4 +106,24 @@ func hourFormatter (date: Date) -> String{
 func createCompleteDate(year: Int, month: Int, withDay day: Int, hour: Int, minute: Int) -> Date {
   return DateComponents(calendar: Calendar.current, timeZone: TimeZone(identifier: "US/Pacific"), year: year, month: month, day: day, hour: hour, minute: minute, second: 0).date!
 }
+
+//extension NSDate {
+//  func formattedFromCompenents(styleAttitude: DateFormatter.Style, year: Bool = true, month: Bool = true, day: Bool = true, hour: Bool = true, minute: Bool = true, second: Bool = true) -> String {
+//    let long = styleAttitude == .long || styleAttitude == .full
+//    var comps = ""
+//
+//    if year { comps += long ? "yyyy" : "yy" }
+//    if month { comps += long ? "MMMM" : "MMM" }
+//    if day { comps += long ? "dd" : "d" }
+//
+//    if hour { comps += long ? "HH" : "H" }
+//    if minute { comps += long ? "mm" : "m" }
+//    if second { comps += long ? "ss" : "s" }
+//
+//    let format = DateFormatter.dateFormat(fromTemplate: comps, options: 0, locale: NSLocale.current)
+//    let formatter = DateFormatter()
+//    formatter.dateFormat = format
+//    return formatter.string(from: self as Date)
+//  }
+//}
 

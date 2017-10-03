@@ -11,7 +11,6 @@ import CoreData
 
 class ApptsForPatientContainerView: UIViewController {
   
-  var testArray = ["First Item", "Second Item", "Third Item", "Fourth Item", "Fifth Item"]
   var patient: Patient?
   var appointmentsForPatient: [Appointment]?
   let persistentContainer = CoreDataStore.instance.persistentContainer
@@ -78,13 +77,30 @@ extension ApptsForPatientContainerView: UITableViewDataSource, UITableViewDelega
   
   
   func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-    return testArray.count
+    if let appointments = appointmentsForPatient {
+      return appointments.count
+    } else {
+    return 0
+    }
   }
   
   func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+    
     let cell = tableView.dequeueReusableCell(withIdentifier: "PatientAppointmentCell", for: indexPath) as! PatientAppointmentCell
     
-    cell.noteLabel.text = testArray[indexPath.row]
+    if let appointments = appointmentsForPatient {
+      let appointment = appointments[indexPath.row]
+      cell.dateLabel.text = shortDateFormatter(date: appointment.date)
+      cell.hourLabel.text = hourFormatter(date: appointment.date)
+      if let note = appointment.note {
+        cell.noteLabel.text = note
+      } else {
+        if let patient = patient {
+          cell.noteLabel.text = "This appointment with \(patient.fullName) doesn't have any notes"
+        }
+      }
+    }
+    
     
     return cell
     
