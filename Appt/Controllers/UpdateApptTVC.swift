@@ -110,6 +110,8 @@ class UpdateApptTVC: UITableViewController, AppointmentTVC {
     self.patient = appointment.patient
     patientLabel.text = appointment.patient.fullName
     
+    timeSlotLabel.text = hourFormatter(date: appointment.date)
+    
     if let cost = appointment.cost {
       costTextField.text = cost
     }
