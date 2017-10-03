@@ -116,3 +116,28 @@ class NewPatientTableVC: UITableViewController {
   }
   
 }
+
+extension NewPatientTableVC {
+  
+  override func tableView(_ tableView: UITableView, willDisplayHeaderView view: UIView, forSection section: Int) {
+    (view as! UITableViewHeaderFooterView).backgroundView?.backgroundColor = UIColor.white
+  }
+  
+  override func tableView(_ tableView: UITableView, willDisplayFooterView view: UIView, forSection section: Int) {
+    (view as! UITableViewHeaderFooterView).backgroundView?.backgroundColor = UIColor.white
+  }
+  
+  override func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+    if section == 0 {
+      return 30
+    } else {
+      return UITableViewAutomaticDimension
+    }
+  }
+  
+}
+
+
+
+
+
