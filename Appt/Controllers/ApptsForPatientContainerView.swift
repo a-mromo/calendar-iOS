@@ -45,14 +45,14 @@ class ApptsForPatientContainerView: UIViewController {
   
 }
 
-extension PatientDetailTVC {
+extension ApptsForPatientContainerView {
   
   func checkAppointments() {
     fetchAppointmentsForPatient()
     
     if let fetchedAppointments = fetchedResultsController.fetchedObjects {
       appointmentsForPatient = fetchedAppointments
-      print("There are \(appointmentsForPatient.count) appointments for: \(patient.fullName)"
+      print("There are \(fetchedAppointments.count) appointments for: \(patient!.fullName)")
     } else {
       print("Patients has no appointments")
     }
