@@ -24,7 +24,7 @@ class CalendarViewController: UIViewController {
   
   lazy var fetchedResultsController: NSFetchedResultsController<Appointment> = {
     let fetchRequest: NSFetchRequest<Appointment> = Appointment.fetchRequest()
-    fetchRequest.sortDescriptors = [NSSortDescriptor(key: "dateCreated", ascending: false)]
+    fetchRequest.sortDescriptors = [NSSortDescriptor(key: "date", ascending: false)]
     let fetchedResultsController = NSFetchedResultsController(fetchRequest: fetchRequest, managedObjectContext: self.persistentContainer.viewContext, sectionNameKeyPath: nil, cacheName: nil)
     fetchedResultsController.delegate = self
 
@@ -49,6 +49,8 @@ class CalendarViewController: UIViewController {
 
     calendarView.scrollToDate(Date(), animateScroll: false)
     calendarView.selectDates( [Date()] )
+    
+    self.navigationItem.backBarButtonItem = UIBarButtonItem(title: "Calendar", style: UIBarButtonItemStyle.plain, target: nil, action: nil)
   }
   
   func performFetch() {
