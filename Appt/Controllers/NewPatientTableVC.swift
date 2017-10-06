@@ -36,6 +36,9 @@ class NewPatientTableVC: UITableViewController {
     super.viewDidLoad()
     noLargeTitles()
     setTextFieldDelegates()
+    if patient != nil {
+      loadPatient()
+    }
   }
   
   override func viewWillAppear(_ animated: Bool) {

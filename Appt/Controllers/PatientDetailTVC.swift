@@ -36,6 +36,7 @@ class PatientDetailTVC: UITableViewController {
   @IBOutlet weak var emailLabel: UILabel!
   
   @IBAction func editPatient(_ sender: UIButton) {
+    performSegue(withIdentifier: segueEditPatient, sender: self)
   }
   
   override func viewDidLoad() {

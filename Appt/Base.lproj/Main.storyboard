@@ -899,6 +899,7 @@
                                                     </state>
                                                     <connections>
                                                         <action selector="editPatient:" destination="wRX-H1-73d" eventType="touchUpInside" id="MGu-O6-us6"/>
+                                                        <segue destination="dgP-ax-ull" kind="show" identifier="SegueEditPatient" id="9xQ-kO-6xk"/>
                                                     </connections>
                                                 </button>
                                             </subviews>
@@ -1889,6 +1890,7 @@
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="ZlX-X9-4ez"/>
+        <segue reference="9xQ-kO-6xk"/>
         <segue reference="DkU-Xe-fvp"/>
         <segue reference="Ity-bc-bUT"/>
     </inferredMetricsTieBreakers>
