@@ -70,7 +70,7 @@
                                                             </constraints>
                                                         </view>
                                                     </subviews>
-                                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                                     <constraints>
                                                         <constraint firstItem="5WE-A5-gih" firstAttribute="leading" secondItem="IqV-X8-KCp" secondAttribute="leading" constant="20" id="1qH-Yl-wMq"/>
                                                         <constraint firstAttribute="trailing" secondItem="uAI-an-2Pw" secondAttribute="trailing" constant="20" id="H5A-gZ-DhG"/>
@@ -131,7 +131,7 @@
                                                             <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                                         </textView>
                                                     </subviews>
-                                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                                     <constraints>
                                                         <constraint firstItem="cdO-Pa-v6j" firstAttribute="top" secondItem="eZa-gs-7Nu" secondAttribute="top" constant="12" id="Ueo-CC-WzC"/>
                                                         <constraint firstItem="cdO-Pa-v6j" firstAttribute="leading" secondItem="eZa-gs-7Nu" secondAttribute="leading" constant="20" id="WND-7Z-Eac"/>
@@ -590,7 +590,7 @@
                                     <subviews>
                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Yoi-lR-eQV" customClass="CardView" customModule="Appt" customModuleProvider="target">
                                             <rect key="frame" x="12" y="4" width="259" height="104"/>
-                                            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         </view>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="ActivityLabel" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5EE-IR-8YS">
                                             <rect key="frame" x="24" y="12" width="235" height="88"/>
@@ -782,7 +782,7 @@
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                     </subviews>
-                                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                                     <constraints>
                                                         <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="Gjp-Cq-evz" secondAttribute="trailing" constant="20" id="0Hf-Sr-OpP"/>
                                                         <constraint firstItem="Gjp-Cq-evz" firstAttribute="top" secondItem="kJH-dO-MRl" secondAttribute="bottom" constant="8" id="15e-OS-lSF"/>
@@ -1305,7 +1305,7 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>
-                                            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                             <constraints>
                                                 <constraint firstItem="yrm-cF-1w8" firstAttribute="centerX" secondItem="get-Ki-5wO" secondAttribute="centerX" id="hs1-tn-wxQ"/>
                                                 <constraint firstItem="yrm-cF-1w8" firstAttribute="centerY" secondItem="get-Ki-5wO" secondAttribute="centerY" id="rMd-Qz-2kF"/>
@@ -1600,7 +1600,7 @@
                                                             </subviews>
                                                         </stackView>
                                                     </subviews>
-                                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                                     <constraints>
                                                         <constraint firstItem="RNc-79-Sm0" firstAttribute="centerY" secondItem="yPZ-nK-vSd" secondAttribute="centerY" id="JY4-eZ-scf"/>
                                                         <constraint firstItem="RNc-79-Sm0" firstAttribute="leading" secondItem="yPZ-nK-vSd" secondAttribute="leading" constant="12" id="hWz-xq-8ZM"/>
@@ -1836,7 +1836,7 @@
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                     </subviews>
-                                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                                     <constraints>
                                                         <constraint firstItem="5cr-Uu-nSQ" firstAttribute="top" secondItem="rUJ-bD-rox" secondAttribute="top" constant="4" id="U3f-FG-Ogn"/>
                                                         <constraint firstItem="5cr-Uu-nSQ" firstAttribute="leading" secondItem="rUJ-bD-rox" secondAttribute="leading" constant="8" id="U6a-SS-Ldm"/>
