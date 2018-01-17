@@ -42,6 +42,7 @@ It utilizes time slots in order to create every appointment. Every time slots is
 ## Requirements
 - iOS 11 and later
 - Swift 3.2 and later
+- JTLAppleCalendar
 
 ## Built With
 This app was built using:
